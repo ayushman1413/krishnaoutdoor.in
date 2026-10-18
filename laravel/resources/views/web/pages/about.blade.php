@@ -1,5 +1,7 @@
 @extends('web.layouts.app')
 
+@section('css-bundle', 'about')
+
 @section('body-class', 'inner-page')
 @section('nav', 'about')
 
@@ -87,7 +89,6 @@
 
 @media(prefers-reduced-motion:reduce){.about-reveal,.about-hero-copy,.about-image img,.leader-card{transition:none!important;animation:none!important}}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://krishnaoutdoor.in/"},{"@type":"ListItem","position":2,"name":"About Us","item":"https://krishnaoutdoor.in/about"}]}</script>
 <style id="final-button-banner-cleanup">
 .btn,.small-btn,.outline-btn,.kr-btn,.ow-btn,.media-btn,.network-btn,.network-card-link,.kr-office-btn,.about-btn,.footer-campaign,.service-next,.tab,.nav-cta,.experience-link{border-radius:6px!important;clip-path:none!important}
 .btn::before,.btn::after,.small-btn::before,.small-btn::after,.outline-btn::before,.outline-btn::after,.kr-btn::before,.kr-btn::after,.ow-btn::before,.ow-btn::after,.media-btn::before,.media-btn::after,.network-btn::before,.network-btn::after,.network-card-link::before,.network-card-link::after,.kr-office-btn::before,.kr-office-btn::after,.about-btn::before,.about-btn::after,.footer-campaign::before,.footer-campaign::after,.nav-cta::before,.nav-cta::after{border-radius:inherit!important;clip-path:none!important}
@@ -102,7 +103,7 @@
 
 <main class="about-refresh">
 <section class="about-hero">
-<img alt="Krishna Outdoor billboard campaign" class="about-hero-media" decoding="async" loading="lazy" src="{{ asset('assets/images/work/brand-billboard-campaign-04.webp') }}"/>
+<img fetchpriority="high" srcset="{{ asset('assets/images/work/brand-billboard-campaign-04-800w.webp') }} 800w, {{ asset('assets/images/work/brand-billboard-campaign-04.webp') }} 1600w" sizes="100vw" alt="Roadside hoardings above city traffic – Krishna Outdoor" class="about-hero-media" decoding="async" loading="eager" src="{{ asset('assets/images/work/brand-billboard-campaign-04.webp') }}"/>
 <div class="about-hero-grid"></div>
 <div class="about-hero-inner container">
 <div class="about-hero-copy about-reveal in">
@@ -133,13 +134,13 @@
 <a class="about-btn primary" href="{{ route('view.services') }}" style="width:max-content;margin-top:8px">Explore Our Media <span>→</span></a>
 </div>
 <div class="about-collage about-reveal about-delay-1">
-<div class="tile"><img alt="Outdoor billboard campaign" decoding="async" loading="lazy" src="{{ asset('assets/images/ooh/ahmedabad-hoarding-location-05.webp') }}"/><b>Ideas Travel Further</b></div>
-<div class="tile"><img alt="Transit advertising" decoding="async" loading="lazy" src="{{ asset('assets/images/shared-mumbai-local-train-advertising.webp') }}"/><b>Media &amp; Evolves</b></div>
-<div class="tile"><img alt="Bus branding campaign" decoding="async" loading="lazy" src="{{ asset('assets/images/about-f3.webp') }}"/><b>Brands Move With People</b></div>
+<div class="tile"><img srcset="{{ asset('assets/images/ooh/ahmedabad-hoarding-location-05-800w.webp') }} 800w, {{ asset('assets/images/ooh/ahmedabad-hoarding-location-05.webp') }} 1600w" sizes="(max-width: 760px) 100vw, 50vw" alt="Hoardings at a busy road junction in Ahmedabad – Krishna Outdoor" decoding="async" loading="lazy" src="{{ asset('assets/images/ooh/ahmedabad-hoarding-location-05.webp') }}"/><b>Ideas Travel Further</b></div>
+<div class="tile"><img srcset="{{ asset('assets/images/shared-mumbai-local-train-advertising-800w.webp') }} 800w, {{ asset('assets/images/shared-mumbai-local-train-advertising.webp') }} 1600w" sizes="(max-width: 760px) 100vw, 50vw" alt="Backlit Airtel 5G Plus ad panels at a Mumbai railway station – Krishna Outdoor" decoding="async" loading="lazy" src="{{ asset('assets/images/shared-mumbai-local-train-advertising.webp') }}"/><b>Media &amp; Evolves</b></div>
+<div class="tile"><img srcset="{{ asset('assets/images/about-f3-800w.webp') }} 800w, {{ asset('assets/images/about-f3.webp') }} 1280w" sizes="(max-width: 760px) 100vw, 50vw" alt="Full-wrap spice brand advertising on a city bus – Krishna Outdoor" decoding="async" loading="lazy" src="{{ asset('assets/images/about-f3.webp') }}"/><b>Brands Move With People</b></div>
 </div>
 </section>
 <section class="about-block">
-<div class="about-image about-reveal"><img alt="Original Ahmedabad bus shelter outdoor advertising" decoding="async" loading="lazy" src="{{ asset('assets/images/about-04.webp') }}"/><span class="image-label">A BROADER<br/>TOMORROW</span></div>
+<div class="about-image about-reveal"><img srcset="{{ asset('assets/images/about-04-800w.webp') }} 800w, {{ asset('assets/images/about-04.webp') }} 1280w" sizes="(max-width: 760px) 100vw, 50vw" alt="Kala-Kendra full-wrap advertising on a city bus – Krishna Outdoor" decoding="async" loading="lazy" src="{{ asset('assets/images/about-04.webp') }}"/><span class="image-label">A BROADER<br/>TOMORROW</span></div>
 <div class="about-copybox about-reveal about-delay-1">
 <div class="about-tag">OUR VISION</div>
 <h3>To Be the Advertising Partner<br/>Brands Choose with Confidence.</h3>
@@ -155,10 +156,10 @@
 <p>From outdoor and transit media to print, electronic and digital communication, we bring relevant media possibilities together through one experienced team.</p>
 <p>The objective is simple — clearer planning, easier coordination and stronger brand visibility.</p>
 </div>
-<div class="about-image about-reveal about-delay-1"><img alt="Outdoor advertising at sunset" decoding="async" loading="lazy" src="{{ asset('assets/images/home/work-1.webp') }}"/><span class="image-label">MORE POSSIBILITIES<br/>FOR YOUR BRAND</span></div>
+<div class="about-image about-reveal about-delay-1"><img srcset="{{ asset('assets/images/home/work-1-800w.webp') }} 800w, {{ asset('assets/images/home/work-1.webp') }} 1600w" sizes="(max-width: 760px) 100vw, 50vw" alt="Birdsong real-estate backlit hoarding at night – Krishna Outdoor" decoding="async" loading="lazy" src="{{ asset('assets/images/home/work-1.webp') }}"/><span class="image-label">MORE POSSIBILITIES<br/>FOR YOUR BRAND</span></div>
 </section>
 <section class="about-strength">
-<div class="about-strength-visual about-reveal"><img alt="Ahmedabad outdoor advertising location" decoding="async" loading="lazy" src="{{ asset('assets/images/ooh/ahmedabad-hoarding-location-06.webp') }}"/></div>
+<div class="about-strength-visual about-reveal"><img srcset="{{ asset('assets/images/ooh/ahmedabad-hoarding-location-06-800w.webp') }} 800w, {{ asset('assets/images/ooh/ahmedabad-hoarding-location-06.webp') }} 1600w" sizes="(max-width: 760px) 100vw, 50vw" alt="Hoarding beside a main road in Ahmedabad – Krishna Outdoor" decoding="async" loading="lazy" src="{{ asset('assets/images/ooh/ahmedabad-hoarding-location-06.webp') }}"/></div>
 <div class="about-strength-copy about-reveal">
 <div class="about-tag">OUR STRENGTH</div>
 <h2>Experience.<br/>Relationships.<br/>Integrated Thinking.</h2>
@@ -174,7 +175,7 @@
 <p>Our capabilities are strengthened by the long-standing advertising experience of Rakesh Advertising, particularly across newspaper advertising, electronic media, social media and branding solutions.</p>
 <p>This wider media foundation helps Krishna Outdoor offer clients more than outdoor visibility. It allows us to look at the complete communication requirement and explore the right mix of media around it.</p>
 </div>
-<div aria-label="A stronger foundation" class="about-foundation-card about-reveal about-delay-1"><div class="foundation-newspaper foundation-visual"><img alt="Press release and advertising media legacy" decoding="async" loading="lazy" src="{{ asset('assets/images/print/newspaper-original.webp') }}"/></div><div class="foundation-kicker">MEDIA LEGACY</div><h4>A STRONGER<br/>FOUNDATION</h4><p>Built on decades of wider advertising experience.</p><span class="foundation-line"></span></div>
+<div aria-label="A stronger foundation" class="about-foundation-card about-reveal about-delay-1"><div class="foundation-newspaper foundation-visual"><img srcset="{{ asset('assets/images/print/newspaper-original-800w.webp') }} 800w, {{ asset('assets/images/print/newspaper-original.webp') }} 1600w" sizes="(max-width: 760px) 100vw, 50vw" alt="Press release and advertising media legacy" decoding="async" loading="lazy" src="{{ asset('assets/images/print/newspaper-original.webp') }}"/></div><div class="foundation-kicker">MEDIA LEGACY</div><h4>A STRONGER<br/>FOUNDATION</h4><p>Built on decades of wider advertising experience.</p><span class="foundation-line"></span></div>
 </section>
 <section class="about-lead" id="leadership">
 <div class="container">
@@ -183,12 +184,12 @@
 </div>
 <div class="about-lead-grid">
 <article class="leader-card about-reveal about-delay-1"><img alt="Rakesh Gandhi" decoding="async" loading="lazy" src="{{ asset('assets/images/about-rakesh-gandhi.webp') }}"/><div class="leader-copy"><small>Leadership</small><h3>Rakesh Gandhi</h3><div class="leader-role">Rakesh Gandhi — Chairman &amp; Managing Director</div><div class="leader-visible"><p>“In advertising, long-term success is built on trust, relationships and the commitment to deliver.” Cities and media have changed, but our focus remains on understanding markets, building lasting relationships and keeping brands present where people are.</p></div><div class="leader-more" hidden=""><p>Our journey has been built around this understanding. For more than four decades, we have worked to develop strong relationships, understand markets and create advertising opportunities that help brands communicate with their audiences.</p><p>What I value most about this journey is the trust placed in us by our clients, partners and team.</p><p>As we move forward, our focus remains on strengthening our capabilities while continuing to work with the same values that have guided us from the beginning — commitment, relationships and a genuine understanding of our clients' needs.</p></div><button aria-expanded="false" class="about-btn leader-readmore" type="button">Read More <span>→</span></button></div></article>
-<article class="leader-card about-reveal about-delay-2"><img alt="Kevin Gandhi" decoding="async" loading="lazy" src="{{ asset('assets/images/about-kevin-gandhi-director.webp') }}"/><div class="leader-copy"><small>Leadership</small><h3>Kevin Gandhi</h3><div class="leader-role">Kevin Gandhi — Director</div><div class="leader-visible"><p>“The future of media is not about choosing between traditional and digital. It is about understanding how they can work together.” Our focus is on bringing physical and digital opportunities together through smarter planning, new thinking and a deeper understanding of how audiences move through cities and media platforms.</p></div><div class="leader-more" hidden=""><p>Our strength is the experience and foundation built over decades. The opportunity ahead is to build on that foundation with new thinking, smarter planning and a deeper understanding of how audiences move through both cities and media platforms.</p><p>At Krishna Outdoor, our goal is to continue evolving with the industry while remaining grounded in the values that have earned us the trust of our clients.</p></div><button aria-expanded="false" class="about-btn leader-readmore" type="button">Read More <span>→</span></button></div></article>
+<article class="leader-card about-reveal about-delay-2"><img srcset="{{ asset('assets/images/about-kevin-gandhi-director-800w.webp') }} 800w, {{ asset('assets/images/about-kevin-gandhi-director.webp') }} 1600w" sizes="(max-width: 760px) 100vw, 50vw" alt="Kevin Gandhi" decoding="async" loading="lazy" src="{{ asset('assets/images/about-kevin-gandhi-director.webp') }}"/><div class="leader-copy"><small>Leadership</small><h3>Kevin Gandhi</h3><div class="leader-role">Kevin Gandhi — Director</div><div class="leader-visible"><p>“The future of media is not about choosing between traditional and digital. It is about understanding how they can work together.” Our focus is on bringing physical and digital opportunities together through smarter planning, new thinking and a deeper understanding of how audiences move through cities and media platforms.</p></div><div class="leader-more" hidden=""><p>Our strength is the experience and foundation built over decades. The opportunity ahead is to build on that foundation with new thinking, smarter planning and a deeper understanding of how audiences move through both cities and media platforms.</p><p>At Krishna Outdoor, our goal is to continue evolving with the industry while remaining grounded in the values that have earned us the trust of our clients.</p></div><button aria-expanded="false" class="about-btn leader-readmore" type="button">Read More <span>→</span></button></div></article>
 </div>
 </div>
 </section>
 <section class="about-cta about-reveal">
-<img alt="City outdoor campaign" decoding="async" loading="lazy" src="{{ asset('assets/images/work/digital-billboard-campaign-03.webp') }}"/>
+<img srcset="{{ asset('assets/images/work/digital-billboard-campaign-03-800w.webp') }} 800w, {{ asset('assets/images/work/digital-billboard-campaign-03.webp') }} 1600w" sizes="(max-width: 760px) 100vw, 50vw" alt="Car brand hoarding above city traffic in Gujarat – Krishna Outdoor" decoding="async" loading="lazy" src="{{ asset('assets/images/work/digital-billboard-campaign-03.webp') }}"/>
 <div class="container">
 <div><div class="about-tag">LET'S CREATE</div><h2>LET'S PUT YOUR BRAND IN THE RIGHT PLACE.</h2><p>Whether you are launching a new product, entering a new market, building brand awareness or planning a large-scale campaign, our team is ready to help you explore the right opportunities.</p></div>
 <a class="about-btn primary" href="{{ route('view.contact') }}">TALK TO OUR TEAM →</a>

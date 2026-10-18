@@ -69,6 +69,25 @@ class SeoSettingController extends Controller
                 }
             ],
             'robots_txt' => ['nullable', 'string'],
+            'whatsapp_number' => ['nullable', 'string', 'max:20', 'regex:/^\+?[0-9 ()-]{8,20}$/'],
+            'local_business_ahmedabad_json' => [
+                'nullable',
+                'string',
+                function ($attribute, $value, $fail) {
+                    if (!is_null($value) && $value !== '' && json_decode($value) === null) {
+                        $fail('Schema JSON must be valid JSON');
+                    }
+                }
+            ],
+            'local_business_mumbai_json' => [
+                'nullable',
+                'string',
+                function ($attribute, $value, $fail) {
+                    if (!is_null($value) && $value !== '' && json_decode($value) === null) {
+                        $fail('Schema JSON must be valid JSON');
+                    }
+                }
+            ],
         ];
     }
 
@@ -84,6 +103,9 @@ class SeoSettingController extends Controller
         $setting->body_custom_code = $request->input('body_custom_code');
         $setting->organization_schema_json = $request->input('organization_schema_json');
         $setting->robots_txt = $request->input('robots_txt');
+        $setting->whatsapp_number = $request->input('whatsapp_number');
+        $setting->local_business_ahmedabad_json = $request->input('local_business_ahmedabad_json');
+        $setting->local_business_mumbai_json = $request->input('local_business_mumbai_json');
 
         if ($request->hasFile('default_og_image')) {
             if ($setting->default_og_image)

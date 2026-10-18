@@ -1,5 +1,7 @@
 @extends('web.layouts.app')
 
+@section('css-bundle', 'media')
+
 @section('body-class', 'inner-page')
 @section('nav', 'services')
 
@@ -7,40 +9,8 @@
 
 @include('web.common.keyword-page-style')
 
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "serviceType": "Digital Out-of-Home (DOOH) Advertising",
-    "provider": {"@type": "Organization", "name": "Krishna Outdoor"},
-    "areaServed": {"@type": "City", "name": "Ahmedabad"},
-    "name": "Digital Out-of-Home (DOOH) Advertising in Ahmedabad",
-    "description": "Dynamic digital billboards and screens across prime Ahmedabad locations."
-}
-</script>
 
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-        {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://krishnaoutdoor.in/"
-        },
-        {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Digital Media",
-            "item": "https://krishnaoutdoor.in/media/digital"
-        }
-    ]
-}
-</script>
 
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is DOOH advertising?","acceptedAnswer":{"@type":"Answer","text":"Digital Out-of-Home (DOOH) advertising displays content on digital billboards and screens, allowing dynamic creative, scheduled campaigns and real-time updates instead of a single static print."}},{"@type":"Question","name":"Where are Krishna Outdoor's DOOH screens located in Ahmedabad?","acceptedAnswer":{"@type":"Answer","text":"Our digital billboards and screens are placed across prime, high-traffic locations in Ahmedabad for maximum audience reach."}},{"@type":"Question","name":"What are the benefits of DOOH over traditional hoardings?","acceptedAnswer":{"@type":"Answer","text":"DOOH allows dynamic creative changes, dayparting (different ads at different times), faster campaign turnaround and the ability to run multiple brands or messages on the same screen."}},{"@type":"Question","name":"How do I book a DOOH campaign in Ahmedabad?","acceptedAnswer":{"@type":"Answer","text":"Share your target locations, campaign dates and creative requirements, and our team will share available screens with rates and specifications."}}]}</script>
 
 @endsection
 
@@ -55,11 +25,12 @@
     <section class="hero media-detail-hero media-detail-hero-digital" id="home">
 
         <div class="media-detail-hero-bg">
-            <img
-                alt="Digital billboard advertising campaign"
+            <img srcset="{{ asset('assets/images/home/work-1-800w.webp') }} 800w, {{ asset('assets/images/home/work-1.webp') }} 1600w" sizes="100vw"
+                alt="Birdsong real-estate illuminated billboard at night – Krishna Outdoor"
                 decoding="async"
                 loading="eager"
-                src="{{ asset('assets/images/careers-about-image-01.webp') }}"
+                fetchpriority="high"
+                src="{{ asset('assets/images/home/work-1.webp') }}"
             />
         </div>
 
@@ -96,8 +67,8 @@
                     Today's audience moves between the physical and digital worlds throughout the day.
                 </p>
 
-                <a class="small-btn" href="{{ route('view.contact') }}">
-                    Get A Free Site List
+                <a class="small-btn" href="{{ route('view.free.site.list', ['media' => 'dooh']) }}">
+                    Get Free Site List
                     <span>→</span>
                 </a>
 
@@ -107,8 +78,8 @@
             <div class="about-scene reveal">
 
                 <div class="about-frame f1">
-                    <img
-                        alt="Digital billboard campaign"
+                    <img srcset="{{ asset('assets/images/shared-mumbai-local-train-advertising-800w.webp') }} 800w, {{ asset('assets/images/shared-mumbai-local-train-advertising.webp') }} 1600w" sizes="(max-width: 760px) 100vw, 50vw"
+                        alt="Backlit Airtel 5G Plus ad panels at a Mumbai railway station – Krishna Outdoor"
                         decoding="async"
                         loading="lazy"
                         src="{{ asset('assets/images/shared-mumbai-local-train-advertising.webp') }}"
@@ -116,8 +87,8 @@
                 </div>
 
                 <div class="about-frame f2">
-                    <img
-                        alt="Digital screens across city"
+                    <img srcset="{{ asset('assets/images/media/home-360-outdoor-hoarding-night-01-800w.webp') }} 800w, {{ asset('assets/images/media/home-360-outdoor-hoarding-night-01.webp') }} 1800w" sizes="(max-width: 760px) 100vw, 50vw"
+                        alt="Godrej 3D washing machine hoarding at a busy market at night – Krishna Outdoor"
                         decoding="async"
                         loading="lazy"
                         src="{{ asset('assets/images/media/home-360-outdoor-hoarding-night-01.webp') }}"
@@ -134,11 +105,11 @@
                 </div>
 
                 <div class="about-frame f3">
-                    <img
-                        alt="Digital billboard at night"
+                    <img srcset="{{ asset('assets/images/home/home-360-f2-800w.webp') }} 800w, {{ asset('assets/images/home/home-360-f2.webp') }} 1280w" sizes="(max-width: 760px) 100vw, 50vw"
+                        alt="Illuminated large-format billboard at night – Krishna Outdoor"
                         decoding="async"
                         loading="lazy"
-                        src="{{ asset('assets/images/careers-about-image-01.webp') }}"
+                        src="{{ asset('assets/images/home/home-360-f2.webp') }}"
                     />
                 </div>
 
@@ -260,12 +231,12 @@
 
 
                     <!-- MAIN IMAGE -->
-                    <img
-                        alt="Outdoor advertising campaign"
+                    <img srcset="{{ asset('assets/images/ooh/ahmedabad-hoarding-location-03-800w.webp') }} 800w, {{ asset('assets/images/ooh/ahmedabad-hoarding-location-03.webp') }} 1600w" sizes="(max-width: 760px) 100vw, 50vw"
+                        alt="Hoardings at a road junction in Ahmedabad – Krishna Outdoor"
                         decoding="async"
                         id="showcaseImage"
                         loading="lazy"
-                        src="{{ asset('assets/images/ooh/ahmedabad-hoarding-location-03.jpeg') }}"
+                        src="{{ asset('assets/images/ooh/ahmedabad-hoarding-location-03.webp') }}"
                     />
 
 
@@ -316,24 +287,12 @@
     ========================== -->
     <section class="kw-section kw-section-alt"><div class="kw-inner">
         <h2 class="kw-h2">Frequently asked <em>questions</em></h2>
-        <div class="kw-faq">
-            <details open>
-                <summary>What is DOOH advertising?</summary>
-                <p>Digital Out-of-Home (DOOH) advertising displays content on digital billboards and screens, allowing dynamic creative, scheduled campaigns and real-time updates instead of a single static print.</p>
-            </details>
-            <details>
-                <summary>Where are Krishna Outdoor's DOOH screens located in Ahmedabad?</summary>
-                <p>Our digital billboards and screens are placed across prime, high-traffic locations in Ahmedabad for maximum audience reach.</p>
-            </details>
-            <details>
-                <summary>What are the benefits of DOOH over traditional hoardings?</summary>
-                <p>DOOH allows dynamic creative changes, dayparting (different ads at different times), faster campaign turnaround and the ability to run multiple brands or messages on the same screen.</p>
-            </details>
-            <details>
-                <summary>How do I book a DOOH campaign in Ahmedabad?</summary>
-                <p>Share your target locations, campaign dates and creative requirements, and our team will share available screens with rates and specifications.</p>
-            </details>
-        </div>
+        @include('web.common.faq', ['faqs' => [
+            ['q' => 'What is DOOH advertising?', 'a' => 'Digital Out-of-Home (DOOH) advertising displays content on digital billboards and screens, allowing dynamic creative, scheduled campaigns and real-time updates instead of a single static print.'],
+            ['q' => 'Where are Krishna Outdoor\'s DOOH screens located in Ahmedabad?', 'a' => 'Our digital billboards and screens are placed across prime, high-traffic locations in Ahmedabad for maximum audience reach.'],
+            ['q' => 'What are the benefits of DOOH over traditional hoardings?', 'a' => 'DOOH allows dynamic creative changes, dayparting (different ads at different times), faster campaign turnaround and the ability to run multiple brands or messages on the same screen.'],
+            ['q' => 'How do I book a DOOH campaign in Ahmedabad?', 'a' => 'Share your target locations, campaign dates and creative requirements, and our team will share available screens with rates and specifications.'],
+        ]])
     </div></section>
 
 

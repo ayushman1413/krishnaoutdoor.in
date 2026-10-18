@@ -1,13 +1,12 @@
 @extends('web.layouts.app')
 
+@section('css-bundle', 'keyword')
+
 @section('body-class', 'inner-page')
 @section('nav', 'services')
 
 @section('web-head')
 @include('web.common.keyword-page-style')
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","serviceType":"Mumbai Local Train Advertising","provider":{"@type":"Organization","name":"Krishna Outdoor"},"areaServed":{"@type":"City","name":"Mumbai"},"name":"Mumbai Local Train Advertising","description":"Exterior branding and display advertising on Mumbai local trains across Western Railway and Central Railway lines."}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which Mumbai rail lines does local train advertising cover?","acceptedAnswer":{"@type":"Answer","text":"Krishna Outdoor holds display rights on Mumbai local trains running the Western Railway and Central Railway lines, the two suburban networks that carry the bulk of Mumbai's daily commuter traffic."}},{"@type":"Question","name":"Why is Mumbai local train advertising effective?","acceptedAnswer":{"@type":"Answer","text":"Mumbai's local trains carry one of the highest daily commuter volumes of any transit system in India. A train running its line multiple times a day puts a brand in front of a large, repeat audience of office-goers, students and shoppers at a scale few other formats can match."}},{"@type":"Question","name":"What drives the cost of Mumbai local train advertising?","acceptedAnswer":{"@type":"Answer","text":"Cost depends on the rail line, number of trains or rakes booked, and campaign duration. Western Railway corridors with higher commuter density typically command different rates than quieter Central Railway stretches, so we scope pricing once we know your target line and timeframe."}},{"@type":"Question","name":"How far in advance should I book a Mumbai local train advertising campaign?","acceptedAnswer":{"@type":"Answer","text":"Because train branding involves coordinating with railway authorities alongside printing and mounting, we recommend starting the booking conversation at least three to four weeks before your intended launch date."}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://krishnaoutdoor.in/"},{"@type":"ListItem","position":2,"name":"Transit Media","item":"https://krishnaoutdoor.in/media/transit"},{"@type":"ListItem","position":3,"name":"Mumbai Local Train Advertising","item":"https://krishnaoutdoor.in/mumbai-local-train-advertising"}]}</script>
 @endsection
 
 @section('web-section')
@@ -15,13 +14,19 @@
 
 <section class="hero media-detail-hero media-detail-hero-ooh" id="home">
     <div class="media-detail-hero-bg">
-        <img alt="Mumbai local train advertising" decoding="async" loading="eager" src="{{ asset('assets/images/transit/mumbai-local-train-cosmos-bank-01.jpeg') }}"/>
+        <img fetchpriority="high" srcset="{{ asset('assets/images/transit/mumbai-local-train-cosmos-bank-01-800w.webp') }} 800w, {{ asset('assets/images/transit/mumbai-local-train-cosmos-bank-01.webp') }} 1600w" sizes="100vw" alt="Cosmos Co-operative Bank branding on Mumbai local train coaches – Krishna Outdoor" decoding="async" loading="eager" src="{{ asset('assets/images/transit/mumbai-local-train-cosmos-bank-01.webp') }}"/>
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-grid"></div>
     <div class="hero-noise"></div>
     <div class="container hero-inner reveal">
-        <h1>MUMBAI LOCAL TRAIN<br/><em>ADVERTISING.</em></h1>
+        <h1>
+        @if ($seo->h1Override())
+            {{ $seo->h1Override() }}
+        @else
+            MUMBAI LOCAL TRAIN<br/><em>ADVERTISING</em>
+        @endif
+        </h1>
     </div>
 </section>
 
@@ -54,7 +59,7 @@
         </div>
 
         <div class="kw-img">
-            <img alt="Branded Mumbai local train on Western Railway" decoding="async" loading="lazy" src="{{ asset('assets/images/transit/mumbai-local-train-mushak-loan-02.jpeg') }}"/>
+            <img srcset="{{ asset('assets/images/transit/mumbai-local-train-mushak-loan-02-800w.webp') }} 800w, {{ asset('assets/images/transit/mumbai-local-train-mushak-loan-02.webp') }} 1280w" sizes="(max-width: 760px) 100vw, 50vw" alt="Branded Mumbai local train on Western Railway" decoding="async" loading="lazy" src="{{ asset('assets/images/transit/mumbai-local-train-mushak-loan-02.webp') }}"/>
         </div>
     </div>
 
@@ -69,24 +74,12 @@
 
 <section class="kw-section kw-section-alt"><div class="kw-inner">
     <h2 class="kw-h2">Frequently asked <em>questions</em></h2>
-    <div class="kw-faq">
-        <details open>
-            <summary>Which Mumbai rail lines does local train advertising cover?</summary>
-            <p>Krishna Outdoor holds display rights on Mumbai local trains running the Western Railway and Central Railway lines, the two suburban networks that carry the bulk of Mumbai's daily commuter traffic.</p>
-        </details>
-        <details>
-            <summary>Why is Mumbai local train advertising effective?</summary>
-            <p>Mumbai's local trains carry one of the highest daily commuter volumes of any transit system in India. A train running its line multiple times a day puts a brand in front of a large, repeat audience of office-goers, students and shoppers at a scale few other formats can match.</p>
-        </details>
-        <details>
-            <summary>What drives the cost of Mumbai local train advertising?</summary>
-            <p>Cost depends on the rail line, number of trains or rakes booked, and campaign duration. Western Railway corridors with higher commuter density typically command different rates than quieter Central Railway stretches, so we scope pricing once we know your target line and timeframe.</p>
-        </details>
-        <details>
-            <summary>How far in advance should I book a Mumbai local train advertising campaign?</summary>
-            <p>Because train branding involves coordinating with railway authorities alongside printing and mounting, we recommend starting the booking conversation at least three to four weeks before your intended launch date.</p>
-        </details>
-    </div>
+    @include('web.common.faq', ['faqs' => [
+        ['q' => 'Which Mumbai rail lines does local train advertising cover?', 'a' => 'Krishna Outdoor holds display rights on Mumbai local trains running the Western Railway and Central Railway lines, the two suburban networks that carry the bulk of Mumbai\'s daily commuter traffic.'],
+        ['q' => 'Why is Mumbai local train advertising effective?', 'a' => 'Mumbai\'s local trains carry one of the highest daily commuter volumes of any transit system in India. A train running its line multiple times a day puts a brand in front of a large, repeat audience of office-goers, students and shoppers at a scale few other formats can match.'],
+        ['q' => 'What drives the cost of Mumbai local train advertising?', 'a' => 'Cost depends on the rail line, number of trains or rakes booked, and campaign duration. Western Railway corridors with higher commuter density typically command different rates than quieter Central Railway stretches, so we scope pricing once we know your target line and timeframe.'],
+        ['q' => 'How far in advance should I book a Mumbai local train advertising campaign?', 'a' => 'Because train branding involves coordinating with railway authorities alongside printing and mounting, we recommend starting the booking conversation at least three to four weeks before your intended launch date.'],
+    ]])
 </div></section>
 
 <section class="cta" id="contact">
@@ -96,7 +89,7 @@
             <h2>GET YOUR FREE TRAIN AVAILABILITY LIST</h2>
             <p>Tell us your target line and timeframe and we'll share available rakes with rates.</p>
         </div>
-        <a class="btn white" href="{{ route('view.contact') }}">Get Availability List <b>→</b></a>
+        <a class="btn white" href="{{ route('view.free.site.list', ['media' => 'mumbai-local-train']) }}">Get Free Site List <b>→</b></a>
     </div>
 </section>
 

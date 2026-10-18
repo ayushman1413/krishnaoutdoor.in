@@ -1,23 +1,30 @@
 @extends('web.layouts.app')
 
+@section('css-bundle', 'home')
+
 @section('body-class', 'home-page')
 @section('nav', 'home')
 
 @section('web-head')
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://krishnaoutdoor.in/"}]}</script>
+<link rel="preload" as="image" fetchpriority="high" media="(max-width: 760px)" href="{{ \App\Services\Asset::url('assets/images/hero/hero-mobile-poster.webp') }}">
+<link rel="preload" as="image" fetchpriority="high" media="(min-width: 761px)" href="{{ \App\Services\Asset::url('assets/images/hero/hero-desktop-poster.webp') }}">
 @endsection
 
 @section('web-section')
 
     <main>
+        @php
+            \App\Services\SchemaBuilder::addVideo('hero');
+            \App\Services\SchemaBuilder::addVideo('showcase');
+        @endphp
         <section class="hero" id="home">
             <video aria-hidden="true" muted="" class="hero-media hero-media-desktop js-defer-hero-video" loop=""
-                playsinline="" preload="none" poster="{{ asset('assets/images/hero/hero-desktop-poster.webp') }}"
-                data-src="{{ asset('assets/videos/hero-desktop.mp4') }}">
+                playsinline="" preload="none" poster="{{ \App\Services\Asset::url('assets/images/hero/hero-desktop-poster.webp') }}"
+                data-src="{{ \App\Services\Asset::url('assets/videos/hero-desktop.mp4') }}">
             </video>
             <video aria-hidden="true" muted="" class="hero-media hero-media-mobile js-defer-hero-video" loop=""
-                playsinline="" preload="none" poster="{{ asset('assets/images/hero/hero-mobile-poster.webp') }}"
-                data-src="{{ asset('assets/videos/hero-mobile.mp4') }}">
+                playsinline="" preload="none" poster="{{ \App\Services\Asset::url('assets/images/hero/hero-mobile-poster.webp') }}"
+                data-src="{{ \App\Services\Asset::url('assets/videos/hero-mobile.mp4') }}">
             </video>
             <div class="hero-overlay"></div>
             <div class="hero-grid"></div>
@@ -143,13 +150,13 @@
                         href="{{ route('view.about') }}">DISCOVER OUR STORY <span>→</span></a>
                 </div>
                 <div class="about-scene reveal">
-                    <div class="about-frame f1"><img alt="HD bus advertising campaign" decoding="async" loading="lazy"
+                    <div class="about-frame f1"><img srcset="{{ asset('assets/images/home/home-f1-800w.webp') }} 800w, {{ asset('assets/images/home/home-f1.webp') }} 1280w" sizes="(max-width: 760px) 100vw, 50vw" alt="GreatWhite Electricals branding on an electric city bus – Krishna Outdoor" decoding="async" loading="lazy"
                             src="{{ asset('assets/images/home/home-f1.webp') }}" /></div>
-                    <div class="about-frame f2"><img alt="Work campaign billboard advertising" decoding="async"
+                    <div class="about-frame f2"><img srcset="{{ asset('assets/images/home/home-360-f2-800w.webp') }} 800w, {{ asset('assets/images/home/home-360-f2.webp') }} 1280w" sizes="(max-width: 760px) 100vw, 50vw" alt="Birdsong real-estate backlit hoarding at night – Krishna Outdoor" decoding="async"
                             loading="lazy" src="{{ asset('assets/images/home/home-360-f2.webp') }}" />
                     </div>
                     <div class="year-badge">40+<span>YEARS OF<br />BUILDING BRAND<br />VISIBILITY</span></div>
-                    <div class="about-frame f3"><img alt="Mumbai local train advertising campaign" decoding="async"
+                    <div class="about-frame f3"><img srcset="{{ asset('assets/images/home/home-360-mumbai-train-800w.webp') }} 800w, {{ asset('assets/images/home/home-360-mumbai-train.webp') }} 1280w" sizes="(max-width: 760px) 100vw, 50vw" alt="Cosmos Co-operative Bank branding on a Mumbai local train – Krishna Outdoor" decoding="async"
                         loading="lazy"
                         src="{{ asset('assets/images/home/home-360-mumbai-train.webp') }}" /></div>
                    <div class="scan-line"></div>
@@ -277,7 +284,7 @@
                 <div class="showcase-visual-wrap reveal">
                     <div class="showcase-visual-v2" id="showcaseVisual">
                         <div class="visual-topline"><span class="visual-live"><i></i></span></div>
-                        <img alt="Outdoor hoarding advertising at night" decoding="async" id="showcaseImage"
+                        <img srcset="{{ asset('assets/images/ooh-media-category-image-800w.webp') }} 800w, {{ asset('assets/images/ooh-media-category-image.webp') }} 1200w" sizes="(max-width: 760px) 100vw, 50vw" alt="Revital branding on a Mumbai local train – Krishna Outdoor" decoding="async" id="showcaseImage"
                             loading="lazy"src="{{ asset('assets/images/ooh-media-category-image.webp') }}" />
                         <div class="showcase-visual-shade"></div>
                         <div class="visual-caption"><small id="showcaseVisualKicker">OOH MEDIA</small><strong
@@ -318,7 +325,7 @@
             <!-- MAIN VIDEO -->
             <article class="work-video-card">
 
-                <video loop muted playsinline preload="none" class="js-defer-inview-video"
+                <video aria-hidden="true" tabindex="-1" loop muted playsinline preload="none" class="js-defer-inview-video"
                     poster="{{ asset('assets/images/hero/work-showcase-poster.webp') }}"
                     data-src="{{ asset('assets/videos/work-showcase.mp4') }}">
                 </video>
@@ -349,16 +356,16 @@
                 </button>
 
 
-                <div class="work-bottom-viewport" id="workViewport">
+                <div class="work-bottom-viewport" id="workViewport" tabindex="0" role="region" aria-label="Campaign gallery (scrollable)">
 
                     <div class="work-bottom-track" id="workTrack">
 
                         <!-- IMAGE 1 -->
                         <article class="work-card" onclick="window.open('{{ asset('assets/images/work/brand-billboard-campaign-04.webp') }}', '_blank')" style="cursor: pointer;">
 
-                            <img
+                            <img srcset="{{ asset('assets/images/work/brand-billboard-campaign-04-800w.webp') }} 800w, {{ asset('assets/images/work/brand-billboard-campaign-04.webp') }} 1600w" sizes="(max-width: 760px) 100vw, 50vw"
                                 src="{{ asset('assets/images/work/brand-billboard-campaign-04.webp') }}"
-                                alt="Outdoor billboard advertising campaign"
+                                alt="Roadside hoardings above city traffic – Krishna Outdoor"
                                 decoding="async"
                                 loading="lazy"
                             />
@@ -374,9 +381,9 @@
                         <!-- IMAGE 2 -->
                         <article class="work-card" onclick="window.open('{{ asset('assets/images/work/digital-billboard-campaign-03.webp') }}', '_blank')" style="cursor: pointer;">
 
-                            <img
+                            <img srcset="{{ asset('assets/images/work/digital-billboard-campaign-03-800w.webp') }} 800w, {{ asset('assets/images/work/digital-billboard-campaign-03.webp') }} 1600w" sizes="(max-width: 760px) 100vw, 50vw"
                                 src="{{ asset('assets/images/work/digital-billboard-campaign-03.webp') }}"
-                                alt="Digital billboard advertising campaign"
+                                alt="Car brand hoarding above city traffic in Gujarat – Krishna Outdoor"
                                 decoding="async"
                                 loading="lazy"
                             />
@@ -392,9 +399,9 @@
                         <!-- IMAGE 3 -->
                         <article class="work-card" onclick="window.open('{{ asset('assets/images/work/ooh-hoarding-campaign-01.webp') }}', '_blank')" style="cursor: pointer;">
 
-                            <img
+                            <img srcset="{{ asset('assets/images/work/ooh-hoarding-campaign-01-800w.webp') }} 800w, {{ asset('assets/images/work/ooh-hoarding-campaign-01.webp') }} 1600w" sizes="(max-width: 760px) 100vw, 50vw"
                                 src="{{ asset('assets/images/work/ooh-hoarding-campaign-01.webp') }}"
-                                alt="OOH hoarding advertising campaign"
+                                alt="Jewellery brand hoarding above a busy traffic junction – Krishna Outdoor"
                                 decoding="async"
                                 loading="lazy"
                             />
@@ -410,9 +417,9 @@
                         <!-- IMAGE 4 -->
                         <article class="work-card" onclick="window.open('{{ asset('assets/images/work/outdoor-campaign-02.webp') }}', '_blank')" style="cursor: pointer;">
 
-                            <img
+                            <img srcset="{{ asset('assets/images/work/outdoor-campaign-02-800w.webp') }} 800w, {{ asset('assets/images/work/outdoor-campaign-02.webp') }} 1600w" sizes="(max-width: 760px) 100vw, 50vw"
                                 src="{{ asset('assets/images/work/outdoor-campaign-02.webp') }}"
-                                alt="Outdoor advertising campaign"
+                                alt="Samsung Galaxy rooftop hoarding above a city road – Krishna Outdoor"
                                 decoding="async"
                                 loading="lazy"
                             />
@@ -428,9 +435,9 @@
                         <!-- IMAGE 5 -->
                         <article class="work-card" onclick="window.open('{{ asset('assets/images/work/transit-bus-campaign-06.webp') }}', '_blank')" style="cursor: pointer;">
 
-                            <img
+                            <img srcset="{{ asset('assets/images/work/transit-bus-campaign-06-800w.webp') }} 800w, {{ asset('assets/images/work/transit-bus-campaign-06.webp') }} 1600w" sizes="(max-width: 760px) 100vw, 50vw"
                                 src="{{ asset('assets/images/work/transit-bus-campaign-06.webp') }}"
-                                alt="Transit bus advertising campaign"
+                                alt="Godrej 3D washing machine hoarding at a busy market at night – Krishna Outdoor"
                                 decoding="async"
                                 loading="lazy"
                             />
@@ -479,17 +486,34 @@
 
 @section('web-script')
 <script>
+// Hero video: the poster image is the LCP element. Only the video that is
+// actually displayed (desktop or mobile) is fetched, and only once the page
+// has loaded and the browser is idle. Visitors who prefer reduced motion or
+// have Save-Data on keep the poster.
 window.addEventListener('load', function () {
-    document.querySelectorAll('.js-defer-hero-video').forEach(function (video) {
-        var src = video.getAttribute('data-src');
-        if (!src) return;
-        var source = document.createElement('source');
-        source.src = src;
-        source.type = 'video/mp4';
-        video.appendChild(source);
-        video.load();
-        video.play().catch(function () {});
-    });
+    var conn = navigator.connection || {};
+    if (conn.saveData || /(^|-)2g$/.test(conn.effectiveType || '') ||
+        (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)) {
+        return;
+    }
+    var start = function () {
+        document.querySelectorAll('.js-defer-hero-video').forEach(function (video) {
+            var src = video.getAttribute('data-src');
+            if (!src || video.offsetParent === null || getComputedStyle(video).display === 'none') return;
+            var source = document.createElement('source');
+            source.src = src;
+            source.type = 'video/mp4';
+            video.appendChild(source);
+            video.removeAttribute('data-src');
+            video.load();
+            video.play().catch(function () {});
+        });
+    };
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(start, { timeout: 3000 });
+    } else {
+        setTimeout(start, 1500);
+    }
 });
 </script>
 @endsection

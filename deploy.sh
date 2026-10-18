@@ -45,6 +45,17 @@ sync_app() {
   rsync "${RSYNC_OPTS[@]}" "${LOCAL_LARAVEL}/" "${SSH_USER}@${SSH_HOST}:${REMOTE_LARAVEL}/"
 }
 
+# After code lands on the server: apply migrations (this is also what writes
+# the SEO titles/descriptions — production never runs db:seed) and clear
+# every Laravel cache. rsync keeps local file mtimes, so without view:clear
+# Laravel can keep serving an older compiled Blade view that looks newer
+# than the template just uploaded.
+post_deploy() {
+  echo "==> Running migrations and clearing caches on ${REMOTE_LARAVEL}"
+  ssh -p "${SSH_PORT}" -i "${SSH_KEY}" "${SSH_USER}@${SSH_HOST}" \
+    "cd ${REMOTE_LARAVEL} && php artisan migrate --force && php artisan optimize:clear"
+}
+
 sync_public() {
   echo "==> Syncing public_html/ (web root) to ${REMOTE_PUBLIC}"
   rsync "${RSYNC_OPTS[@]}" "${LOCAL_PUBLIC}/" "${SSH_USER}@${SSH_HOST}:${REMOTE_PUBLIC}/"
@@ -53,6 +64,7 @@ sync_public() {
 case "${1:-}" in
   app)
     sync_app
+    post_deploy
     ;;
   public)
     sync_public
@@ -60,6 +72,7 @@ case "${1:-}" in
   all)
     sync_app
     sync_public
+    post_deploy
     ;;
   *)
     echo "Usage: $0 {app|public|all}"
@@ -67,4 +80,4 @@ case "${1:-}" in
     ;;
 esac
 
-echo "==> Done. If you changed migrations, SSH in and run: php artisan migrate --force"
+echo "==> Done."

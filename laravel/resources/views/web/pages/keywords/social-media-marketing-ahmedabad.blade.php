@@ -1,13 +1,12 @@
 @extends('web.layouts.app')
 
+@section('css-bundle', 'keyword')
+
 @section('body-class', 'inner-page')
 @section('nav', 'services')
 
 @section('web-head')
 @include('web.common.keyword-page-style')
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","serviceType":"Social Media Marketing","provider":{"@type":"Organization","name":"Krishna Outdoor"},"areaServed":{"@type":"City","name":"Ahmedabad"},"name":"Social Media Marketing in Ahmedabad","description":"Social media marketing services in Ahmedabad covering strategy, content, paid social advertising and reporting across Instagram, Facebook, LinkedIn and YouTube."}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What's included in Krishna Outdoor's social media marketing package for Ahmedabad brands?","acceptedAnswer":{"@type":"Answer","text":"Our social media marketing covers strategy and content planning, creative production, paid social media advertising, and performance reporting, tailored to an Ahmedabad brand's audience and goals."}},{"@type":"Question","name":"Can social media marketing be combined with an outdoor advertising campaign in Ahmedabad?","acceptedAnswer":{"@type":"Answer","text":"Yes — this is one of the most effective ways brands use us. A hoarding or bus campaign builds physical visibility across the city, while matching social content amplifies and extends that same campaign online, so the two reinforce each other instead of running as separate efforts."}},{"@type":"Question","name":"Which platforms does Krishna Outdoor cover for social media marketing?","acceptedAnswer":{"@type":"Answer","text":"We plan and manage campaigns across Instagram, Facebook, LinkedIn and YouTube, choosing the right mix of platforms based on where a brand's specific audience actually spends time."}},{"@type":"Question","name":"Is social media marketing available as a standalone service without an outdoor campaign?","acceptedAnswer":{"@type":"Answer","text":"Yes, social media marketing can be booked on its own as an independent digital service, or combined with outdoor advertising for brands that want a connected offline-online campaign."}},{"@type":"Question","name":"How much does social media marketing cost in Ahmedabad?","acceptedAnswer":{"@type":"Answer","text":"Cost depends on how many platforms you run, how much content is produced each month, and your paid advertising budget. Share your goals and current social presence and we'll recommend a package that fits your budget."}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://krishnaoutdoor.in/"},{"@type":"ListItem","position":2,"name":"Services","item":"https://krishnaoutdoor.in/services"},{"@type":"ListItem","position":3,"name":"Social Media Marketing Ahmedabad","item":"https://krishnaoutdoor.in/social-media-marketing-ahmedabad"}]}</script>
 @endsection
 
 @section('web-section')
@@ -15,13 +14,19 @@
 
 <section class="hero media-detail-hero media-detail-hero-ooh" id="home">
     <div class="media-detail-hero-bg">
-        <img alt="Social media marketing in Ahmedabad" decoding="async" loading="eager" src="{{ asset('assets/images/ooh-media-category-image.png') }}"/>
+        <img fetchpriority="high" srcset="{{ asset('assets/images/ooh-media-category-image-800w.webp') }} 800w, {{ asset('assets/images/ooh-media-category-image.webp') }} 1200w" sizes="100vw" alt="Social media marketing in Ahmedabad" decoding="async" loading="eager" src="{{ asset('assets/images/ooh-media-category-image.webp') }}"/>
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-grid"></div>
     <div class="hero-noise"></div>
     <div class="container hero-inner reveal">
-        <h1>SOCIAL MEDIA MARKETING<br/><em>IN AHMEDABAD.</em></h1>
+        <h1>
+        @if ($seo->h1Override())
+            {{ $seo->h1Override() }}
+        @else
+            SOCIAL MEDIA MARKETING<br/><em>IN AHMEDABAD</em>
+        @endif
+        </h1>
     </div>
 </section>
 
@@ -59,7 +64,7 @@
         </div>
 
         <div class="kw-img">
-            <img alt="Brand visibility campaign in Ahmedabad" decoding="async" loading="lazy" src="{{ asset('assets/images/services-media-category-03.png') }}"/>
+            <img srcset="{{ asset('assets/images/services-media-category-03-800w.webp') }} 800w, {{ asset('assets/images/services-media-category-03.webp') }} 1600w" sizes="(max-width: 760px) 100vw, 50vw" alt="City bus mock-up in Krishna Outdoor livery" decoding="async" loading="lazy" src="{{ asset('assets/images/services-media-category-03.webp') }}"/>
         </div>
     </div>
 
@@ -73,28 +78,13 @@
 
 <section class="kw-section kw-section-alt"><div class="kw-inner">
     <h2 class="kw-h2">Frequently asked <em>questions</em></h2>
-    <div class="kw-faq">
-        <details open>
-            <summary>What's included in Krishna Outdoor's social media marketing package for Ahmedabad brands?</summary>
-            <p>Our social media marketing covers strategy and content planning, creative production, paid social media advertising, and performance reporting, tailored to an Ahmedabad brand's audience and goals.</p>
-        </details>
-        <details>
-            <summary>Can social media marketing be combined with an outdoor advertising campaign in Ahmedabad?</summary>
-            <p>Yes — this is one of the most effective ways brands use us. A hoarding or bus campaign builds physical visibility across the city, while matching social content amplifies and extends that same campaign online, so the two reinforce each other instead of running as separate efforts.</p>
-        </details>
-        <details>
-            <summary>Which platforms does Krishna Outdoor cover for social media marketing?</summary>
-            <p>We plan and manage campaigns across Instagram, Facebook, LinkedIn and YouTube, choosing the right mix of platforms based on where a brand's specific audience actually spends time.</p>
-        </details>
-        <details>
-            <summary>Is social media marketing available as a standalone service without an outdoor campaign?</summary>
-            <p>Yes, social media marketing can be booked on its own as an independent digital service, or combined with outdoor advertising for brands that want a connected offline-online campaign.</p>
-        </details>
-        <details>
-            <summary>How much does social media marketing cost in Ahmedabad?</summary>
-            <p>Cost depends on how many platforms you run, how much content is produced each month, and your paid advertising budget. Share your goals and current social presence and we'll recommend a package that fits your budget.</p>
-        </details>
-    </div>
+    @include('web.common.faq', ['faqs' => [
+        ['q' => 'What\'s included in Krishna Outdoor\'s social media marketing package for Ahmedabad brands?', 'a' => 'Our social media marketing covers strategy and content planning, creative production, paid social media advertising, and performance reporting, tailored to an Ahmedabad brand\'s audience and goals.'],
+        ['q' => 'Can social media marketing be combined with an outdoor advertising campaign in Ahmedabad?', 'a' => 'Yes — this is one of the most effective ways brands use us. A hoarding or bus campaign builds physical visibility across the city, while matching social content amplifies and extends that same campaign online, so the two reinforce each other instead of running as separate efforts.'],
+        ['q' => 'Which platforms does Krishna Outdoor cover for social media marketing?', 'a' => 'We plan and manage campaigns across Instagram, Facebook, LinkedIn and YouTube, choosing the right mix of platforms based on where a brand\'s specific audience actually spends time.'],
+        ['q' => 'Is social media marketing available as a standalone service without an outdoor campaign?', 'a' => 'Yes, social media marketing can be booked on its own as an independent digital service, or combined with outdoor advertising for brands that want a connected offline-online campaign.'],
+        ['q' => 'How much does social media marketing cost in Ahmedabad?', 'a' => 'Cost depends on how many platforms you run, how much content is produced each month, and your paid advertising budget. Share your goals and current social presence and we\'ll recommend a package that fits your budget.'],
+    ]])
 </div></section>
 
 <section class="cta" id="contact">

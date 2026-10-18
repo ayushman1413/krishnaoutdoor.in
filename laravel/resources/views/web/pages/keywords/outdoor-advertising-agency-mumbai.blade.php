@@ -1,14 +1,12 @@
 @extends('web.layouts.app')
 
+@section('css-bundle', 'keyword')
+
 @section('body-class', 'inner-page')
 @section('nav', 'services')
 
 @section('web-head')
 @include('web.common.keyword-page-style')
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","serviceType":"Outdoor Advertising Agency","provider":{"@type":"Organization","name":"Krishna Outdoor"},"areaServed":{"@type":"City","name":"Mumbai"},"name":"Outdoor Advertising Agency in Mumbai","description":"Full-service outdoor and transit advertising agency in Mumbai covering local trains, BEST EV buses and TMT buses in Thane."}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Krishna Outdoor - Mumbai Office","address":{"@type":"PostalAddress","streetAddress":"701, 702 Morya Blue Moon, Next to Moniginis Cake Factory, Off New Link Road, Opp. Citi Mall, Andheri West","addressLocality":"Mumbai","addressRegion":"Maharashtra","postalCode":"400053","addressCountry":"IN"},"telephone":"+91 99200 11574"}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What outdoor advertising formats does Krishna Outdoor offer in Mumbai?","acceptedAnswer":{"@type":"Answer","text":"Krishna Outdoor's Mumbai portfolio covers Mumbai local train advertising on Western and Central Railways, BEST EV full-wrap bus advertising, and TMT bus advertising in Thane, giving brands a connected transit presence across the Mumbai Metropolitan Region."}},{"@type":"Question","name":"Where is Krishna Outdoor's Mumbai office located?","acceptedAnswer":{"@type":"Answer","text":"Our Mumbai office is at 701, 702 Morya Blue Moon, Next to Moniginis Cake Factory, Off New Link Road, Opp. Citi Mall, Andheri West, Mumbai, Maharashtra 400053. You can reach us there or call +91 99200 11574."}},{"@type":"Question","name":"How does Krishna Outdoor plan a Mumbai outdoor advertising campaign?","acceptedAnswer":{"@type":"Answer","text":"We start by understanding your target audience and budget, then recommend a mix across local trains, BEST buses and TMT buses based on where that audience actually travels. Once formats are confirmed, we handle creative coordination, printing, mounting and reporting."}},{"@type":"Question","name":"Can Krishna Outdoor run a campaign across multiple Mumbai transit formats at once?","acceptedAnswer":{"@type":"Answer","text":"Yes. Many brands combine local train branding with BEST or TMT bus advertising to build layered reach across rail and road commuters in the same campaign window."}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://krishnaoutdoor.in/"},{"@type":"ListItem","position":2,"name":"Our Network","item":"https://krishnaoutdoor.in/network"},{"@type":"ListItem","position":3,"name":"Outdoor Advertising Agency Mumbai","item":"https://krishnaoutdoor.in/outdoor-advertising-agency-mumbai"}]}</script>
 @endsection
 
 @section('web-section')
@@ -16,13 +14,19 @@
 
 <section class="hero media-detail-hero media-detail-hero-ooh" id="home">
     <div class="media-detail-hero-bg">
-        <img alt="Outdoor advertising agency in Mumbai" decoding="async" loading="eager" src="{{ asset('assets/images/shared-mumbai-local-train-advertising.jpg') }}"/>
+        <img fetchpriority="high" srcset="{{ asset('assets/images/shared-mumbai-local-train-advertising-800w.webp') }} 800w, {{ asset('assets/images/shared-mumbai-local-train-advertising.webp') }} 1600w" sizes="100vw" alt="Backlit Airtel 5G Plus ad panels at a Mumbai railway station – Krishna Outdoor" decoding="async" loading="eager" src="{{ asset('assets/images/shared-mumbai-local-train-advertising.webp') }}"/>
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-grid"></div>
     <div class="hero-noise"></div>
     <div class="container hero-inner reveal">
-        <h1>OUTDOOR ADVERTISING AGENCY<br/><em>IN MUMBAI.</em></h1>
+        <h1>
+        @if ($seo->h1Override())
+            {{ $seo->h1Override() }}
+        @else
+            OUTDOOR ADVERTISING AGENCY<br/><em>IN MUMBAI</em>
+        @endif
+        </h1>
     </div>
 </section>
 
@@ -56,7 +60,7 @@
         </div>
 
         <div class="kw-img">
-            <img alt="Branded BEST bus and Mumbai local train advertising" decoding="async" loading="lazy" src="{{ asset('assets/images/media/home-360-mumbai-train.webp') }}"/>
+            <img srcset="{{ asset('assets/images/media/home-360-mumbai-train-800w.webp') }} 800w, {{ asset('assets/images/media/home-360-mumbai-train.webp') }} 1280w" sizes="(max-width: 760px) 100vw, 50vw" alt="Branded BEST bus and Mumbai local train advertising" decoding="async" loading="lazy" src="{{ asset('assets/images/media/home-360-mumbai-train.webp') }}"/>
         </div>
     </div>
 
@@ -71,24 +75,12 @@
 
 <section class="kw-section kw-section-alt"><div class="kw-inner">
     <h2 class="kw-h2">Frequently asked <em>questions</em></h2>
-    <div class="kw-faq">
-        <details open>
-            <summary>What outdoor advertising formats does Krishna Outdoor offer in Mumbai?</summary>
-            <p>Krishna Outdoor's Mumbai portfolio covers Mumbai local train advertising on Western and Central Railways, BEST EV full-wrap bus advertising, and TMT bus advertising in Thane, giving brands a connected transit presence across the Mumbai Metropolitan Region.</p>
-        </details>
-        <details>
-            <summary>Where is Krishna Outdoor's Mumbai office located?</summary>
-            <p>Our Mumbai office is at 701, 702 Morya Blue Moon, Next to Moniginis Cake Factory, Off New Link Road, Opp. Citi Mall, Andheri West, Mumbai, Maharashtra 400053. You can reach us there or call +91 99200 11574.</p>
-        </details>
-        <details>
-            <summary>How does Krishna Outdoor plan a Mumbai outdoor advertising campaign?</summary>
-            <p>We start by understanding your target audience and budget, then recommend a mix across local trains, BEST buses and TMT buses based on where that audience actually travels. Once formats are confirmed, we handle creative coordination, printing, mounting and reporting.</p>
-        </details>
-        <details>
-            <summary>Can Krishna Outdoor run a campaign across multiple Mumbai transit formats at once?</summary>
-            <p>Yes. Many brands combine local train branding with BEST or TMT bus advertising to build layered reach across rail and road commuters in the same campaign window.</p>
-        </details>
-    </div>
+    @include('web.common.faq', ['faqs' => [
+        ['q' => 'What outdoor advertising formats does Krishna Outdoor offer in Mumbai?', 'a' => 'Krishna Outdoor\'s Mumbai portfolio covers Mumbai local train advertising on Western and Central Railways, BEST EV full-wrap bus advertising, and TMT bus advertising in Thane, giving brands a connected transit presence across the Mumbai Metropolitan Region.'],
+        ['q' => 'Where is Krishna Outdoor\'s Mumbai office located?', 'a' => 'Our Mumbai office is at 701, 702 Morya Blue Moon, Next to Moniginis Cake Factory, Off New Link Road, Opp. Citi Mall, Andheri West, Mumbai, Maharashtra 400053. You can reach us there or call +91 99200 11574.'],
+        ['q' => 'How does Krishna Outdoor plan a Mumbai outdoor advertising campaign?', 'a' => 'We start by understanding your target audience and budget, then recommend a mix across local trains, BEST buses and TMT buses based on where that audience actually travels. Once formats are confirmed, we handle creative coordination, printing, mounting and reporting.'],
+        ['q' => 'Can Krishna Outdoor run a campaign across multiple Mumbai transit formats at once?', 'a' => 'Yes. Many brands combine local train branding with BEST or TMT bus advertising to build layered reach across rail and road commuters in the same campaign window.'],
+    ]])
 </div></section>
 
 <section class="cta" id="contact">
@@ -98,7 +90,7 @@
             <h2>PLAN YOUR MUMBAI OUTDOOR CAMPAIGN</h2>
             <p>Tell us your target audience in Mumbai and we'll recommend the right mix of trains, buses and routes.</p>
         </div>
-        <a class="btn white" href="{{ route('view.contact') }}">Talk To Our Team <b>→</b></a>
+        <a class="btn white" href="{{ route('view.free.site.list', ['media' => 'transit']) }}">Get Free Site List <b>→</b></a>
     </div>
 </section>
 

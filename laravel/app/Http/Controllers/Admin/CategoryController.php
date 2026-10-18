@@ -301,9 +301,11 @@ class CategoryController extends Controller implements CategoryInterface
             $category->update();
 
             if ($oldSlug !== $category->slug) {
+                // Child categories live under /category/{slug}, top-level ones at /{slug}.
+                $prefix = $category->category_id ? '/category/' : '/';
                 SeoRedirect::create([
-                    'old_url' => '/' . $oldSlug,
-                    'new_url' => '/' . $category->slug,
+                    'old_url' => $prefix . $oldSlug,
+                    'new_url' => $prefix . $category->slug,
                     'type' => '301',
                     'status' => true,
                 ]);

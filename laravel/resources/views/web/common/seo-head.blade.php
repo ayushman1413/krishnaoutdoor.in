@@ -15,7 +15,7 @@
         <meta property="og:description" content="{{ $seo->ogDescription() }}">
     @endif
     @if ($seo->ogImage())
-        <meta property="og:image" content="{{ asset($seo->ogImage()) }}">
+        <meta property="og:image" content="{{ $seo->ogImage() }}">
     @endif
     <meta property="og:url" content="{{ $seo->canonicalUrl }}">
     <meta property="og:site_name" content="{{ $seo->settings?->site_name ?? 'Krishna Outdoor' }}">
@@ -26,20 +26,10 @@
         <meta name="twitter:description" content="{{ $seo->twitterDescription() }}">
     @endif
     @if ($seo->twitterImage())
-        <meta name="twitter:image" content="{{ asset($seo->twitterImage()) }}">
+        <meta name="twitter:image" content="{{ $seo->twitterImage() }}">
     @endif
 
-    @if ($seo->organizationSchemaJson())
-        <script type="application/ld+json">{!! $seo->organizationSchemaJson() !!}</script>
-    @endif
-
-    @if ($seo->websiteSchemaJson())
-        <script type="application/ld+json">{!! $seo->websiteSchemaJson() !!}</script>
-    @endif
-
-    @if ($seo->serviceSchemaJson())
-        <script type="application/ld+json">{!! $seo->serviceSchemaJson() !!}</script>
-    @endif
+    <script type="application/ld+json">{!! \App\Services\SchemaBuilder::json($seo) !!}</script>
 
     @if ($seo->schemaJson())
         <script type="application/ld+json">{!! $seo->schemaJson() !!}</script>

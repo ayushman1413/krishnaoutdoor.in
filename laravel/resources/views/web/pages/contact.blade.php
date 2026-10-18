@@ -1,66 +1,13 @@
 @extends('web.layouts.app')
 
+@section('css-bundle', 'contact')
+
 @section('body-class', '')
 @section('nav', 'contact')
 
 @section('web-head')
-    <script type="application/ld+json">
-    {
-        "@context":"https://schema.org",
-        "@type":"BreadcrumbList",
-        "itemListElement":[
-            {
-                "@type":"ListItem",
-                "position":1,
-                "name":"Home",
-                "item":"https://krishnaoutdoor.in/"
-            },
-            {
-                "@type":"ListItem",
-                "position":2,
-                "name":"Enquire Now",
-                "item":"https://krishnaoutdoor.in/enquire"
-            }
-        ]
-    }
-    </script>
 
-    <script type="application/ld+json">
-    {
-        "@context":"https://schema.org",
-        "@type":"LocalBusiness",
-        "name":"Krishna Outdoor",
-        "url":"https://krishnaoutdoor.in/enquire",
-        "telephone":"+91 98796 16411",
-        "email":"info@krishnaoutdoor.in",
-        "address":{
-            "@type":"PostalAddress",
-            "streetAddress":"Aakanksha Complex, 403-404, Netaji Rd, nr. Railway Crossing, opposite Andani Hyper Market, Muslim Society, Navrangpura",
-            "addressLocality":"Ahmedabad",
-            "postalCode":"380009",
-            "addressRegion":"Gujarat",
-            "addressCountry":"IN"
-        }
-    }
-    </script>
 
-    <script type="application/ld+json">
-    {
-        "@context":"https://schema.org",
-        "@type":"LocalBusiness",
-        "name":"Krishna Outdoor - Mumbai Office",
-        "url":"https://krishnaoutdoor.in/contact",
-        "telephone":"+91 99200 11574",
-        "address":{
-            "@type":"PostalAddress",
-            "streetAddress":"701, 702 Morya Blue Moon, Next to Moniginis Cake Factory, Off New Link Road, Opp. Citi Mall, Andheri West",
-            "addressLocality":"Mumbai",
-            "postalCode":"400053",
-            "addressRegion":"Maharashtra",
-            "addressCountry":"IN"
-        }
-    }
-    </script>
 @endsection
 
 
@@ -118,8 +65,8 @@
 
             <div class="kr-enquiry-visual">
 
-                <img
-                    alt="Krishna Outdoor outdoor advertising campaign"
+                <img srcset="{{ asset('assets/images/media/home-360-outdoor-hoarding-poster-800w.webp') }} 800w, {{ asset('assets/images/media/home-360-outdoor-hoarding-poster.webp') }} 1800w" sizes="(max-width: 760px) 100vw, 50vw"
+                    alt="Krishna Outdoor backlit hoarding at night"
                     decoding="async"
                     loading="lazy"
                     src="{{ asset('assets/images/media/home-360-outdoor-hoarding-poster.webp') }}"
@@ -159,8 +106,8 @@
 
                 </div>
 
-                <img
-                    alt="City lights"
+                <img srcset="{{ asset('assets/images/shared-night-city-background-800w.webp') }} 800w, {{ asset('assets/images/shared-night-city-background.webp') }} 1600w" sizes="(max-width: 760px) 100vw, 50vw"
+                    alt=""
                     decoding="async"
                     loading="lazy"
                     src="{{ asset('assets/images/shared-night-city-background.webp') }}"
@@ -200,11 +147,12 @@
 
                     <div class="kr-field">
 
-                        <label>
+                        <label for="enquiry_name">
                             Full Name *
                         </label>
 
                         <input
+                            id="enquiry_name"
                             name="name"
                             placeholder="Enter your full name"
                             required
@@ -216,11 +164,12 @@
 
                     <div class="kr-field">
 
-                        <label>
+                        <label for="enquiry_company">
                             Company Name *
                         </label>
 
                         <input
+                            id="enquiry_company"
                             name="company"
                             placeholder="Enter your company name"
                             required
@@ -232,7 +181,7 @@
 
                     <div class="kr-field">
 
-                        <label>
+                        <label for="enquiryPhone">
                             Mobile Number *
                         </label>
 
@@ -252,11 +201,12 @@
 
                     <div class="kr-field">
 
-                        <label>
+                        <label for="enquiry_email">
                             Email Address *
                         </label>
 
                         <input
+                            id="enquiry_email"
                             name="email"
                             placeholder="Enter your email address"
                             required
@@ -269,11 +219,13 @@
 
                     <div class="kr-field">
 
-                        <label>
+                        <label for="enquiry_city">
                             Target City / Market *
                         </label>
 
-                        <select name="city" required>
+                        <select
+                            id="enquiry_city"
+                            name="city" required>
 
                             <option value="">
                                 Select city / market
@@ -310,11 +262,13 @@
 
                     <div class="kr-field">
 
-                        <label>
+                        <label for="enquiry_media">
                             Media or Service Required *
                         </label>
 
-                        <select name="media" required>
+                        <select
+                            id="enquiry_media"
+                            name="media" required>
 
                             <option value="">
                                 Select media / service
@@ -351,11 +305,13 @@
 
                     <div class="kr-field">
 
-                        <label>
+                        <label for="enquiry_duration">
                             Campaign Duration
                         </label>
 
-                        <select name="duration">
+                        <select
+                            id="enquiry_duration"
+                            name="duration">
 
                             <option value="">
                                 Select duration
@@ -384,11 +340,12 @@
 
                     <div class="kr-field full">
 
-                        <label>
+                        <label for="enquiry_user_message">
                             Message
                         </label>
 
                         <textarea
+                            id="enquiry_user_message"
                             name="user_message"
                             placeholder="Tell us about your campaign, audience and any specific requirement..."
                         >{{ old('user_message') }}</textarea>
@@ -436,7 +393,7 @@
             </form>
 
 
-            <aside class="kr-guidance kr-reveal delay-2">
+            <div class="kr-guidance kr-reveal delay-2" role="note">
 
 
                 <div class="kr-guide-item">
@@ -528,7 +485,7 @@
 
                 </div>
 
-            </aside>
+            </div>
 
         </div>
 

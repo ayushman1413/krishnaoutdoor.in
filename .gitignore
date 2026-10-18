@@ -1,0 +1,6 @@
+# Compiled Blade views and other runtime caches must never be committed or
+# deployed: a stale compiled view can outlive the Blade file it came from.
+laravel/storage/framework/views/*.php
+laravel/storage/framework/cache/data/*
+laravel/storage/logs/*.log
+laravel/node_modules/

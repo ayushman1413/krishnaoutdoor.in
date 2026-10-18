@@ -1,13 +1,14 @@
 <!doctype html><html lang="en"><head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-H76CYYJE3S"></script>
+@php $ga4Id = rescue(fn () => \App\Models\SeoSetting::query()->value('ga4_id'), null, false); @endphp
+@if ($ga4Id)
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ urlencode($ga4Id) }}"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
-  gtag('config', 'G-H76CYYJE3S');
+  gtag('config', @json($ga4Id));
 </script>
+@endif
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Page Not Found | Krishna Outdoor</title><meta name="robots" content="noindex,follow"><link rel="stylesheet" href="{{ asset('css/style.css') }}">
 <link rel="icon" type="image/png" sizes="64x64" href="{{ asset('favicon.png') }}"/>
 <link rel="shortcut icon" href="{{ asset('favicon.ico') }}"/>

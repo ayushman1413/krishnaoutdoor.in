@@ -69,7 +69,7 @@ class FormController extends Controller
                 return response()->json([
                     'status' => 'success',
                     'message' => 'Enquiry submitted successfully',
-                    'track_event' => 'form_submit'
+                    'track_event' => 'generate_lead'
                 ]);
             }
 
@@ -78,7 +78,7 @@ class FormController extends Controller
                 'title' => 'Message Submitted',
                 'description' =>
                     'Your message has been successfully submitted, we will get in touch with you soon'
-            ])->with('track_event', 'form_submit');
+            ])->with('track_event', ['name' => 'generate_lead', 'form_name' => 'contact_form']);
 
         } catch (Exception $exception) {
 
@@ -216,7 +216,7 @@ class FormController extends Controller
                     'status' => 'success',
                     'message' => 'Enquiry submitted successfully',
                     'redirect' => route('view.thankyou'),
-                    'track_event' => 'form_submit'
+                    'track_event' => 'generate_lead'
                 ]);
             }
 
@@ -225,7 +225,7 @@ class FormController extends Controller
              * NORMAL FORM SUBMIT
              * Redirect directly to Thank You page
              */
-            return redirect()->route('view.thankyou')->with('track_event', 'form_submit');
+            return redirect()->route('view.thankyou')->with('track_event', ['name' => 'generate_lead', 'form_name' => 'enquiry_popup']);
 
         } catch (Exception $exception) {
 
@@ -539,7 +539,7 @@ class FormController extends Controller
                 'description' =>
                     'Your campaign request is successfully submitted, we will get in touch with you soon.'
 
-            ])->with('track_event', 'form_submit');
+            ])->with('track_event', ['name' => 'generate_lead', 'form_name' => 'contact_form']);
 
         } catch (Exception $exception) {
 
@@ -554,5 +554,67 @@ class FormController extends Controller
 
             ]);
         }
+    }
+
+    /**
+     * Media types offered on /free-site-list, keyed by the ?media= value the
+     * media and keyword page CTAs pass in.
+     */
+    public const SITE_LIST_MEDIA = [
+        'hoardings' => 'Hoardings / Unipoles',
+        'bus-shelters' => 'Bus Shelters',
+        'amts' => 'AMTS Buses (Ahmedabad)',
+        'gsrtc' => 'GSRTC Buses (Gujarat)',
+        'best' => 'BEST Buses (Mumbai)',
+        'tmt' => 'TMT Buses (Thane)',
+        'mumbai-local-train' => 'Mumbai Local Trains',
+        'dooh' => 'Digital (DOOH)',
+        'ooh' => 'Outdoor Media (any)',
+        'transit' => 'Transit Media (any)',
+        'other' => 'Not sure / multiple',
+    ];
+
+    public function viewFreeSiteList(Request $request)
+    {
+        $seo = \App\Services\SeoResolver::forRoute('view.free.site.list');
+        $selectedMedia = array_key_exists($request->query('media'), self::SITE_LIST_MEDIA) ? $request->query('media') : null;
+
+        return view('web.pages.free-site-list', [
+            'seo' => $seo,
+            'mediaTypes' => self::SITE_LIST_MEDIA,
+            'selectedMedia' => $selectedMedia,
+        ]);
+    }
+
+    /**
+     * Free site list request: saved as an Enquiry like the other forms.
+     */
+    public function handleFreeSiteListSubmit(Request $request): RedirectResponse
+    {
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:250'],
+            'company' => ['nullable', 'string', 'max:250'],
+            'mobile' => ['required', 'digits:10'],
+            'city' => ['required', 'string', 'max:100'],
+            'media' => ['required', 'in:' . implode(',', array_keys(self::SITE_LIST_MEDIA))],
+        ]);
+
+        try {
+            $enquiry = new Enquiry();
+            $enquiry->name = $validated['name'];
+            $enquiry->phone = $validated['mobile'];
+            $enquiry->company = $validated['company'] ?? null;
+            $enquiry->requirement = Str::limit('Free site list: ' . self::SITE_LIST_MEDIA[$validated['media']] . ' in ' . $validated['city'], 250, '');
+            $enquiry->save();
+        } catch (Exception $exception) {
+            return redirect()->back()->withInput()->with('message', [
+                'status' => 'error',
+                'title' => 'An error occurred',
+                'description' => 'Your request could not be sent. Please call us or try again.',
+            ]);
+        }
+
+        return redirect()->route('view.thankyou')
+            ->with('track_event', ['name' => 'generate_lead', 'form_name' => 'site_list']);
     }
 }

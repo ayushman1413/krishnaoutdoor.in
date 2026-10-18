@@ -1,5 +1,9 @@
+@php
+    // Mumbai number on Mumbai/Thane pages, Ahmedabad head office elsewhere.
+    $chatOffice = \App\Services\SeoResolver::officeFor($seo ?? null);
+@endphp
 
-<button aria-label="Open Krishna AI assistant" class="chatbot" id="chatbot" type="button">
+<button aria-label="Open Krishna AI assistant" aria-controls="chatPanel" aria-expanded="false" class="chatbot" id="chatbot" type="button" data-chat-src="{{ \App\Services\Asset::url('js/chat.min.js') }}">
 <span aria-hidden="true" class="cute-robot">
 <span class="robot-antenna"></span>
 <span class="robot-head">
@@ -12,7 +16,7 @@
 </span>
 <span class="chatbot-ping"></span>
 </button>
-<div aria-hidden="true" class="chat-panel" id="chatPanel">
+<div aria-hidden="true" inert class="chat-panel" id="chatPanel" role="dialog" aria-label="Krishna AI chat">
 <div class="chat-head">
 <div class="chat-brand">
 <span aria-hidden="true" class="chat-brand-icon">
@@ -35,7 +39,7 @@
 <input aria-label="Ask Krishna AI" autocomplete="off" id="chatInput" placeholder="Type a message…" type="text"/>
 <button aria-label="Send message" type="submit">Send</button>
 </form>
-<div class="chat-direct"><span>Need a person?</span><a href="tel:+919879616411" onclick="trackConversion('phone_click', this.href)">Call us</a><a href="mailto:info@krishnaoutdoor.in">Email</a></div>
+<div class="chat-direct"><span>Need a person?</span><a href="tel:{{ $chatOffice['phone'] }}" aria-label="Call us on {{ $chatOffice['phone_display'] }}">Call us</a><a href="mailto:info@krishnaoutdoor.in">Email</a></div>
 </div>
 </div>
 <div class="cursor" id="cursor"></div><div class="cursor-ring" id="cursorRing"></div>

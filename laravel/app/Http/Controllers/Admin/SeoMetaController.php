@@ -21,7 +21,7 @@ class SeoMetaController extends Controller
 {
     private const REVISIONED_FIELDS = [
         'meta_title', 'meta_description', 'meta_keywords', 'focus_keyword',
-        'canonical_url', 'robots_index', 'robots_follow', 'h1_override',
+        'skip_title_template', 'canonical_url', 'robots_index', 'robots_follow', 'h1_override',
         'og_title', 'og_description', 'og_type',
         'twitter_title', 'twitter_description',
         'schema_json',
@@ -95,6 +95,7 @@ class SeoMetaController extends Controller
     private function fill(SeoMeta $meta, Request $request): void
     {
         $meta->meta_title = $request->input('meta_title');
+        $meta->skip_title_template = $request->boolean('skip_title_template');
         $meta->meta_description = $request->input('meta_description');
         $meta->meta_keywords = $request->input('meta_keywords');
         $meta->focus_keyword = $request->input('focus_keyword');

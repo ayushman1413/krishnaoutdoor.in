@@ -246,3 +246,122 @@
         line-height:1.6 !important;
     }
 }
+
+/* Footer: both offices (NAP) */
+.footer-offices{position:relative;z-index:1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 44px;padding:28px 0 36px;border-top:1px solid #e3e6e9}
+.footer-office{font-style:normal;display:flex;flex-direction:column;gap:6px;font:400 13px/1.6 Inter,sans-serif;color:#454c54}
+.footer-office b{font:700 11px/1.4 Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#17191c}
+.footer-office a{color:#b3131a;text-decoration:none;font-weight:700;width:fit-content}
+.footer-office a:hover,.footer-office a:focus-visible{color:#8f0f15;text-decoration:underline}
+@media (max-width:760px){.footer-offices{grid-template-columns:1fr;padding-bottom:28px}}
+
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+
+/* Header: click-to-call and WhatsApp */
+.header .nav-contact{order:3!important;display:flex;align-items:center;gap:2px;margin:0 12px 0 16px;padding:2px 6px;background:rgba(255,255,255,.92);border:1px solid rgba(16,18,22,.08);border-radius:999px;box-shadow:0 6px 18px rgba(16,18,22,.08)}
+.header .nav-contact-link{display:inline-flex;align-items:center;gap:6px;color:#121416;text-decoration:none;font:700 12px/1 Inter,sans-serif;letter-spacing:.02em;white-space:nowrap;padding:8px 6px;border-radius:999px}
+.header .nav-contact-link svg{width:18px;height:18px;flex:none}
+.header .nav-contact-call svg{color:var(--red,#e51b23)}
+.header .nav-contact-whatsapp svg{color:#1fa855;width:20px;height:20px}
+.header .nav-contact-link:hover,.header .nav-contact-link:focus-visible{color:var(--red,#e51b23)}
+@media (max-width:1240px){.header .nav-contact-call span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}}
+@media (max-width:760px){
+  .header .nav-contact{order:2!important;margin:0 52px 0 auto!important;gap:2px}
+  .header .nav-wrap .nav-toggle{margin-left:0!important}
+  .header .nav-contact-link{padding:10px 8px}
+}
+/* Tablet widths: the pill nav already fills the bar; phone stays in the footer. */
+@media (min-width:761px) and (max-width:1100px){.header .nav-contact{display:none!important}}
+
+/* /free-site-list */
+.fsl-grid{align-items:start}
+.fsl-direct{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.fsl-whatsapp{background:#1d8a49;color:#fff}
+.fsl-whatsapp:hover,.fsl-whatsapp:focus-visible{background:#166e3a;color:#fff}
+.fsl-form{background:#fff;border:1px solid #d9dde2;border-radius:10px;padding:26px;box-shadow:0 18px 40px rgba(16,18,22,.08);display:grid;gap:16px}
+.fsl-form-title{font:700 22px/1.2 Oswald,Inter,sans-serif;letter-spacing:.02em;text-transform:uppercase;color:#101216;margin:0}
+.fsl-field{display:grid;gap:6px}
+.fsl-field label{font:600 13px/1.3 Inter,sans-serif;color:#101216}
+.fsl-field label span{color:#c4161d}
+.fsl-field input,.fsl-field select{font:400 15px/1.4 Inter,sans-serif;color:#101216;background:#fff;border:1px solid #8a9198;border-radius:6px;padding:11px 12px;width:100%;box-sizing:border-box}
+.fsl-field input:focus-visible,.fsl-field select:focus-visible{outline:3px solid rgba(229,27,35,.35);outline-offset:1px;border-color:#c4161d}
+.fsl-field [aria-invalid="true"]{border-color:#c4161d}
+.fsl-hint{margin:0;font:400 12px/1.4 Inter,sans-serif;color:#555c63}
+.fsl-error{margin:0;font:600 12px/1.4 Inter,sans-serif;color:#b3131a}
+.fsl-submit{justify-self:start;border:0;cursor:pointer}
+@media (max-width:760px){.fsl-form{padding:20px}.fsl-submit{justify-self:stretch;text-align:center}}
+
+/* ------------------------------------------------------------------
+   WCAG AA colour contrast (4.5:1 for small text). The brand red is
+   nudged darker on light backgrounds and lighter on dark ones only
+   where it is used for small text; large display text is unchanged.
+   ------------------------------------------------------------------ */
+@media (min-width:761px){
+  /* Pill nav sits over hero photos on inner pages: keep it opaque enough
+     that the dark link text stays readable on any image. */
+  .header .nav{background:rgba(246,246,244,.92)!important}
+  .header .nav>a.active,.header .nav>a[aria-current="page"],.header .nav .nav-dropdown>a.active{color:#c8151d!important}
+}
+#orbitServiceNo{color:#ff3b42!important}
+.doc-home-panel>.light.tag{color:#ff4047!important}
+.about-tag,.leader-copy small{color:#d3121a!important}
+.about-strength-copy>.about-tag{color:#ff4047!important}
+#enquiryStatus{color:#5f666e!important}
+.kr-career-cta-copy>.kr-kicker,.kr-final-cta .kr-kicker{color:#ff4047!important}
+.seo-h1-slogan em{color:#ff3a41!important}
+.media-quote{color:#ff4a50!important}
+.ow-kicker{color:#ff4047!important}
+.ow-section-head .ow-tag{color:#cf1820!important}
+.ow-filter button.active,button[data-filter].active{background:#d3121a!important}
+.kr-badge>span{background:#d3121a!important}
+/* Breadcrumb links: darker red and underlined so they are distinguishable
+   from the surrounding text without relying on colour alone. */
+.kw-crumbs a{color:#c4161d!important;text-decoration:underline!important;text-underline-offset:2px}
+
+/* ------------------------------------------------------------------
+   Compositor-only animations. Each @keyframes below replaces the
+   earlier one of the same name (the last definition wins) so the effect
+   stays but only transform/opacity change, instead of repainting
+   box-shadow, left, width, background-position, filter or r each frame.
+   ------------------------------------------------------------------ */
+/* Light sweeps: same travel as the old left:-45%→140% / -30%→130%,
+   expressed relative to the element's own width (34% / 25% of parent). */
+@keyframes stackLight{0%{transform:translateX(-29%) skewX(-18deg);opacity:0}15%{opacity:1}55%,100%{transform:translateX(515%) skewX(-18deg);opacity:0}}
+@keyframes networkBtnSweep{0%,55%{transform:translateX(0) rotate(20deg)}100%{transform:translateX(640%) rotate(20deg)}}
+/* Growing underline: scale a 120px bar instead of animating width 55→120px. */
+.experience-copy h2:after{width:120px;transform-origin:left center}
+@keyframes sinceLine{0%,100%{transform:scaleX(.46);opacity:.65}50%{transform:scaleX(1);opacity:1}}
+/* Drifting hero grids: the pattern repeats every 110px / 70px, so moving
+   the whole (slightly oversized) layer by one period loops seamlessly. */
+.about-hero-grid{inset:-110px -110px 0 0!important}
+@keyframes aboutGridDrift{from{transform:translate3d(0,0,0)}to{transform:translate3d(-110px,110px,0)}}
+.media-hero-grid{inset:-70px 0 0 -70px}
+@keyframes mediaGridMove{from{transform:translate3d(0,0,0)}to{transform:translate3d(70px,70px,0)}}
+/* Entrance animations: keep the slide and fade, drop the blur. */
+@keyframes aboutInHomeStyle{from{opacity:0;transform:translate3d(0,24px,0)}to{opacity:1;transform:none}}
+@keyframes networkTitleIn{from{opacity:0;transform:translateY(35px)}to{opacity:1;transform:none}}
+/* Map city ring: scale instead of animating the SVG r attribute (8→20 on r=10). */
+.network-reference-page .city-ring{transform-box:fill-box;transform-origin:center}
+@keyframes networkMapPulse{0%{transform:scale(.8);opacity:.75}100%{transform:scale(2);opacity:0}}
+/* Online dots: keep the blink (opacity), static glow from the element's own box-shadow. */
+@keyframes chatPing{0%,100%{opacity:1}50%{opacity:.55}}
+@keyframes krChatOnline{0%,100%{opacity:1}50%{opacity:.55}}
+@keyframes krSimpleOnline{0%,100%{opacity:1}50%{opacity:.45}}
+@keyframes krBotOnline{0%,100%{opacity:1}50%{opacity:.45}}
+@keyframes livePulse{0%,100%{opacity:1}50%{opacity:.65}}
+/* Expanding rings: drawn by a pseudo-element that scales and fades. */
+@keyframes clientPulse{0%,100%{opacity:1}}
+.client-pulse::after{content:"";position:absolute;inset:0;border-radius:50%;background:#e51b2350;animation:koRingClient 2.2s infinite;pointer-events:none}
+@keyframes mapMarker{0%,100%{opacity:1}}
+.map-pulse::after{content:"";position:absolute;inset:-2px;border-radius:50%;background:#e51b2355;animation:koRingMap 2.4s ease-out infinite;pointer-events:none;z-index:-1}
+/* 35px spread around a 10px dot = 8x; 18px around a 22px marker = 2.6x. */
+@keyframes koRingClient{0%{transform:scale(1);opacity:1}70%,100%{transform:scale(8);opacity:0}}
+@keyframes koRingMap{0%{transform:scale(1);opacity:1}70%,100%{transform:scale(2.6);opacity:0}}
+/* Soft glows: keep the element's static shadow, no per-frame repaint. */
+@keyframes guidePulse{0%,100%{opacity:1}}
+@keyframes aboutRedPulse{0%,100%{opacity:1}}
+@keyframes krChatGlow{0%,100%{opacity:1}}
+@keyframes krChatHeroGlow{0%,100%{opacity:1}}
+@keyframes krAiOrb{0%,100%{opacity:1}}
+@keyframes krPanelGlow{0%,100%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.client-pulse::after,.map-pulse::after{animation:none;opacity:0}}

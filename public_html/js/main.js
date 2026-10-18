@@ -141,11 +141,17 @@ if(serviceTitle){
 const orbitRingEl=document.querySelector('.solutions-360 .orbit-ring');
 const orbitCards=[...document.querySelectorAll('.solutions-360 .orbit-card')];
 let orbitAngle=0, orbitFrame;
+// Ring size is cached (ResizeObserver below) and the static card styles are
+// only rewritten when it changes, so each frame only updates a transform
+// instead of forcing a synchronous layout.
+let orbitW=0, orbitH=0, orbitMobile=false, orbitSizedFor='', orbitVisible=true;
+function measureOrbit(){ orbitW=orbitRingEl.clientWidth; orbitH=orbitRingEl.clientHeight; orbitMobile=window.innerWidth<=760; }
 function animateServiceOrbit(){
   if(!orbitRingEl || !orbitCards.length) return;
-  const w=orbitRingEl.clientWidth;
-  const h=orbitRingEl.clientHeight;
-  const mobile=window.innerWidth<=760;
+  if(!orbitW) measureOrbit();
+  const w=orbitW;
+  const h=orbitH;
+  const mobile=orbitMobile;
 
   // Keep every card completely inside the outer ring while preserving a true circle.
   const cardSize = mobile
@@ -156,6 +162,9 @@ function animateServiceOrbit(){
   const cx=w/2, cy=h/2;
   const step=(Math.PI*2)/orbitCards.length;
 
+  const sizedFor=`${w}x${h}`;
+  const resized=sizedFor!==orbitSizedFor;
+  orbitSizedFor=sizedFor;
   orbitCards.forEach((card,i)=>{
     // Start at the same orientation as the desktop/reference composition.
     const a=orbitAngle + i*step - Math.PI/3;
@@ -164,26 +173,33 @@ function animateServiceOrbit(){
     const active=card.classList.contains('active');
     const scale=active ? 1.08 : 1;
 
-    card.style.width=`${cardSize}px`;
-    card.style.height=`${cardSize}px`;
-    card.style.left='0px';
-    card.style.top='0px';
-    card.style.right='auto';
-    card.style.bottom='auto';
-    card.style.margin='0';
-    card.style.borderRadius='50%';
+    if(resized){
+      card.style.width=`${cardSize}px`;
+      card.style.height=`${cardSize}px`;
+      card.style.left='0px';
+      card.style.top='0px';
+      card.style.right='auto';
+      card.style.bottom='auto';
+      card.style.margin='0';
+      card.style.borderRadius='50%';
+    }
     card.style.setProperty('--orbit-transform',`translate3d(${x-cardSize/2}px,${y-cardSize/2}px,0) scale(${scale})`);
-    card.style.zIndex=active ? 50 : 30;
+    const z=active ? '50' : '30';
+    if(card.style.zIndex!==z) card.style.zIndex=z;
   });
 
   // Slightly faster than desktop, while remaining smooth and continuous.
   orbitAngle += 0.0045; // Smooth continuous orbit speed across desktop and mobile
-  orbitFrame=requestAnimationFrame(animateServiceOrbit);
+  orbitFrame=orbitVisible ? requestAnimationFrame(animateServiceOrbit) : 0;
 }
 if(orbitRingEl && orbitCards.length){
   orbitFrame=requestAnimationFrame(animateServiceOrbit);
-  window.addEventListener('resize',()=>{ cancelAnimationFrame(orbitFrame); orbitFrame=requestAnimationFrame(animateServiceOrbit); });
-  document.addEventListener('visibilitychange',()=>{ if(document.hidden){ cancelAnimationFrame(orbitFrame); } else { orbitFrame=requestAnimationFrame(animateServiceOrbit); } });
+  const restartOrbit=()=>{ cancelAnimationFrame(orbitFrame); orbitFrame=requestAnimationFrame(animateServiceOrbit); };
+  if('ResizeObserver' in window) new ResizeObserver(()=>{ measureOrbit(); }).observe(orbitRingEl);
+  window.addEventListener('resize',()=>{ measureOrbit(); restartOrbit(); });
+  // Only animate while the orbit is on screen.
+  if('IntersectionObserver' in window) new IntersectionObserver(entries=>{ orbitVisible=entries[0].isIntersecting; if(orbitVisible && !document.hidden) restartOrbit(); else cancelAnimationFrame(orbitFrame); }).observe(orbitRingEl);
+  document.addEventListener('visibilitychange',()=>{ if(document.hidden){ cancelAnimationFrame(orbitFrame); } else if(orbitVisible){ restartOrbit(); } });
 }
 
 // Hero stats strip: duplicate the six cards once for a seamless automatic loop.
@@ -207,7 +223,10 @@ if (heroStatsTrack && !heroStatsTrack.dataset.mobileMotionReady) {
   let x = 0, raf = 0, last = 0, paused = false, dragging = false;
   let startPointer = 0, startX = 0;
   const speed = 10; // px/sec — intentionally slow
-  const loopWidth = () => heroStatsTrack.scrollWidth / 2;
+  // Cached: reading scrollWidth every animation frame forced a layout each time.
+  let cachedLoopWidth = 0;
+  const loopWidth = () => cachedLoopWidth || (cachedLoopWidth = heroStatsTrack.scrollWidth / 2);
+  if ('ResizeObserver' in window) new ResizeObserver(() => { cachedLoopWidth = 0; }).observe(heroStatsTrack);
   const apply = () => { heroStatsTrack.style.transform = `translate3d(${x}px,0,0)`; };
   const normalize = () => {
     const w = loopWidth();
@@ -281,12 +300,22 @@ function renderCarousel(){
   card.setAttribute('aria-label',name.replaceAll('-',' ')+' client');
   card.addEventListener('click',e=>{ if(clientDragged){e.preventDefault();e.stopPropagation();return;} clientCenter=i; renderCarousel(); restartClientTimer(); });
   card.style.transform=`translate(-50%,-50%) translateX(${p.x}px) translateZ(${p.z}px) rotateY(${p.rot}deg) scale(${p.scale})`; card.style.opacity=p.op; card.style.zIndex=100-Math.abs(offset);
-  const img=document.createElement('img'); img.src=`assets/clients/${name}.${ext}`; img.alt=name.replaceAll('-',' '); card.appendChild(img); carouselEl.appendChild(card);
+  const img=document.createElement('img'); img.decoding='async'; img.src=`/assets/clients/${name}-280.webp`; img.alt=name.replaceAll('-',' '); card.appendChild(img); carouselEl.appendChild(card);
  });
 }
 function stepClient(dir){clientCenter=(clientCenter+dir+clientLogos.length)%clientLogos.length;renderCarousel();}
-function restartClientTimer(){clearInterval(clientTimer);clientTimer=setInterval(()=>stepClient(1),2200);}
-renderCarousel(); restartClientTimer();
+let clientInView=false;
+function restartClientTimer(){clearInterval(clientTimer);if(clientInView) clientTimer=setInterval(()=>stepClient(1),2200);}
+// The carousel sits below the fold: build it (and fetch the logos) only when it
+// comes near the viewport, and stop rotating while it is off screen.
+if(carouselEl && 'IntersectionObserver' in window){
+  let built=false;
+  new IntersectionObserver(entries=>{
+    clientInView=entries[0].isIntersecting;
+    if(clientInView && !built){ built=true; renderCarousel(); }
+    if(clientInView) restartClientTimer(); else clearInterval(clientTimer);
+  },{rootMargin:'300px 0px'}).observe(carouselEl);
+} else { clientInView=true; renderCarousel(); restartClientTimer(); }
 
 // Client carousel: click a logo to bring it to the front; drag/swipe to rotate.
 const clientStageEl=document.querySelector('.client-stage');
@@ -374,83 +403,25 @@ workViewport?.addEventListener('touchend',restartWorkAuto,{passive:true});
 sizeWorkCards(); window.addEventListener('resize',()=>{sizeWorkCards();workStep=0;workViewport?.scrollTo({left:0,behavior:'auto'})}); restartWorkAuto();
 
 // Chatbot — compact conversational assistant with a clear thinking state and page/contact links.
-const chatbot=$('#chatbot'),chatPanel=$('#chatPanel'),chatClose=$('#chatClose'),chatMessages=$('#chatMessages'),chatComposer=$('#chatComposer'),chatInput=$('#chatInput');
-if(chatbot && chatPanel){
- const pad=n=>String(n).padStart(2,'0');
- const timeNow=()=>{const d=new Date();let h=d.getHours(),m=d.getMinutes();const ap=h>=12?'PM':'AM';h=h%12||12;return `${h}:${pad(m)} ${ap}`};
- let chatStartedAt=null;
- const scrollBottom=()=>{if(chatMessages) chatMessages.scrollTop=chatMessages.scrollHeight};
- const stamp=(label='')=>{const el=document.createElement('div');el.className='msg-time';el.textContent=label||timeNow();return el};
- const avatar=()=>`<span class="msg-avatar"><span class="mini-bot"><i></i><i></i><b></b></span></span>`;
- const addMessage=(text,who='bot',withTime=true)=>{
-   if(!chatMessages) return;
-   const row=document.createElement('div'); row.className=`msg-row ${who}`;
-   if(who==='bot') row.innerHTML=`${avatar()}<div class="msg-stack"><div class="msg-bubble">${text}</div></div>`;
-   else row.innerHTML=`<div class="msg-stack"><div class="msg-bubble">${text}</div></div>`;
-   chatMessages.appendChild(row);
-   scrollBottom(); return row;
- };
- const showThinking=()=>{
-   const row=document.createElement('div');row.className='msg-row bot thinking-row';
-   row.innerHTML=`${avatar()}<div class="msg-stack"><div class="msg-bubble thinking-bubble"><span class="thinking-label">Thinking</span><span class="thinking-dots"><i></i><i></i><i></i></span></div></div>`;
-   chatMessages?.appendChild(row);scrollBottom();return row;
- };
- const L=Object.assign({
-   home:'index.html',about:'about.html',services:'services.html',ooh:'ooh-media.html',transit:'transit-media.html',digital:'digital-media.html',network:'network.html',location:'network.html#presence',campaign:'projects.html#campaigns',work:'projects.html',careers:'careers.html',enquire:'contact.html'
- },window.KR_ROUTES||{});
- const link=(href,label)=>`<a href="${href}">${label}</a>`;
- const pageLinks=()=>`<div class="chat-link-list">${link(L.home,'Home')} ${link(L.about,'About Us')} ${link(L.services,'Media Solutions')} ${link(L.ooh,'OOH Media')} ${link(L.transit,'Transit Media')} ${link(L.digital,'Digital Media')} ${link(L.location,'Location')} ${link(L.network,'Our Network')} ${link(L.campaign,'Campaign')} ${link(L.work,'Our Work')} ${link(L.careers,'Careers')} ${link(L.enquire,'Enquire Now')}</div>`;
- const contactInfo=()=>`<strong>Contact Krishna Outdoor</strong><br>
-Ahmedabad: ${link('tel:+919879616411','+91 98796 16411')} · ${link('mailto:info@krishnaoutdoor.in','info@krishnaoutdoor.in')}<br>
-Aakanksha Complex, 403-404, Netaji Rd, nr. Railway Crossing, opposite Andani Hyper Market, Muslim Society, Navrangpura, Ahmedabad, Gujarat – 380009, India.
-<br><br>
-Mumbai: ${link('tel:+919920011574','+91 99200 11574')} · ${link('mailto:info.team@krishnaoutdoor.in','info.team@krishnaoutdoor.in')}<br>
-701, 702 Morya Blue Moon, Next to Moniginis Cake Factory, Off New Link Road, Opp. Citi Mall, Andheri West, Mumbai, Maharashtra – 400053, India.
-<br><br>
-${link(L.enquire,'Open Enquire Now')}`;
- const pageName=(document.title||'').toLowerCase();
- const getReply=(input)=>{
-   const q=input.toLowerCase().replace(/[^a-z0-9@.+#& -]/g,' ').replace(/\s+/g,' ').trim();
-   const has=(...terms)=>terms.some(t=>q.includes(t));
-   if(has('all page','all pages','page link','page links','website link','links')) return `Here are all the website pages:<br>${pageLinks()}`;
-   if(has('contact','phone','mobile','number','call','email','mail','enquire','enquiry','quote','quotation','address','office','details')) return contactInfo();
-   if(has('hi','hello','hey','hii','namaste','good morning','good afternoon','good evening')) return `Hello! I’m Krishna AI. I can guide you through every page of Krishna Outdoor.<br>${pageLinks()}`;
-   if(has('name','who are you','your name')) return `I’m Krishna AI, the virtual assistant for Krishna Outdoor. I can guide you through every section and page of this website.<br>${link(L.enquire,'Enquire Now')}`;
-   if(has('home','homepage')) return `The Home page covers Krishna Outdoor’s outdoor advertising story, solutions, campaigns, network and enquiry path.<br>${link(L.home,'Open Home')}`;
-   if(has('about','company','history','legacy','years','experience')) return `The About page explains Krishna Outdoor’s journey, leadership, 43+ years of experience and media legacy.<br>${link(L.about,'Open About Us')}`;
-   if(has('service','services','media solution','media solutions')) return `Media Solutions includes OOH Media, Transit Media and Digital Media. The wider offering also covers print & electronic media, branding and digital marketing.<br>${link(L.services,'Open Media Solutions')} · ${link(L.ooh,'OOH')} · ${link(L.transit,'Transit')} · ${link(L.digital,'Digital')}`;
-   if(has('ooh','hoarding','hoardings','billboard','billboards','outdoor')) return `OOH Media covers outdoor formats such as hoardings and billboards.<br>${link(L.ooh,'Open OOH Media')} · ${link(L.enquire,'Enquire Now')}`;
-   if(has('transit','bus','train','railway','metro','shelter')) return `Transit Media covers buses, bus shelters, trains and railway environments.<br>${link(L.transit,'Open Transit Media')} · ${link(L.enquire,'Enquire Now')}`;
-   if(has('digital','dooh','screen','digital billboard')) return `Digital Media and DOOH cover dynamic digital billboard and screen-led advertising.<br>${link(L.digital,'Open Digital Media')} · ${link(L.enquire,'Enquire Now')}`;
-   if(has('print','newspaper','press','radio','electronic media')) return `Print & Electronic Media can include newspaper, press and radio formats as part of an integrated media approach.<br>${link(L.services,'Open Media Solutions')} · ${link(L.enquire,'Enquire Now')}`;
-   if(has('location','where','city','ahmedabad','mumbai','thane','rajasthan','market')) return `Our Location / Network pages cover Ahmedabad, Mumbai, Thane and Rajasthan market presence and media opportunities.<br>${link(L.location,'Open Location')} · ${link(L.network,'Open Our Network')}`;
-   if(has('network','presence','sites','cities')) return `Our Network page explains Krishna Outdoor’s media presence, market coverage, hoardings, buses, shelters and train opportunities across key markets.<br>${link(L.network,'Open Our Network')}`;
-   if(has('project','projects','work','campaign','portfolio','case study')) return `Our Work shows campaign examples and project work. The Campaign section is also available directly.<br>${link(L.campaign,'Open Campaign')} · ${link(L.work,'Open Our Work')}`;
-   if(has('career','careers','job','jobs','join','opening')) return `The Careers page contains the opportunity/application section for roles across sales, operations, design, client servicing, digital and administration.<br>${link(L.careers,'Open Careers')}`;
-   if(has('price','pricing','cost','rate','budget')) return `Pricing depends on media format, market, location, duration and campaign size. Share your city, format and duration through Enquire Now.<br>${link(L.enquire,'Start an Enquiry')}`;
-   if(has('logo','brand','client','clients')) return `The website includes Krishna Outdoor brand information and an Our Esteemed Clients section.<br>${link(L.home,'Home')} · ${link(L.work,'Our Work')}`;
-   if(has('thank','thanks','okay','ok','great')) return `You’re welcome! Ask me about any Krishna Outdoor page, media solution, campaign or contact detail.`;
-   if(pageName.includes('transit')) return `You’re on the Transit Media page. I can answer questions about buses, trains, shelters, formats and campaign planning.<br>${link(L.transit,'Open Transit Media')}`;
-   if(pageName.includes('digital')) return `You’re on the Digital Media page. I can answer questions about DOOH, digital billboards, screens and campaign planning.<br>${link(L.digital,'Open Digital Media')}`;
-   if(pageName.includes('ooh')) return `You’re on the OOH Media page. I can answer questions about hoardings, billboards, locations and outdoor formats.<br>${link(L.ooh,'Open OOH Media')}`;
-   if(pageName.includes('about')) return `You’re on the About page. Ask me about Krishna Outdoor’s journey, experience, leadership or media legacy.<br>${link(L.about,'Open About Us')}`;
-   if(pageName.includes('project') || pageName.includes('work')) return `You’re on the Our Work page. Ask me about campaigns, projects, media formats or the work showcased here.<br>${link(L.work,'Open Our Work')} · ${link(L.campaign,'Open Campaign')}`;
-   if(pageName.includes('network') || pageName.includes('location')) return `You’re on the Location / Our Network section. Ask me about market presence, cities, sites or media opportunities.<br>${link(L.location,'Open Location')} · ${link(L.network,'Open Our Network')}`;
-   if(pageName.includes('career')) return `You’re on the Careers page. Ask me about career information or openings.<br>${link(L.careers,'Open Careers')}`;
-   if(pageName.includes('contact') || pageName.includes('enquir')) return `You’re on the Enquire page. Here are the direct contact details:<br>${contactInfo()}`;
-   return `I can help with the full Krishna Outdoor website. Ask me about Home, About, Media Solutions, OOH, Transit, Digital, Location, Our Network, Campaign, Our Work, Careers or Enquire Now.<br>${pageLinks()}`;
- };
- const reply=(input)=>{const thinking=showThinking();setTimeout(()=>{thinking.remove();addMessage(getReply(input),'bot',true)},900)};
- const closeChat=()=>{chatPanel.classList.remove('open');chatPanel.setAttribute('aria-hidden','true')};
- const openChat=()=>{const wasOpen=chatPanel.classList.contains('open');chatPanel.classList.toggle('open');chatPanel.setAttribute('aria-hidden',wasOpen?'true':'false');if(!wasOpen){if(!chatStartedAt) chatStartedAt=timeNow();setTimeout(()=>chatInput?.focus(),220)}scrollBottom()};
- chatbot.addEventListener('click',openChat);
- chatClose?.addEventListener('click',e=>{e.stopPropagation();closeChat()});
- document.addEventListener('keydown',e=>{if(e.key==='Escape') closeChat()});
- document.addEventListener('click',e=>{if(chatPanel.classList.contains('open')&&!e.target.closest('#chatPanel')&&!e.target.closest('#chatbot')) closeChat()});
- $$('[data-chat]').forEach(b=>b.addEventListener('click',()=>{const value=b.textContent.replace('↗','').trim();addMessage(value,'user');reply(value)}));
- chatComposer?.addEventListener('submit',e=>{e.preventDefault();const value=chatInput?.value.trim();if(!value)return;addMessage(value,'user');chatInput.value='';reply(value)});
- if(chatMessages && !chatMessages.querySelector('.chat-day')){const day=document.createElement('div');day.className='chat-day';day.textContent=`Today • ${timeNow()}`;chatMessages.prepend(day);$$('.msg-row.bot',chatMessages).forEach(row=>{if(!row.querySelector('.msg-avatar')) row.insertAdjacentHTML('afterbegin',avatar());let stack=row.querySelector('.msg-stack');if(!stack){const bubble=row.querySelector('.msg-bubble');stack=document.createElement('div');stack.className='msg-stack';if(bubble){bubble.parentNode.removeChild(bubble);stack.appendChild(bubble)}row.appendChild(stack)}})}
-}
+// Krishna AI chat: public/js/chat.js is fetched on the first hover, focus or
+// click on the chat button, or when the browser is idle after load. A click
+// that arrives before it has loaded is replayed once it is ready.
+(function(){
+  const btn=$('#chatbot');
+  if(!btn || !btn.dataset.chatSrc) return;
+  let requested=false, pendingOpen=false;
+  const load=()=>{
+    if(requested) return; requested=true;
+    const s=document.createElement('script');
+    s.src=btn.dataset.chatSrc; s.async=true;
+    s.onload=()=>{ if(pendingOpen){ pendingOpen=false; btn.click(); } };
+    document.body.appendChild(s);
+  };
+  btn.addEventListener('click',e=>{ if(window.KO_CHAT_READY) return; e.stopImmediatePropagation(); pendingOpen=true; load(); },true);
+  ['pointerenter','focus','touchstart'].forEach(t=>btn.addEventListener(t,load,{once:true,passive:true}));
+  const idle=()=>('requestIdleCallback' in window)?requestIdleCallback(load,{timeout:6000}):setTimeout(load,4000);
+  if(document.readyState==='complete') idle(); else window.addEventListener('load',idle,{once:true});
+})();
 
 // Universal image lightbox — all meaningful content images open large on click.
 const workLightbox=$('#workLightbox'), workLightboxImage=$('#workLightboxImage'), workLightboxCaption=$('#workLightboxCaption'), workLightboxClose=$('#workLightboxClose');
@@ -666,8 +637,9 @@ if(window.matchMedia('(pointer:fine)').matches){window.addEventListener('mousemo
     {root:'.network-hero-copy', text:['p'], after:'.network-btn'},
     {root:'.ow-hero-inner > div:first-child', text:['.ow-hero-copy'], after:'.ow-btn'},
     {root:'.kr-page .kr-hero-inner', text:['p'], after:'.kr-actions'},
-    {root:'.kr-page .kr-enquiry-copy', text:['p'], after:'.kr-enquiry-steps'},
-    {root:'.media-detail-hero .hero-inner', text:['> p'], after:null}
+    {root:'.kr-page .kr-enquiry-copy', text:['p'], after:'.kr-enquiry-steps'}
+    // (A '.media-detail-hero .hero-inner' entry used the invalid selector '> p',
+    // which threw on every mobile page view and never did anything; removed.)
   ];
   function setup(){
     if(!mobileMQ.matches) return;
