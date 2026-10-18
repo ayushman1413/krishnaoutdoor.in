@@ -5,8 +5,6 @@
 
 @section('web-head')
 @include('web.common.keyword-page-style')
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","serviceType":"Outdoor, Transit & Social Media Marketing","provider":{"@type":"Organization","name":"Krishna Outdoor"},"areaServed":[{"@type":"City","name":"Ahmedabad"},{"@type":"City","name":"Mumbai"}],"name":"Outdoor, Transit & Social Media Marketing Services","description":"Hoarding, AMTS and GSRTC bus advertising, bus shelters, Mumbai local train and BEST bus branding, plus social media marketing in Ahmedabad and Mumbai."}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://krishnaoutdoor.in/"},{"@type":"ListItem","position":2,"name":"Media Solutions","item":"https://krishnaoutdoor.in/media-solutions"}]}</script>
 @endsection
 
 @section('web-section')

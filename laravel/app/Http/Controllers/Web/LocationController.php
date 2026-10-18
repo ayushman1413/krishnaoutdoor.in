@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Enums\MediaType;
 use App\Http\Controllers\Controller;
 use App\Models\Location;
+use App\Services\SchemaBuilder;
 use App\Services\SeoResolver;
 use Exception;
 use Illuminate\Support\Str;
@@ -39,6 +40,11 @@ class LocationController extends Controller
                 $cityName . ' Locations',
                 "Explore our available outdoor advertising media - billboards, bus branding, train media and more - across {$cityName}."
             );
+
+            SchemaBuilder::setBreadcrumbs([
+                ['name' => 'Our Network', 'url' => route('view.network')],
+                ['name' => $cityName . ' Locations', 'url' => $seo->canonicalUrl],
+            ]);
 
             return view('web.pages.locations', [
                 'city' => $cityName,

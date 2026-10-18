@@ -5,9 +5,6 @@
 
 @section('web-head')
 @include('web.common.keyword-page-style')
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","serviceType":"BEST Bus Advertising","provider":{"@type":"Organization","name":"Krishna Outdoor"},"areaServed":{"@type":"City","name":"Mumbai"},"name":"BEST Bus Advertising in Mumbai","description":"Full-wrap advertising on BEST electric buses across Mumbai, operated by Brihanmumbai Electric Supply and Transport."}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a BEST EV full-wrap bus advertisement?","acceptedAnswer":{"@type":"Answer","text":"A BEST EV full-wrap is a large-format vinyl wrap that covers the entire exterior of a BEST electric bus, turning it into a moving billboard rather than a single panel. It's one of the highest-visibility formats available on Mumbai's roads."}},{"@type":"Question","name":"How many BEST buses does Krishna Outdoor have advertising rights on?","acceptedAnswer":{"@type":"Answer","text":"Krishna Outdoor holds advertising rights on 400+ BEST EV full-wrap buses operating across Mumbai, giving brands a large fleet to choose routes from."}},{"@type":"Question","name":"What are the design and approval requirements for BEST bus wraps?","acceptedAnswer":{"@type":"Answer","text":"Creative needs to account for the bus's windows, doors and panel lines so the design reads clearly from a distance and up close. Our team reviews every creative for print feasibility and coordinates the necessary approvals before printing and mounting begins."}},{"@type":"Question","name":"How much does BEST bus advertising cost in Mumbai?","acceptedAnswer":{"@type":"Answer","text":"Cost depends on the number of buses wrapped, the routes they run and campaign duration. Share your budget and target areas of Mumbai and we'll recommend a fleet size and route mix with indicative rates."}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://krishnaoutdoor.in/"},{"@type":"ListItem","position":2,"name":"Transit Media","item":"https://krishnaoutdoor.in/media/transit"},{"@type":"ListItem","position":3,"name":"BEST Bus Advertising Mumbai","item":"https://krishnaoutdoor.in/best-bus-advertising-mumbai"}]}</script>
 @endsection
 
 @section('web-section')
@@ -75,24 +72,12 @@
 
 <section class="kw-section kw-section-alt"><div class="kw-inner">
     <h2 class="kw-h2">Frequently asked <em>questions</em></h2>
-    <div class="kw-faq">
-        <details open>
-            <summary>What is a BEST EV full-wrap bus advertisement?</summary>
-            <p>A BEST EV full-wrap is a large-format vinyl wrap that covers the entire exterior of a BEST electric bus, turning it into a moving billboard rather than a single panel. It's one of the highest-visibility formats available on Mumbai's roads.</p>
-        </details>
-        <details>
-            <summary>How many BEST buses does Krishna Outdoor have advertising rights on?</summary>
-            <p>Krishna Outdoor holds advertising rights on 400+ BEST EV full-wrap buses operating across Mumbai, giving brands a large fleet to choose routes from.</p>
-        </details>
-        <details>
-            <summary>What are the design and approval requirements for BEST bus wraps?</summary>
-            <p>Creative needs to account for the bus's windows, doors and panel lines so the design reads clearly from a distance and up close. Our team reviews every creative for print feasibility and coordinates the necessary approvals before printing and mounting begins.</p>
-        </details>
-        <details>
-            <summary>How much does BEST bus advertising cost in Mumbai?</summary>
-            <p>Cost depends on the number of buses wrapped, the routes they run and campaign duration. Share your budget and target areas of Mumbai and we'll recommend a fleet size and route mix with indicative rates.</p>
-        </details>
-    </div>
+    @include('web.common.faq', ['faqs' => [
+        ['q' => 'What is a BEST EV full-wrap bus advertisement?', 'a' => 'A BEST EV full-wrap is a large-format vinyl wrap that covers the entire exterior of a BEST electric bus, turning it into a moving billboard rather than a single panel. It\'s one of the highest-visibility formats available on Mumbai\'s roads.'],
+        ['q' => 'How many BEST buses does Krishna Outdoor have advertising rights on?', 'a' => 'Krishna Outdoor holds advertising rights on 400+ BEST EV full-wrap buses operating across Mumbai, giving brands a large fleet to choose routes from.'],
+        ['q' => 'What are the design and approval requirements for BEST bus wraps?', 'a' => 'Creative needs to account for the bus\'s windows, doors and panel lines so the design reads clearly from a distance and up close. Our team reviews every creative for print feasibility and coordinates the necessary approvals before printing and mounting begins.'],
+        ['q' => 'How much does BEST bus advertising cost in Mumbai?', 'a' => 'Cost depends on the number of buses wrapped, the routes they run and campaign duration. Share your budget and target areas of Mumbai and we\'ll recommend a fleet size and route mix with indicative rates.'],
+    ]])
 </div></section>
 
 <section class="cta" id="contact">

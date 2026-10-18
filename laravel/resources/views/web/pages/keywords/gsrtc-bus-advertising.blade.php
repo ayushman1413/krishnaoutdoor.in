@@ -5,9 +5,6 @@
 
 @section('web-head')
 @include('web.common.keyword-page-style')
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","serviceType":"GSRTC Bus Advertising","provider":{"@type":"Organization","name":"Krishna Outdoor"},"areaServed":{"@type":"State","name":"Gujarat"},"name":"GSRTC Bus Advertising","description":"Advertising on GSRTC state transport buses connecting every district of Gujarat, including full wrap and panel formats."}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What area does GSRTC bus advertising cover?","acceptedAnswer":{"@type":"Answer","text":"GSRTC buses connect every district of Gujarat, from major cities to small towns and rural routes. This gives brands genuine state-wide coverage that a city-only format like a hoarding or city bus simply cannot match."}},{"@type":"Question","name":"How is GSRTC bus advertising priced?","acceptedAnswer":{"@type":"Answer","text":"Pricing is based on the number of buses booked, the format (full wrap or panel) and campaign duration. Because GSRTC routes span the whole state, campaigns are typically planned around the districts or corridors most relevant to the brand's distribution or audience rather than a single city."}},{"@type":"Question","name":"Is there a minimum campaign size for GSRTC bus advertising?","acceptedAnswer":{"@type":"Answer","text":"Campaigns can start with a small number of buses on specific routes, but most brands booking GSRTC advertising aim for a meaningful fleet size so the campaign reads as state-wide rather than isolated. Share your target districts and budget and we'll recommend a realistic fleet size."}},{"@type":"Question","name":"How many GSRTC buses does Krishna Outdoor have advertising rights on?","acceptedAnswer":{"@type":"Answer","text":"Krishna Outdoor holds advertising rights on 7000+ GSRTC buses across Gujarat, making it one of the largest state transport advertising networks available to brands in the region."}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://krishnaoutdoor.in/"},{"@type":"ListItem","position":2,"name":"Transit Media","item":"https://krishnaoutdoor.in/media/transit"},{"@type":"ListItem","position":3,"name":"GSRTC Bus Advertising","item":"https://krishnaoutdoor.in/gsrtc-bus-advertising"}]}</script>
 @endsection
 
 @section('web-section')
@@ -82,24 +79,12 @@
 
 <section class="kw-section kw-section-alt"><div class="kw-inner">
     <h2 class="kw-h2">Frequently asked <em>questions</em></h2>
-    <div class="kw-faq">
-        <details open>
-            <summary>What area does GSRTC bus advertising cover?</summary>
-            <p>GSRTC buses connect every district of Gujarat, from major cities to small towns and rural routes. This gives brands genuine state-wide coverage that a city-only format like a hoarding or city bus simply cannot match.</p>
-        </details>
-        <details>
-            <summary>How is GSRTC bus advertising priced?</summary>
-            <p>Pricing is based on the number of buses booked, the format (full wrap or panel) and campaign duration. Because GSRTC routes span the whole state, campaigns are typically planned around the districts or corridors most relevant to the brand's distribution or audience rather than a single city.</p>
-        </details>
-        <details>
-            <summary>Is there a minimum campaign size for GSRTC bus advertising?</summary>
-            <p>Campaigns can start with a small number of buses on specific routes, but most brands booking GSRTC advertising aim for a meaningful fleet size so the campaign reads as state-wide rather than isolated. Share your target districts and budget and we'll recommend a realistic fleet size.</p>
-        </details>
-        <details>
-            <summary>How many GSRTC buses does Krishna Outdoor have advertising rights on?</summary>
-            <p>Krishna Outdoor holds advertising rights on 7000+ GSRTC buses across Gujarat, making it one of the largest state transport advertising networks available to brands in the region.</p>
-        </details>
-    </div>
+    @include('web.common.faq', ['faqs' => [
+        ['q' => 'What area does GSRTC bus advertising cover?', 'a' => 'GSRTC buses connect every district of Gujarat, from major cities to small towns and rural routes. This gives brands genuine state-wide coverage that a city-only format like a hoarding or city bus simply cannot match.'],
+        ['q' => 'How is GSRTC bus advertising priced?', 'a' => 'Pricing is based on the number of buses booked, the format (full wrap or panel) and campaign duration. Because GSRTC routes span the whole state, campaigns are typically planned around the districts or corridors most relevant to the brand\'s distribution or audience rather than a single city.'],
+        ['q' => 'Is there a minimum campaign size for GSRTC bus advertising?', 'a' => 'Campaigns can start with a small number of buses on specific routes, but most brands booking GSRTC advertising aim for a meaningful fleet size so the campaign reads as state-wide rather than isolated. Share your target districts and budget and we\'ll recommend a realistic fleet size.'],
+        ['q' => 'How many GSRTC buses does Krishna Outdoor have advertising rights on?', 'a' => 'Krishna Outdoor holds advertising rights on 7000+ GSRTC buses across Gujarat, making it one of the largest state transport advertising networks available to brands in the region.'],
+    ]])
 </div></section>
 
 <section class="cta" id="contact">

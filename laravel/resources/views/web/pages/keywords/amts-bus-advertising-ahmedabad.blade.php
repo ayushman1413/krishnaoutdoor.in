@@ -5,9 +5,6 @@
 
 @section('web-head')
 @include('web.common.keyword-page-style')
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","serviceType":"AMTS Bus Advertising","provider":{"@type":"Organization","name":"Krishna Outdoor"},"areaServed":{"@type":"City","name":"Ahmedabad"},"name":"AMTS Bus Advertising in Ahmedabad","description":"Advertising on AMTS city buses across Ahmedabad, including full wrap, side panel and back panel formats."}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much does AMTS bus advertising cost in Ahmedabad?","acceptedAnswer":{"@type":"Answer","text":"AMTS bus advertising cost depends on the format (full wrap, side panel or back panel), number of buses booked and campaign duration. Full wraps cost more than single panels but deliver far higher visibility. Share your budget and target routes and our team will share relevant options with indicative rates."}},{"@type":"Question","name":"What is the minimum booking duration for AMTS bus advertising?","acceptedAnswer":{"@type":"Answer","text":"Most AMTS bus advertising campaigns are booked for a minimum of one month, since printing, mounting and route circulation take time to build repeat visibility. Longer bookings of two to three months typically give a better cost-per-impression."}},{"@type":"Question","name":"What formats are available for AMTS bus advertising?","acceptedAnswer":{"@type":"Answer","text":"Krishna Outdoor offers full bus wraps, side panels and back panels on AMTS buses. Full wraps cover the entire exterior for maximum brand recall, while side and back panels are a more budget-friendly way to get onto the AMTS network."}},{"@type":"Question","name":"How many AMTS buses does Krishna Outdoor have advertising rights on?","acceptedAnswer":{"@type":"Answer","text":"Krishna Outdoor holds advertising rights on 900+ AMTS buses operating across Ahmedabad, giving brands a large, city-wide transit network to choose from."}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://krishnaoutdoor.in/"},{"@type":"ListItem","position":2,"name":"OOH Media","item":"https://krishnaoutdoor.in/media/ooh"},{"@type":"ListItem","position":3,"name":"AMTS Bus Advertising Ahmedabad","item":"https://krishnaoutdoor.in/amts-bus-advertising-ahmedabad"}]}</script>
 @endsection
 
 @section('web-section')
@@ -87,24 +84,12 @@
 
 <section class="kw-section kw-section-alt"><div class="kw-inner">
     <h2 class="kw-h2">Frequently asked <em>questions</em></h2>
-    <div class="kw-faq">
-        <details open>
-            <summary>How much does AMTS bus advertising cost in Ahmedabad?</summary>
-            <p>AMTS bus advertising cost depends on the format (full wrap, side panel or back panel), number of buses booked and campaign duration. Full wraps cost more than single panels but deliver far higher visibility. Share your budget and target routes and our team will share relevant options with indicative rates.</p>
-        </details>
-        <details>
-            <summary>What is the minimum booking duration for AMTS bus advertising?</summary>
-            <p>Most AMTS bus advertising campaigns are booked for a minimum of one month, since printing, mounting and route circulation take time to build repeat visibility. Longer bookings of two to three months typically give a better cost-per-impression.</p>
-        </details>
-        <details>
-            <summary>What formats are available for AMTS bus advertising?</summary>
-            <p>Krishna Outdoor offers full bus wraps, side panels and back panels on AMTS buses. Full wraps cover the entire exterior for maximum brand recall, while side and back panels are a more budget-friendly way to get onto the AMTS network.</p>
-        </details>
-        <details>
-            <summary>How many AMTS buses does Krishna Outdoor have advertising rights on?</summary>
-            <p>Krishna Outdoor holds advertising rights on 900+ AMTS buses operating across Ahmedabad, giving brands a large, city-wide transit network to choose from.</p>
-        </details>
-    </div>
+    @include('web.common.faq', ['faqs' => [
+        ['q' => 'How much does AMTS bus advertising cost in Ahmedabad?', 'a' => 'AMTS bus advertising cost depends on the format (full wrap, side panel or back panel), number of buses booked and campaign duration. Full wraps cost more than single panels but deliver far higher visibility. Share your budget and target routes and our team will share relevant options with indicative rates.'],
+        ['q' => 'What is the minimum booking duration for AMTS bus advertising?', 'a' => 'Most AMTS bus advertising campaigns are booked for a minimum of one month, since printing, mounting and route circulation take time to build repeat visibility. Longer bookings of two to three months typically give a better cost-per-impression.'],
+        ['q' => 'What formats are available for AMTS bus advertising?', 'a' => 'Krishna Outdoor offers full bus wraps, side panels and back panels on AMTS buses. Full wraps cover the entire exterior for maximum brand recall, while side and back panels are a more budget-friendly way to get onto the AMTS network.'],
+        ['q' => 'How many AMTS buses does Krishna Outdoor have advertising rights on?', 'a' => 'Krishna Outdoor holds advertising rights on 900+ AMTS buses operating across Ahmedabad, giving brands a large, city-wide transit network to choose from.'],
+    ]])
 </div></section>
 
 <section class="cta" id="contact">

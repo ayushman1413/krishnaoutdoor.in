@@ -4,12 +4,15 @@
 @section('nav', 'home')
 
 @section('web-head')
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://krishnaoutdoor.in/"}]}</script>
 @endsection
 
 @section('web-section')
 
     <main>
+        @php
+            \App\Services\SchemaBuilder::addVideo('hero');
+            \App\Services\SchemaBuilder::addVideo('showcase');
+        @endphp
         <section class="hero" id="home">
             <video aria-hidden="true" muted="" class="hero-media hero-media-desktop js-defer-hero-video" loop=""
                 playsinline="" preload="none" poster="{{ asset('assets/images/hero/hero-desktop-poster.webp') }}"

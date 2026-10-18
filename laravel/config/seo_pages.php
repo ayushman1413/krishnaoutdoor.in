@@ -58,7 +58,7 @@ return [
     'view.ooh.media' => [
         'path' => '/media/ooh',
         'label' => 'OOH Media',
-        'parent' => 'view.services',
+        'parent' => 'view.home',
         'region' => 'ahmedabad',
         'title' => 'OOH Media in Gujarat: Hoardings, Unipoles & Bus Shelters',
         'description' => 'Explore 2000+ hoarding sites across Gujarat, 300+ own hoardings in Ahmedabad, 400+ backlit bus shelters, unipoles and gantries. Check availability.',
@@ -68,7 +68,7 @@ return [
     'view.transit.media' => [
         'path' => '/media/transit',
         'label' => 'Transit Media',
-        'parent' => 'view.services',
+        'parent' => 'view.home',
         'region' => 'both',
         'title' => 'Transit Advertising Agency in Mumbai | Bus & Train Ads',
         'description' => 'Transit advertising agency for Mumbai local trains, BEST and TMT buses, plus GSRTC and AMTS buses in Gujarat. Rights on 7000+ buses. Enquire today.',
@@ -78,7 +78,7 @@ return [
     'view.digital.media' => [
         'path' => '/media/digital',
         'label' => 'Digital Media',
-        'parent' => 'view.services',
+        'parent' => 'view.home',
         'region' => 'ahmedabad',
         'title' => 'DOOH Advertising Agency Ahmedabad | Digital Billboards',
         'description' => 'Digital out-of-home (DOOH) advertising in Ahmedabad. Reach your audience with dynamic digital billboards and screens across prime city locations.',
@@ -125,7 +125,7 @@ return [
     'view.keyword.amts.ahmedabad' => [
         'path' => '/amts-bus-advertising-ahmedabad',
         'label' => 'AMTS Bus Advertising Ahmedabad',
-        'parent' => 'view.transit.media',
+        'parent' => 'view.ooh.media',
         'region' => 'ahmedabad',
         'title' => 'AMTS Bus Advertising in Ahmedabad | 900+ Buses',
         'description' => 'AMTS bus advertising across Ahmedabad with rights on 900+ city buses. Full wraps and panels on busy routes. Ask Krishna Outdoor for routes and rates.',

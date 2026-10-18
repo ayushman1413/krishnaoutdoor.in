@@ -104,6 +104,13 @@
                         @error('gtm_id') <span class="input-error">{{ $message }}</span> @enderror
                     </div>
 
+                    <div class="input-group">
+                        <label class="input-label">WhatsApp Number <span>(Optional, with country code, e.g. +91 98765 43210. Shows the WhatsApp link in the header and on the free site list page.)</span></label>
+                        <input type="text" name="whatsapp_number" value="{{ old('whatsapp_number', $setting->whatsapp_number) }}"
+                            class="input-box-md @error('whatsapp_number') input-invalid @enderror" maxlength="20" placeholder="+91 ">
+                        @error('whatsapp_number') <span class="input-error">{{ $message }}</span> @enderror
+                    </div>
+
                     <div class="input-group lg:col-span-2 md:col-span-2 sm:col-span-1">
                         <label class="input-label">Facebook Pixel Code <span>(Optional)</span></label>
                         <textarea name="fb_pixel_code" rows="6" style="font-family: monospace;"
@@ -141,11 +148,20 @@
                     </div>
 
                     <div class="input-group">
-                        <label class="input-label">Organization Schema JSON <span>(Optional, must be valid JSON)</span></label>
+                        <label class="input-label">Organization Schema JSON <span>(Optional, must be valid JSON. Leave empty to use the automatic Organization schema: name, logo, founding date 1985, social profiles.)</span></label>
                         <textarea name="organization_schema_json" rows="8" style="font-family: monospace;"
                             class="input-box-md @error('organization_schema_json') input-invalid @enderror">{{ old('organization_schema_json', $setting->organization_schema_json) }}</textarea>
                         @error('organization_schema_json') <span class="input-error">{{ $message }}</span> @enderror
                     </div>
+
+                    @foreach (['ahmedabad' => 'Ahmedabad Head Office', 'mumbai' => 'Mumbai Office'] as $officeKey => $officeLabel)
+                        <div class="input-group">
+                            <label class="input-label">LocalBusiness Schema JSON – {{ $officeLabel }} <span>(Optional. Leave empty to use the automatic version built from the office address, phone, map and opening hours.)</span></label>
+                            <textarea name="local_business_{{ $officeKey }}_json" rows="8" style="font-family: monospace;"
+                                class="input-box-md @error('local_business_' . $officeKey . '_json') input-invalid @enderror">{{ old('local_business_' . $officeKey . '_json', $setting->{'local_business_' . $officeKey . '_json'}) }}</textarea>
+                            @error('local_business_' . $officeKey . '_json') <span class="input-error">{{ $message }}</span> @enderror
+                        </div>
+                    @endforeach
 
                 </div>
             </div>

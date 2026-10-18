@@ -5,9 +5,6 @@
 
 @section('web-head')
 @include('web.common.keyword-page-style')
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","serviceType":"TMT Bus Advertising","provider":{"@type":"Organization","name":"Krishna Outdoor"},"areaServed":{"@type":"City","name":"Thane"},"name":"TMT Bus Advertising in Thane","description":"Full and partial branding advertising on TMT buses operated by Thane Municipal Transport across Thane and the greater Mumbai region."}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is TMT bus advertising?","acceptedAnswer":{"@type":"Answer","text":"TMT bus advertising is advertising placed on buses operated by Thane Municipal Transport (TMT), covering routes across Thane and connecting areas of the greater Mumbai region."}},{"@type":"Question","name":"Why advertise on TMT buses instead of Mumbai city buses?","acceptedAnswer":{"@type":"Answer","text":"Thane is a fast-growing residential and commercial market that is less saturated with outdoor advertising than central Mumbai, so a TMT bus campaign often achieves stronger share of attention for a lower cost than competing for space in a more crowded market."}},{"@type":"Question","name":"What formats are available for TMT bus advertising?","acceptedAnswer":{"@type":"Answer","text":"Krishna Outdoor offers both full branding, which wraps the entire bus exterior, and partial branding such as side or back panels, letting brands choose based on budget and desired visibility."}},{"@type":"Question","name":"How many TMT buses does Krishna Outdoor have advertising rights on?","acceptedAnswer":{"@type":"Answer","text":"Krishna Outdoor holds advertising rights on 350+ TMT buses serving Thane and surrounding areas."}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://krishnaoutdoor.in/"},{"@type":"ListItem","position":2,"name":"Transit Media","item":"https://krishnaoutdoor.in/media/transit"},{"@type":"ListItem","position":3,"name":"TMT Bus Advertising Thane","item":"https://krishnaoutdoor.in/tmt-bus-advertising-thane"}]}</script>
 @endsection
 
 @section('web-section')
@@ -79,24 +76,12 @@
 
 <section class="kw-section kw-section-alt"><div class="kw-inner">
     <h2 class="kw-h2">Frequently asked <em>questions</em></h2>
-    <div class="kw-faq">
-        <details open>
-            <summary>What is TMT bus advertising?</summary>
-            <p>TMT bus advertising is advertising placed on buses operated by Thane Municipal Transport (TMT), covering routes across Thane and connecting areas of the greater Mumbai region.</p>
-        </details>
-        <details>
-            <summary>Why advertise on TMT buses instead of Mumbai city buses?</summary>
-            <p>Thane is a fast-growing residential and commercial market that is less saturated with outdoor advertising than central Mumbai, so a TMT bus campaign often achieves stronger share of attention for a lower cost than competing for space in a more crowded market.</p>
-        </details>
-        <details>
-            <summary>What formats are available for TMT bus advertising?</summary>
-            <p>Krishna Outdoor offers both full branding, which wraps the entire bus exterior, and partial branding such as side or back panels, letting brands choose based on budget and desired visibility.</p>
-        </details>
-        <details>
-            <summary>How many TMT buses does Krishna Outdoor have advertising rights on?</summary>
-            <p>Krishna Outdoor holds advertising rights on 350+ TMT buses serving Thane and surrounding areas.</p>
-        </details>
-    </div>
+    @include('web.common.faq', ['faqs' => [
+        ['q' => 'What is TMT bus advertising?', 'a' => 'TMT bus advertising is advertising placed on buses operated by Thane Municipal Transport (TMT), covering routes across Thane and connecting areas of the greater Mumbai region.'],
+        ['q' => 'Why advertise on TMT buses instead of Mumbai city buses?', 'a' => 'Thane is a fast-growing residential and commercial market that is less saturated with outdoor advertising than central Mumbai, so a TMT bus campaign often achieves stronger share of attention for a lower cost than competing for space in a more crowded market.'],
+        ['q' => 'What formats are available for TMT bus advertising?', 'a' => 'Krishna Outdoor offers both full branding, which wraps the entire bus exterior, and partial branding such as side or back panels, letting brands choose based on budget and desired visibility.'],
+        ['q' => 'How many TMT buses does Krishna Outdoor have advertising rights on?', 'a' => 'Krishna Outdoor holds advertising rights on 350+ TMT buses serving Thane and surrounding areas.'],
+    ]])
 </div></section>
 
 <section class="cta" id="contact">

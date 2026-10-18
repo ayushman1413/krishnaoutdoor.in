@@ -4,63 +4,8 @@
 @section('nav', 'contact')
 
 @section('web-head')
-    <script type="application/ld+json">
-    {
-        "@context":"https://schema.org",
-        "@type":"BreadcrumbList",
-        "itemListElement":[
-            {
-                "@type":"ListItem",
-                "position":1,
-                "name":"Home",
-                "item":"https://krishnaoutdoor.in/"
-            },
-            {
-                "@type":"ListItem",
-                "position":2,
-                "name":"Enquire Now",
-                "item":"https://krishnaoutdoor.in/enquire"
-            }
-        ]
-    }
-    </script>
 
-    <script type="application/ld+json">
-    {
-        "@context":"https://schema.org",
-        "@type":"LocalBusiness",
-        "name":"Krishna Outdoor",
-        "url":"https://krishnaoutdoor.in/enquire",
-        "telephone":"+91 98796 16411",
-        "email":"info@krishnaoutdoor.in",
-        "address":{
-            "@type":"PostalAddress",
-            "streetAddress":"Aakanksha Complex, 403-404, Netaji Rd, nr. Railway Crossing, opposite Andani Hyper Market, Muslim Society, Navrangpura",
-            "addressLocality":"Ahmedabad",
-            "postalCode":"380009",
-            "addressRegion":"Gujarat",
-            "addressCountry":"IN"
-        }
-    }
-    </script>
 
-    <script type="application/ld+json">
-    {
-        "@context":"https://schema.org",
-        "@type":"LocalBusiness",
-        "name":"Krishna Outdoor - Mumbai Office",
-        "url":"https://krishnaoutdoor.in/contact",
-        "telephone":"+91 99200 11574",
-        "address":{
-            "@type":"PostalAddress",
-            "streetAddress":"701, 702 Morya Blue Moon, Next to Moniginis Cake Factory, Off New Link Road, Opp. Citi Mall, Andheri West",
-            "addressLocality":"Mumbai",
-            "postalCode":"400053",
-            "addressRegion":"Maharashtra",
-            "addressCountry":"IN"
-        }
-    }
-    </script>
 @endsection
 
 

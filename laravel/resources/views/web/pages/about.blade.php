@@ -87,7 +87,6 @@
 
 @media(prefers-reduced-motion:reduce){.about-reveal,.about-hero-copy,.about-image img,.leader-card{transition:none!important;animation:none!important}}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://krishnaoutdoor.in/"},{"@type":"ListItem","position":2,"name":"About Us","item":"https://krishnaoutdoor.in/about"}]}</script>
 <style id="final-button-banner-cleanup">
 .btn,.small-btn,.outline-btn,.kr-btn,.ow-btn,.media-btn,.network-btn,.network-card-link,.kr-office-btn,.about-btn,.footer-campaign,.service-next,.tab,.nav-cta,.experience-link{border-radius:6px!important;clip-path:none!important}
 .btn::before,.btn::after,.small-btn::before,.small-btn::after,.outline-btn::before,.outline-btn::after,.kr-btn::before,.kr-btn::after,.ow-btn::before,.ow-btn::after,.media-btn::before,.media-btn::after,.network-btn::before,.network-btn::after,.network-card-link::before,.network-card-link::after,.kr-office-btn::before,.kr-office-btn::after,.about-btn::before,.about-btn::after,.footer-campaign::before,.footer-campaign::after,.nav-cta::before,.nav-cta::after{border-radius:inherit!important;clip-path:none!important}

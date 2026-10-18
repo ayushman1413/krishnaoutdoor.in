@@ -26,7 +26,6 @@
 @media(max-width:640px){.ow-hero{min-height:590px}.ow-hero-inner{width:90%;padding:100px 0 40px}.ow-hero h1{font-size:52px}.ow-hero-copy{font-size:13px}.ow-work{padding:42px 0 55px}.ow-section-head{display:block}.ow-section-head p{margin-top:15px}.ow-grid{grid-template-columns:1fr;gap:15px}.ow-card-media{height:230px}.ow-video-content{padding:35px 24px}.ow-video h3{font-size:38px}.ow-video-badge{right:20px;bottom:20px}.ow-cta-inner{min-height:330px;display:block;padding:55px 0}.ow-cta .ow-btn{margin-top:25px}.ow-filter-inner{width:100%}.ow-filter button{padding:0 15px}.ow-filter button .ico{width:27px;height:27px}.ow-title{font-size:43px}}
 @media(prefers-reduced-motion:reduce){.ow-reveal,.ow-card,.ow-card-media img,.ow-btn,.ow-btn span,.ow-arrow,.ow-cta-bg{transition:none!important;animation:none!important}}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://krishnaoutdoor.in/"},{"@type":"ListItem","position":2,"name":"Our Work","item":"https://krishnaoutdoor.in/our-work"}]}</script>
 <style id="final-button-banner-cleanup">
 .btn,.small-btn,.outline-btn,.kr-btn,.ow-btn,.media-btn,.network-btn,.network-card-link,.kr-office-btn,.about-btn,.footer-campaign,.service-next,.tab,.nav-cta,.experience-link{border-radius:6px!important;clip-path:none!important}
 .btn::before,.btn::after,.small-btn::before,.small-btn::after,.outline-btn::before,.outline-btn::after,.kr-btn::before,.kr-btn::after,.ow-btn::before,.ow-btn::after,.media-btn::before,.media-btn::after,.network-btn::before,.network-btn::after,.network-card-link::before,.network-card-link::after,.kr-office-btn::before,.kr-office-btn::after,.about-btn::before,.about-btn::after,.footer-campaign::before,.footer-campaign::after,.nav-cta::before,.nav-cta::after{border-radius:inherit!important;clip-path:none!important}
@@ -73,6 +72,7 @@
 @endforelse
 
 </div>
+@php \App\Services\SchemaBuilder::addVideo('showcase'); @endphp
 <div class="ow-video ow-reveal"><video autoplay="" loop="" muted="" playsinline="" preload="metadata"><source src="{{ asset('assets/videos/work-showcase.mp4') }}" type="video/mp4"/></video><div class="ow-video-content"><div class="ow-tag">THE WORK IN MOTION</div><h3>REAL MEDIA.<br/><em>REAL MOMENTUM.</em></h3><p>Our portfolio should showcase how brands have used different media opportunities to create visibility across markets and audiences.</p><a class="ow-btn" href="{{ route('view.contact') }}">Talk To Our Team <span>→</span></a></div><div class="ow-video-badge"><i></i> CAMPAIGN SHOWCASE</div></div>
 </div></section>
 <section class="ow-cta"><div class="ow-cta-bg"></div><div class="ow-cta-inner ow-reveal"><div><div class="ow-tag">LET’S CREATE WHAT’S NEXT</div><h2>VISIBILITY IN ACTION.</h2><p>Explore selected campaigns and see how brands have used outdoor, transit and integrated media to connect with audiences in the places that matter.</p></div><a class="ow-btn" href="{{ route('view.contact') }}">Talk to Our Media Team <span>→</span></a></div></section>

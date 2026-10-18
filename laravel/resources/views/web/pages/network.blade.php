@@ -4,7 +4,6 @@
 @section('nav', 'network')
 
 @section('web-head')
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://krishnaoutdoor.in/"},{"@type":"ListItem","position":2,"name":"Our Network","item":"https://krishnaoutdoor.in/our-network"}]}</script>
 <style id="network-hover-final-clean">
 /* Final Network map interaction + responsive placement */
 .network-reference-page .network-map-wrap{position:relative;overflow:visible!important;}

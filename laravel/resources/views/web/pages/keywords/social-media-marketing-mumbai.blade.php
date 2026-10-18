@@ -5,9 +5,6 @@
 
 @section('web-head')
 @include('web.common.keyword-page-style')
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","serviceType":"Social Media Marketing","provider":{"@type":"Organization","name":"Krishna Outdoor"},"areaServed":{"@type":"City","name":"Mumbai"},"name":"Social Media Marketing in Mumbai","description":"Social media marketing services in Mumbai covering strategy, content, paid social advertising and reporting, designed to pair with local train and bus transit campaigns."}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does Krishna Outdoor approach social media marketing for Mumbai brands?","acceptedAnswer":{"@type":"Answer","text":"We start from how fast Mumbai's audience moves and scrolls, building content calendars and paid social plans that match that pace, rather than a slower-paced approach borrowed from a different city."}},{"@type":"Question","name":"Can social media marketing be paired with local train or BEST bus advertising in Mumbai?","acceptedAnswer":{"@type":"Answer","text":"Yes. A branded local train or BEST bus already puts your creative in front of commuters across the city; social content built around that same campaign keeps the message visible after they've stepped off the train or bus, extending the campaign's life beyond the physical commute."}},{"@type":"Question","name":"What does a Mumbai social media marketing package include?","acceptedAnswer":{"@type":"Answer","text":"It includes platform strategy, content creation, paid social advertising and ongoing performance reporting, scoped to the density and pace of Mumbai's digital audience across Instagram, Facebook, LinkedIn and YouTube."}},{"@type":"Question","name":"Is social media marketing available independently of an outdoor campaign in Mumbai?","acceptedAnswer":{"@type":"Answer","text":"Yes, it can be run as a standalone digital service, though many Mumbai brands choose to combine it with transit advertising for a connected on-the-ground and online presence."}},{"@type":"Question","name":"How much does social media marketing cost in Mumbai?","acceptedAnswer":{"@type":"Answer","text":"Cost is driven by how many platforms you run, the volume of content produced each month, and your paid advertising budget. Share your goals and current social presence and we'll recommend a package sized to your budget."}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://krishnaoutdoor.in/"},{"@type":"ListItem","position":2,"name":"Services","item":"https://krishnaoutdoor.in/services"},{"@type":"ListItem","position":3,"name":"Social Media Marketing Mumbai","item":"https://krishnaoutdoor.in/social-media-marketing-mumbai"}]}</script>
 @endsection
 
 @section('web-section')
@@ -79,28 +76,13 @@
 
 <section class="kw-section kw-section-alt"><div class="kw-inner">
     <h2 class="kw-h2">Frequently asked <em>questions</em></h2>
-    <div class="kw-faq">
-        <details open>
-            <summary>How does Krishna Outdoor approach social media marketing for Mumbai brands?</summary>
-            <p>We start from how fast Mumbai's audience moves and scrolls, building content calendars and paid social plans that match that pace, rather than a slower-paced approach borrowed from a different city.</p>
-        </details>
-        <details>
-            <summary>Can social media marketing be paired with local train or BEST bus advertising in Mumbai?</summary>
-            <p>Yes. A branded local train or BEST bus already puts your creative in front of commuters across the city; social content built around that same campaign keeps the message visible after they've stepped off the train or bus, extending the campaign's life beyond the physical commute.</p>
-        </details>
-        <details>
-            <summary>What does a Mumbai social media marketing package include?</summary>
-            <p>It includes platform strategy, content creation, paid social advertising and ongoing performance reporting, scoped to the density and pace of Mumbai's digital audience across Instagram, Facebook, LinkedIn and YouTube.</p>
-        </details>
-        <details>
-            <summary>Is social media marketing available independently of an outdoor campaign in Mumbai?</summary>
-            <p>Yes, it can be run as a standalone digital service, though many Mumbai brands choose to combine it with transit advertising for a connected on-the-ground and online presence.</p>
-        </details>
-        <details>
-            <summary>How much does social media marketing cost in Mumbai?</summary>
-            <p>Cost is driven by how many platforms you run, the volume of content produced each month, and your paid advertising budget. Share your goals and current social presence and we'll recommend a package sized to your budget.</p>
-        </details>
-    </div>
+    @include('web.common.faq', ['faqs' => [
+        ['q' => 'How does Krishna Outdoor approach social media marketing for Mumbai brands?', 'a' => 'We start from how fast Mumbai\'s audience moves and scrolls, building content calendars and paid social plans that match that pace, rather than a slower-paced approach borrowed from a different city.'],
+        ['q' => 'Can social media marketing be paired with local train or BEST bus advertising in Mumbai?', 'a' => 'Yes. A branded local train or BEST bus already puts your creative in front of commuters across the city; social content built around that same campaign keeps the message visible after they\'ve stepped off the train or bus, extending the campaign\'s life beyond the physical commute.'],
+        ['q' => 'What does a Mumbai social media marketing package include?', 'a' => 'It includes platform strategy, content creation, paid social advertising and ongoing performance reporting, scoped to the density and pace of Mumbai\'s digital audience across Instagram, Facebook, LinkedIn and YouTube.'],
+        ['q' => 'Is social media marketing available independently of an outdoor campaign in Mumbai?', 'a' => 'Yes, it can be run as a standalone digital service, though many Mumbai brands choose to combine it with transit advertising for a connected on-the-ground and online presence.'],
+        ['q' => 'How much does social media marketing cost in Mumbai?', 'a' => 'Cost is driven by how many platforms you run, the volume of content produced each month, and your paid advertising budget. Share your goals and current social presence and we\'ll recommend a package sized to your budget.'],
+    ]])
 </div></section>
 
 <section class="cta" id="contact">

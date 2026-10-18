@@ -1,7 +1,6 @@
 @extends('web.layouts.app')
 
 @section('web-head')
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://krishnaoutdoor.in/"},{"@type":"ListItem","position":2,"name":"Careers","item":"https://krishnaoutdoor.in/careers"}]}</script>
 @endsection
 
 @section('web-section')

@@ -287,6 +287,11 @@ Route::get('/category/{slug}', function ($slug) {
     // so it must not already carry the site name.
     $featuredImage = pathinfo((string) $category->cover_image, PATHINFO_EXTENSION) === 'mp4' ? $category->thumbnail_image : $category->cover_image;
     $seo = \App\Services\SeoResolver::forModel($category, $category->name, strip_tags((string) $category->summary), $featuredImage);
+    \App\Services\SchemaBuilder::setBreadcrumbs(array_values(array_filter([
+        ['name' => 'Media Solutions', 'url' => route('view.services')],
+        $category->parent_category ? ['name' => $category->parent_category->name, 'url' => url('/' . $category->parent_category->slug)] : null,
+        ['name' => $category->name, 'url' => $seo->canonicalUrl],
+    ])));
 
     return view('web.pages.child-category', [
         'category' => $category,
@@ -324,6 +329,10 @@ Route::get('/{slug}', function ($slug) {
     // so it must not already carry the site name.
     $featuredImage = pathinfo((string) $category->cover_image, PATHINFO_EXTENSION) === 'mp4' ? $category->thumbnail_image : $category->cover_image;
     $seo = \App\Services\SeoResolver::forModel($category, $category->name, strip_tags((string) $category->summary), $featuredImage);
+    \App\Services\SchemaBuilder::setBreadcrumbs([
+        ['name' => 'Media Solutions', 'url' => route('view.services')],
+        ['name' => $category->name, 'url' => $seo->canonicalUrl],
+    ]);
 
     return view('web.pages.parent-category', [
         'category' => $category,

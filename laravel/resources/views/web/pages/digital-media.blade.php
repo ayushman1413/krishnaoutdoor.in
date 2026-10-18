@@ -7,40 +7,8 @@
 
 @include('web.common.keyword-page-style')
 
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "serviceType": "Digital Out-of-Home (DOOH) Advertising",
-    "provider": {"@type": "Organization", "name": "Krishna Outdoor"},
-    "areaServed": {"@type": "City", "name": "Ahmedabad"},
-    "name": "Digital Out-of-Home (DOOH) Advertising in Ahmedabad",
-    "description": "Dynamic digital billboards and screens across prime Ahmedabad locations."
-}
-</script>
 
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-        {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://krishnaoutdoor.in/"
-        },
-        {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Digital Media",
-            "item": "https://krishnaoutdoor.in/media/digital"
-        }
-    ]
-}
-</script>
 
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is DOOH advertising?","acceptedAnswer":{"@type":"Answer","text":"Digital Out-of-Home (DOOH) advertising displays content on digital billboards and screens, allowing dynamic creative, scheduled campaigns and real-time updates instead of a single static print."}},{"@type":"Question","name":"Where are Krishna Outdoor's DOOH screens located in Ahmedabad?","acceptedAnswer":{"@type":"Answer","text":"Our digital billboards and screens are placed across prime, high-traffic locations in Ahmedabad for maximum audience reach."}},{"@type":"Question","name":"What are the benefits of DOOH over traditional hoardings?","acceptedAnswer":{"@type":"Answer","text":"DOOH allows dynamic creative changes, dayparting (different ads at different times), faster campaign turnaround and the ability to run multiple brands or messages on the same screen."}},{"@type":"Question","name":"How do I book a DOOH campaign in Ahmedabad?","acceptedAnswer":{"@type":"Answer","text":"Share your target locations, campaign dates and creative requirements, and our team will share available screens with rates and specifications."}}]}</script>
 
 @endsection
 
@@ -317,24 +285,12 @@
     ========================== -->
     <section class="kw-section kw-section-alt"><div class="kw-inner">
         <h2 class="kw-h2">Frequently asked <em>questions</em></h2>
-        <div class="kw-faq">
-            <details open>
-                <summary>What is DOOH advertising?</summary>
-                <p>Digital Out-of-Home (DOOH) advertising displays content on digital billboards and screens, allowing dynamic creative, scheduled campaigns and real-time updates instead of a single static print.</p>
-            </details>
-            <details>
-                <summary>Where are Krishna Outdoor's DOOH screens located in Ahmedabad?</summary>
-                <p>Our digital billboards and screens are placed across prime, high-traffic locations in Ahmedabad for maximum audience reach.</p>
-            </details>
-            <details>
-                <summary>What are the benefits of DOOH over traditional hoardings?</summary>
-                <p>DOOH allows dynamic creative changes, dayparting (different ads at different times), faster campaign turnaround and the ability to run multiple brands or messages on the same screen.</p>
-            </details>
-            <details>
-                <summary>How do I book a DOOH campaign in Ahmedabad?</summary>
-                <p>Share your target locations, campaign dates and creative requirements, and our team will share available screens with rates and specifications.</p>
-            </details>
-        </div>
+        @include('web.common.faq', ['faqs' => [
+            ['q' => 'What is DOOH advertising?', 'a' => 'Digital Out-of-Home (DOOH) advertising displays content on digital billboards and screens, allowing dynamic creative, scheduled campaigns and real-time updates instead of a single static print.'],
+            ['q' => 'Where are Krishna Outdoor\'s DOOH screens located in Ahmedabad?', 'a' => 'Our digital billboards and screens are placed across prime, high-traffic locations in Ahmedabad for maximum audience reach.'],
+            ['q' => 'What are the benefits of DOOH over traditional hoardings?', 'a' => 'DOOH allows dynamic creative changes, dayparting (different ads at different times), faster campaign turnaround and the ability to run multiple brands or messages on the same screen.'],
+            ['q' => 'How do I book a DOOH campaign in Ahmedabad?', 'a' => 'Share your target locations, campaign dates and creative requirements, and our team will share available screens with rates and specifications.'],
+        ]])
     </div></section>
 
 

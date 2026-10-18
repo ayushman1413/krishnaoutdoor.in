@@ -29,17 +29,7 @@
         <meta name="twitter:image" content="{{ $seo->twitterImage() }}">
     @endif
 
-    @if ($seo->organizationSchemaJson())
-        <script type="application/ld+json">{!! $seo->organizationSchemaJson() !!}</script>
-    @endif
-
-    @if ($seo->websiteSchemaJson())
-        <script type="application/ld+json">{!! $seo->websiteSchemaJson() !!}</script>
-    @endif
-
-    @if ($seo->serviceSchemaJson())
-        <script type="application/ld+json">{!! $seo->serviceSchemaJson() !!}</script>
-    @endif
+    <script type="application/ld+json">{!! \App\Services\SchemaBuilder::json($seo) !!}</script>
 
     @if ($seo->schemaJson())
         <script type="application/ld+json">{!! $seo->schemaJson() !!}</script>

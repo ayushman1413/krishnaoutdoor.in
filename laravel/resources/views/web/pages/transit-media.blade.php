@@ -5,13 +5,6 @@
 
 @section('web-head')
 @include('web.common.keyword-page-style')
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Service","serviceType":"Transit Media Advertising","provider":{"@type":"Organization","name":"Krishna Outdoor"},"areaServed":[{"@type":"City","name":"Mumbai"},{"@type":"State","name":"Gujarat"}],"name":"Transit Advertising Agency in Mumbai & Gujarat","description":"Advertising on Mumbai local trains, BEST and TMT buses, plus GSRTC and AMTS buses in Gujarat."}
-</script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://krishnaoutdoor.in/"},{"@type":"ListItem","position":2,"name":"Transit Media","item":"https://krishnaoutdoor.in/media/transit"}]}
-</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which transit media options does Krishna Outdoor offer?","acceptedAnswer":{"@type":"Answer","text":"We offer advertising on Mumbai local trains (Western and Central lines), BEST and TMT buses in Mumbai and Thane, plus GSRTC and AMTS buses across Gujarat."}},{"@type":"Question","name":"How many bus advertising rights does Krishna Outdoor hold?","acceptedAnswer":{"@type":"Answer","text":"We hold rights on 7000+ GSRTC buses, 900+ AMTS buses in Ahmedabad, 400+ BEST buses in Mumbai and 350+ TMT buses in Thane."}},{"@type":"Question","name":"What formats are available for bus and train advertising?","acceptedAnswer":{"@type":"Answer","text":"Formats include full-wrap, side-panel and back-panel bus branding, plus exterior formats on Mumbai local trains, depending on the operator and route."}},{"@type":"Question","name":"How far in advance should I book transit advertising?","acceptedAnswer":{"@type":"Answer","text":"Popular routes and high-visibility buses or trains can book out in advance, so we recommend enquiring a few weeks ahead of your planned campaign start."}}]}</script>
 @endsection
 
 @section('web-section')
@@ -178,24 +171,12 @@
 <!-- CTA -->
 <section class="kw-section kw-section-alt"><div class="kw-inner">
     <h2 class="kw-h2">Frequently asked <em>questions</em></h2>
-    <div class="kw-faq">
-        <details open>
-            <summary>Which transit media options does Krishna Outdoor offer?</summary>
-            <p>We offer advertising on Mumbai local trains (Western and Central lines), BEST and TMT buses in Mumbai and Thane, plus GSRTC and AMTS buses across Gujarat.</p>
-        </details>
-        <details>
-            <summary>How many bus advertising rights does Krishna Outdoor hold?</summary>
-            <p>We hold rights on 7000+ GSRTC buses, 900+ AMTS buses in Ahmedabad, 400+ BEST buses in Mumbai and 350+ TMT buses in Thane.</p>
-        </details>
-        <details>
-            <summary>What formats are available for bus and train advertising?</summary>
-            <p>Formats include full-wrap, side-panel and back-panel bus branding, plus exterior formats on Mumbai local trains, depending on the operator and route.</p>
-        </details>
-        <details>
-            <summary>How far in advance should I book transit advertising?</summary>
-            <p>Popular routes and high-visibility buses or trains can book out in advance, so we recommend enquiring a few weeks ahead of your planned campaign start.</p>
-        </details>
-    </div>
+    @include('web.common.faq', ['faqs' => [
+        ['q' => 'Which transit media options does Krishna Outdoor offer?', 'a' => 'We offer advertising on Mumbai local trains (Western and Central lines), BEST and TMT buses in Mumbai and Thane, plus GSRTC and AMTS buses across Gujarat.'],
+        ['q' => 'How many bus advertising rights does Krishna Outdoor hold?', 'a' => 'We hold rights on 7000+ GSRTC buses, 900+ AMTS buses in Ahmedabad, 400+ BEST buses in Mumbai and 350+ TMT buses in Thane.'],
+        ['q' => 'What formats are available for bus and train advertising?', 'a' => 'Formats include full-wrap, side-panel and back-panel bus branding, plus exterior formats on Mumbai local trains, depending on the operator and route.'],
+        ['q' => 'How far in advance should I book transit advertising?', 'a' => 'Popular routes and high-visibility buses or trains can book out in advance, so we recommend enquiring a few weeks ahead of your planned campaign start.'],
+    ]])
 </div></section>
 
 <section class="cta" id="contact">

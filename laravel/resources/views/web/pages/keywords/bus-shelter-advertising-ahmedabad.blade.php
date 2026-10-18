@@ -5,9 +5,6 @@
 
 @section('web-head')
 @include('web.common.keyword-page-style')
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","serviceType":"Bus Shelter Advertising","provider":{"@type":"Organization","name":"Krishna Outdoor"},"areaServed":{"@type":"City","name":"Ahmedabad"},"name":"Bus Shelter Advertising in Ahmedabad","description":"Backlit bus shelter advertising at bus stops across Ahmedabad, offering eye-level visibility to waiting commuters."}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much does bus shelter advertising cost in Ahmedabad?","acceptedAnswer":{"@type":"Answer","text":"Bus shelter advertising cost depends on the location of the shelter, panel size and booking duration. Shelters on busy commercial roads or near markets and colleges cost more than quieter residential stops. Share your target area and we'll share relevant shelters with indicative rates."}},{"@type":"Question","name":"Which bus shelter locations are available in Ahmedabad?","acceptedAnswer":{"@type":"Answer","text":"Krishna Outdoor has backlit bus shelter advertising rights at 400+ locations across Ahmedabad, spanning commercial corridors, residential neighbourhoods and areas near markets, colleges and offices. Tell us your target audience and we'll recommend shelters that match."}},{"@type":"Question","name":"Can I combine bus shelter advertising with AMTS bus advertising?","acceptedAnswer":{"@type":"Answer","text":"Yes. Many brands pair bus shelters with AMTS bus advertising to layer a campaign — the moving buses build broad city-wide recall while the shelters reinforce the message at the exact points where commuters stop and have time to read it."}},{"@type":"Question","name":"Why is bus shelter advertising effective for dwell-time exposure?","acceptedAnswer":{"@type":"Answer","text":"Unlike a bus or car passing in a few seconds, people standing at a bus shelter are a captive audience for several minutes while they wait, giving backlit shelter panels far longer effective viewing time than most other outdoor formats."}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://krishnaoutdoor.in/"},{"@type":"ListItem","position":2,"name":"OOH Media","item":"https://krishnaoutdoor.in/media/ooh"},{"@type":"ListItem","position":3,"name":"Bus Shelter Advertising Ahmedabad","item":"https://krishnaoutdoor.in/bus-shelter-advertising-ahmedabad"}]}</script>
 @endsection
 
 @section('web-section')
@@ -74,24 +71,12 @@
 
 <section class="kw-section kw-section-alt"><div class="kw-inner">
     <h2 class="kw-h2">Frequently asked <em>questions</em></h2>
-    <div class="kw-faq">
-        <details open>
-            <summary>How much does bus shelter advertising cost in Ahmedabad?</summary>
-            <p>Bus shelter advertising cost depends on the location of the shelter, panel size and booking duration. Shelters on busy commercial roads or near markets and colleges cost more than quieter residential stops. Share your target area and we'll share relevant shelters with indicative rates.</p>
-        </details>
-        <details>
-            <summary>Which bus shelter locations are available in Ahmedabad?</summary>
-            <p>Krishna Outdoor has backlit bus shelter advertising rights at 400+ locations across Ahmedabad, spanning commercial corridors, residential neighbourhoods and areas near markets, colleges and offices. Tell us your target audience and we'll recommend shelters that match.</p>
-        </details>
-        <details>
-            <summary>Can I combine bus shelter advertising with AMTS bus advertising?</summary>
-            <p>Yes. Many brands pair bus shelters with AMTS bus advertising to layer a campaign — the moving buses build broad city-wide recall while the shelters reinforce the message at the exact points where commuters stop and have time to read it.</p>
-        </details>
-        <details>
-            <summary>Why is bus shelter advertising effective for dwell-time exposure?</summary>
-            <p>Unlike a bus or car passing in a few seconds, people standing at a bus shelter are a captive audience for several minutes while they wait, giving backlit shelter panels far longer effective viewing time than most other outdoor formats.</p>
-        </details>
-    </div>
+    @include('web.common.faq', ['faqs' => [
+        ['q' => 'How much does bus shelter advertising cost in Ahmedabad?', 'a' => 'Bus shelter advertising cost depends on the location of the shelter, panel size and booking duration. Shelters on busy commercial roads or near markets and colleges cost more than quieter residential stops. Share your target area and we\'ll share relevant shelters with indicative rates.'],
+        ['q' => 'Which bus shelter locations are available in Ahmedabad?', 'a' => 'Krishna Outdoor has backlit bus shelter advertising rights at 400+ locations across Ahmedabad, spanning commercial corridors, residential neighbourhoods and areas near markets, colleges and offices. Tell us your target audience and we\'ll recommend shelters that match.'],
+        ['q' => 'Can I combine bus shelter advertising with AMTS bus advertising?', 'a' => 'Yes. Many brands pair bus shelters with AMTS bus advertising to layer a campaign — the moving buses build broad city-wide recall while the shelters reinforce the message at the exact points where commuters stop and have time to read it.'],
+        ['q' => 'Why is bus shelter advertising effective for dwell-time exposure?', 'a' => 'Unlike a bus or car passing in a few seconds, people standing at a bus shelter are a captive audience for several minutes while they wait, giving backlit shelter panels far longer effective viewing time than most other outdoor formats.'],
+    ]])
 </div></section>
 
 <section class="cta" id="contact">

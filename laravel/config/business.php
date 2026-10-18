@@ -62,6 +62,28 @@ return [
 
     ],
 
+    // VideoObject schema for the site's self-hosted videos. Paths are
+    // relative to the site root.
+    'videos' => [
+        'hero' => [
+            'name' => 'Krishna Outdoor – outdoor advertising in Ahmedabad',
+            'description' => 'Home page hero video showing outdoor advertising sites and hoardings by Krishna Outdoor.',
+            'thumbnail' => '/assets/images/hero/hero-desktop-poster.webp',
+            'content' => '/assets/videos/hero-desktop.mp4',
+            // TODO: date the video was first published (YYYY-MM-DD). Google
+            // requires uploadDate for video rich results.
+            'upload_date' => null,
+        ],
+        'showcase' => [
+            'name' => 'Krishna Outdoor campaign showcase',
+            'description' => 'Showcase of outdoor and transit advertising campaigns delivered by Krishna Outdoor.',
+            'thumbnail' => '/assets/images/hero/work-showcase-poster.webp',
+            'content' => '/assets/videos/work-showcase.mp4',
+            // TODO: date the video was first published (YYYY-MM-DD).
+            'upload_date' => null,
+        ],
+    ],
+
     'social' => [
         'https://www.facebook.com/krishnaoutdoorofficial/',
         'https://www.instagram.com/krishnaoutdoorofficial/',
