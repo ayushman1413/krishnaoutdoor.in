@@ -3,7 +3,7 @@
     $chatOffice = \App\Services\SeoResolver::officeFor($seo ?? null);
 @endphp
 
-<button aria-label="Open Krishna AI assistant" aria-controls="chatPanel" aria-expanded="false" class="chatbot" id="chatbot" type="button">
+<button aria-label="Open Krishna AI assistant" aria-controls="chatPanel" aria-expanded="false" class="chatbot" id="chatbot" type="button" data-chat-src="{{ \App\Services\Asset::url('js/chat.min.js') }}">
 <span aria-hidden="true" class="cute-robot">
 <span class="robot-antenna"></span>
 <span class="robot-head">

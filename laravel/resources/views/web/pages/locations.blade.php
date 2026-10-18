@@ -11,7 +11,7 @@
 @section('web-section')
 <main>
 <section class="hero media-detail-hero dyn-hero" id="home">
-<div class="media-detail-hero-bg"><img alt="{{ $city }}" decoding="async" loading="eager" src="{{ asset('assets/images/shared-night-city-background.png') }}"/></div>
+<div class="media-detail-hero-bg"><img fetchpriority="high" srcset="{{ asset('assets/images/shared-night-city-background-800w.webp') }} 800w, {{ asset('assets/images/shared-night-city-background.webp') }} 1600w" sizes="100vw" alt="{{ $city }}" decoding="async" loading="eager" src="{{ asset('assets/images/shared-night-city-background.webp') }}"/></div>
 <div class="hero-overlay"></div><div class="hero-grid"></div><div class="hero-noise"></div>
 <div class="container hero-inner reveal"><h1>{{ strtoupper($city) }}<br/><em>LOCATIONS.</em></h1></div>
 </section>

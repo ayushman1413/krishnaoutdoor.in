@@ -32,11 +32,14 @@ function trackConversion(action, label) { window.koTrack(action, { event_label: 
 @endif
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet"/>
+{{-- Web fonts load without blocking first paint (font-display: swap). --}}
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Oswald:wght@500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
+<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet"/></noscript>
 
-<link rel="stylesheet" href="{{ url('/css/style.css') }}">
-<link rel="stylesheet" href="{{ url('/css/home-style-sync.css') }}">
-<link rel="stylesheet" href="{{ url('/css/kr-laravel.css') }}">
+{{-- Per-template CSS bundle built by `npm run build:css` (tools/build-css.mjs)
+     from css/style.css + css/home-style-sync.css + css/kr-laravel.css. --}}
+@php $cssBundle = trim($__env->yieldContent('css-bundle')) ?: 'site'; @endphp
+<link rel="stylesheet" href="{{ \App\Services\Asset::url('css/bundle-' . $cssBundle . '.min.css') }}">
 
 <link rel="icon" type="image/png" sizes="64x64" href="{{ url('/favicon.png') }}">
 <link rel="shortcut icon" href="{{ url('/favicon.ico') }}">
@@ -64,9 +67,9 @@ window.KR_ROUTES = {
   careers: @json(route('view.careers')), enquire: @json(route('view.contact'))
 };
 </script>
-<script defer="defer" src="{{ asset('js/main.js') }}?v={{ @filemtime(public_path('js/main.js')) }}"></script>
-<script defer="defer" src="{{ asset('js/kr-laravel.js') }}?v={{ @filemtime(public_path('js/kr-laravel.js')) }}"></script>
-<script defer="defer" src="{{ asset('js/tracking.js') }}?v={{ @filemtime(public_path('js/tracking.js')) }}"></script>
+<script defer="defer" src="{{ \App\Services\Asset::url('js/main.min.js') }}"></script>
+<script defer="defer" src="{{ \App\Services\Asset::url('js/kr-laravel.min.js') }}"></script>
+<script defer="defer" src="{{ \App\Services\Asset::url('js/tracking.min.js') }}"></script>
 @yield('web-script')
 @if (session('message'))
 <script>

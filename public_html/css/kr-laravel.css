@@ -317,3 +317,51 @@
 /* Breadcrumb links: darker red and underlined so they are distinguishable
    from the surrounding text without relying on colour alone. */
 .kw-crumbs a{color:#c4161d!important;text-decoration:underline!important;text-underline-offset:2px}
+
+/* ------------------------------------------------------------------
+   Compositor-only animations. Each @keyframes below replaces the
+   earlier one of the same name (the last definition wins) so the effect
+   stays but only transform/opacity change, instead of repainting
+   box-shadow, left, width, background-position, filter or r each frame.
+   ------------------------------------------------------------------ */
+/* Light sweeps: same travel as the old left:-45%→140% / -30%→130%,
+   expressed relative to the element's own width (34% / 25% of parent). */
+@keyframes stackLight{0%{transform:translateX(-29%) skewX(-18deg);opacity:0}15%{opacity:1}55%,100%{transform:translateX(515%) skewX(-18deg);opacity:0}}
+@keyframes networkBtnSweep{0%,55%{transform:translateX(0) rotate(20deg)}100%{transform:translateX(640%) rotate(20deg)}}
+/* Growing underline: scale a 120px bar instead of animating width 55→120px. */
+.experience-copy h2:after{width:120px;transform-origin:left center}
+@keyframes sinceLine{0%,100%{transform:scaleX(.46);opacity:.65}50%{transform:scaleX(1);opacity:1}}
+/* Drifting hero grids: the pattern repeats every 110px / 70px, so moving
+   the whole (slightly oversized) layer by one period loops seamlessly. */
+.about-hero-grid{inset:-110px -110px 0 0!important}
+@keyframes aboutGridDrift{from{transform:translate3d(0,0,0)}to{transform:translate3d(-110px,110px,0)}}
+.media-hero-grid{inset:-70px 0 0 -70px}
+@keyframes mediaGridMove{from{transform:translate3d(0,0,0)}to{transform:translate3d(70px,70px,0)}}
+/* Entrance animations: keep the slide and fade, drop the blur. */
+@keyframes aboutInHomeStyle{from{opacity:0;transform:translate3d(0,24px,0)}to{opacity:1;transform:none}}
+@keyframes networkTitleIn{from{opacity:0;transform:translateY(35px)}to{opacity:1;transform:none}}
+/* Map city ring: scale instead of animating the SVG r attribute (8→20 on r=10). */
+.network-reference-page .city-ring{transform-box:fill-box;transform-origin:center}
+@keyframes networkMapPulse{0%{transform:scale(.8);opacity:.75}100%{transform:scale(2);opacity:0}}
+/* Online dots: keep the blink (opacity), static glow from the element's own box-shadow. */
+@keyframes chatPing{0%,100%{opacity:1}50%{opacity:.55}}
+@keyframes krChatOnline{0%,100%{opacity:1}50%{opacity:.55}}
+@keyframes krSimpleOnline{0%,100%{opacity:1}50%{opacity:.45}}
+@keyframes krBotOnline{0%,100%{opacity:1}50%{opacity:.45}}
+@keyframes livePulse{0%,100%{opacity:1}50%{opacity:.65}}
+/* Expanding rings: drawn by a pseudo-element that scales and fades. */
+@keyframes clientPulse{0%,100%{opacity:1}}
+.client-pulse::after{content:"";position:absolute;inset:0;border-radius:50%;background:#e51b2350;animation:koRingClient 2.2s infinite;pointer-events:none}
+@keyframes mapMarker{0%,100%{opacity:1}}
+.map-pulse::after{content:"";position:absolute;inset:-2px;border-radius:50%;background:#e51b2355;animation:koRingMap 2.4s ease-out infinite;pointer-events:none;z-index:-1}
+/* 35px spread around a 10px dot = 8x; 18px around a 22px marker = 2.6x. */
+@keyframes koRingClient{0%{transform:scale(1);opacity:1}70%,100%{transform:scale(8);opacity:0}}
+@keyframes koRingMap{0%{transform:scale(1);opacity:1}70%,100%{transform:scale(2.6);opacity:0}}
+/* Soft glows: keep the element's static shadow, no per-frame repaint. */
+@keyframes guidePulse{0%,100%{opacity:1}}
+@keyframes aboutRedPulse{0%,100%{opacity:1}}
+@keyframes krChatGlow{0%,100%{opacity:1}}
+@keyframes krChatHeroGlow{0%,100%{opacity:1}}
+@keyframes krAiOrb{0%,100%{opacity:1}}
+@keyframes krPanelGlow{0%,100%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.client-pulse::after,.map-pulse::after{animation:none;opacity:0}}

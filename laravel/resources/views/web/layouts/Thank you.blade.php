@@ -28,7 +28,7 @@
         <a class="ty-home-btn" href="{{ route('view.home') }}"><span>⌂</span> Back to Home <b>→</b></a>
       </div>
       <div class="ty-visual">
-        <img src="{{ asset('assets/images/thankyou-envelope.png') }}" alt="Message sent successfully" loading="eager">
+        <img fetchpriority="high" src="{{ asset('assets/images/thankyou-envelope.webp') }}" alt="Message sent successfully" loading="eager">
       </div>
     </div>
 

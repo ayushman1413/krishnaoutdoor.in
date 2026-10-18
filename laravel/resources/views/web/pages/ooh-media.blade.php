@@ -1,5 +1,7 @@
 @extends('web.layouts.app')
 
+@section('css-bundle', 'media')
+
 @section('body-class', 'inner-page')
 @section('nav', 'services')
 
@@ -15,7 +17,7 @@
 <section class="hero media-detail-hero media-detail-hero-ooh" id="home">
 
     <div class="media-detail-hero-bg">
-        <img
+        <img fetchpriority="high" srcset="{{ asset('assets/images/ooh/ahmedabad-hoarding-location-02-800w.webp') }} 800w, {{ asset('assets/images/ooh/ahmedabad-hoarding-location-02.webp') }} 1600w" sizes="100vw"
             alt="Hoardings on a city road in Ahmedabad – Krishna Outdoor"
             decoding="async"
             loading="eager"
@@ -136,7 +138,7 @@
         <div class="about-scene reveal">
 
             <div class="about-frame f1">
-                <img
+                <img srcset="{{ asset('assets/images/ooh/ahmedabad-hoarding-location-03-800w.webp') }} 800w, {{ asset('assets/images/ooh/ahmedabad-hoarding-location-03.webp') }} 1600w" sizes="(max-width: 760px) 100vw, 50vw"
                     alt="Hoardings at a road junction in Ahmedabad – Krishna Outdoor"
                     decoding="async"
                     loading="lazy"
@@ -145,7 +147,7 @@
             </div>
 
             <div class="about-frame f2">
-                <img
+                <img srcset="{{ asset('assets/images/ooh/ahmedabad-hoarding-location-04-800w.webp') }} 800w, {{ asset('assets/images/ooh/ahmedabad-hoarding-location-04.webp') }} 1600w" sizes="(max-width: 760px) 100vw, 50vw"
                     alt="Hoardings above a busy road in Ahmedabad – Krishna Outdoor"
                     decoding="async"
                     loading="lazy"
@@ -163,7 +165,7 @@
             </div>
 
             <div class="about-frame f3">
-                <img
+                <img srcset="{{ asset('assets/images/ooh/ahmedabad-hoarding-location-05-800w.webp') }} 800w, {{ asset('assets/images/ooh/ahmedabad-hoarding-location-05.webp') }} 1600w" sizes="(max-width: 760px) 100vw, 50vw"
                     alt="Hoardings at a busy road junction in Ahmedabad – Krishna Outdoor"
                     decoding="async"
                     loading="lazy"

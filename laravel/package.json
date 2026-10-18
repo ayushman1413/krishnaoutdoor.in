@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node tools/build-css.mjs && node tools/build-js.mjs",
+    "build:css": "node tools/build-css.mjs",
+    "build:js": "node tools/build-js.mjs"
+  },
+  "devDependencies": {
+    "clean-css": "5.3.3",
+    "purgecss": "6.0.0",
+    "terser": "5.36.0"
+  }
+}

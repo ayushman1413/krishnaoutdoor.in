@@ -1116,34 +1116,30 @@ img, video, iframe, svg { max-width:100%; }
 }
 
 /* ===== FINAL TYPOGRAPHY + HEADER LOGO + NETWORK STAT UPDATE ===== */
+/* Aileron (CC0), self-hosted from @fontsource/aileron; previously loaded from a third-party GitHub Pages site. */
 @font-face{
   font-family:'Aileron';
-  src:url('https://reinhart1010.github.io/aileron/fonts/Aileron-Regular.woff2') format('woff2'),
-      url('https://reinhart1010.github.io/aileron/fonts/Aileron-Regular.woff') format('woff');
+  src:url('../assets/fonts/aileron/aileron-latin-400-normal.woff2') format('woff2');
   font-weight:400;font-style:normal;font-display:swap;
 }
 @font-face{
   font-family:'Aileron';
-  src:url('https://reinhart1010.github.io/aileron/fonts/Aileron-SemiBold.woff2') format('woff2'),
-      url('https://reinhart1010.github.io/aileron/fonts/Aileron-SemiBold.woff') format('woff');
+  src:url('../assets/fonts/aileron/aileron-latin-600-normal.woff2') format('woff2');
   font-weight:500;font-style:normal;font-display:swap;
 }
 @font-face{
   font-family:'Aileron';
-  src:url('https://reinhart1010.github.io/aileron/fonts/Aileron-Bold.woff2') format('woff2'),
-      url('https://reinhart1010.github.io/aileron/fonts/Aileron-Bold.woff') format('woff');
+  src:url('../assets/fonts/aileron/aileron-latin-700-normal.woff2') format('woff2');
   font-weight:700;font-style:normal;font-display:swap;
 }
 @font-face{
   font-family:'Aileron';
-  src:url('https://reinhart1010.github.io/aileron/fonts/Aileron-Heavy.woff2') format('woff2'),
-      url('https://reinhart1010.github.io/aileron/fonts/Aileron-Heavy.woff') format('woff');
+  src:url('../assets/fonts/aileron/aileron-latin-800-normal.woff2') format('woff2');
   font-weight:800;font-style:normal;font-display:swap;
 }
 @font-face{
   font-family:'Aileron';
-  src:url('https://reinhart1010.github.io/aileron/fonts/Aileron-Black.woff2') format('woff2'),
-      url('https://reinhart1010.github.io/aileron/fonts/Aileron-Black.woff') format('woff');
+  src:url('../assets/fonts/aileron/aileron-latin-800-normal.woff2') format('woff2'); /* no 900 cut in the self-hosted set; Heavy is closest */
   font-weight:900;font-style:normal;font-display:swap;
 }
 
@@ -5735,9 +5731,9 @@ h1,h2,h3,h4,p,small,a,button,span{overflow-wrap:anywhere;}
   .network-reference-page .network-map{width:90vw!important;max-width:390px!important;}
   .network-reference-page .mumbai-office-tooltip{width:175px!important;max-width:calc(100vw - 24px)!important;}
 }
-\n\n/* FINAL REQUEST — Mumbai office hover: desktop LEFT of map, mobile BELOW map */\n@media (min-width:681px){\n  .network-reference-page .network-map-wrap{overflow:visible!important;}\n  .network-reference-page .mumbai-office-tooltip{z-index:40!important;}\n  .network-reference-page .mumbai-office-connector{z-index:39!important;}\n  .network-reference-page .mumbai-office-connector::after{\n    right:-1px!important;\n    left:auto!important;\n    top:50%!important;\n    border-top:4px solid transparent!important;\n    border-bottom:4px solid transparent!important;\n    border-left:0!important;\n    border-right:7px solid var(--red)!important;\n    transform:translateY(-50%)!important;\n  }\n}\n@media (max-width:680px){\n  .network-reference-page .network-map-wrap{\n    overflow:visible!important;\n    min-height:0!important;\n    padding-bottom:0;\n  }\n  .network-reference-page .mumbai-office-tooltip{\n    left:50%!important;\n    top:calc(100% + 18px)!important;\n    transform:translateY(8px);\n    z-index:40!important;\n    width:min(188px,calc(100vw - 24px))!important;\n    max-width:min(188px,calc(100vw - 24px))!important;\n  }\n  .network-reference-page .mumbai-office-tooltip.is-visible{\n    transform:translateX(0) translateY(0)!important;\n  }\n  .network-reference-page .mumbai-office-connector{z-index:39!important;}\n  .network-reference-page .mumbai-office-connector::after{\n    right:-1px!important;\n    left:auto!important;\n    top:50%!important;\n    border-left:4px solid transparent!important;\n    border-right:4px solid transparent!important;\n    border-top:7px solid var(--red)!important;\n    border-bottom:0!important;\n    transform:translateY(-50%)!important;\n  }\n}\n
+/* Removed: a block pasted with literal "\n" text. Browsers never applied it, and it also
+   swallowed the rule that followed it, so both are dropped here with no visual change. */
 /* Final requested compact office + leadership alignment */
-.kr-office{height:500px!important;min-height:0!important}
 .kr-office img{height:500px!important;min-height:0!important}
 .leader-copy .leader-role{font:600 10px/1.35 Inter,sans-serif;color:#6b7280;margin:0 0 7px;text-transform:none;letter-spacing:.02em}
 .about-lead-head>p{display:none!important}
@@ -11018,7 +11014,7 @@ body.inner-page .stats-strip + .cta{
     box-shadow:0 2px 8px rgba(0,0,0,.10)!important;
   }
   .header .site-logo img{
-    content:url('../assets/images/header-logo.png')!important;
+    content:url('../assets/images/header-logo.webp')!important;
     background:transparent!important;
     width:108px!important;
     max-width:108px!important;
@@ -11161,7 +11157,7 @@ body.inner-page .stats-strip + .cta{
     z-index:1403!important;
   }
   .header .site-logo img{
-    content:url('../assets/images/header-logo.png')!important;
+    content:url('../assets/images/header-logo.webp')!important;
     width:108px!important;
     max-width:108px!important;
     max-height:34px!important;
@@ -12012,15 +12008,10 @@ body.kr-image-lightbox-open{overflow:hidden!important;}
     content:none!important;
   }
 }
-\n\n/* FINAL MOBILE MEDIA ARROW — single arrow only.\n   Remove every pseudo-arrow from the control and use its single real text glyph. */\n@media (max-width:760px){\n  .header .nav .nav-dropdown > .nav-arrow,\n  .header .nav .nav-dropdown > .nav-arrow:hover,\n  .header .nav .nav-dropdown > .nav-arrow:focus,\n  .header .nav .nav-dropdown > .nav-arrow:focus-visible,\n  .header .nav .nav-dropdown.open > .nav-arrow{\n    display:flex!important;\n    align-items:center!important;\n    justify-content:flex-end!important;\n    justify-self:end!important;\n    width:28px!important;\n    min-width:28px!important;\n    max-width:28px!important;\n    height:44px!important;\n    min-height:44px!important;\n    padding:0 4px 0 0!important;\n    margin:0!important;\n    border:0!important;\n    background:transparent!important;\n    box-shadow:none!important;\n    color:#444!important;\n    font-size:9px!important;\n    font-family:Arial,sans-serif!important;\n    line-height:1!important;\n    transform:none!important;\n    overflow:visible!important;\n  }\n  .header .nav .nav-dropdown > .nav-arrow::before,\n  .header .nav .nav-dropdown > .nav-arrow::after{\n    content:none!important;\n    display:none!important;\n  }\n}\n
+/* Removed: a block pasted with literal "\n" text. Browsers never applied it, and it also
+   swallowed the rule that followed it, so both are dropped here with no visual change. */
 /* FINAL — ONE Media Solutions arrow only (desktop + mobile).
    The real button stays the only control; remove its text glyph and draw one CSS triangle. */
-.header .nav .nav-dropdown > .nav-arrow{
-  font-size:0!important;
-  text-indent:-9999px!important;
-  overflow:hidden!important;
-  box-sizing:border-box!important;
-}
 .header .nav .nav-dropdown > .nav-arrow::before{
   content:""!important;
   display:block!important;

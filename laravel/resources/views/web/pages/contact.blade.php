@@ -1,5 +1,7 @@
 @extends('web.layouts.app')
 
+@section('css-bundle', 'contact')
+
 @section('body-class', '')
 @section('nav', 'contact')
 
@@ -63,7 +65,7 @@
 
             <div class="kr-enquiry-visual">
 
-                <img
+                <img srcset="{{ asset('assets/images/media/home-360-outdoor-hoarding-poster-800w.webp') }} 800w, {{ asset('assets/images/media/home-360-outdoor-hoarding-poster.webp') }} 1800w" sizes="(max-width: 760px) 100vw, 50vw"
                     alt="Krishna Outdoor backlit hoarding at night"
                     decoding="async"
                     loading="lazy"
@@ -104,7 +106,7 @@
 
                 </div>
 
-                <img
+                <img srcset="{{ asset('assets/images/shared-night-city-background-800w.webp') }} 800w, {{ asset('assets/images/shared-night-city-background.webp') }} 1600w" sizes="(max-width: 760px) 100vw, 50vw"
                     alt=""
                     decoding="async"
                     loading="lazy"

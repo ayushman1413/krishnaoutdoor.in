@@ -1,5 +1,7 @@
 @extends('web.layouts.app')
 
+@section('css-bundle', 'keyword')
+
 @section('body-class', 'inner-page')
 @section('nav', '')
 
@@ -16,7 +18,7 @@
 
 <section class="hero media-detail-hero media-detail-hero-ooh" id="home">
     <div class="media-detail-hero-bg">
-        <img alt="" decoding="async" loading="eager" fetchpriority="high" src="{{ asset('assets/images/media/home-360-outdoor-hoarding-night-01.webp') }}"/>
+        <img srcset="{{ asset('assets/images/media/home-360-outdoor-hoarding-night-01-800w.webp') }} 800w, {{ asset('assets/images/media/home-360-outdoor-hoarding-night-01.webp') }} 1800w" sizes="100vw" alt="" decoding="async" loading="eager" fetchpriority="high" src="{{ asset('assets/images/media/home-360-outdoor-hoarding-night-01.webp') }}"/>
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-grid"></div>

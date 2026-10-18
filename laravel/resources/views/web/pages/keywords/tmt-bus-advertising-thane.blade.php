@@ -1,5 +1,7 @@
 @extends('web.layouts.app')
 
+@section('css-bundle', 'keyword')
+
 @section('body-class', 'inner-page')
 @section('nav', 'services')
 
@@ -13,7 +15,7 @@
 <section class="hero media-detail-hero media-detail-hero-ooh" id="home">
     <div class="media-detail-hero-bg">
         {{-- TODO: this hero photo is a Mumbai BEST bus; swap for a high-res TMT (Thane) bus photo when one is available. --}}
-        <img alt="Branded city bus – transit advertising by Krishna Outdoor" decoding="async" loading="eager" fetchpriority="high" src="{{ asset('assets/images/transit/city-bus-advertising-02.webp') }}"/>
+        <img srcset="{{ asset('assets/images/transit/city-bus-advertising-02-800w.webp') }} 800w, {{ asset('assets/images/transit/city-bus-advertising-02.webp') }} 1600w" sizes="100vw" alt="Branded city bus – transit advertising by Krishna Outdoor" decoding="async" loading="eager" fetchpriority="high" src="{{ asset('assets/images/transit/city-bus-advertising-02.webp') }}"/>
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-grid"></div>

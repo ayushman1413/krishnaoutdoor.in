@@ -1,5 +1,7 @@
 @extends('web.layouts.app')
 
+@section('css-bundle', 'keyword')
+
 @section('body-class', 'inner-page')
 @section('nav', 'services')
 
@@ -12,7 +14,7 @@
 
 <section class="hero media-detail-hero media-detail-hero-ooh" id="home">
     <div class="media-detail-hero-bg">
-        <img alt="Hoarding advertising in Ahmedabad" decoding="async" loading="eager" src="{{ asset('assets/images/ooh/ahmedabad-hoarding-location-02.jpeg') }}"/>
+        <img fetchpriority="high" srcset="{{ asset('assets/images/ooh/ahmedabad-hoarding-location-02-800w.webp') }} 800w, {{ asset('assets/images/ooh/ahmedabad-hoarding-location-02.webp') }} 1600w" sizes="100vw" alt="Hoarding advertising in Ahmedabad" decoding="async" loading="eager" src="{{ asset('assets/images/ooh/ahmedabad-hoarding-location-02.webp') }}"/>
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-grid"></div>
@@ -63,7 +65,7 @@
         </div>
 
         <div class="kw-img">
-            <img alt="Backlit hoarding on a main road in Ahmedabad" decoding="async" loading="lazy" src="{{ asset('assets/images/ooh/ahmedabad-hoarding-location-04.jpeg') }}"/>
+            <img srcset="{{ asset('assets/images/ooh/ahmedabad-hoarding-location-04-800w.webp') }} 800w, {{ asset('assets/images/ooh/ahmedabad-hoarding-location-04.webp') }} 1600w" sizes="(max-width: 760px) 100vw, 50vw" alt="Backlit hoarding on a main road in Ahmedabad" decoding="async" loading="lazy" src="{{ asset('assets/images/ooh/ahmedabad-hoarding-location-04.webp') }}"/>
         </div>
     </div>
 

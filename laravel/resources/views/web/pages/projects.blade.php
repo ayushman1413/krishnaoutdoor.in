@@ -1,5 +1,7 @@
 @extends('web.layouts.app')
 
+@section('css-bundle', 'projects')
+
 @section('body-class', 'inner-page')
 @section('nav', 'projects')
 
@@ -40,7 +42,7 @@
 
 <main class="ow-page">
 <section class="ow-hero">
-<img alt="Jewellery brand hoarding above a busy traffic junction – Krishna Outdoor" class="ow-hero-media" decoding="async" loading="eager" src="{{ asset('assets/images/work/ooh-hoarding-campaign-01.webp') }}"/><div class="ow-hero-shade"></div><div class="ow-hero-grid"></div>
+<img fetchpriority="high" srcset="{{ asset('assets/images/work/ooh-hoarding-campaign-01-800w.webp') }} 800w, {{ asset('assets/images/work/ooh-hoarding-campaign-01.webp') }} 1600w" sizes="100vw" alt="Jewellery brand hoarding above a busy traffic junction – Krishna Outdoor" class="ow-hero-media" decoding="async" loading="eager" src="{{ asset('assets/images/work/ooh-hoarding-campaign-01.webp') }}"/><div class="ow-hero-shade"></div><div class="ow-hero-grid"></div>
 <div class="ow-hero-inner ow-reveal"><div><div class="ow-kicker">OUR WORK / CAMPAIGNS</div><h1 class="seo-h1">{{ $seo->h1Override() ?: 'Outdoor Advertising Campaigns by Krishna Outdoor' }}</h1><p class="seo-h1-slogan">VISIBILITY IN <em>ACTION.</em></p><p class="ow-hero-copy">Every campaign begins with a different objective. Some brands want scale. Some want local market visibility. Some want repeated commuter exposure. Others want an integrated campaign across multiple media.</p><p class="ow-hero-copy">Explore selected campaigns and see how brands have used outdoor, transit and integrated media to connect with audiences in the places that matter.</p><a class="ow-btn" href="#campaigns">EXPLORE OUR CAMPAIGNS <span>→</span></a></div>
 </section>
 <section class="ow-filter" id="campaigns"><div class="ow-filter-inner">
@@ -59,7 +61,7 @@
     $mediaLabel = $mediaLabels[$campaign->media_type] ?? ucfirst($campaign->media_type);
     $campaignAlt = $campaign->image_alt ?: "{$mediaLabel} campaign in {$campaign->city}";
 @endphp
-<article class="ow-card ow-reveal" data-market="{{ $market }}" data-type="{{ $campaign->media_type }}" data-search="{{ strtolower($campaign->name.' '.$campaign->tagline.' '.$campaign->media_type.' '.$campaign->city) }}"><div class="ow-card-media">@if ($campaign->image)<img alt="{{ $campaignAlt }}" decoding="async" loading="lazy" src="{{ asset('storage/'.$campaign->image) }}" onerror="this.src='{{ asset('assets/images/work/ooh-hoarding-campaign-01.webp') }}'"/>@else<img alt="{{ $campaignAlt }}" decoding="async" loading="lazy" src="{{ asset('assets/images/work/ooh-hoarding-campaign-01.webp') }}"/>@endif<span class="ow-loc">{{ strtoupper($campaign->city) }}</span></div><div class="ow-card-body"><div class="ow-brand">
+<article class="ow-card ow-reveal" data-market="{{ $market }}" data-type="{{ $campaign->media_type }}" data-search="{{ strtolower($campaign->name.' '.$campaign->tagline.' '.$campaign->media_type.' '.$campaign->city) }}"><div class="ow-card-media">@if ($campaign->image)<img alt="{{ $campaignAlt }}" decoding="async" loading="lazy" src="{{ asset('storage/'.$campaign->image) }}" onerror="this.src='{{ asset('assets/images/work/ooh-hoarding-campaign-01.webp') }}'"/>@else<img srcset="{{ asset('assets/images/work/ooh-hoarding-campaign-01-800w.webp') }} 800w, {{ asset('assets/images/work/ooh-hoarding-campaign-01.webp') }} 1600w" sizes="(max-width: 760px) 100vw, 50vw" alt="{{ $campaignAlt }}" decoding="async" loading="lazy" src="{{ asset('assets/images/work/ooh-hoarding-campaign-01.webp') }}"/>@endif<span class="ow-loc">{{ strtoupper($campaign->city) }}</span></div><div class="ow-card-body"><div class="ow-brand">
     <div class="ow-brand-info">
         <div>
             <b>{{ $campaign->name }}</b>

@@ -1,5 +1,7 @@
 @extends('web.layouts.app')
 
+@section('css-bundle', 'keyword')
+
 @section('body-class', 'inner-page')
 @section('nav', 'services')
 
@@ -12,7 +14,7 @@
 
 <section class="hero media-detail-hero media-detail-hero-ooh" id="home">
     <div class="media-detail-hero-bg">
-        <img alt="Social media marketing in Ahmedabad" decoding="async" loading="eager" src="{{ asset('assets/images/ooh-media-category-image.png') }}"/>
+        <img fetchpriority="high" srcset="{{ asset('assets/images/ooh-media-category-image-800w.webp') }} 800w, {{ asset('assets/images/ooh-media-category-image.webp') }} 1200w" sizes="100vw" alt="Social media marketing in Ahmedabad" decoding="async" loading="eager" src="{{ asset('assets/images/ooh-media-category-image.webp') }}"/>
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-grid"></div>
@@ -62,7 +64,7 @@
         </div>
 
         <div class="kw-img">
-            <img alt="City bus mock-up in Krishna Outdoor livery" decoding="async" loading="lazy" src="{{ asset('assets/images/services-media-category-03.png') }}"/>
+            <img srcset="{{ asset('assets/images/services-media-category-03-800w.webp') }} 800w, {{ asset('assets/images/services-media-category-03.webp') }} 1600w" sizes="(max-width: 760px) 100vw, 50vw" alt="City bus mock-up in Krishna Outdoor livery" decoding="async" loading="lazy" src="{{ asset('assets/images/services-media-category-03.webp') }}"/>
         </div>
     </div>
 

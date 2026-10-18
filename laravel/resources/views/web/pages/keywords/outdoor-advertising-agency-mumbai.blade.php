@@ -1,5 +1,7 @@
 @extends('web.layouts.app')
 
+@section('css-bundle', 'keyword')
+
 @section('body-class', 'inner-page')
 @section('nav', 'services')
 
@@ -12,7 +14,7 @@
 
 <section class="hero media-detail-hero media-detail-hero-ooh" id="home">
     <div class="media-detail-hero-bg">
-        <img alt="Backlit Airtel 5G Plus ad panels at a Mumbai railway station – Krishna Outdoor" decoding="async" loading="eager" src="{{ asset('assets/images/shared-mumbai-local-train-advertising.jpg') }}"/>
+        <img fetchpriority="high" srcset="{{ asset('assets/images/shared-mumbai-local-train-advertising-800w.webp') }} 800w, {{ asset('assets/images/shared-mumbai-local-train-advertising.webp') }} 1600w" sizes="100vw" alt="Backlit Airtel 5G Plus ad panels at a Mumbai railway station – Krishna Outdoor" decoding="async" loading="eager" src="{{ asset('assets/images/shared-mumbai-local-train-advertising.webp') }}"/>
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-grid"></div>
@@ -58,7 +60,7 @@
         </div>
 
         <div class="kw-img">
-            <img alt="Branded BEST bus and Mumbai local train advertising" decoding="async" loading="lazy" src="{{ asset('assets/images/media/home-360-mumbai-train.webp') }}"/>
+            <img srcset="{{ asset('assets/images/media/home-360-mumbai-train-800w.webp') }} 800w, {{ asset('assets/images/media/home-360-mumbai-train.webp') }} 1280w" sizes="(max-width: 760px) 100vw, 50vw" alt="Branded BEST bus and Mumbai local train advertising" decoding="async" loading="lazy" src="{{ asset('assets/images/media/home-360-mumbai-train.webp') }}"/>
         </div>
     </div>
 

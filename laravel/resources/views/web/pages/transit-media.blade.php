@@ -1,5 +1,7 @@
 @extends('web.layouts.app')
 
+@section('css-bundle', 'media')
+
 @section('body-class', 'inner-page')
 @section('nav', 'services')
 
@@ -14,7 +16,7 @@
 <!-- TRANSIT HERO / BANNER -->
 <section class="hero media-detail-hero media-detail-hero-transit" id="home">
     <div class="media-detail-hero-bg">
-        <img
+        <img fetchpriority="high" srcset="{{ asset('assets/images/transit/transit-banner-800w.webp') }} 800w, {{ asset('assets/images/transit/transit-banner.webp') }} 1280w" sizes="100vw"
             alt="Prefr Mushak Loan full-wrap branding on a BEST electric bus in Mumbai – Krishna Outdoor"
             decoding="async"
             loading="eager"
@@ -125,7 +127,7 @@
         <div class="about-scene reveal">
 
             <div class="about-frame f1">
-                <img
+                <img srcset="{{ asset('assets/images/transit/mumbai-local-train-cosmos-bank-01-800w.webp') }} 800w, {{ asset('assets/images/transit/mumbai-local-train-cosmos-bank-01.webp') }} 1600w" sizes="(max-width: 760px) 100vw, 50vw"
                     alt="Cosmos Co-operative Bank branding on Mumbai local train coaches – Krishna Outdoor"
                     decoding="async"
                     loading="lazy"
@@ -134,7 +136,7 @@
             </div>
 
             <div class="about-frame f2">
-                <img
+                <img srcset="{{ asset('assets/images/home/home-f1-800w.webp') }} 800w, {{ asset('assets/images/home/home-f1.webp') }} 1280w" sizes="(max-width: 760px) 100vw, 50vw"
                     alt="GreatWhite Electricals branding on an electric city bus – Krishna Outdoor"
                     decoding="async"
                     loading="lazy"
@@ -152,7 +154,7 @@
             </div>
 
             <div class="about-frame f3">
-             <img
+             <img srcset="{{ asset('assets/images/home/home-360-bus-hd-800w.webp') }} 800w, {{ asset('assets/images/home/home-360-bus-hd.webp') }} 1280w" sizes="(max-width: 760px) 100vw, 50vw"
                   alt="GreatWhite Electricals branding on an electric city bus in Gujarat – Krishna Outdoor"
                   decoding="async"
                   loading="lazy"

@@ -1,5 +1,7 @@
 @extends('web.layouts.app')
 
+@section('css-bundle', 'keyword')
+
 @section('body-class', 'inner-page')
 @section('nav', 'services')
 
@@ -12,7 +14,7 @@
 
 <section class="hero media-detail-hero media-detail-hero-ooh" id="home">
     <div class="media-detail-hero-bg">
-        <img alt="Cosmos Co-operative Bank branding on Mumbai local train coaches – Krishna Outdoor" decoding="async" loading="eager" src="{{ asset('assets/images/transit/mumbai-local-train-cosmos-bank-01.jpeg') }}"/>
+        <img fetchpriority="high" srcset="{{ asset('assets/images/transit/mumbai-local-train-cosmos-bank-01-800w.webp') }} 800w, {{ asset('assets/images/transit/mumbai-local-train-cosmos-bank-01.webp') }} 1600w" sizes="100vw" alt="Cosmos Co-operative Bank branding on Mumbai local train coaches – Krishna Outdoor" decoding="async" loading="eager" src="{{ asset('assets/images/transit/mumbai-local-train-cosmos-bank-01.webp') }}"/>
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-grid"></div>
@@ -57,7 +59,7 @@
         </div>
 
         <div class="kw-img">
-            <img alt="Branded Mumbai local train on Western Railway" decoding="async" loading="lazy" src="{{ asset('assets/images/transit/mumbai-local-train-mushak-loan-02.jpeg') }}"/>
+            <img srcset="{{ asset('assets/images/transit/mumbai-local-train-mushak-loan-02-800w.webp') }} 800w, {{ asset('assets/images/transit/mumbai-local-train-mushak-loan-02.webp') }} 1280w" sizes="(max-width: 760px) 100vw, 50vw" alt="Branded Mumbai local train on Western Railway" decoding="async" loading="lazy" src="{{ asset('assets/images/transit/mumbai-local-train-mushak-loan-02.webp') }}"/>
         </div>
     </div>
 

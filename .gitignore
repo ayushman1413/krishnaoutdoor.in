@@ -3,3 +3,4 @@
 laravel/storage/framework/views/*.php
 laravel/storage/framework/cache/data/*
 laravel/storage/logs/*.log
+laravel/node_modules/

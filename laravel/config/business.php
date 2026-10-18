@@ -66,8 +66,8 @@ return [
     // relative to the site root.
     'videos' => [
         'hero' => [
-            'name' => 'Krishna Outdoor – outdoor advertising in Ahmedabad',
-            'description' => 'Home page hero video showing outdoor advertising sites and hoardings by Krishna Outdoor.',
+            'name' => 'Krishna Outdoor – 360 degree advertising',
+            'description' => 'Brand film: digital billboards, bus and tram advertising and the brands Krishna Outdoor has worked with, ending with the Krishna Outdoor logo.',
             'thumbnail' => '/assets/images/hero/hero-desktop-poster.webp',
             'content' => '/assets/videos/hero-desktop.mp4',
             // TODO: date the video was first published (YYYY-MM-DD). Google
@@ -75,8 +75,8 @@ return [
             'upload_date' => null,
         ],
         'showcase' => [
-            'name' => 'Krishna Outdoor campaign showcase',
-            'description' => 'Showcase of outdoor and transit advertising campaigns delivered by Krishna Outdoor.',
+            'name' => 'Mumbai local train branding campaign',
+            'description' => 'Parul University branding on a Mumbai Central Railway local train, a transit campaign by Krishna Outdoor.',
             'thumbnail' => '/assets/images/hero/work-showcase-poster.webp',
             'content' => '/assets/videos/work-showcase.mp4',
             // TODO: date the video was first published (YYYY-MM-DD).

@@ -1,5 +1,7 @@
 @extends('web.layouts.app')
 
+@section('css-bundle', 'media')
+
 @section('body-class', 'inner-page')
 @section('nav', 'services')
 
@@ -23,7 +25,7 @@
     <section class="hero media-detail-hero media-detail-hero-digital" id="home">
 
         <div class="media-detail-hero-bg">
-            <img
+            <img srcset="{{ asset('assets/images/home/work-1-800w.webp') }} 800w, {{ asset('assets/images/home/work-1.webp') }} 1600w" sizes="100vw"
                 alt="Birdsong real-estate illuminated billboard at night – Krishna Outdoor"
                 decoding="async"
                 loading="eager"
@@ -76,7 +78,7 @@
             <div class="about-scene reveal">
 
                 <div class="about-frame f1">
-                    <img
+                    <img srcset="{{ asset('assets/images/shared-mumbai-local-train-advertising-800w.webp') }} 800w, {{ asset('assets/images/shared-mumbai-local-train-advertising.webp') }} 1600w" sizes="(max-width: 760px) 100vw, 50vw"
                         alt="Backlit Airtel 5G Plus ad panels at a Mumbai railway station – Krishna Outdoor"
                         decoding="async"
                         loading="lazy"
@@ -85,7 +87,7 @@
                 </div>
 
                 <div class="about-frame f2">
-                    <img
+                    <img srcset="{{ asset('assets/images/media/home-360-outdoor-hoarding-night-01-800w.webp') }} 800w, {{ asset('assets/images/media/home-360-outdoor-hoarding-night-01.webp') }} 1800w" sizes="(max-width: 760px) 100vw, 50vw"
                         alt="Godrej 3D washing machine hoarding at a busy market at night – Krishna Outdoor"
                         decoding="async"
                         loading="lazy"
@@ -103,7 +105,7 @@
                 </div>
 
                 <div class="about-frame f3">
-                    <img
+                    <img srcset="{{ asset('assets/images/home/home-360-f2-800w.webp') }} 800w, {{ asset('assets/images/home/home-360-f2.webp') }} 1280w" sizes="(max-width: 760px) 100vw, 50vw"
                         alt="Illuminated large-format billboard at night – Krishna Outdoor"
                         decoding="async"
                         loading="lazy"
@@ -229,12 +231,12 @@
 
 
                     <!-- MAIN IMAGE -->
-                    <img
+                    <img srcset="{{ asset('assets/images/ooh/ahmedabad-hoarding-location-03-800w.webp') }} 800w, {{ asset('assets/images/ooh/ahmedabad-hoarding-location-03.webp') }} 1600w" sizes="(max-width: 760px) 100vw, 50vw"
                         alt="Hoardings at a road junction in Ahmedabad – Krishna Outdoor"
                         decoding="async"
                         id="showcaseImage"
                         loading="lazy"
-                        src="{{ asset('assets/images/ooh/ahmedabad-hoarding-location-03.jpeg') }}"
+                        src="{{ asset('assets/images/ooh/ahmedabad-hoarding-location-03.webp') }}"
                     />
 
 
