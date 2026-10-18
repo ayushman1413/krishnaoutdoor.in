@@ -56,10 +56,11 @@
 
         <div class="media-detail-hero-bg">
             <img
-                alt="Digital billboard advertising campaign"
+                alt="Birdsong real-estate illuminated billboard at night – Krishna Outdoor"
                 decoding="async"
                 loading="eager"
-                src="{{ asset('assets/images/careers-about-image-01.webp') }}"
+                fetchpriority="high"
+                src="{{ asset('assets/images/home/work-1.webp') }}"
             />
         </div>
 
@@ -108,7 +109,7 @@
 
                 <div class="about-frame f1">
                     <img
-                        alt="Digital billboard campaign"
+                        alt="Backlit Airtel 5G Plus ad panels at a Mumbai railway station – Krishna Outdoor"
                         decoding="async"
                         loading="lazy"
                         src="{{ asset('assets/images/shared-mumbai-local-train-advertising.webp') }}"
@@ -117,7 +118,7 @@
 
                 <div class="about-frame f2">
                     <img
-                        alt="Digital screens across city"
+                        alt="Godrej 3D washing machine hoarding at a busy market at night – Krishna Outdoor"
                         decoding="async"
                         loading="lazy"
                         src="{{ asset('assets/images/media/home-360-outdoor-hoarding-night-01.webp') }}"
@@ -135,10 +136,10 @@
 
                 <div class="about-frame f3">
                     <img
-                        alt="Digital billboard at night"
+                        alt="Illuminated large-format billboard at night – Krishna Outdoor"
                         decoding="async"
                         loading="lazy"
-                        src="{{ asset('assets/images/careers-about-image-01.webp') }}"
+                        src="{{ asset('assets/images/home/home-360-f2.webp') }}"
                     />
                 </div>
 
@@ -261,7 +262,7 @@
 
                     <!-- MAIN IMAGE -->
                     <img
-                        alt="Outdoor advertising campaign"
+                        alt="Hoardings at a road junction in Ahmedabad – Krishna Outdoor"
                         decoding="async"
                         id="showcaseImage"
                         loading="lazy"

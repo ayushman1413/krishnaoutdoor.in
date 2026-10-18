@@ -15,13 +15,19 @@
 
 <section class="hero media-detail-hero media-detail-hero-ooh" id="home">
     <div class="media-detail-hero-bg">
-        <img alt="Mumbai local train advertising" decoding="async" loading="eager" src="{{ asset('assets/images/transit/mumbai-local-train-cosmos-bank-01.jpeg') }}"/>
+        <img alt="Cosmos Co-operative Bank branding on Mumbai local train coaches – Krishna Outdoor" decoding="async" loading="eager" src="{{ asset('assets/images/transit/mumbai-local-train-cosmos-bank-01.jpeg') }}"/>
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-grid"></div>
     <div class="hero-noise"></div>
     <div class="container hero-inner reveal">
-        <h1>MUMBAI LOCAL TRAIN<br/><em>ADVERTISING.</em></h1>
+        <h1>
+        @if ($seo->h1Override())
+            {{ $seo->h1Override() }}
+        @else
+            MUMBAI LOCAL TRAIN<br/><em>ADVERTISING</em>
+        @endif
+        </h1>
     </div>
 </section>
 

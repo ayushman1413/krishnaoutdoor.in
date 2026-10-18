@@ -21,7 +21,13 @@
     <div class="hero-grid"></div>
     <div class="hero-noise"></div>
     <div class="container hero-inner reveal">
-        <h1>SOCIAL MEDIA MARKETING<br/><em>IN MUMBAI.</em></h1>
+        <h1>
+        @if ($seo->h1Override())
+            {{ $seo->h1Override() }}
+        @else
+            SOCIAL MEDIA MARKETING<br/><em>IN MUMBAI</em>
+        @endif
+        </h1>
     </div>
 </section>
 
@@ -59,7 +65,7 @@
         </div>
 
         <div class="kw-img">
-            <img alt="Mumbai transit and digital campaign visibility" decoding="async" loading="lazy" src="{{ asset('assets/images/shared-mumbai-local-train-advertising.jpg') }}"/>
+            <img alt="Backlit Airtel 5G Plus ad panels at a Mumbai railway station – Krishna Outdoor" decoding="async" loading="lazy" src="{{ asset('assets/images/shared-mumbai-local-train-advertising.jpg') }}"/>
         </div>
     </div>
 

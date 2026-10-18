@@ -16,13 +16,19 @@
 
 <section class="hero media-detail-hero media-detail-hero-ooh" id="home">
     <div class="media-detail-hero-bg">
-        <img alt="Outdoor advertising agency in Mumbai" decoding="async" loading="eager" src="{{ asset('assets/images/shared-mumbai-local-train-advertising.jpg') }}"/>
+        <img alt="Backlit Airtel 5G Plus ad panels at a Mumbai railway station – Krishna Outdoor" decoding="async" loading="eager" src="{{ asset('assets/images/shared-mumbai-local-train-advertising.jpg') }}"/>
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-grid"></div>
     <div class="hero-noise"></div>
     <div class="container hero-inner reveal">
-        <h1>OUTDOOR ADVERTISING AGENCY<br/><em>IN MUMBAI.</em></h1>
+        <h1>
+        @if ($seo->h1Override())
+            {{ $seo->h1Override() }}
+        @else
+            OUTDOOR ADVERTISING AGENCY<br/><em>IN MUMBAI</em>
+        @endif
+        </h1>
     </div>
 </section>
 

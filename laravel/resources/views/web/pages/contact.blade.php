@@ -119,7 +119,7 @@
             <div class="kr-enquiry-visual">
 
                 <img
-                    alt="Krishna Outdoor outdoor advertising campaign"
+                    alt="Krishna Outdoor backlit hoarding at night"
                     decoding="async"
                     loading="lazy"
                     src="{{ asset('assets/images/media/home-360-outdoor-hoarding-poster.webp') }}"
@@ -160,7 +160,7 @@
                 </div>
 
                 <img
-                    alt="City lights"
+                    alt=""
                     decoding="async"
                     loading="lazy"
                     src="{{ asset('assets/images/shared-night-city-background.webp') }}"

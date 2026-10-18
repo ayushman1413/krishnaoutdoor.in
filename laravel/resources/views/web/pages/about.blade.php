@@ -102,7 +102,7 @@
 
 <main class="about-refresh">
 <section class="about-hero">
-<img alt="Krishna Outdoor billboard campaign" class="about-hero-media" decoding="async" loading="lazy" src="{{ asset('assets/images/work/brand-billboard-campaign-04.webp') }}"/>
+<img alt="Roadside hoardings above city traffic – Krishna Outdoor" class="about-hero-media" decoding="async" loading="lazy" src="{{ asset('assets/images/work/brand-billboard-campaign-04.webp') }}"/>
 <div class="about-hero-grid"></div>
 <div class="about-hero-inner container">
 <div class="about-hero-copy about-reveal in">
@@ -133,13 +133,13 @@
 <a class="about-btn primary" href="{{ route('view.services') }}" style="width:max-content;margin-top:8px">Explore Our Media <span>→</span></a>
 </div>
 <div class="about-collage about-reveal about-delay-1">
-<div class="tile"><img alt="Outdoor billboard campaign" decoding="async" loading="lazy" src="{{ asset('assets/images/ooh/ahmedabad-hoarding-location-05.webp') }}"/><b>Ideas Travel Further</b></div>
-<div class="tile"><img alt="Transit advertising" decoding="async" loading="lazy" src="{{ asset('assets/images/shared-mumbai-local-train-advertising.webp') }}"/><b>Media &amp; Evolves</b></div>
-<div class="tile"><img alt="Bus branding campaign" decoding="async" loading="lazy" src="{{ asset('assets/images/about-f3.webp') }}"/><b>Brands Move With People</b></div>
+<div class="tile"><img alt="Hoardings at a busy road junction in Ahmedabad – Krishna Outdoor" decoding="async" loading="lazy" src="{{ asset('assets/images/ooh/ahmedabad-hoarding-location-05.webp') }}"/><b>Ideas Travel Further</b></div>
+<div class="tile"><img alt="Backlit Airtel 5G Plus ad panels at a Mumbai railway station – Krishna Outdoor" decoding="async" loading="lazy" src="{{ asset('assets/images/shared-mumbai-local-train-advertising.webp') }}"/><b>Media &amp; Evolves</b></div>
+<div class="tile"><img alt="Full-wrap spice brand advertising on a city bus – Krishna Outdoor" decoding="async" loading="lazy" src="{{ asset('assets/images/about-f3.webp') }}"/><b>Brands Move With People</b></div>
 </div>
 </section>
 <section class="about-block">
-<div class="about-image about-reveal"><img alt="Original Ahmedabad bus shelter outdoor advertising" decoding="async" loading="lazy" src="{{ asset('assets/images/about-04.webp') }}"/><span class="image-label">A BROADER<br/>TOMORROW</span></div>
+<div class="about-image about-reveal"><img alt="Kala-Kendra full-wrap advertising on a city bus – Krishna Outdoor" decoding="async" loading="lazy" src="{{ asset('assets/images/about-04.webp') }}"/><span class="image-label">A BROADER<br/>TOMORROW</span></div>
 <div class="about-copybox about-reveal about-delay-1">
 <div class="about-tag">OUR VISION</div>
 <h3>To Be the Advertising Partner<br/>Brands Choose with Confidence.</h3>
@@ -155,10 +155,10 @@
 <p>From outdoor and transit media to print, electronic and digital communication, we bring relevant media possibilities together through one experienced team.</p>
 <p>The objective is simple — clearer planning, easier coordination and stronger brand visibility.</p>
 </div>
-<div class="about-image about-reveal about-delay-1"><img alt="Outdoor advertising at sunset" decoding="async" loading="lazy" src="{{ asset('assets/images/home/work-1.webp') }}"/><span class="image-label">MORE POSSIBILITIES<br/>FOR YOUR BRAND</span></div>
+<div class="about-image about-reveal about-delay-1"><img alt="Birdsong real-estate backlit hoarding at night – Krishna Outdoor" decoding="async" loading="lazy" src="{{ asset('assets/images/home/work-1.webp') }}"/><span class="image-label">MORE POSSIBILITIES<br/>FOR YOUR BRAND</span></div>
 </section>
 <section class="about-strength">
-<div class="about-strength-visual about-reveal"><img alt="Ahmedabad outdoor advertising location" decoding="async" loading="lazy" src="{{ asset('assets/images/ooh/ahmedabad-hoarding-location-06.webp') }}"/></div>
+<div class="about-strength-visual about-reveal"><img alt="Hoarding beside a main road in Ahmedabad – Krishna Outdoor" decoding="async" loading="lazy" src="{{ asset('assets/images/ooh/ahmedabad-hoarding-location-06.webp') }}"/></div>
 <div class="about-strength-copy about-reveal">
 <div class="about-tag">OUR STRENGTH</div>
 <h2>Experience.<br/>Relationships.<br/>Integrated Thinking.</h2>
@@ -188,7 +188,7 @@
 </div>
 </section>
 <section class="about-cta about-reveal">
-<img alt="City outdoor campaign" decoding="async" loading="lazy" src="{{ asset('assets/images/work/digital-billboard-campaign-03.webp') }}"/>
+<img alt="Car brand hoarding above city traffic in Gujarat – Krishna Outdoor" decoding="async" loading="lazy" src="{{ asset('assets/images/work/digital-billboard-campaign-03.webp') }}"/>
 <div class="container">
 <div><div class="about-tag">LET'S CREATE</div><h2>LET'S PUT YOUR BRAND IN THE RIGHT PLACE.</h2><p>Whether you are launching a new product, entering a new market, building brand awareness or planning a large-scale campaign, our team is ready to help you explore the right opportunities.</p></div>
 <a class="about-btn primary" href="{{ route('view.contact') }}">TALK TO OUR TEAM →</a>

@@ -15,13 +15,20 @@
 
 <section class="hero media-detail-hero media-detail-hero-ooh" id="home">
     <div class="media-detail-hero-bg">
-        <img alt="TMT bus advertising in Thane" decoding="async" loading="eager" src="{{ asset('assets/images/transit/city-bus-advertising-02.png') }}"/>
+        {{-- TODO: this hero photo is a Mumbai BEST bus; swap for a high-res TMT (Thane) bus photo when one is available. --}}
+        <img alt="Branded city bus – transit advertising by Krishna Outdoor" decoding="async" loading="eager" fetchpriority="high" src="{{ asset('assets/images/transit/city-bus-advertising-02.webp') }}"/>
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-grid"></div>
     <div class="hero-noise"></div>
     <div class="container hero-inner reveal">
-        <h1>TMT BUS ADVERTISING<br/><em>IN THANE.</em></h1>
+        <h1>
+        @if ($seo->h1Override())
+            {{ $seo->h1Override() }}
+        @else
+            TMT BUS ADVERTISING<br/><em>IN THANE</em>
+        @endif
+        </h1>
     </div>
 </section>
 
@@ -57,7 +64,7 @@
         </div>
 
         <div class="kw-img">
-            <img alt="TMT bus running a route in Thane" decoding="async" loading="lazy" src="{{ asset('assets/images/transit/ahmedabad-bus-advertising-01.png') }}"/>
+            <img alt="Advertising on a TMT city bus in Thane – Krishna Outdoor" decoding="async" loading="lazy" width="301" height="203" src="{{ asset('assets/images/media/tmt-mumbai-bus.webp') }}"/>
         </div>
     </div>
 

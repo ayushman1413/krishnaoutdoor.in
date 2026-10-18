@@ -143,13 +143,13 @@
                         href="{{ route('view.about') }}">DISCOVER OUR STORY <span>→</span></a>
                 </div>
                 <div class="about-scene reveal">
-                    <div class="about-frame f1"><img alt="HD bus advertising campaign" decoding="async" loading="lazy"
+                    <div class="about-frame f1"><img alt="GreatWhite Electricals branding on an electric city bus – Krishna Outdoor" decoding="async" loading="lazy"
                             src="{{ asset('assets/images/home/home-f1.webp') }}" /></div>
-                    <div class="about-frame f2"><img alt="Work campaign billboard advertising" decoding="async"
+                    <div class="about-frame f2"><img alt="Birdsong real-estate backlit hoarding at night – Krishna Outdoor" decoding="async"
                             loading="lazy" src="{{ asset('assets/images/home/home-360-f2.webp') }}" />
                     </div>
                     <div class="year-badge">40+<span>YEARS OF<br />BUILDING BRAND<br />VISIBILITY</span></div>
-                    <div class="about-frame f3"><img alt="Mumbai local train advertising campaign" decoding="async"
+                    <div class="about-frame f3"><img alt="Cosmos Co-operative Bank branding on a Mumbai local train – Krishna Outdoor" decoding="async"
                         loading="lazy"
                         src="{{ asset('assets/images/home/home-360-mumbai-train.webp') }}" /></div>
                    <div class="scan-line"></div>
@@ -277,7 +277,7 @@
                 <div class="showcase-visual-wrap reveal">
                     <div class="showcase-visual-v2" id="showcaseVisual">
                         <div class="visual-topline"><span class="visual-live"><i></i></span></div>
-                        <img alt="Outdoor hoarding advertising at night" decoding="async" id="showcaseImage"
+                        <img alt="Revital branding on a Mumbai local train – Krishna Outdoor" decoding="async" id="showcaseImage"
                             loading="lazy"src="{{ asset('assets/images/ooh-media-category-image.webp') }}" />
                         <div class="showcase-visual-shade"></div>
                         <div class="visual-caption"><small id="showcaseVisualKicker">OOH MEDIA</small><strong
@@ -358,7 +358,7 @@
 
                             <img
                                 src="{{ asset('assets/images/work/brand-billboard-campaign-04.webp') }}"
-                                alt="Outdoor billboard advertising campaign"
+                                alt="Roadside hoardings above city traffic – Krishna Outdoor"
                                 decoding="async"
                                 loading="lazy"
                             />
@@ -376,7 +376,7 @@
 
                             <img
                                 src="{{ asset('assets/images/work/digital-billboard-campaign-03.webp') }}"
-                                alt="Digital billboard advertising campaign"
+                                alt="Car brand hoarding above city traffic in Gujarat – Krishna Outdoor"
                                 decoding="async"
                                 loading="lazy"
                             />
@@ -394,7 +394,7 @@
 
                             <img
                                 src="{{ asset('assets/images/work/ooh-hoarding-campaign-01.webp') }}"
-                                alt="OOH hoarding advertising campaign"
+                                alt="Jewellery brand hoarding above a busy traffic junction – Krishna Outdoor"
                                 decoding="async"
                                 loading="lazy"
                             />
@@ -412,7 +412,7 @@
 
                             <img
                                 src="{{ asset('assets/images/work/outdoor-campaign-02.webp') }}"
-                                alt="Outdoor advertising campaign"
+                                alt="Samsung Galaxy rooftop hoarding above a city road – Krishna Outdoor"
                                 decoding="async"
                                 loading="lazy"
                             />
@@ -430,7 +430,7 @@
 
                             <img
                                 src="{{ asset('assets/images/work/transit-bus-campaign-06.webp') }}"
-                                alt="Transit bus advertising campaign"
+                                alt="Godrej 3D washing machine hoarding at a busy market at night – Krishna Outdoor"
                                 decoding="async"
                                 loading="lazy"
                             />

@@ -21,7 +21,13 @@
     <div class="hero-grid"></div>
     <div class="hero-noise"></div>
     <div class="container hero-inner reveal">
-        <h1>BEST BUS ADVERTISING<br/><em>IN MUMBAI.</em></h1>
+        <h1>
+        @if ($seo->h1Override())
+            {{ $seo->h1Override() }}
+        @else
+            BEST BUS ADVERTISING<br/><em>IN MUMBAI</em>
+        @endif
+        </h1>
     </div>
 </section>
 

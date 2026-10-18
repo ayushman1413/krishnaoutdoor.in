@@ -21,7 +21,13 @@
     <div class="hero-grid"></div>
     <div class="hero-noise"></div>
     <div class="container hero-inner reveal">
-        <h1>SOCIAL MEDIA MARKETING<br/><em>IN AHMEDABAD.</em></h1>
+        <h1>
+        @if ($seo->h1Override())
+            {{ $seo->h1Override() }}
+        @else
+            SOCIAL MEDIA MARKETING<br/><em>IN AHMEDABAD</em>
+        @endif
+        </h1>
     </div>
 </section>
 
@@ -59,7 +65,7 @@
         </div>
 
         <div class="kw-img">
-            <img alt="Brand visibility campaign in Ahmedabad" decoding="async" loading="lazy" src="{{ asset('assets/images/services-media-category-03.png') }}"/>
+            <img alt="City bus mock-up in Krishna Outdoor livery" decoding="async" loading="lazy" src="{{ asset('assets/images/services-media-category-03.png') }}"/>
         </div>
     </div>
 

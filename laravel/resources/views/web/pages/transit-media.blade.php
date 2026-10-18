@@ -22,7 +22,7 @@
 <section class="hero media-detail-hero media-detail-hero-transit" id="home">
     <div class="media-detail-hero-bg">
         <img
-            alt="Ahmedabad bus advertising campaign"
+            alt="Prefr Mushak Loan full-wrap branding on a BEST electric bus in Mumbai – Krishna Outdoor"
             decoding="async"
             loading="eager"
             src="{{ asset('assets/images/transit/transit-banner.webp') }}"
@@ -133,7 +133,7 @@
 
             <div class="about-frame f1">
                 <img
-                    alt="Bus advertising campaign"
+                    alt="Cosmos Co-operative Bank branding on Mumbai local train coaches – Krishna Outdoor"
                     decoding="async"
                     loading="lazy"
                     src="{{ asset('assets/images/transit/mumbai-local-train-cosmos-bank-01.webp') }}"
@@ -142,7 +142,7 @@
 
             <div class="about-frame f2">
                 <img
-                    alt="Train branding campaign"
+                    alt="GreatWhite Electricals branding on an electric city bus – Krishna Outdoor"
                     decoding="async"
                     loading="lazy"
                     src="{{ asset('assets/images/home/home-f1.webp') }}"
@@ -160,7 +160,7 @@
 
             <div class="about-frame f3">
              <img
-                  alt="Transit advertising campaign"
+                  alt="GreatWhite Electricals branding on an electric city bus in Gujarat – Krishna Outdoor"
                   decoding="async"
                   loading="lazy"
                    src="{{ asset('assets/images/home/home-360-bus-hd.webp') }}"

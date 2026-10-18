@@ -21,7 +21,13 @@
     <div class="hero-grid"></div>
     <div class="hero-noise"></div>
     <div class="container hero-inner reveal">
-        <h1>GSRTC BUS ADVERTISING<br/><em>ACROSS GUJARAT.</em></h1>
+        <h1>
+        @if ($seo->h1Override())
+            {{ $seo->h1Override() }}
+        @else
+            GSRTC BUS ADVERTISING<br/><em>ACROSS GUJARAT</em>
+        @endif
+        </h1>
     </div>
 </section>
 

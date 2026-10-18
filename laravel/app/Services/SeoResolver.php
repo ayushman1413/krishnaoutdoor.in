@@ -69,12 +69,34 @@ class SeoResolver
      */
     public function page(): array
     {
-        return $this->routeName ? (config('seo_pages.' . $this->routeName) ?? []) : [];
+        // Route names contain dots, so no config('seo_pages.<route>') lookup.
+        return $this->routeName ? (config('seo_pages')[$this->routeName] ?? []) : [];
     }
 
     public function region(): ?string
     {
         return $this->page()['region'] ?? null;
+    }
+
+    /**
+     * The office whose phone number this page should show (header call
+     * link, chat "Call us"): Mumbai for Mumbai/Thane pages, otherwise the
+     * Ahmedabad head office.
+     */
+    public static function officeFor(?self $seo): array
+    {
+        $key = $seo?->region() === 'mumbai' ? 'mumbai' : 'ahmedabad';
+        return config('business.offices.' . $key);
+    }
+
+    /**
+     * wa.me link from the WhatsApp number in SEO settings, or null while
+     * it has not been set.
+     */
+    public static function whatsappUrl(?SeoSetting $settings): ?string
+    {
+        $digits = preg_replace('/\D+/', '', (string) $settings?->whatsapp_number);
+        return $digits !== '' ? 'https://wa.me/' . $digits : null;
     }
 
     /**

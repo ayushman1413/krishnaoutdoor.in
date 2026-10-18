@@ -23,7 +23,7 @@
 
     <div class="media-detail-hero-bg">
         <img
-            alt="Outdoor hoarding at night"
+            alt="Hoardings on a city road in Ahmedabad – Krishna Outdoor"
             decoding="async"
             loading="eager"
             src="{{ asset('assets/images/ooh/ahmedabad-hoarding-location-02.webp') }}"
@@ -144,7 +144,7 @@
 
             <div class="about-frame f1">
                 <img
-                    alt="Outdoor billboard at night"
+                    alt="Hoardings at a road junction in Ahmedabad – Krishna Outdoor"
                     decoding="async"
                     loading="lazy"
                     src="{{ asset('assets/images/ooh/ahmedabad-hoarding-location-03.webp') }}"
@@ -153,7 +153,7 @@
 
             <div class="about-frame f2">
                 <img
-                    alt="Krishna Outdoor hoarding"
+                    alt="Hoardings above a busy road in Ahmedabad – Krishna Outdoor"
                     decoding="async"
                     loading="lazy"
                     src="{{ asset('assets/images/ooh/ahmedabad-hoarding-location-04.webp') }}"
@@ -171,7 +171,7 @@
 
             <div class="about-frame f3">
                 <img
-                    alt="Outdoor advertising format"
+                    alt="Hoardings at a busy road junction in Ahmedabad – Krishna Outdoor"
                     decoding="async"
                     loading="lazy"
                     src="{{ asset('assets/images/ooh/ahmedabad-hoarding-location-05.webp') }}"
