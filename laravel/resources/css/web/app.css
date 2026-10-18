@@ -1,0 +1,573 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "./swiper.css";
+@import "./magnific-popup.css";
+
+@layer base {
+    html {
+        font-family: 'DM Sans', sans-serif;
+    }
+    body {
+        overflow-x: hidden;
+    }
+    main {
+        overflow: hidden;
+    }
+}
+
+@layer components {
+    .container {
+        @apply sm:max-w-[26rem] md:max-w-[80rem] md:px-2 sm:px-5 self-center;
+    }  
+}
+
+/* Buttons (Start) */
+.btn-ascent-sm {
+    @apply px-4 py-2 border text-xs border-web-ascent bg-web-ascent font-medium text-white relative hover:bg-web-complement hover:border-web-complement hover:text-gray-600 uppercase tracking-wider transition duration-500 ease-in-out hover:ease-in-out rounded-lg
+}
+.btn-ascent-md {
+    @apply px-8 py-3 border text-sm border-web-ascent bg-web-ascent font-medium text-white relative hover:bg-web-complement hover:border-web-complement hover:text-gray-600 uppercase tracking-wider transition duration-500 ease-in-out hover:ease-in-out rounded-lg
+}
+.btn-ascent-lg {
+    @apply px-10 py-4 border text-base border-web-ascent bg-web-ascent font-medium text-white relative hover:bg-web-complement hover:border-web-complement hover:text-gray-600 uppercase tracking-wider transition duration-500 ease-in-out hover:ease-in-out rounded-lg
+}
+.btn-ascent-link-lg {
+    @apply py-3 text-base font-medium text-web-ascent relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-full after:bg-web-ascent uppercase tracking-wider transition duration-500 ease-in-out hover:ease-in-out hover:after:opacity-0 after:transition after:duration-500 after:ease-in-out hover:after:ease-in-out
+}
+.btn-ascent-dark-sm {
+    @apply px-4 py-2 border text-xs border-web-ascent-dark bg-web-ascent-dark font-medium text-white relative hover:bg-web-ascent hover:border-web-ascent uppercase tracking-wider transition duration-500 ease-in-out hover:ease-in-out rounded-lg
+}
+.btn-ascent-dark-md {
+    @apply px-8 py-3 border text-sm border-web-ascent-dark bg-web-ascent-dark font-medium text-white relative hover:bg-web-ascent hover:border-web-ascent uppercase tracking-wider transition duration-500 ease-in-out hover:ease-in-out rounded-lg
+}
+.btn-ascent-dark-lg {
+    @apply px-10 py-4 border text-base border-web-ascent-dark bg-web-ascent-dark font-medium text-white relative hover:bg-web-ascent hover:border-web-ascent uppercase tracking-wider transition duration-500 ease-in-out hover:ease-in-out rounded-lg
+}
+
+.btn-light-sm {
+    @apply px-4 py-2 border text-xs border-gray-100 bg-gray-100 font-medium text-web-ascent-dark relative hover:bg-web-ascent active:bg-web-ascent hover:text-white active:text-white uppercase tracking-wider transition duration-500 ease-in-out hover:ease-in-out rounded-lg
+}
+.btn-light-md {
+    @apply px-8 py-3 border text-sm border-gray-100 bg-gray-100 font-medium text-web-ascent-dark relative hover:bg-web-ascent active:bg-web-ascent hover:text-white active:text-white uppercase tracking-wider transition duration-500 ease-in-out hover:ease-in-out rounded-lg
+}
+.btn-light-lg {
+    @apply px-10 py-4 border text-base border-gray-100 bg-gray-100 font-medium text-web-ascent-dark relative hover:bg-web-ascent active:bg-web-ascent hover:text-white active:text-white uppercase tracking-wider transition duration-500 ease-in-out hover:ease-in-out rounded-lg
+}
+
+button[disabled] {
+    @apply opacity-70
+}
+.link {
+    @apply text-sm font-medium text-web-ascent hover:text-web-ascent-dark transition duration-200 ease-in-out hover:ease-in-out flex items-center justify-center w-fit
+}
+/* Buttons (End) */
+
+/* Input (Start) */
+.input-group {
+    @apply flex flex-col
+}
+.input-box-sm {
+    @apply px-4 py-2 border text-xs outline-web-ascent border-gray-300 font-medium bg-white rounded-lg
+}
+.input-box-md {
+    @apply px-5 py-3 border text-sm outline-web-ascent border-gray-300 font-medium bg-white rounded-lg
+}
+.input-box-lg {
+    @apply px-10 py-4 border text-base outline-web-ascent border-gray-300 font-medium bg-white rounded-lg
+}
+.input-box-sm.input-invalid,
+.input-box-md.input-invalid,
+.input-box-lg.input-invalid {
+    @apply border-red-600
+}
+.input-label {
+    @apply text-xs font-medium text-slate-800 mb-2 text-left
+}
+.input-label em {
+    @apply font-medium text-red-600 not-italic
+}
+.input-error {
+    @apply text-xs font-medium text-red-600 mt-2 text-left
+}
+.input-box-sm.tagify,
+.input-box-md.tagify,
+.input-box-lg.tagify {
+    @apply p-[0.3rem]
+}
+.tagify.tagify--focus {
+    @apply ring-[1.5px] ring-web-ascent
+}
+.input-radio input[type=radio] {
+    @apply appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer
+}
+.input-radio label {
+    @apply font-medium text-slate-800 text-sm cursor-pointer
+}
+input:not(.peer)[type=checkbox] {
+    @apply appearance-none h-4 w-4 border border-gray-300 rounded bg-white checked:border-web-ascent checked:bg-web-ascent focus:outline-none transition duration-200 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer text-white
+}
+input:not(.peer)[type=checkbox]:checked {
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+}
+input:read-only {
+    @apply bg-slate-200
+}
+.input-box-dragable {
+    @apply relative h-[200px] flex flex-col space-y-3 justify-center items-center w-full border-2 border-slate-300 border-dashed rounded-md text-slate-600 font-medium text-sm
+}
+.input-box-dragable input {
+    @apply absolute h-[200px] w-full cursor-pointer opacity-0
+}
+.input-thumbnail-preview {
+    @apply h-[200px] w-max rounded-md border-slate-200 border-2
+}
+/* Input (End) */
+
+
+
+
+/* Sidebar (Start) */
+.sidebar {
+    @apply min-h-[120vh] w-[100%] bg-white fixed z-40 overflow-y-auto shadow-lg border md:hidden sm:block
+}
+.sidebar {
+    margin-left: -100%;
+    transition: 0.3s ease;
+}
+.sidebar.active {
+    margin-left: 0%;
+    transition: 0.3s ease;
+}
+/* Sidebar (End) */
+
+/* Service Card (Start) */
+.service-card {
+    @apply bg-white shadow-xl rounded-md overflow-clip border
+}
+.service-card img {
+    @apply w-full h-auto
+}
+.service-card .title {
+    @apply font-semibold text-lg
+}
+.service-card .summary {
+    @apply font-normal text-sm text-gray-500
+}
+/* Service Card (End) */
+
+/* Service Card (Start) */
+.team-card {
+    @apply bg-white shadow-xl rounded-md overflow-clip border
+}
+.team-card img {
+    @apply w-full h-auto
+}
+.team-card .title {
+    @apply font-semibold text-lg
+}
+.team-card .summary {
+    @apply font-normal text-sm text-gray-500
+}
+/* Service Card (End) */
+
+/* Testimonial Card (Start) */
+.testimonial-card {
+    @apply bg-white shadow-lg border-b-4 border-web-ascent cursor-default
+}
+.testimonial-card > div {
+    @apply p-10 flex flex-col space-y-5
+}
+.testimonial-card .title {
+    @apply font-semibold text-web-ascent-dark text-xl
+}
+.testimonial-card .summary {
+    @apply font-light text-gray-500 text-sm leading-relaxed pb-2
+}
+.testimonial-card .name {
+    @apply font-semibold text-web-ascent-dark text-base
+}
+.testimonial-card .designation {
+    @apply font-light text-gray-500 text-xs
+}
+
+.testimonial-card > div > div {
+    @apply flex items-center justify-start space-x-3
+}
+.testimonial-card .profile img {
+    @apply h-[50px] w-[50px] rounded-full
+}
+
+/* Testimonial Card (End) */
+
+/* Footer (Start) */
+.footer-link-list {
+    @apply list-disc pl-4 space-y-4
+}
+.footer-link-list li {
+    @apply marker:text-web-ascent
+}
+.footer-link {
+    @apply text-base text-gray-400 hover:text-web-ascent transition duration-500 ease-in-out hover:ease-in-out
+}
+/* Footer (End) */
+
+
+/* Dashboard */
+.dashboard-sidebar {
+    @apply sticky top-5
+}
+.dashboard-sidebar ul  {
+    @apply space-y-3
+}
+.dashboard-sidebar button {
+    @apply flex items-center justify-start whitespace-nowrap bg-web-ascent bg-opacity-10 px-4 py-3 w-full  font-medium text-base
+}
+.dashboard-sidebar button.active {
+    @apply border-l-4 border-l-web-ascent
+}
+.dashboard-sidebar button svg {
+    @apply h-4 w-4 mr-2 stroke-[2.5px]
+}
+
+.pac-container {
+    margin-top: 70px !important;
+}
+
+/* Sweet Alerts (Start) */
+.swal-modal {
+    @apply rounded-lg border shadow-[0px_0px_15x_rgba(0,0,0,1)]
+}
+.swal-title {
+    @apply text-2xl text-black font-semibold
+}
+.swal-text {
+    @apply text-sm text-slate-600 text-center
+}
+.swal-button:focus {
+    @apply shadow-none border-none outline-none
+}
+.swal-button.swal-button--confirm {
+    @apply btn-ascent-md
+}
+.swal-button.swal-button--cancel {
+    @apply btn-light-md
+}
+.swal-icon--success__line {
+    @apply bg-green-500
+}
+.swal-icon--success__ring {
+    @apply border-[#4bc10678]
+}
+.swal-footer {
+    @apply mb-5 text-center
+}
+/* Sweet Alerts (End) */
+
+/* Alert Boxes (Start) */
+.alert-success-sm {
+    @apply px-3 py-2 bg-green-200 text-green-900 rounded flex items-center justify-center space-x-3 text-xs font-medium
+}
+.alert-success-md {
+    @apply px-3 py-2 bg-green-200 text-green-900 rounded flex items-center justify-center space-x-3 text-sm font-medium
+}
+.alert-success-lg {
+    @apply px-3 py-2 bg-green-200 text-green-900 rounded flex items-center justify-center space-x-3 text-lg font-medium
+}
+
+.alert-danger-sm {
+    @apply px-3 py-2 bg-red-200 text-red-900 rounded flex items-center justify-center space-x-3 text-xs font-medium
+}
+.alert-danger-md {
+    @apply px-3 py-2 bg-red-200 text-red-900 rounded flex items-center justify-center space-x-3 text-sm font-medium
+}
+.alert-danger-lg {
+    @apply px-3 py-2 bg-red-200 text-red-900 rounded flex items-center justify-center space-x-3 text-lg font-medium
+}
+
+.alert-warning-sm {
+    @apply px-3 py-2 bg-yellow-200 text-yellow-900 rounded flex items-center justify-center space-x-3 text-xs font-medium
+}
+.alert-warning-md {
+    @apply px-3 py-2 bg-yellow-200 text-yellow-900 rounded flex items-center justify-center space-x-3 text-sm font-medium
+}
+.alert-warning-lg {
+    @apply px-3 py-2 bg-yellow-200 text-yellow-900 rounded flex items-center justify-center space-x-3 text-lg font-medium
+}
+
+/* Alert Boxes (Start) */
+
+input[type=range] {
+    height: 38px;
+    -webkit-appearance: none;
+    margin: 10px 0px;
+    width: 100%;
+}
+input[type=range]:focus {
+    outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 10px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px #000000;
+    background: #003B49;
+    border-radius: 5px;
+    border: 1px solid #000000;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    box-shadow: 1px 1px 1px #000000;
+    border: 1px solid #000000;
+    height: 30px;
+    width: 15px;
+    border-radius: 5px;
+    background: #FFFFFF;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -11px;
+  }
+
+.intro-img {
+    border-radius: 75% 25% 32% 68% / 53% 47% 53% 47%;
+    box-shadow: 0 15px 38px 0 rgb(0 0 0 / 20%);
+}
+
+header {
+    @apply fixed z-50 top-0 w-full
+}
+header#desktop-header {
+    transition: 0.3s ease-in-out;
+    background-color: transparent;
+}
+header#desktop-header.active {
+    transition: 0.3s ease-in-out;
+    background-color: #fff;
+}
+header#desktop-header.active {
+    @apply shadow-lg
+}
+header#desktop-header .nav-link {
+    @apply font-medium text-white hover:text-white transition duration-300 ease-in-out hover:ease-in-out
+}
+header#desktop-header.active .nav-link {
+    @apply font-medium text-gray-800 hover:text-web-ascent transition duration-300 ease-in-out hover:ease-in-out
+}
+.social-media {
+    @apply h-12 w-12 bg-web-ascent flex items-center justify-center bg-opacity-70 hover:bg-opacity-100 transition duration-300 ease-in-out hover:ease-in-out text-gray-200
+}
+.social-media svg {
+    @apply stroke-[1px]
+}
+.home-project-card {
+    @apply bg-center bg-no-repeat h-[400px] flex items-center justify-center overflow-clip relative
+}
+.home-project-card .cover-image {
+    @apply absolute z-[2]
+}
+.home-project-card .cover-image {
+    height: fit-content;
+    width: 100%;
+    transition: 0.3s ease-in-out;
+    scale: 1.0;
+}
+.home-project-card:hover .cover-image {
+    height: fit-content;
+    width: 100%;
+    transition: 0.3s ease-in-out;
+    scale: 1.2;
+}
+.home-project-card .overlay {
+    @apply absolute h-full w-full z-10
+}
+.home-project-card .overlay {
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0),rgba(0,0,0,0.9));
+    transition: 0.3s ease-in-out;
+}
+.home-project-card .content {
+    @apply absolute lg:p-10 sm:p-6 space-y-3
+}
+.home-project-card .content {
+    bottom: -75px;
+    transition: 0.3s ease-in-out;
+}
+@media (max-width: 767px) {
+    .home-project-card .content {
+        bottom: 0px;
+        transition: 0.3s ease-in-out;
+    }
+}
+.home-project-card:hover .content {
+    bottom: 0px;
+    transition: 0.3s ease-in-out;
+}
+.home-project-card .content .title {
+    @apply text-3xl font-bold text-white
+}
+.home-project-card .content .summary {
+    @apply text-xs font-normal text-gray-200 leading-relaxed
+}
+
+.page-header {
+    @apply bg-cover bg-center bg-no-repeat border-b
+}
+.page-header {
+    background-image: url('/web/images/cover-bg.png');
+}
+.page-header .container {
+    @apply lg:pt-64 sm:pt-28 lg:pb-40 sm:pb-8
+}
+.page-title {
+    @apply space-y-3
+}
+.page-title h1 {
+    @apply text-3xl sm:text-4xl lg:text-6xl font-semibold text-black
+}
+.page-title .breadcrumb {
+    @apply flex items-center justify-start space-x-2
+}
+.page-title .breadcrumb a {
+    @apply text-sm font-medium text-gray-700 transition duration-300 ease-in-out
+}
+.page-title .breadcrumb a {
+    @apply hover:text-web-ascent transition duration-300 ease-in-out
+}
+.page-title .breadcrumb svg {
+    @apply h-4 w-4
+}
+.page-title .breadcrumb .active {
+    @apply text-gray-500
+}
+.page-title hr {
+    @apply w-[100px]
+}
+
+
+.page-header.dark .page-title h1 {
+    @apply text-3xl font-semibold text-white
+}
+.page-header.dark .page-title p {
+    @apply text-sm text-gray-100 leading-relaxed
+}
+.page-header.dark .page-title .breadcrumb {
+    @apply flex items-center justify-start space-x-2
+}
+.page-header.dark .page-title .breadcrumb a {
+    @apply text-sm font-medium text-gray-100 transition duration-300 ease-in-out
+}
+.page-header.dark .page-title .breadcrumb .active {
+    @apply text-gray-200
+}
+.page-header.dark .breadcrumb svg {
+    @apply h-4 w-4 text-white
+}
+
+
+.intro-img {
+    animation: rotateZoom 4s ease-in-out infinite;
+}
+
+@keyframes rotateZoom {
+  0% {
+    transform: rotate(10deg) scale(1);
+  }
+  50% {
+    transform: rotate(-10deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(10deg) scale(1);
+  }
+}
+
+
+.dropdown {
+    position: relative;
+}
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+}
+.dropdown-menu {
+    @apply bg-white py-4 px-5 shadow-lg space-y-3
+}
+.dropdown-menu li a {
+    @apply text-gray-800 hover:text-web-ascent transition duration-300 ease-in-out hover:ease-in-out font-medium
+}
+.dropdown:hover > .dropdown-menu {
+    display: block;
+}
+.dropdown:hover svg {
+    @apply rotate-180
+}
+.project-tab {
+    @apply bg-web-ascent lg:px-5 lg:py-3 sm:px-4 sm:py-2 lg:text-base sm:text-sm font-medium bg-opacity-10 text-red-800 
+}
+.project-tab.active {
+    @apply bg-web-ascent lg:px-5 lg:py-3 sm:px-4 sm:py-2 lg:text-base sm:text-sm text-white font-medium bg-opacity-100 ring-2 ring-web-ascent ring-offset-2
+}
+
+/* ── Project tab border-radius ─────────────────────────────────────── */
+.project-tab {
+    border-radius: 0.5rem; /* rounded-lg — matches button radius */
+}
+.project-tab.active {
+    border-radius: 0.5rem;
+}
+
+/* ── Global image polish ──────────────────────────────────────────────
+   Applies a consistent rounded corner + subtle border to all content
+   images across the site. Excludes logos, icons, avatars, hero slides,
+   and the AI widget images which have their own treatment.
+   ──────────────────────────────────────────────────────────────────── */
+
+/* Content images that sit inside figure/div wrappers */
+.service-card img,
+.team-card img,
+.testimonial-card .profile img,
+.home-project-card .cover-image {
+    /* border-radius handled by the parent overflow-clip container */
+}
+
+/* Standalone content images — those NOT inside an overflow-clip parent */
+figure > img,
+figure > div > img,
+section img:not(.intro-img):not([class*="logo"]):not(.cover-image):not(.krishna-ai-launcher img) {
+    border-radius: 0.5rem;       /* 8px — matches rounded-lg used on cards */
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    display: block;
+}
+
+/* Wrapper divs that clip images — give them a uniform rounded-lg shape */
+.overflow-clip:not(.service-card):not(.team-card):not(.home-project-card) {
+    border-radius: 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+/* Service card & team card — upgrade to rounded-lg (was rounded-md) */
+.service-card,
+.team-card {
+    @apply rounded-lg;
+}
+
+/* Project gallery image containers */
+.projects-gallery-item,
+div[class*="overflow-clip border group"] {
+    border-radius: 0.5rem;
+}
+
+/* About page rounded-3xl container — keep it, but align border */
+.rounded-3xl.overflow-clip {
+    border: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+/* Careers / bus-ad / about standalone image containers */
+div.overflow-clip.rounded-lg.shadow-lg {
+    border: 1px solid rgba(0, 0, 0, 0.07);
+}

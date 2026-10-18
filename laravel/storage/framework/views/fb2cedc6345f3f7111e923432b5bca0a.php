@@ -1,0 +1,233 @@
+
+
+<?php $__env->startSection('body-class', 'inner-page'); ?>
+<?php $__env->startSection('nav', 'services'); ?>
+
+<?php $__env->startSection('web-head'); ?>
+<?php echo $__env->make('web.common.keyword-page-style', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Service","serviceType":"Transit Media Advertising","provider":{"@type":"Organization","name":"Krishna Outdoor"},"areaServed":[{"@type":"City","name":"Mumbai"},{"@type":"State","name":"Gujarat"}],"name":"Transit Advertising Agency in Mumbai & Gujarat","description":"Advertising on Mumbai local trains, BEST and TMT buses, plus GSRTC and AMTS buses in Gujarat."}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://krishnaoutdoor.in/"},{"@type":"ListItem","position":2,"name":"Transit Media","item":"https://krishnaoutdoor.in/media/transit"}]}
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which transit media options does Krishna Outdoor offer?","acceptedAnswer":{"@type":"Answer","text":"We offer advertising on Mumbai local trains (Western and Central lines), BEST and TMT buses in Mumbai and Thane, plus GSRTC and AMTS buses across Gujarat."}},{"@type":"Question","name":"How many bus advertising rights does Krishna Outdoor hold?","acceptedAnswer":{"@type":"Answer","text":"We hold rights on 7000+ GSRTC buses, 900+ AMTS buses in Ahmedabad, 400+ BEST buses in Mumbai and 350+ TMT buses in Thane."}},{"@type":"Question","name":"What formats are available for bus and train advertising?","acceptedAnswer":{"@type":"Answer","text":"Formats include full-wrap, side-panel and back-panel bus branding, plus exterior formats on Mumbai local trains, depending on the operator and route."}},{"@type":"Question","name":"How far in advance should I book transit advertising?","acceptedAnswer":{"@type":"Answer","text":"Popular routes and high-visibility buses or trains can book out in advance, so we recommend enquiring a few weeks ahead of your planned campaign start."}}]}</script>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('web-section'); ?>
+
+<main>
+
+<!-- TRANSIT HERO / BANNER -->
+<section class="hero media-detail-hero media-detail-hero-transit" id="home">
+    <div class="media-detail-hero-bg">
+        <img
+            alt="Ahmedabad bus advertising campaign"
+            decoding="async"
+            loading="eager"
+            src="<?php echo e(asset('assets/images/transit/transit-banner.webp')); ?>"
+        />
+    </div>
+
+    <div class="hero-overlay"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-noise"></div>
+
+    <div class="container hero-inner reveal">
+        <h1 class="seo-h1"><?php echo e($seo->h1Override() ?: 'Transit Advertising Agency in Mumbai & Gujarat'); ?></h1>
+        <p class="seo-h1-slogan">TRANSIT MEDIA.</p>
+    </div>
+</section>
+
+
+<!-- STATS STRIP - IMMEDIATELY BELOW TRANSIT HERO -->
+<section aria-label="Krishna Outdoor network highlights" class="stats stats-strip">
+    <div class="stats-strip-track">
+        
+        <div class="stats-item">
+            7000+
+            <span>
+                Advertising Rights for<br/>
+                GJ State Buses <br/>
+                (GSRTC)
+            </span>
+        </div>
+
+        <div class="stats-item">
+            900+
+            <span>
+                Advertising Rights for<br/>
+                Ahmedabad City Buses<br/>
+                (AMTS)
+            </span>
+        </div>
+
+
+        <div class="stats-item">
+            200+
+            <span>
+                Advertising Rights for<br/>
+                Surat City Electric Buses<br/>
+                Full Wrap
+            </span>
+        </div>
+
+        <div class="stats-item">
+            400+
+            <span>
+                Advertising Rights for<br/>
+                BEST EV Buses<br/>
+                (BEST-TATA) Full Wrap
+            </span>
+        </div>
+
+        <div class="stats-item">
+            350+
+            <span>
+                Advertising Rights for<br/>
+                Thane City Buses<br/>
+                (TMT)
+            </span>
+        </div>
+
+        <div class="stats-item">
+            110+
+            <span>
+                Advertising Rights for<br/>
+                Jaipur City Buses<br/>
+                (JCSTL)
+            </span>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- TRANSIT CONTENT -->
+<section class="section about" id="transit-media">
+    <div class="container about-grid">
+
+        <div class="about-copy reveal">
+            <div class="tag">TRANSIT MEDIA</div>
+
+            <h2>Visibility That Moves with Your Audience.</h2>
+
+            <p>
+                Transit advertising takes a brand into everyday movement.
+            </p>
+
+            <ul style="list-style:none;padding:0;margin:0 0 20px;display:flex;flex-direction:column;gap:8px;">
+                <li><a href="/mumbai-local-train-advertising">Mumbai Local Train Advertising</a></li>
+                <li><a href="/best-bus-advertising-mumbai">BEST Bus Advertising Mumbai</a></li>
+                <li><a href="/tmt-bus-advertising-thane">TMT Bus Advertising Thane</a></li>
+                <li><a href="/gsrtc-bus-advertising">GSRTC Bus Advertising</a></li>
+                <li><a href="/amts-bus-advertising-ahmedabad">AMTS Bus Advertising Ahmedabad</a></li>
+            </ul>
+
+            <a class="small-btn" href="<?php echo e(route('view.contact')); ?>">
+                Explore Transit Rights <span>→</span>
+            </a>
+        </div>
+
+        <div class="about-scene reveal">
+
+            <div class="about-frame f1">
+                <img
+                    alt="Bus advertising campaign"
+                    decoding="async"
+                    loading="lazy"
+                    src="<?php echo e(asset('assets/images/transit/mumbai-local-train-cosmos-bank-01.webp')); ?>"
+                />
+            </div>
+
+            <div class="about-frame f2">
+                <img
+                    alt="Train branding campaign"
+                    decoding="async"
+                    loading="lazy"
+                    src="<?php echo e(asset('assets/images/home/home-f1.webp')); ?>"
+                />
+            </div>
+
+            <div class="year-badge">
+                900+
+                <span>
+                    CITY BUS<br/>
+                    ADVERTISING<br/>
+                    RIGHTS
+                </span>
+            </div>
+
+            <div class="about-frame f3">
+             <img
+                  alt="Transit advertising campaign"
+                  decoding="async"
+                  loading="lazy"
+                   src="<?php echo e(asset('assets/images/home/home-360-bus-hd.webp')); ?>"
+                     />
+        </div>
+
+            <div class="scan-line"></div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- CTA -->
+<section class="kw-section kw-section-alt"><div class="kw-inner">
+    <h2 class="kw-h2">Frequently asked <em>questions</em></h2>
+    <div class="kw-faq">
+        <details open>
+            <summary>Which transit media options does Krishna Outdoor offer?</summary>
+            <p>We offer advertising on Mumbai local trains (Western and Central lines), BEST and TMT buses in Mumbai and Thane, plus GSRTC and AMTS buses across Gujarat.</p>
+        </details>
+        <details>
+            <summary>How many bus advertising rights does Krishna Outdoor hold?</summary>
+            <p>We hold rights on 7000+ GSRTC buses, 900+ AMTS buses in Ahmedabad, 400+ BEST buses in Mumbai and 350+ TMT buses in Thane.</p>
+        </details>
+        <details>
+            <summary>What formats are available for bus and train advertising?</summary>
+            <p>Formats include full-wrap, side-panel and back-panel bus branding, plus exterior formats on Mumbai local trains, depending on the operator and route.</p>
+        </details>
+        <details>
+            <summary>How far in advance should I book transit advertising?</summary>
+            <p>Popular routes and high-visibility buses or trains can book out in advance, so we recommend enquiring a few weeks ahead of your planned campaign start.</p>
+        </details>
+    </div>
+</div></section>
+
+<section class="cta" id="contact">
+    <div class="container cta-inner reveal">
+
+        <div>
+            <div class="tag light">LET’S CREATE</div>
+
+            <h2>ENQUIRE ABOUT TRANSIT MEDIA</h2>
+
+            <p>
+                Ahmedabad City Buses
+                Surat EV Buses
+                Mumbai Local Train Advertising
+                BEST Buses — Mumbai
+                TMT Buses — Thane
+                Jaipur City Buses
+            </p>
+        </div>
+
+        <a class="btn white" href="<?php echo e(route('view.contact')); ?>">
+            Enquire Now <b>→</b>
+        </a>
+
+    </div>
+</section>
+
+</main>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('web-script'); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('web.layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Users/ayushman/Downloads/krishna-outdoor/laravel/resources/views/web/pages/transit-media.blade.php ENDPATH**/ ?>

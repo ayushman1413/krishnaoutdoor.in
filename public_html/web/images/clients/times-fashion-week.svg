@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
+  <style>
+    .bg { fill: none; }
+    .times-title {
+      font-family: 'Times New Roman', Times, Georgia, serif;
+      font-weight: bold;
+      font-size: 110px;
+      fill: #111111;
+      letter-spacing: -2px;
+    }
+    .red-line {
+      stroke: #c8102e;
+      stroke-width: 3.5;
+      stroke-linecap: square;
+    }
+    .geo-char {
+      stroke: #111111;
+      stroke-width: 4;
+      stroke-linecap: square;
+      stroke-linejoin: round;
+      fill: none;
+    }
+  </style>
+
+  <!-- Background -->
+  <rect class="bg" width="600" height="400" />
+
+  <g transform="translate(0, 10)">
+    <!-- Top Word: Times -->
+    <text x="300" y="165" text-anchor="middle" class="times-title">Times</text>
+
+    <!-- Top Red Line -->
+    <line x1="45" y1="192" x2="555" y2="192" class="red-line" />
+
+    <!-- FASHION WEEK Geometric Letters -->
+    <g transform="translate(5, 0)">
+      <!-- F -->
+      <path class="geo-char" d="M 45,268 L 45,212 L 72,212 M 45,239 L 68,239" />
+
+      <!-- A -->
+      <path class="geo-char" d="M 82,268 L 99,212 L 116,268 M 88,247 L 110,247" />
+
+      <!-- S -->
+      <path class="geo-char" d="M 152,222 C 147,212 129,212 129,225 C 129,243 154,239 154,256 C 154,269 135,269 128,259" />
+
+      <!-- H -->
+      <path class="geo-char" d="M 166,212 L 166,268 M 196,212 L 196,268 M 166,240 L 196,240" />
+
+      <!-- I / Model Silhouette Figure -->
+      <g transform="translate(206, 203)">
+        <!-- Head / Hair -->
+        <path fill="#111111" d="M 18,3 C 14,3 12,6 12,10 C 12,13 14,15 17,16 L 19,16 C 22,15 24,13 24,10 C 24,6 22,3 18,3 Z" />
+        <!-- Neck -->
+        <path fill="#111111" d="M 17,16 L 19,16 L 19,20 L 17,20 Z" />
+        <!-- Torso / Top with Red Horizontal Stripes -->
+        <path fill="#ffffff" stroke="#111111" stroke-width="1.5" d="M 11,20 L 25,20 L 22,38 L 14,38 Z" />
+        <line x1="12" y1="25" x2="24" y2="25" stroke="#c8102e" stroke-width="2.5" />
+        <line x1="13" y1="31" x2="23" y2="31" stroke="#c8102e" stroke-width="2.5" />
+        <!-- Belt -->
+        <rect x="13.5" y="38" width="9" height="3" fill="#111111" />
+        <!-- Legs / Trousers (Walking Pose) -->
+        <path fill="#111111" d="M 14,41 L 18,41 L 16,68 L 13,68 Z" />
+        <path fill="#111111" d="M 18,41 L 22,41 L 24,68 L 21,68 Z" />
+        <!-- Heels / Feet -->
+        <path fill="#111111" d="M 13,68 L 11,72 L 14,72 Z" />
+        <path fill="#111111" d="M 23,68 L 25,72 L 22,72 Z" />
+      </g>
+
+      <!-- O -->
+      <circle cx="264" cy="240" r="26" class="geo-char" />
+
+      <!-- N -->
+      <path class="geo-char" d="M 302,268 L 302,212 L 332,268 L 332,212" />
+
+      <!-- W -->
+      <path class="geo-char" d="M 360,212 L 372,268 L 384,228 L 396,268 L 408,212" />
+
+      <!-- E -->
+      <path class="geo-char" d="M 445,212 L 420,212 L 420,268 L 445,268 M 420,240 L 441,240" />
+
+      <!-- E -->
+      <path class="geo-char" d="M 480,212 L 455,212 L 455,268 L 480,268 M 455,240 L 476,240" />
+
+      <!-- K -->
+      <path class="geo-char" d="M 492,212 L 492,268 M 520,212 L 492,240 L 521,268" />
+    </g>
+
+    <!-- Bottom Red Line -->
+    <line x1="45" y1="288" x2="555" y2="288" class="red-line" />
+  </g>
+</svg>

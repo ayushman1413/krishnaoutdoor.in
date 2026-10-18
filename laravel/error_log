@@ -1,0 +1,26 @@
+[28-Sep-2026 21:36:07 Asia/Kolkata] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'admin@krishnaoutdoor.in' for key 'admins_email_unique' in /home/u606581843/domains/krishnaoutdoor.in/laravel/10-sep26.php/vendor/laravel/framework/src/Illuminate/Database/Connection.php:587
+Stack trace:
+#0 /home/u606581843/domains/krishnaoutdoor.in/laravel/10-sep26.php/vendor/laravel/framework/src/Illuminate/Database/Connection.php(587): PDOStatement->execute()
+#1 /home/u606581843/domains/krishnaoutdoor.in/laravel/10-sep26.php/vendor/laravel/framework/src/Illuminate/Database/Connection.php(816): Illuminate\Database\Connection->Illuminate\Database\{closure}()
+#2 /home/u606581843/domains/krishnaoutdoor.in/laravel/10-sep26.php/vendor/laravel/framework/src/Illuminate/Database/Connection.php(783): Illuminate\Database\Connection->runQueryCallback()
+#3 /home/u606581843/domains/krishnaoutdoor.in/laravel/10-sep26.php/vendor/laravel/framework/src/Illuminate/Database/Connection.php(588): Illuminate\Database\Connection->run()
+#4 /home/u606581843/domains/krishnaoutdoor.in/laravel/10-sep26.php/vendor/laravel/framework/src/Illuminate/Database/Connection.php(540): Illuminate\Database\Connection->statement()
+#5 /home/u606581843/domains/krishnaoutdoor.in/laravel/10-sep26.php/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3338): Illuminate\Database\Connection->insert()
+#6 /home/u606581843/domains/krishnaoutdoor.in/laravel/10-sep26.php/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(1969): Illuminate\Database\Query\Builder->insert()
+#7 /home/u606581843/domains/krishnaoutdoor.in/laravel/10-sep26.php/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1309): Illuminate\Database\Eloquent\Builder->__call()
+#8 /home/u606581843/domains/krishnaoutdoor.in/laravel/10-sep26.php/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1137): Illuminate\Database\Eloquent\Model->performInsert()
+#9 Command line code(1): Illuminate\Database\Eloquent\Model->save()
+#10 {main}
+
+Next Illuminate\Database\UniqueConstraintViolationException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'admin@krishnaoutdoor.in' for key 'admins_email_unique' (Connection: mysql, SQL: insert into `admins` (`name`, `email`, `phone`, `status`, `password`, `id`, `updated_at`, `created_at`) values (Administrator, admin@krishnaoutdoor.in, 8668395680, 1, $2y$10$5//G4N5obybMP..BpCct5OOhgRLRNQWNRd5sb798Y.9N77c/fRaZi, a2daeca4-cb3b-47e4-a1ff-86e2b9e47200, 2026-09-28 21:36:07, 2026-09-28 21:36:07)) in /home/u606581843/domains/krishnaoutdoor.in/laravel/10-sep26.php/vendor/laravel/framework/src/Illuminate/Database/Connection.php:824
+Stack trace:
+#0 /home/u606581843/domains/krishnaoutdoor.in/laravel/10-sep26.php/vendor/laravel/framework/src/Illuminate/Database/Connection.php(783): Illuminate\Database\Connection->runQueryCallback()
+#1 /home/u606581843/domains/krishnaoutdoor.in/laravel/10-sep26.php/vendor/laravel/framework/src/Illuminate/Database/Connection.php(588): Illuminate\Database\Connection->run()
+#2 /home/u606581843/domains/krishnaoutdoor.in/laravel/10-sep26.php/vendor/laravel/framework/src/Illuminate/Database/Connection.php(540): Illuminate\Database\Connection->statement()
+#3 /home/u606581843/domains/krishnaoutdoor.in/laravel/10-sep26.php/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3338): Illuminate\Database\Connection->insert()
+#4 /home/u606581843/domains/krishnaoutdoor.in/laravel/10-sep26.php/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(1969): Illuminate\Database\Query\Builder->insert()
+#5 /home/u606581843/domains/krishnaoutdoor.in/laravel/10-sep26.php/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1309): Illuminate\Database\Eloquent\Builder->__call()
+#6 /home/u606581843/domains/krishnaoutdoor.in/laravel/10-sep26.php/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1137): Illuminate\Database\Eloquent\Model->performInsert()
+#7 Command line code(1): Illuminate\Database\Eloquent\Model->save()
+#8 {main}
+  thrown in /home/u606581843/domains/krishnaoutdoor.in/laravel/10-sep26.php/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 824

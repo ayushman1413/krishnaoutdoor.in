@@ -1,0 +1,603 @@
+@extends('web.layouts.app')
+
+@section('body-class', 'inner-page')
+@section('nav', 'network')
+
+@section('web-head')
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://krishnaoutdoor.in/"},{"@type":"ListItem","position":2,"name":"Our Network","item":"https://krishnaoutdoor.in/our-network"}]}</script>
+<style id="network-hover-final-clean">
+/* Final Network map interaction + responsive placement */
+.network-reference-page .network-map-wrap{position:relative;overflow:visible!important;}
+.network-reference-page .mumbai-office-tooltip{position:absolute!important;z-index:90!important;pointer-events:none;}
+.network-reference-page .mumbai-office-tooltip.is-visible{opacity:1!important;visibility:visible!important;pointer-events:auto!important;}
+.network-reference-page .mumbai-office-connector{position:absolute!important;z-index:89!important;pointer-events:none;}
+.network-reference-page .network-map-note{transform:none!important;}
+
+/* Desktop: office card stays to the LEFT of the map. */
+@media (min-width:681px){
+  .network-reference-page .network-map-layout{overflow:visible!important;}
+  .network-reference-page .network-map-wrap{overflow:visible!important;}
+  .network-reference-page .mumbai-office-tooltip{transform:translateY(8px)!important;}
+  .network-reference-page .mumbai-office-tooltip.is-visible{transform:translateY(0)!important;}
+  .network-reference-page .mumbai-office-connector::after{
+    content:"";position:absolute;right:-1px;left:auto;top:50%;
+    border-top:4px solid transparent;border-bottom:4px solid transparent;
+    border-left:7px solid var(--red);border-right:0;
+    transform:translateY(-50%);
+  }
+}
+
+/* Mobile: map first, Explore card immediately beneath it; office card opens BELOW map. */
+@media (max-width:680px){
+  .network-reference-page .network-map-layout{
+    display:grid!important;grid-template-columns:1fr!important;
+    gap:10px!important;margin-top:4px!important;
+    overflow:visible!important;
+  }
+  .network-reference-page .network-map-wrap{
+    order:1!important;width:100%!important;
+    min-height:0!important;height:auto!important;
+    margin:0!important;padding:0!important;
+    display:flex!important;align-items:flex-start!important;justify-content:center!important;
+    overflow:visible!important;position:relative!important;
+  }
+  .network-reference-page .network-map{
+    width:min(90vw,390px)!important;max-width:390px!important;
+    height:auto!important;margin:0 auto!important;
+  }
+  .network-reference-page #indiaNetworkSvg.network-map-svg{
+    width:100%!important;height:auto!important;display:block!important;
+  }
+  .network-reference-page .network-map-note{
+    order:2!important;width:min(92vw,320px)!important;
+    justify-self:center!important;margin:0 auto!important;
+    transform:none!important;
+  }
+  .network-reference-page .mumbai-office-tooltip{
+    left:50%!important;top:calc(100% + 14px)!important;
+    width:min(220px,calc(100vw - 28px))!important;
+    max-width:calc(100vw - 28px)!important;
+    transform:translate(-50%,8px)!important;
+    display:block!important;
+  }
+  .network-reference-page .mumbai-office-tooltip.is-visible{
+    transform:translate(-50%,0)!important;
+  }
+  .network-reference-page .network-map-wrap:has(.mumbai-office-tooltip.is-visible){
+    padding-bottom:158px!important;
+  }
+  .network-reference-page .mumbai-office-connector::after{
+    content:"";position:absolute;left:50%;right:auto;top:auto;bottom:-1px;
+    border-left:4px solid transparent;border-right:4px solid transparent;
+    border-top:7px solid var(--red);border-bottom:0;
+    transform:translateX(-50%);
+  }
+  .network-reference-page .marker-mumbai,
+  .network-reference-page #market-maharashtra{
+    cursor:pointer!important;pointer-events:auto!important;
+    touch-action:manipulation;
+  }
+}
+</style>
+<style id="final-button-banner-cleanup">
+.btn,.small-btn,.outline-btn,.kr-btn,.ow-btn,.media-btn,.network-btn,.network-card-link,.kr-office-btn,.about-btn,.footer-campaign,.service-next,.tab,.nav-cta,.experience-link{border-radius:6px!important;clip-path:none!important}
+.btn::before,.btn::after,.small-btn::before,.small-btn::after,.outline-btn::before,.outline-btn::after,.kr-btn::before,.kr-btn::after,.ow-btn::before,.ow-btn::after,.media-btn::before,.media-btn::after,.network-btn::before,.network-btn::after,.network-card-link::before,.network-card-link::after,.kr-office-btn::before,.kr-office-btn::after,.about-btn::before,.about-btn::after,.footer-campaign::before,.footer-campaign::after,.nav-cta::before,.nav-cta::after{border-radius:inherit!important;clip-path:none!important}
+.btn:hover,.small-btn:hover,.outline-btn:hover,.kr-btn:hover,.ow-btn:hover,.media-btn:hover,.network-btn:hover,.network-card-link:hover,.kr-office-btn:hover,.about-btn:hover,.footer-campaign:hover,.service-next:hover,.tab:hover,.nav-cta:hover,.experience-link:hover{border-radius:6px!important;clip-path:none!important}
+.work-scroll-arrow,.client-arrow,.story-dialog>button{border-radius:50%!important;clip-path:none!important}
+.media-final-cta::before,.kr-final-cta::before,.kr-career-cta::before{display:none!important;background:none!important;animation:none!important}
+.about-cta>img,.ow-cta-bg,.network-journey-bg img,.network-cta>img{display:none!important;visibility:hidden!important}
+.about-cta,.media-final-cta,.ow-cta,.network-journey,.network-cta,.kr-final-cta,.kr-career-cta{background:#0c1015!important;background-image:none!important}
+</style>
+@endsection
+
+@section('web-section')
+
+<main class="network-page network-reference-page">
+<section class="network-hero"><div class="network-hero-bg"><img alt="Krishna Outdoor billboard network" decoding="async" loading="lazy"  src="{{ asset('assets/images/home/work-1.webp') }}"
+/></div><div class="network-hero-overlay"></div><div class="network-hero-grid"></div><div class="network-hero-orbit"></div><div class="container network-hero-inner reveal"><div class="network-hero-copy"><div class="tag light">OUR NETWORK <i></i></div><h1 class="seo-h1">{{ $seo->h1Override() ?: 'Our Outdoor & Transit Media Network' }}</h1><p class="seo-h1-slogan">PRESENT WHERE <em>THE AUDIENCE MOVES.</em></p><p>Our network brings together outdoor locations and transit environments across key markets, helping brands explore visibility where people live, work, travel and move every day.</p><a class="btn red network-btn" href="#presence">EXPLORE MEDIA AVAILABILITY <b>→</b></a></div>
+</section>
+<section class="network-presence network-map-section" id="presence"><div class="container"><div class="network-presence-head reveal"><div><div class="tag">OUR PRESENCE <i></i></div><h2>PRESENT WHERE THE AUDIENCE MOVES.</h2><p>Our network brings together outdoor locations and transit environments across key markets, helping brands explore visibility where people live, work, travel and move every day.</p></div><div class="network-market-list"><div class="market-title">KEY MARKETS</div><button class="market-tab active" data-market="gujarat">Gujarat <span>›</span></button><button class="market-tab" data-market="mumbai">Mumbai <span>›</span></button><button class="market-tab" data-market="thane">Thane <span>›</span></button><button class="market-tab" data-market="rajasthan">Rajasthan <span>›</span></button></div></div><div class="network-map-layout"><div class="network-map-note reveal"><div class="map-note-icon">⌖</div><strong>Explore our network</strong><p>Click a key market to explore the media opportunities and movement environments around it.</p><div class="network-map-legend"><span><i class="live-dot"></i>Our Network</span><span><i class="other-dot"></i>Other States</span></div></div><div class="network-map-wrap reveal"><div class="network-map-aura"></div><div aria-label="India map highlighting Gujarat, Maharashtra and Rajasthan" class="network-map" role="img"><div aria-hidden="true" class="mumbai-office-connector" id="mumbaiOfficeConnector"></div><div aria-hidden="true" class="mumbai-office-tooltip" id="mumbaiOfficeTooltip"><div class="mumbai-office-tooltip-kicker">MUMBAI OFFICE</div><strong>Mumbai Office</strong><p>701, 702 Morya Blue Moon,<br/>Off New Link Road, Andheri West,<br/>Mumbai – 400053</p><a href="tel:+919920011574" onclick="trackConversion('phone_click', this.href)">+91 99200 11574</a></div><svg aria-labelledby="indiaMapTitle indiaMapDesc" class="network-map-svg" height="700" id="indiaNetworkSvg" preserveaspectratio="xMidYMid meet" role="img" viewbox="0 0 630 700" width="630" x="0" y="0">
+<title id="indiaMapTitle">Krishna Outdoor India network map</title>
+<desc id="indiaMapDesc">Custom vector India map with state boundaries and interactive highlights for Rajasthan, Gujarat and Maharashtra, including Mumbai and Thane.</desc>
+<defs>
+<lineargradient id="networkMapBase" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#f6f8f9"></stop><stop offset="1" stop-color="#dce2e6"></stop></lineargradient>
+<lineargradient id="networkMapSoft" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#ffd8da"></stop><stop offset="1" stop-color="#f0a3a8"></stop></lineargradient>
+<lineargradient id="networkMapActive" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#f12a33"></stop><stop offset="1" stop-color="#c90f18"></stop></lineargradient>
+<filter height="150%" id="networkMapShadow" width="160%" x="-30%" y="-20%"><fedropshadow dx="0" dy="18" flood-color="#111" flood-opacity=".15" stddeviation="14"></fedropshadow></filter>
+<filter height="180%" id="networkMapGlow" width="180%" x="-40%" y="-40%"><fegaussianblur result="blur" stddeviation="5"></fegaussianblur><femerge><femergenode in="blur"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
+</defs>
+<g filter="url(#networkMapShadow)">
+<path class="state-region" d="M 120.0,21.0 L 120.0,26.0 L 124.0,26.0 L 125.0,25.0 L 130.0,26.0 L 132.0,29.0 L 132.0,32.0 L 141.0,35.0 L 142.0,36.0 L 142.0,41.0 L 148.0,46.0 L 158.0,47.0 L 166.0,50.0 L 168.0,53.0 L 168.0,58.0 L 172.0,69.0 L 178.0,73.0 L 184.0,74.0 L 191.0,78.0 L 196.0,83.0 L 200.0,95.0 L 202.0,96.0 L 203.0,100.0 L 205.0,102.0 L 214.0,103.0 L 218.0,101.0 L 221.0,103.0 L 224.0,108.0 L 230.0,108.0 L 232.0,110.0 L 238.0,109.0 L 241.0,112.0 L 241.0,115.0 L 242.0,116.0 L 246.0,114.0 L 248.0,111.0 L 248.0,108.0 L 246.0,105.0 L 246.0,99.0 L 243.0,98.0 L 239.0,93.0 L 239.0,90.0 L 241.0,87.0 L 240.0,80.0 L 244.0,76.0 L 249.0,77.0 L 253.0,73.0 L 252.0,71.0 L 253.0,68.0 L 258.0,66.0 L 261.0,62.0 L 263.0,62.0 L 265.0,54.0 L 270.0,46.0 L 270.0,44.0 L 268.0,43.0 L 265.0,39.0 L 259.0,39.0 L 250.0,31.0 L 246.0,31.0 L 243.0,35.0 L 236.0,38.0 L 231.0,42.0 L 227.0,42.0 L 220.0,46.0 L 216.0,46.0 L 211.0,42.0 L 210.0,39.0 L 205.0,38.0 L 201.0,35.0 L 201.0,30.0 L 197.0,26.0 L 192.0,24.0 L 188.0,20.0 L 183.0,18.0 L 175.0,9.0 L 174.0,6.0 L 167.0,7.0 L 161.0,4.0 L 156.0,7.0 L 151.0,7.0 L 150.0,8.0 L 146.0,7.0 L 146.0,10.0 L 145.0,11.0 L 131.0,11.0 L 130.0,15.0 L 126.0,19.0 Z"></path><path class="state-region" d="M 148.0,51.0 L 147.0,55.0 L 144.0,58.0 L 141.0,58.0 L 141.0,60.0 L 139.0,63.0 L 135.0,63.0 L 135.0,67.0 L 137.0,70.0 L 137.0,88.0 L 136.0,89.0 L 137.0,93.0 L 145.0,100.0 L 153.0,103.0 L 158.0,110.0 L 164.0,111.0 L 168.0,113.0 L 173.0,113.0 L 177.0,110.0 L 177.0,103.0 L 184.0,100.0 L 184.0,99.0 L 190.0,94.0 L 194.0,94.0 L 194.0,91.0 L 191.0,85.0 L 186.0,81.0 L 179.0,78.0 L 176.0,78.0 L 169.0,74.0 L 166.0,69.0 L 163.0,60.0 L 163.0,55.0 L 162.0,54.0 Z"></path><path class="state-region" d="M 193.0,99.0 L 189.0,101.0 L 185.0,106.0 L 182.0,106.0 L 181.0,117.0 L 176.0,123.0 L 179.0,124.0 L 183.0,128.0 L 183.0,138.0 L 190.0,140.0 L 194.0,148.0 L 199.0,150.0 L 204.0,160.0 L 210.0,164.0 L 214.0,161.0 L 213.0,159.0 L 213.0,150.0 L 218.0,144.0 L 220.0,143.0 L 226.0,143.0 L 236.0,146.0 L 234.0,139.0 L 234.0,130.0 L 229.0,124.0 L 229.0,118.0 L 227.0,113.0 L 221.0,113.0 L 217.0,108.0 L 215.0,109.0 L 210.0,109.0 L 203.0,107.0 L 199.0,104.0 L 198.0,100.0 Z"></path><path class="state-region" d="M 171.0,119.0 L 170.0,119.0 L 167.0,124.0 L 151.0,130.0 L 153.0,134.0 L 153.0,145.0 L 152.0,148.0 L 144.0,154.0 L 139.0,161.0 L 137.0,166.0 L 137.0,171.0 L 155.0,171.0 L 162.0,177.0 L 165.0,177.0 L 166.0,176.0 L 180.0,176.0 L 181.0,171.0 L 183.0,169.0 L 188.0,169.0 L 190.0,170.0 L 190.0,166.0 L 194.0,160.0 L 194.0,154.0 L 189.0,150.0 L 186.0,144.0 L 181.0,144.0 L 178.0,140.0 L 178.0,130.0 L 171.0,125.0 Z"></path><path class="state-region" d="M 222.0,148.0 L 218.0,152.0 L 218.0,157.0 L 219.0,158.0 L 219.0,163.0 L 218.0,165.0 L 221.0,168.0 L 221.0,173.0 L 217.0,177.0 L 217.0,180.0 L 222.0,181.0 L 222.0,178.0 L 224.0,176.0 L 227.0,176.0 L 233.0,182.0 L 234.0,185.0 L 238.0,189.0 L 241.0,194.0 L 244.0,195.0 L 250.0,200.0 L 252.0,200.0 L 257.0,203.0 L 260.0,203.0 L 262.0,201.0 L 263.0,196.0 L 265.0,193.0 L 265.0,189.0 L 267.0,186.0 L 267.0,182.0 L 278.0,172.0 L 278.0,170.0 L 272.0,166.0 L 266.0,165.0 L 264.0,163.0 L 264.0,160.0 L 261.0,157.0 L 257.0,155.0 L 251.0,155.0 L 249.0,154.0 L 245.0,150.0 L 244.0,147.0 L 242.0,148.0 L 242.0,150.0 L 239.0,153.0 L 236.0,153.0 L 234.0,151.0 L 229.0,149.0 L 224.0,149.0 Z"></path><path class="state-region" d="M 149.0,176.0 L 151.0,182.0 L 151.0,186.0 L 152.0,187.0 L 164.0,189.0 L 167.0,192.0 L 171.0,204.0 L 171.0,208.0 L 175.0,210.0 L 179.0,214.0 L 178.0,222.0 L 179.0,222.0 L 179.0,220.0 L 182.0,217.0 L 187.0,217.0 L 189.0,219.0 L 191.0,218.0 L 196.0,218.0 L 198.0,221.0 L 197.0,227.0 L 199.0,227.0 L 204.0,222.0 L 207.0,222.0 L 206.0,215.0 L 201.0,215.0 L 195.0,213.0 L 191.0,210.0 L 191.0,204.0 L 196.0,199.0 L 200.0,199.0 L 200.0,195.0 L 199.0,194.0 L 199.0,182.0 L 201.0,176.0 L 207.0,170.0 L 207.0,169.0 L 200.0,163.0 L 196.0,166.0 L 195.0,172.0 L 192.0,175.0 L 186.0,175.0 L 184.0,180.0 L 181.0,182.0 L 168.0,181.0 L 166.0,183.0 L 162.0,184.0 L 160.0,183.0 L 155.0,177.0 Z"></path><path class="state-region market-region" d="M 130.0,173.0 L 125.0,176.0 L 125.0,180.0 L 121.0,185.0 L 117.0,193.0 L 111.0,198.0 L 104.0,201.0 L 102.0,203.0 L 100.0,209.0 L 93.0,214.0 L 93.0,216.0 L 90.0,220.0 L 83.0,223.0 L 74.0,223.0 L 73.0,224.0 L 65.0,225.0 L 62.0,223.0 L 59.0,217.0 L 56.0,217.0 L 52.0,224.0 L 40.0,235.0 L 39.0,240.0 L 41.0,243.0 L 45.0,245.0 L 51.0,245.0 L 52.0,246.0 L 53.0,254.0 L 51.0,259.0 L 51.0,263.0 L 54.0,266.0 L 56.0,266.0 L 60.0,270.0 L 61.0,275.0 L 66.0,281.0 L 68.0,292.0 L 73.0,294.0 L 90.0,294.0 L 103.0,301.0 L 109.0,300.0 L 112.0,303.0 L 112.0,308.0 L 118.0,313.0 L 118.0,318.0 L 120.0,320.0 L 122.0,326.0 L 127.0,327.0 L 133.0,334.0 L 139.0,335.0 L 139.0,329.0 L 144.0,325.0 L 146.0,322.0 L 145.0,319.0 L 146.0,314.0 L 143.0,311.0 L 144.0,297.0 L 145.0,296.0 L 150.0,296.0 L 150.0,294.0 L 154.0,290.0 L 157.0,290.0 L 160.0,293.0 L 160.0,296.0 L 167.0,296.0 L 172.0,300.0 L 172.0,305.0 L 169.0,309.0 L 169.0,315.0 L 171.0,314.0 L 171.0,311.0 L 174.0,307.0 L 179.0,307.0 L 183.0,310.0 L 188.0,311.0 L 186.0,306.0 L 189.0,302.0 L 191.0,302.0 L 189.0,299.0 L 189.0,293.0 L 192.0,289.0 L 188.0,288.0 L 184.0,284.0 L 182.0,276.0 L 192.0,267.0 L 209.0,258.0 L 214.0,254.0 L 217.0,253.0 L 218.0,251.0 L 213.0,251.0 L 206.0,254.0 L 203.0,251.0 L 206.0,244.0 L 206.0,241.0 L 200.0,232.0 L 195.0,232.0 L 193.0,230.0 L 192.0,225.0 L 186.0,226.0 L 185.0,224.0 L 184.0,224.0 L 182.0,228.0 L 176.0,229.0 L 173.0,226.0 L 173.0,218.0 L 174.0,216.0 L 166.0,211.0 L 165.0,209.0 L 165.0,203.0 L 162.0,194.0 L 155.0,192.0 L 150.0,192.0 L 146.0,188.0 L 144.0,176.0 L 134.0,176.0 L 132.0,173.0 Z" data-market="rajasthan" id="market-rajasthan"></path><path class="state-region" d="M 210.0,174.0 L 205.0,180.0 L 204.0,192.0 L 205.0,193.0 L 206.0,202.0 L 208.0,208.0 L 211.0,212.0 L 212.0,224.0 L 210.0,227.0 L 205.0,228.0 L 205.0,231.0 L 212.0,241.0 L 211.0,246.0 L 220.0,246.0 L 228.0,251.0 L 235.0,252.0 L 239.0,255.0 L 242.0,261.0 L 242.0,266.0 L 240.0,268.0 L 239.0,273.0 L 235.0,277.0 L 235.0,280.0 L 239.0,282.0 L 240.0,287.0 L 244.0,285.0 L 245.0,286.0 L 248.0,286.0 L 251.0,290.0 L 252.0,290.0 L 260.0,284.0 L 266.0,284.0 L 270.0,288.0 L 270.0,290.0 L 277.0,290.0 L 280.0,294.0 L 282.0,294.0 L 287.0,290.0 L 292.0,290.0 L 302.0,295.0 L 304.0,297.0 L 308.0,298.0 L 311.0,301.0 L 321.0,301.0 L 323.0,303.0 L 321.0,315.0 L 324.0,319.0 L 326.0,320.0 L 329.0,319.0 L 332.0,314.0 L 332.0,311.0 L 330.0,308.0 L 332.0,304.0 L 332.0,302.0 L 330.0,299.0 L 330.0,291.0 L 341.0,283.0 L 347.0,277.0 L 350.0,277.0 L 344.0,270.0 L 344.0,267.0 L 346.0,264.0 L 343.0,262.0 L 343.0,258.0 L 347.0,255.0 L 350.0,255.0 L 350.0,254.0 L 344.0,250.0 L 342.0,243.0 L 338.0,239.0 L 336.0,239.0 L 333.0,243.0 L 330.0,243.0 L 326.0,240.0 L 320.0,240.0 L 317.0,237.0 L 317.0,234.0 L 310.0,234.0 L 307.0,231.0 L 302.0,231.0 L 301.0,232.0 L 297.0,231.0 L 292.0,226.0 L 287.0,223.0 L 285.0,218.0 L 280.0,217.0 L 274.0,211.0 L 270.0,212.0 L 264.0,208.0 L 258.0,209.0 L 244.0,203.0 L 240.0,199.0 L 235.0,196.0 L 233.0,191.0 L 229.0,187.0 L 228.0,184.0 L 225.0,186.0 L 215.0,185.0 L 212.0,182.0 L 212.0,175.0 L 213.0,173.0 Z"></path><path class="state-region" d="M 626.0,206.0 L 624.0,203.0 L 617.0,204.0 L 613.0,202.0 L 611.0,204.0 L 608.0,204.0 L 605.0,201.0 L 605.0,196.0 L 609.0,191.0 L 607.0,189.0 L 601.0,191.0 L 599.0,189.0 L 599.0,185.0 L 601.0,182.0 L 600.0,181.0 L 597.0,181.0 L 593.0,183.0 L 587.0,190.0 L 577.0,190.0 L 576.0,189.0 L 572.0,189.0 L 569.0,187.0 L 567.0,189.0 L 560.0,192.0 L 559.0,196.0 L 555.0,200.0 L 550.0,202.0 L 533.0,216.0 L 533.0,219.0 L 529.0,223.0 L 527.0,224.0 L 520.0,224.0 L 517.0,226.0 L 512.0,226.0 L 511.0,228.0 L 517.0,229.0 L 520.0,231.0 L 521.0,233.0 L 521.0,240.0 L 525.0,240.0 L 532.0,237.0 L 535.0,237.0 L 539.0,240.0 L 543.0,238.0 L 552.0,238.0 L 554.0,231.0 L 561.0,226.0 L 562.0,222.0 L 564.0,220.0 L 574.0,219.0 L 579.0,215.0 L 583.0,213.0 L 587.0,213.0 L 593.0,209.0 L 598.0,209.0 L 601.0,211.0 L 602.0,215.0 L 600.0,219.0 L 601.0,221.0 L 605.0,224.0 L 605.0,226.0 L 611.0,226.0 L 615.0,223.0 L 618.0,223.0 L 618.0,217.0 L 626.0,211.0 Z"></path><path class="state-region" d="M 596.0,214.0 L 589.0,218.0 L 585.0,218.0 L 576.0,224.0 L 567.0,225.0 L 567.0,227.0 L 558.0,235.0 L 558.0,240.0 L 554.0,243.0 L 545.0,243.0 L 542.0,245.0 L 537.0,245.0 L 535.0,243.0 L 531.0,243.0 L 527.0,245.0 L 522.0,245.0 L 517.0,249.0 L 514.0,250.0 L 511.0,249.0 L 505.0,249.0 L 501.0,251.0 L 486.0,251.0 L 485.0,250.0 L 482.0,250.0 L 475.0,254.0 L 474.0,262.0 L 478.0,267.0 L 481.0,266.0 L 489.0,266.0 L 490.0,267.0 L 498.0,267.0 L 502.0,269.0 L 505.0,269.0 L 515.0,261.0 L 521.0,261.0 L 526.0,265.0 L 526.0,269.0 L 529.0,269.0 L 533.0,271.0 L 537.0,275.0 L 537.0,277.0 L 540.0,280.0 L 540.0,283.0 L 533.0,288.0 L 535.0,292.0 L 532.0,295.0 L 528.0,296.0 L 527.0,298.0 L 528.0,303.0 L 530.0,305.0 L 532.0,305.0 L 537.0,300.0 L 542.0,299.0 L 544.0,289.0 L 548.0,281.0 L 547.0,272.0 L 555.0,262.0 L 560.0,263.0 L 560.0,256.0 L 562.0,252.0 L 576.0,239.0 L 584.0,235.0 L 591.0,227.0 L 597.0,227.0 L 598.0,226.0 L 594.0,219.0 Z"></path><path class="state-region" d="M 445.0,223.0 L 441.0,223.0 L 437.0,226.0 L 436.0,240.0 L 441.0,241.0 L 445.0,238.0 L 445.0,233.0 L 446.0,232.0 L 446.0,224.0 Z"></path><path class="state-region" d="M 335.0,297.0 L 339.0,303.0 L 339.0,305.0 L 352.0,303.0 L 358.0,308.0 L 362.0,306.0 L 366.0,306.0 L 368.0,308.0 L 370.0,308.0 L 374.0,305.0 L 378.0,305.0 L 381.0,303.0 L 384.0,298.0 L 393.0,300.0 L 398.0,306.0 L 402.0,303.0 L 409.0,303.0 L 411.0,302.0 L 411.0,295.0 L 420.0,285.0 L 426.0,286.0 L 426.0,283.0 L 432.0,280.0 L 428.0,275.0 L 428.0,269.0 L 432.0,262.0 L 429.0,262.0 L 428.0,263.0 L 417.0,263.0 L 415.0,264.0 L 411.0,262.0 L 406.0,263.0 L 397.0,260.0 L 384.0,260.0 L 382.0,258.0 L 381.0,254.0 L 380.0,254.0 L 379.0,256.0 L 373.0,256.0 L 371.0,254.0 L 363.0,250.0 L 361.0,250.0 L 357.0,246.0 L 357.0,243.0 L 354.0,243.0 L 347.0,239.0 L 347.0,242.0 L 349.0,247.0 L 354.0,250.0 L 357.0,256.0 L 356.0,259.0 L 351.0,260.0 L 352.0,262.0 L 351.0,270.0 L 353.0,272.0 L 359.0,273.0 L 362.0,276.0 L 362.0,278.0 L 358.0,282.0 L 348.0,283.0 L 341.0,290.0 L 335.0,294.0 Z"></path><path class="state-region" d="M 584.0,241.0 L 578.0,244.0 L 567.0,254.0 L 565.0,258.0 L 565.0,265.0 L 562.0,268.0 L 556.0,268.0 L 553.0,273.0 L 553.0,276.0 L 555.0,276.0 L 562.0,270.0 L 570.0,271.0 L 574.0,269.0 L 578.0,271.0 L 584.0,265.0 L 584.0,258.0 L 582.0,253.0 L 582.0,248.0 L 584.0,245.0 Z"></path><path class="state-region" d="M 437.0,246.0 L 438.0,252.0 L 443.0,252.0 L 448.0,256.0 L 455.0,255.0 L 459.0,259.0 L 460.0,264.0 L 462.0,266.0 L 463.0,266.0 L 464.0,263.0 L 468.0,259.0 L 470.0,254.0 L 464.0,252.0 L 456.0,252.0 L 447.0,244.0 L 445.0,244.0 L 442.0,247.0 Z"></path><path class="state-region" d="M 317.0,306.0 L 314.0,307.0 L 309.0,306.0 L 306.0,303.0 L 304.0,303.0 L 290.0,295.0 L 283.0,300.0 L 277.0,299.0 L 274.0,295.0 L 269.0,298.0 L 265.0,298.0 L 263.0,295.0 L 264.0,289.0 L 262.0,289.0 L 254.0,295.0 L 247.0,295.0 L 245.0,292.0 L 242.0,294.0 L 238.0,294.0 L 234.0,291.0 L 234.0,287.0 L 233.0,287.0 L 233.0,295.0 L 235.0,299.0 L 235.0,302.0 L 239.0,305.0 L 239.0,313.0 L 236.0,316.0 L 230.0,316.0 L 219.0,309.0 L 219.0,296.0 L 221.0,292.0 L 220.0,284.0 L 224.0,279.0 L 230.0,277.0 L 230.0,275.0 L 234.0,271.0 L 235.0,266.0 L 237.0,263.0 L 233.0,257.0 L 229.0,257.0 L 223.0,255.0 L 206.0,266.0 L 194.0,272.0 L 188.0,277.0 L 188.0,280.0 L 192.0,284.0 L 196.0,285.0 L 199.0,281.0 L 202.0,281.0 L 205.0,283.0 L 205.0,292.0 L 203.0,294.0 L 196.0,294.0 L 194.0,295.0 L 198.0,300.0 L 198.0,306.0 L 196.0,308.0 L 194.0,308.0 L 195.0,314.0 L 192.0,317.0 L 187.0,317.0 L 184.0,315.0 L 181.0,315.0 L 178.0,313.0 L 176.0,313.0 L 176.0,316.0 L 174.0,319.0 L 167.0,323.0 L 162.0,323.0 L 160.0,321.0 L 160.0,319.0 L 164.0,313.0 L 164.0,307.0 L 166.0,305.0 L 166.0,302.0 L 165.0,301.0 L 157.0,302.0 L 155.0,300.0 L 149.0,302.0 L 149.0,309.0 L 151.0,311.0 L 151.0,324.0 L 149.0,328.0 L 144.0,331.0 L 146.0,336.0 L 142.0,340.0 L 139.0,341.0 L 139.0,348.0 L 137.0,350.0 L 132.0,351.0 L 131.0,353.0 L 131.0,361.0 L 136.0,360.0 L 139.0,363.0 L 141.0,370.0 L 148.0,371.0 L 153.0,376.0 L 168.0,376.0 L 171.0,377.0 L 174.0,380.0 L 174.0,382.0 L 180.0,381.0 L 187.0,371.0 L 196.0,370.0 L 199.0,368.0 L 201.0,368.0 L 205.0,371.0 L 206.0,373.0 L 205.0,377.0 L 213.0,377.0 L 214.0,376.0 L 217.0,376.0 L 219.0,374.0 L 225.0,374.0 L 228.0,376.0 L 234.0,376.0 L 239.0,372.0 L 245.0,371.0 L 248.0,372.0 L 251.0,375.0 L 265.0,375.0 L 271.0,380.0 L 271.0,375.0 L 277.0,362.0 L 280.0,360.0 L 285.0,354.0 L 290.0,353.0 L 303.0,339.0 L 300.0,335.0 L 293.0,335.0 L 291.0,333.0 L 293.0,321.0 L 294.0,320.0 L 308.0,321.0 L 309.0,322.0 L 315.0,322.0 L 317.0,321.0 L 317.0,318.0 L 315.0,314.0 Z"></path><path class="state-region" d="M 533.0,280.0 L 531.0,276.0 L 527.0,274.0 L 525.0,275.0 L 521.0,273.0 L 521.0,267.0 L 517.0,266.0 L 515.0,269.0 L 505.0,275.0 L 502.0,275.0 L 496.0,272.0 L 483.0,271.0 L 479.0,273.0 L 478.0,275.0 L 479.0,278.0 L 476.0,283.0 L 484.0,285.0 L 486.0,287.0 L 489.0,285.0 L 497.0,286.0 L 501.0,283.0 L 508.0,285.0 L 516.0,284.0 L 517.0,283.0 L 523.0,283.0 L 529.0,285.0 L 533.0,282.0 Z"></path><path class="state-region" d="M 573.0,276.0 L 566.0,276.0 L 564.0,275.0 L 555.0,284.0 L 552.0,284.0 L 549.0,291.0 L 549.0,295.0 L 547.0,299.0 L 546.0,307.0 L 553.0,310.0 L 555.0,309.0 L 568.0,309.0 L 571.0,295.0 L 576.0,288.0 L 576.0,285.0 L 573.0,282.0 Z"></path><path class="state-region" d="M 449.0,284.0 L 444.0,284.0 L 437.0,278.0 L 437.0,283.0 L 435.0,285.0 L 431.0,286.0 L 431.0,288.0 L 433.0,290.0 L 434.0,296.0 L 440.0,293.0 L 440.0,290.0 L 442.0,287.0 L 450.0,287.0 Z"></path><path class="state-region" d="M 226.0,285.0 L 226.0,294.0 L 224.0,298.0 L 224.0,306.0 L 228.0,307.0 L 232.0,311.0 L 234.0,311.0 L 234.0,308.0 L 229.0,302.0 L 228.0,290.0 L 227.0,289.0 L 228.0,284.0 Z"></path><path class="state-region" d="M 428.0,292.0 L 422.0,291.0 L 417.0,297.0 L 417.0,304.0 L 411.0,309.0 L 404.0,309.0 L 401.0,312.0 L 397.0,312.0 L 391.0,305.0 L 386.0,304.0 L 382.0,309.0 L 376.0,310.0 L 370.0,314.0 L 368.0,314.0 L 365.0,312.0 L 362.0,312.0 L 359.0,314.0 L 357.0,314.0 L 351.0,309.0 L 345.0,309.0 L 340.0,311.0 L 337.0,310.0 L 337.0,318.0 L 347.0,330.0 L 351.0,341.0 L 354.0,342.0 L 357.0,345.0 L 357.0,348.0 L 352.0,355.0 L 353.0,356.0 L 359.0,356.0 L 363.0,354.0 L 371.0,353.0 L 374.0,355.0 L 374.0,362.0 L 377.0,362.0 L 378.0,361.0 L 389.0,362.0 L 389.0,354.0 L 391.0,352.0 L 395.0,352.0 L 404.0,358.0 L 406.0,358.0 L 406.0,356.0 L 400.0,351.0 L 399.0,345.0 L 391.0,344.0 L 386.0,339.0 L 386.0,332.0 L 387.0,330.0 L 390.0,328.0 L 396.0,329.0 L 400.0,325.0 L 406.0,323.0 L 409.0,318.0 L 415.0,320.0 L 418.0,315.0 L 423.0,313.0 L 425.0,311.0 L 426.0,303.0 L 429.0,298.0 Z"></path><path class="state-region market-region" d="M 17.0,302.0 L 14.0,309.0 L 15.0,313.0 L 13.0,316.0 L 9.0,318.0 L 12.0,324.0 L 17.0,329.0 L 29.0,335.0 L 35.0,335.0 L 43.0,331.0 L 47.0,331.0 L 49.0,332.0 L 51.0,335.0 L 51.0,337.0 L 48.0,341.0 L 44.0,344.0 L 42.0,344.0 L 35.0,348.0 L 28.0,350.0 L 21.0,350.0 L 19.0,349.0 L 37.0,372.0 L 47.0,382.0 L 53.0,386.0 L 57.0,386.0 L 61.0,384.0 L 68.0,383.0 L 72.0,380.0 L 79.0,378.0 L 84.0,372.0 L 84.0,370.0 L 80.0,366.0 L 80.0,361.0 L 81.0,359.0 L 86.0,355.0 L 86.0,353.0 L 88.0,351.0 L 92.0,351.0 L 97.0,353.0 L 100.0,356.0 L 100.0,357.0 L 96.0,360.0 L 96.0,366.0 L 100.0,366.0 L 103.0,368.0 L 103.0,370.0 L 97.0,375.0 L 97.0,379.0 L 105.0,387.0 L 105.0,392.0 L 103.0,395.0 L 101.0,396.0 L 101.0,398.0 L 103.0,400.0 L 106.0,400.0 L 107.0,399.0 L 108.0,392.0 L 110.0,390.0 L 113.0,390.0 L 116.0,392.0 L 118.0,391.0 L 119.0,388.0 L 113.0,382.0 L 113.0,379.0 L 115.0,377.0 L 121.0,377.0 L 118.0,373.0 L 118.0,368.0 L 123.0,362.0 L 125.0,362.0 L 125.0,357.0 L 126.0,356.0 L 127.0,348.0 L 134.0,345.0 L 134.0,343.0 L 125.0,332.0 L 122.0,332.0 L 117.0,328.0 L 117.0,326.0 L 113.0,320.0 L 113.0,315.0 L 107.0,311.0 L 107.0,306.0 L 101.0,306.0 L 89.0,299.0 L 71.0,299.0 L 70.0,298.0 L 68.0,298.0 L 69.0,302.0 L 67.0,304.0 L 63.0,304.0 L 60.0,306.0 L 56.0,306.0 L 53.0,302.0 L 46.0,304.0 L 42.0,307.0 L 37.0,307.0 L 33.0,304.0 L 24.0,304.0 L 20.0,302.0 Z" data-market="gujarat" id="market-gujarat"></path><path class="state-region" d="M 391.0,334.0 L 391.0,337.0 L 393.0,339.0 L 403.0,340.0 L 405.0,343.0 L 404.0,347.0 L 410.0,352.0 L 411.0,354.0 L 411.0,360.0 L 420.0,366.0 L 425.0,372.0 L 431.0,370.0 L 434.0,366.0 L 434.0,364.0 L 432.0,362.0 L 432.0,358.0 L 434.0,356.0 L 436.0,356.0 L 442.0,360.0 L 442.0,369.0 L 443.0,371.0 L 445.0,371.0 L 447.0,367.0 L 447.0,361.0 L 448.0,360.0 L 452.0,360.0 L 454.0,363.0 L 454.0,369.0 L 458.0,369.0 L 458.0,363.0 L 454.0,355.0 L 454.0,348.0 L 452.0,343.0 L 452.0,338.0 L 448.0,335.0 L 448.0,330.0 L 446.0,326.0 L 447.0,313.0 L 443.0,312.0 L 437.0,308.0 L 434.0,305.0 L 434.0,302.0 L 433.0,302.0 L 431.0,305.0 L 431.0,310.0 L 429.0,315.0 L 427.0,317.0 L 422.0,319.0 L 417.0,326.0 L 411.0,325.0 L 409.0,328.0 L 406.0,328.0 L 402.0,330.0 L 400.0,333.0 L 396.0,335.0 Z"></path><path class="state-region" d="M 539.0,305.0 L 532.0,313.0 L 531.0,322.0 L 534.0,327.0 L 534.0,332.0 L 533.0,334.0 L 539.0,345.0 L 540.0,354.0 L 546.0,354.0 L 548.0,353.0 L 548.0,349.0 L 546.0,345.0 L 546.0,338.0 L 548.0,333.0 L 552.0,328.0 L 552.0,321.0 L 550.0,317.0 L 550.0,314.0 L 542.0,311.0 L 540.0,305.0 Z"></path><path class="state-region" d="M 525.0,307.0 L 523.0,307.0 L 519.0,310.0 L 517.0,310.0 L 515.0,312.0 L 511.0,313.0 L 506.0,319.0 L 508.0,324.0 L 509.0,332.0 L 512.0,333.0 L 514.0,336.0 L 517.0,335.0 L 516.0,329.0 L 517.0,327.0 L 520.0,325.0 L 522.0,319.0 L 526.0,317.0 L 527.0,309.0 Z"></path><path class="state-region" d="M 334.0,322.0 L 329.0,325.0 L 323.0,325.0 L 321.0,324.0 L 318.0,327.0 L 315.0,328.0 L 307.0,327.0 L 306.0,326.0 L 298.0,326.0 L 298.0,330.0 L 302.0,330.0 L 309.0,336.0 L 309.0,340.0 L 298.0,351.0 L 294.0,357.0 L 287.0,359.0 L 281.0,366.0 L 277.0,374.0 L 276.0,383.0 L 271.0,389.0 L 273.0,393.0 L 272.0,401.0 L 274.0,406.0 L 272.0,410.0 L 271.0,420.0 L 279.0,426.0 L 279.0,431.0 L 277.0,433.0 L 270.0,433.0 L 268.0,434.0 L 267.0,446.0 L 272.0,448.0 L 277.0,453.0 L 278.0,456.0 L 282.0,459.0 L 283.0,463.0 L 287.0,464.0 L 287.0,461.0 L 290.0,454.0 L 299.0,447.0 L 300.0,444.0 L 305.0,438.0 L 304.0,432.0 L 301.0,427.0 L 301.0,424.0 L 298.0,420.0 L 298.0,412.0 L 300.0,410.0 L 306.0,411.0 L 310.0,416.0 L 317.0,418.0 L 317.0,417.0 L 313.0,416.0 L 310.0,413.0 L 308.0,395.0 L 311.0,392.0 L 314.0,392.0 L 316.0,387.0 L 318.0,385.0 L 326.0,385.0 L 331.0,383.0 L 331.0,376.0 L 336.0,370.0 L 336.0,364.0 L 337.0,362.0 L 345.0,355.0 L 350.0,348.0 L 350.0,347.0 L 346.0,344.0 L 343.0,334.0 Z"></path><path class="state-region" d="M 420.0,373.0 L 408.0,364.0 L 402.0,363.0 L 395.0,358.0 L 394.0,358.0 L 394.0,364.0 L 391.0,368.0 L 387.0,368.0 L 381.0,366.0 L 376.0,368.0 L 372.0,368.0 L 369.0,365.0 L 368.0,359.0 L 365.0,359.0 L 357.0,362.0 L 353.0,362.0 L 350.0,360.0 L 348.0,360.0 L 341.0,366.0 L 341.0,372.0 L 336.0,378.0 L 336.0,385.0 L 331.0,389.0 L 321.0,390.0 L 319.0,395.0 L 316.0,397.0 L 314.0,397.0 L 314.0,408.0 L 315.0,411.0 L 319.0,412.0 L 322.0,415.0 L 322.0,421.0 L 320.0,423.0 L 310.0,422.0 L 306.0,420.0 L 304.0,416.0 L 303.0,416.0 L 306.0,422.0 L 306.0,425.0 L 309.0,430.0 L 310.0,440.0 L 304.0,448.0 L 303.0,451.0 L 294.0,458.0 L 292.0,464.0 L 295.0,464.0 L 299.0,460.0 L 307.0,459.0 L 308.0,453.0 L 310.0,450.0 L 314.0,448.0 L 317.0,452.0 L 320.0,450.0 L 323.0,450.0 L 323.0,447.0 L 325.0,443.0 L 328.0,441.0 L 332.0,441.0 L 332.0,440.0 L 338.0,435.0 L 343.0,436.0 L 348.0,440.0 L 355.0,439.0 L 361.0,433.0 L 368.0,430.0 L 375.0,425.0 L 373.0,422.0 L 373.0,419.0 L 377.0,415.0 L 381.0,415.0 L 385.0,418.0 L 388.0,418.0 L 393.0,415.0 L 396.0,415.0 L 402.0,407.0 L 406.0,406.0 L 407.0,405.0 L 407.0,402.0 L 412.0,398.0 L 412.0,396.0 L 409.0,390.0 L 409.0,382.0 L 413.0,378.0 L 418.0,376.0 Z"></path><path class="state-region market-region" d="M 108.0,502.0 L 111.0,508.0 L 120.0,511.0 L 124.0,507.0 L 124.0,505.0 L 126.0,502.0 L 126.0,500.0 L 123.0,495.0 L 123.0,491.0 L 126.0,488.0 L 129.0,487.0 L 133.0,488.0 L 139.0,481.0 L 148.0,482.0 L 153.0,480.0 L 152.0,474.0 L 153.0,471.0 L 156.0,469.0 L 158.0,469.0 L 163.0,472.0 L 172.0,471.0 L 172.0,467.0 L 175.0,464.0 L 179.0,464.0 L 182.0,461.0 L 184.0,461.0 L 184.0,456.0 L 186.0,453.0 L 191.0,452.0 L 195.0,447.0 L 200.0,447.0 L 200.0,446.0 L 206.0,441.0 L 205.0,439.0 L 205.0,432.0 L 209.0,428.0 L 215.0,427.0 L 218.0,424.0 L 219.0,419.0 L 223.0,416.0 L 231.0,417.0 L 237.0,421.0 L 242.0,421.0 L 243.0,422.0 L 249.0,422.0 L 251.0,421.0 L 254.0,422.0 L 259.0,427.0 L 258.0,438.0 L 260.0,442.0 L 262.0,443.0 L 262.0,435.0 L 263.0,432.0 L 266.0,429.0 L 271.0,427.0 L 271.0,426.0 L 267.0,424.0 L 265.0,421.0 L 265.0,417.0 L 266.0,416.0 L 265.0,409.0 L 268.0,406.0 L 267.0,403.0 L 267.0,393.0 L 266.0,392.0 L 267.0,384.0 L 263.0,380.0 L 248.0,380.0 L 245.0,377.0 L 242.0,377.0 L 236.0,381.0 L 225.0,381.0 L 223.0,379.0 L 221.0,379.0 L 219.0,381.0 L 216.0,381.0 L 215.0,382.0 L 201.0,382.0 L 199.0,380.0 L 199.0,375.0 L 194.0,375.0 L 193.0,376.0 L 190.0,376.0 L 190.0,378.0 L 186.0,381.0 L 186.0,383.0 L 184.0,385.0 L 180.0,386.0 L 176.0,389.0 L 173.0,389.0 L 170.0,386.0 L 169.0,382.0 L 166.0,381.0 L 151.0,381.0 L 146.0,376.0 L 142.0,376.0 L 137.0,374.0 L 134.0,369.0 L 134.0,366.0 L 125.0,367.0 L 123.0,371.0 L 129.0,372.0 L 130.0,373.0 L 130.0,377.0 L 125.0,381.0 L 121.0,382.0 L 124.0,386.0 L 124.0,391.0 L 122.0,395.0 L 119.0,398.0 L 112.0,397.0 L 112.0,401.0 L 109.0,406.0 L 104.0,406.0 L 98.0,404.0 L 98.0,408.0 L 97.0,409.0 L 98.0,424.0 L 101.0,432.0 L 101.0,434.0 L 98.0,438.0 L 98.0,446.0 L 103.0,464.0 L 103.0,469.0 L 105.0,476.0 L 106.0,493.0 L 107.0,494.0 Z" data-market="maharashtra" id="market-maharashtra"></path><path class="state-region" d="M 290.0,469.0 L 283.0,469.0 L 278.0,465.0 L 277.0,461.0 L 273.0,458.0 L 271.0,454.0 L 266.0,451.0 L 262.0,450.0 L 255.0,444.0 L 252.0,438.0 L 252.0,435.0 L 254.0,432.0 L 254.0,429.0 L 252.0,427.0 L 245.0,428.0 L 240.0,426.0 L 235.0,426.0 L 229.0,422.0 L 225.0,421.0 L 223.0,423.0 L 223.0,426.0 L 216.0,433.0 L 211.0,433.0 L 210.0,434.0 L 211.0,443.0 L 208.0,447.0 L 205.0,448.0 L 204.0,451.0 L 205.0,461.0 L 203.0,465.0 L 203.0,468.0 L 205.0,470.0 L 205.0,474.0 L 204.0,476.0 L 200.0,479.0 L 201.0,488.0 L 197.0,497.0 L 199.0,497.0 L 202.0,500.0 L 200.0,507.0 L 201.0,508.0 L 204.0,508.0 L 205.0,507.0 L 210.0,507.0 L 214.0,504.0 L 227.0,504.0 L 231.0,500.0 L 235.0,500.0 L 236.0,499.0 L 236.0,494.0 L 239.0,491.0 L 254.0,490.0 L 255.0,487.0 L 258.0,484.0 L 264.0,483.0 L 267.0,480.0 L 276.0,480.0 L 278.0,478.0 L 284.0,478.0 L 289.0,474.0 Z"></path><path class="state-region" d="M 356.0,444.0 L 348.0,446.0 L 345.0,445.0 L 341.0,441.0 L 338.0,441.0 L 334.0,446.0 L 330.0,446.0 L 329.0,447.0 L 328.0,452.0 L 325.0,455.0 L 323.0,455.0 L 319.0,458.0 L 313.0,457.0 L 313.0,463.0 L 310.0,465.0 L 301.0,465.0 L 300.0,467.0 L 295.0,471.0 L 294.0,476.0 L 288.0,482.0 L 286.0,483.0 L 280.0,483.0 L 277.0,486.0 L 272.0,486.0 L 272.0,489.0 L 269.0,492.0 L 264.0,492.0 L 262.0,489.0 L 260.0,489.0 L 259.0,493.0 L 256.0,496.0 L 242.0,496.0 L 241.0,497.0 L 241.0,502.0 L 238.0,505.0 L 233.0,505.0 L 229.0,509.0 L 216.0,509.0 L 212.0,512.0 L 208.0,512.0 L 207.0,513.0 L 192.0,512.0 L 190.0,517.0 L 188.0,519.0 L 188.0,521.0 L 191.0,524.0 L 191.0,531.0 L 189.0,534.0 L 184.0,534.0 L 184.0,538.0 L 183.0,539.0 L 186.0,544.0 L 186.0,546.0 L 192.0,545.0 L 197.0,548.0 L 197.0,552.0 L 195.0,555.0 L 197.0,560.0 L 199.0,560.0 L 204.0,556.0 L 210.0,557.0 L 213.0,560.0 L 213.0,563.0 L 215.0,563.0 L 219.0,567.0 L 219.0,570.0 L 223.0,574.0 L 223.0,579.0 L 228.0,577.0 L 235.0,577.0 L 239.0,572.0 L 248.0,572.0 L 253.0,568.0 L 259.0,568.0 L 259.0,563.0 L 256.0,555.0 L 256.0,551.0 L 257.0,550.0 L 257.0,546.0 L 256.0,545.0 L 256.0,533.0 L 257.0,532.0 L 258.0,522.0 L 261.0,516.0 L 264.0,513.0 L 269.0,511.0 L 273.0,511.0 L 278.0,514.0 L 284.0,505.0 L 284.0,502.0 L 286.0,500.0 L 293.0,500.0 L 298.0,497.0 L 304.0,497.0 L 307.0,495.0 L 307.0,488.0 L 310.0,482.0 L 316.0,477.0 L 328.0,471.0 L 340.0,458.0 L 347.0,455.0 L 354.0,448.0 Z"></path><path class="state-region" d="M 198.0,453.0 L 193.0,457.0 L 190.0,457.0 L 189.0,459.0 L 189.0,464.0 L 188.0,465.0 L 184.0,466.0 L 181.0,469.0 L 177.0,469.0 L 177.0,475.0 L 175.0,477.0 L 169.0,476.0 L 163.0,478.0 L 160.0,476.0 L 158.0,476.0 L 159.0,478.0 L 159.0,483.0 L 157.0,485.0 L 154.0,485.0 L 147.0,488.0 L 141.0,487.0 L 137.0,492.0 L 135.0,493.0 L 129.0,493.0 L 129.0,495.0 L 131.0,497.0 L 131.0,504.0 L 129.0,507.0 L 129.0,509.0 L 125.0,514.0 L 126.0,516.0 L 126.0,528.0 L 124.0,533.0 L 127.0,537.0 L 128.0,547.0 L 132.0,556.0 L 132.0,567.0 L 133.0,568.0 L 133.0,572.0 L 135.0,579.0 L 137.0,582.0 L 142.0,584.0 L 144.0,586.0 L 147.0,593.0 L 158.0,602.0 L 163.0,602.0 L 167.0,604.0 L 172.0,609.0 L 178.0,609.0 L 181.0,606.0 L 184.0,605.0 L 191.0,607.0 L 195.0,603.0 L 197.0,603.0 L 196.0,601.0 L 193.0,601.0 L 192.0,600.0 L 192.0,597.0 L 196.0,593.0 L 195.0,590.0 L 196.0,585.0 L 201.0,581.0 L 209.0,581.0 L 211.0,583.0 L 214.0,583.0 L 218.0,578.0 L 214.0,572.0 L 214.0,569.0 L 211.0,568.0 L 208.0,565.0 L 208.0,562.0 L 204.0,562.0 L 202.0,565.0 L 199.0,566.0 L 194.0,565.0 L 191.0,560.0 L 186.0,563.0 L 184.0,563.0 L 181.0,560.0 L 181.0,546.0 L 178.0,542.0 L 178.0,537.0 L 179.0,536.0 L 178.0,531.0 L 180.0,528.0 L 186.0,528.0 L 186.0,526.0 L 182.0,522.0 L 182.0,519.0 L 185.0,515.0 L 187.0,509.0 L 189.0,507.0 L 195.0,507.0 L 195.0,502.0 L 194.0,502.0 L 192.0,499.0 L 192.0,495.0 L 195.0,489.0 L 194.0,479.0 L 199.0,473.0 L 199.0,471.0 L 197.0,469.0 L 197.0,465.0 L 200.0,459.0 Z"></path><path class="state-region" d="M 260.0,573.0 L 255.0,573.0 L 249.0,578.0 L 244.0,578.0 L 242.0,577.0 L 241.0,579.0 L 237.0,582.0 L 227.0,583.0 L 218.0,591.0 L 214.0,591.0 L 207.0,586.0 L 203.0,586.0 L 201.0,588.0 L 202.0,591.0 L 201.0,597.0 L 204.0,600.0 L 204.0,602.0 L 201.0,607.0 L 197.0,608.0 L 196.0,610.0 L 192.0,612.0 L 184.0,611.0 L 180.0,614.0 L 169.0,614.0 L 169.0,615.0 L 173.0,616.0 L 177.0,621.0 L 178.0,627.0 L 182.0,633.0 L 180.0,642.0 L 182.0,643.0 L 185.0,641.0 L 188.0,641.0 L 191.0,646.0 L 191.0,652.0 L 189.0,659.0 L 193.0,662.0 L 193.0,667.0 L 188.0,675.0 L 188.0,686.0 L 189.0,687.0 L 189.0,690.0 L 186.0,693.0 L 187.0,695.0 L 192.0,696.0 L 201.0,693.0 L 205.0,688.0 L 205.0,683.0 L 207.0,678.0 L 209.0,676.0 L 226.0,669.0 L 226.0,662.0 L 233.0,654.0 L 233.0,648.0 L 234.0,646.0 L 240.0,643.0 L 247.0,644.0 L 247.0,640.0 L 248.0,639.0 L 248.0,618.0 L 242.0,610.0 L 242.0,605.0 L 244.0,603.0 L 249.0,603.0 L 256.0,593.0 L 259.0,586.0 L 259.0,578.0 L 261.0,575.0 Z"></path><path class="state-region" d="M 138.0,589.0 L 144.0,601.0 L 153.0,613.0 L 161.0,638.0 L 163.0,641.0 L 163.0,644.0 L 165.0,648.0 L 166.0,662.0 L 168.0,665.0 L 171.0,676.0 L 181.0,689.0 L 183.0,689.0 L 182.0,686.0 L 182.0,682.0 L 183.0,681.0 L 182.0,679.0 L 182.0,674.0 L 185.0,671.0 L 188.0,664.0 L 185.0,664.0 L 183.0,662.0 L 186.0,648.0 L 179.0,649.0 L 175.0,644.0 L 176.0,633.0 L 173.0,630.0 L 171.0,622.0 L 169.0,620.0 L 167.0,620.0 L 164.0,618.0 L 163.0,616.0 L 164.0,609.0 L 161.0,607.0 L 156.0,607.0 L 149.0,602.0 L 142.0,595.0 L 140.0,590.0 Z"></path>
+</g>
+<g class="map-city-labels">
+<circle class="city-ring marker-mumbai" cx="122" cy="430" r="10"></circle><circle class="city-dot marker-mumbai" cx="122" cy="430" r="6.5"></circle>
+<text class="map-label city-name" x="76" y="427">Mumbai</text>
+<circle class="city-dot marker-thane" cx="151" cy="410" r="5.5"></circle><text class="map-label city-name" x="160" y="414">Thane</text>
+<circle class="city-dot marker-gujarat" cx="73" cy="341" r="5.5"></circle><text class="map-label state-name label-gujarat" x="84" y="345">Gujarat</text>
+<circle class="city-dot marker-rajasthan" cx="128" cy="253" r="5.5"></circle><text class="map-label state-name label-rajasthan" x="139" y="257">Rajasthan</text>
+<text class="map-label state-name label-maharashtra" x="175" y="425">Maharashtra</text>
+</g>
+</svg></div></div></div><div class="network-map-compass reveal"><span>N</span><b>▲</b></div></div></section>
+<section class="network-market-showcase"><div class="container"><div class="network-section-head reveal"><div><div class="tag">MARKETS IN MOTION <i></i></div><h2>Gujarat</h2></div><p>Hoardings Across Key Cities
+300+ Own Hoardings in Ahmedabad
+2000+ Hoarding Sites Across Gujarat
+Ahmedabad City Buses
+Ahmedabad Bus Shelters
+Surat EV Buses
+Unipoles &amp; Gantries</p></div><div class="network-grid network-grid-rich">
+<article class="network-card network-card-rich reveal">
+
+    <div class="network-card-media">
+        <img
+            alt="Gujarat outdoor advertising network"
+            decoding="async"
+            loading="lazy"
+            src="{{ asset('assets/images/media/home-360-bus-advertising.webp') }}"
+        />
+
+        <div class="network-card-shade"></div>
+
+        <span class="network-card-title">GUJARAT</span>
+    </div>
+
+    <div class="network-card-body">
+
+        <div class="market-mini-grid">
+
+            <span>
+                ▣ 7000+ GSRTC Buses
+            </span>
+
+            <span>
+                ▣ 2000+ Hoardings Across Gujarat
+            </span>
+
+            <span>
+                ▣ 300+ Hoardings in Ahmedabad
+            </span>
+
+            <span>
+                ▣ Ahmedabad Bus Shelters
+            </span>
+
+            <span>
+                ▣ AMTS Buses
+            </span>
+
+            <span>
+                ▣ Surat EV Buses
+            </span>
+
+            <span>
+                ▣ Unipoles &amp; Gantries
+            </span>
+
+        </div>
+
+        <a
+            class="network-card-link"
+            href="{{ route('view.ooh.media') }}"
+        >
+            View Gujarat Network <b>→</b>
+        </a>
+
+    </div>
+
+</article>
+<article class="network-card network-card-rich reveal"><div class="network-card-media"><img alt="Mumbai local train transit advertising network" decoding="async" loading="lazy" src="{{ asset('assets/images/media/home-360-mumbai-train.webp') }}"/><div class="network-card-shade"></div><span class="network-card-title">MUMBAI</span></div><div class="network-card-body"><div class="market-mini-grid"><span>▣ Mumbai Local Train Exterior</span><span>▣ BEST Bus Advertising</span><span>▣ Western/Central Railway Network</span><span>▣ High-Movement Transit</span><span>▣ Commuter Environments</span><span>▣ Strategic City Coverage</span></div><a class="network-card-link" href="{{ route('view.transit.media') }}">View Mumbai Network <b>→</b></a></div></article>
+<article class="network-card network-card-rich reveal"><div class="network-card-media"><img alt="Thane bus advertising network" decoding="async" loading="lazy" src="{{ asset('assets/images/media/tmt-mumbai-bus.webp') }}"/><div class="network-card-shade"></div><span class="network-card-title">THANE</span></div><div class="network-card-body"><div class="market-mini-grid"><span>▣ TMT Bus Advertising</span><span>▣ Commuter Routes</span><span>▣ City Transit Visibility</span><span>▣ High-Frequency Movement</span></div><a class="network-card-link" href="{{ route('view.transit.media') }}">View Thane Network <b>→</b></a></div></article>
+<article class="network-card network-card-rich reveal"><div class="network-card-media"><img alt="Rajasthan city bus advertising network" decoding="async" loading="lazy" src="{{ asset('assets/images/transit/surat-ev-bus-advertising-03.webp') }}"/><div class="network-card-shade"></div><span class="network-card-title">RAJASTHAN</span></div><div class="network-card-body"><div class="market-mini-grid"><span>▣ Jaipur City Bus Advertising</span><span>▣ Strategic Outdoor Visibility</span><span>▣ High-Traffic City Routes</span><span>▣ Regional Brand Presence</span></div><a class="network-card-link" href="{{ route('view.ooh.media') }}">View Rajasthan Network <b>→</b></a></div></article>
+</div></div></section>
+
+<section class="network-capabilities">
+    <div class="container">
+
+        <div class="network-section-head reveal">
+            <div>
+                <div class="tag light">NETWORK AT A GLANCE <i></i></div>
+                <h2>Mumbai</h2>
+            </div>
+
+            <p>
+                Mumbai Local Train Exterior Advertising<br>
+                BEST Bus Advertising
+            </p>
+        </div>
+
+        <div class="network-cap-grid">
+
+            <article class="network-cap reveal">
+                <span>01</span>
+                <strong>Best Buses</strong>
+                <!--<h2>BEST Buses</h2>-->
+                <b>OOH</b>
+            </article>
+
+            <article class="network-cap reveal">
+                <span>02</span>
+                <strong>TMT</strong>
+                <!--<p>TMT</p>-->
+                <b>TRANSIT</b>
+            </article>
+
+            <article class="network-cap reveal">
+                <span>03</span>
+                <strong>Mumbai Local</strong>
+                <!--<h2>Mumbai Local</h2>-->
+                <b>MARKETS</b>
+            </article>
+
+            <article class="network-cap reveal">
+                <span>04</span>
+                <strong>Digital Sign Boards</strong>
+                <!--<p>Digital Sign Boards</p>-->
+                <b>REACH</b>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+
+<section class="network-capabilities">
+    <div class="container">
+
+        <div class="network-section-head reveal">
+            <div>
+                <div class="tag light">NETWORK AT A GLANCE <i></i></div>
+                <h2>Ahmedabad</h2>
+            </div>
+
+            <p>
+                Ahmedabad Outdoor Advertising<br>
+                Ahmedabad Bus & Transit Advertising
+            </p>
+        </div>
+
+        <div class="network-cap-grid">
+
+            <article class="network-cap reveal">
+                <span>01</span>
+                <strong>Billboards</strong>
+                <!--<h2>Bill Boards</h2>-->
+                <b>OOH</b>
+            </article>
+
+            <article class="network-cap reveal">
+                <span>02</span>
+                <strong>Bus Shelters</strong>
+                <!--<p>Bus Shelters</p>-->
+                <b>TRANSIT</b>
+            </article>
+
+            <article class="network-cap reveal">
+                <span>03</span>
+                <strong>AMTS</strong>
+                <!--<h2>AMTS</h2>-->
+                <b>MARKETS</b>
+            </article>
+
+            <article class="network-cap reveal">
+                <span>04</span>
+                <strong>GSRTC</strong>
+                <!--<p>GSRTC</p>-->
+                <b>REACH</b>
+            </article>
+
+        </div>
+    </div>
+</section>
+    
+<section class="network-journey"><div class="network-journey-bg"><img alt="Night city network routes" decoding="async" loading="lazy" src="{{ asset('assets/images/shared-night-city-background.webp') }}"/></div><div class="network-journey-overlay"></div><div class="container network-journey-inner reveal"><div><div class="tag light">EXPLORE THE NETWORK <i></i></div><h2>WHEREVER YOUR CAMPAIGN<br/>NEEDS TO BE SEEN,<br/><em>WE CAN HELP YOU EXPLORE<br/>THE RIGHT OPPORTUNITIES.</em></h2></div><a class="btn red network-btn" href="{{ route('view.contact') }}">Explore Media Availability <b>→</b></a></div></section>
+</main>
+
+@endsection
+
+@section('web-script')
+<script>
+(()=>{
+  const tabs=[...document.querySelectorAll('.market-tab')];
+  const map=document.getElementById('indiaNetworkSvg');
+  const regions={
+    gujarat:document.getElementById('market-gujarat'),
+    mumbai:document.getElementById('market-maharashtra'),
+    thane:document.getElementById('market-maharashtra'),
+    rajasthan:document.getElementById('market-rajasthan')
+  };
+  const markerSelectors={
+    gujarat:['.marker-gujarat','.label-gujarat'],
+    mumbai:['.marker-mumbai'],
+    thane:['.marker-thane'],
+    rajasthan:['.marker-rajasthan','.label-rajasthan']
+  };
+  function selectMarket(name){
+    tabs.forEach(t=>t.classList.toggle('active',t.dataset.market===name));
+    document.querySelectorAll('#indiaNetworkSvg .market-region').forEach(el=>el.classList.remove('active'));
+    Object.values(markerSelectors).flat().forEach(sel=>document.querySelectorAll('#indiaNetworkSvg '+sel).forEach(el=>el.classList.remove('active')));
+    const region=regions[name];
+    if(region) region.classList.add('active');
+    (markerSelectors[name]||[]).forEach(sel=>document.querySelectorAll('#indiaNetworkSvg '+sel).forEach(el=>el.classList.add('active')));
+    if(name==='mumbai'||name==='thane'){
+      document.querySelector('#indiaNetworkSvg .label-maharashtra')?.classList.add('active');
+    }
+  }
+  tabs.forEach(t=>t.addEventListener('click',()=>selectMarket(t.dataset.market)));
+  selectMarket('gujarat');
+
+  const mumbaiMarkers=[...document.querySelectorAll('#indiaNetworkSvg .marker-mumbai')];
+  const mumbaiRegion=document.getElementById('market-maharashtra');
+  const mumbaiTooltip=document.getElementById('mumbaiOfficeTooltip');
+  const mumbaiConnector=document.getElementById('mumbaiOfficeConnector');
+  const mapWrap=document.querySelector('.network-reference-page .network-map-wrap');
+  const mapOverlayHost=mapWrap;
+  if(mapOverlayHost && mumbaiTooltip && mumbaiTooltip.parentElement !== mapOverlayHost) mapOverlayHost.appendChild(mumbaiTooltip);
+  if(mapOverlayHost && mumbaiConnector && mumbaiConnector.parentElement !== mapOverlayHost) mapOverlayHost.appendChild(mumbaiConnector);
+  let mumbaiHideTimer=null;
+  function positionMumbaiOffice(){
+    if(!mumbaiTooltip || !mumbaiConnector || !mapWrap || !mumbaiMarkers.length) return;
+    const mapEl=document.querySelector('.network-reference-page .network-map-svg');
+    if(!mapEl) return;
+    const markerRect=mumbaiMarkers[0].getBoundingClientRect();
+    const wrapRect=mapWrap.getBoundingClientRect();
+    const mapRect=mapEl.getBoundingClientRect();
+    const markerCenterX=markerRect.left + markerRect.width/2 - wrapRect.left;
+    const markerCenterY=markerRect.top + markerRect.height/2 - wrapRect.top;
+    const isMobile = window.matchMedia('(max-width:680px)').matches;
+    const tooltipWidth = isMobile ? Math.min(220, Math.max(185, wrapRect.width - 28)) : 300;
+    const tooltipHeight=mumbaiTooltip.offsetHeight || (isMobile ? 145 : 165);
+
+    if(isMobile){
+      /* Mobile: office card sits BELOW the map so it never covers the map. */
+      const left=Math.max(8, Math.min(markerCenterX - tooltipWidth/2, wrapRect.width - tooltipWidth - 8));
+      const top=(mapRect.bottom - wrapRect.top) + 30;
+      mumbaiTooltip.style.setProperty('--tooltip-width', tooltipWidth+'px');
+      mumbaiTooltip.style.left=left+'px';
+      mumbaiTooltip.style.top=top+'px';
+
+      const startX=markerCenterX;
+      const startY=markerCenterY + Math.max(7, markerRect.height*.65);
+      const endX=left + tooltipWidth/2;
+      const endY=top - 9;
+      const dx=endX-startX;
+      const dy=endY-startY;
+      const length=Math.max(1,Math.hypot(dx,dy));
+      const angle=Math.atan2(dy,dx)*180/Math.PI;
+      mumbaiConnector.style.left=startX+'px';
+      mumbaiConnector.style.top=startY+'px';
+      mumbaiConnector.style.width=length+'px';
+      mumbaiConnector.style.transform='rotate('+angle+'deg)';
+      mumbaiConnector.style.setProperty('--arrow-angle', angle+'deg');
+    }else{
+      /* Desktop: office card opens to the LEFT of Mumbai, with a short connector. */
+      const left=markerCenterX - tooltipWidth - 30;
+      const top=Math.max(18, markerCenterY - tooltipHeight/2);
+      mumbaiTooltip.style.setProperty('--tooltip-width', tooltipWidth+'px');
+      mumbaiTooltip.style.left=left+'px';
+      mumbaiTooltip.style.top=top+'px';
+
+      const startX=left + tooltipWidth;
+      const startY=top + tooltipHeight/2;
+      const endX=markerCenterX - 5;
+      const endY=markerCenterY;
+      const length=Math.max(1,endX-startX);
+      mumbaiConnector.style.left=startX+'px';
+      mumbaiConnector.style.top=startY+'px';
+      mumbaiConnector.style.width=length+'px';
+      mumbaiConnector.style.transform='rotate('+Math.atan2(endY-startY,endX-startX)*180/Math.PI+'deg)';
+      mumbaiConnector.style.setProperty('--arrow-angle','0deg');
+    }
+  }
+  function clearMumbaiHide(){
+    if(mumbaiHideTimer){ clearTimeout(mumbaiHideTimer); mumbaiHideTimer=null; }
+  }
+  function showMumbaiOffice(){
+    if(!mumbaiTooltip) return;
+    clearMumbaiHide();
+    positionMumbaiOffice();
+    mumbaiTooltip.classList.add('is-visible');
+    mumbaiTooltip.setAttribute('aria-hidden','false');
+    mumbaiConnector?.classList.add('is-visible');
+  }
+  function hideMumbaiOffice(delay=160){
+    clearMumbaiHide();
+    mumbaiHideTimer=setTimeout(()=>{
+      mumbaiTooltip?.classList.remove('is-visible');
+      mumbaiTooltip?.setAttribute('aria-hidden','true');
+      mumbaiConnector?.classList.remove('is-visible');
+    },delay);
+  }
+  [...mumbaiMarkers, mumbaiRegion].filter(Boolean).forEach(target=>{
+    target.addEventListener('mouseenter',showMumbaiOffice);
+    target.addEventListener('mouseleave',()=>hideMumbaiOffice());
+    target.addEventListener('focus',showMumbaiOffice);
+    target.addEventListener('blur',()=>hideMumbaiOffice());
+    target.addEventListener('click',(event)=>{
+      if(window.matchMedia('(max-width:680px)').matches){
+        event.preventDefault();
+        if(mumbaiTooltip?.classList.contains('is-visible')) hideMumbaiOffice(40);
+        else showMumbaiOffice();
+      }
+    });
+    target.addEventListener('touchstart',()=>{
+      if(window.matchMedia('(max-width:680px)').matches) showMumbaiOffice();
+    },{passive:true});
+    target.addEventListener('pointerdown',()=>{
+      if(window.matchMedia('(max-width:680px)').matches) showMumbaiOffice();
+    });
+  });
+  mumbaiMarkers.forEach(marker=>{
+    marker.setAttribute('tabindex','0');
+    marker.setAttribute('aria-label','Mumbai office');
+  });
+  mapWrap?.addEventListener('click',(event)=>{
+    if(!window.matchMedia('(max-width:680px)').matches || !mapWrap) return;
+    const rect=mapWrap.getBoundingClientRect();
+    const mapRect=map?.getBoundingClientRect();
+    if(!mapRect) return;
+    const markerRect=mumbaiMarkers[0]?.getBoundingClientRect();
+    if(markerRect){
+      const x=event.clientX,y=event.clientY;
+      const pad=26;
+      if(x>=markerRect.left-pad && x<=markerRect.right+pad && y>=markerRect.top-pad && y<=markerRect.bottom+pad){
+        showMumbaiOffice();
+      }
+    }
+  });
+  mumbaiTooltip?.addEventListener('mouseenter',clearMumbaiHide);
+  mumbaiTooltip?.addEventListener('mouseleave',()=>hideMumbaiOffice(80));
+  window.addEventListener('resize',()=>{
+    if(mumbaiTooltip?.classList.contains('is-visible')) positionMumbaiOffice();
+  },{passive:true});
+})();
+</script>
+<style id="network-mobile-office-visibility-final">
+/* FINAL MOBILE OFFICE VISIBILITY FIX
+   Mobile: keep Explore card in its original flow, insert the Mumbai office card
+   between the map and Explore only while it is open. */
+@media (max-width:680px){
+  .network-reference-page .network-map-section,
+  .network-reference-page .network-map-layout,
+  .network-reference-page .network-map-wrap{overflow:visible!important;}
+
+  .network-reference-page .network-map-layout.mobile-office-open{
+    grid-template-columns:1fr!important;
+    grid-auto-rows:auto!important;
+    gap:10px!important;
+  }
+
+  .network-reference-page .network-map-wrap{order:1!important;z-index:5!important;}
+
+  .network-reference-page .mumbai-office-tooltip{
+    position:relative!important;
+    left:auto!important;
+    top:auto!important;
+    transform:none!important;
+    display:none!important;
+    grid-column:1!important;
+    order:2!important;
+    justify-self:center!important;
+    width:min(240px,calc(100vw - 32px))!important;
+    max-width:240px!important;
+    margin:18px auto 2px!important;
+    padding:12px 14px 13px!important;
+    z-index:20!important;
+    opacity:0!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+  }
+  .network-reference-page .mumbai-office-tooltip.is-visible{
+    display:block!important;
+    opacity:1!important;
+    visibility:visible!important;
+    transform:none!important;
+    pointer-events:auto!important;
+  }
+  .network-reference-page .mumbai-office-tooltip::before{
+    content:"";
+    position:absolute;
+    left:var(--office-arrow-left,28%);
+    top:-18px;
+    width:2px;
+    height:18px;
+    background:var(--red);
+    transform:translateX(-50%);
+    box-shadow:0 0 8px rgba(229,27,35,.25);
+  }
+  .network-reference-page .mumbai-office-tooltip::after{
+    content:"";
+    position:absolute;
+    left:var(--office-arrow-left,28%);
+    top:-6px;
+    width:0;
+    height:0;
+    border-left:4px solid transparent;
+    border-right:4px solid transparent;
+    border-top:7px solid var(--red);
+    transform:translateX(-50%);
+  }
+
+  .network-reference-page .mumbai-office-connector{display:none!important;}
+  .network-reference-page .network-map-note{
+    order:3!important;
+    z-index:1!important;
+  }
+}
+</style>
+<script>
+(()=>{
+  const layout=document.querySelector('.network-reference-page .network-map-layout');
+  const mapWrap=document.querySelector('.network-reference-page .network-map-wrap');
+  const tooltip=document.getElementById('mumbaiOfficeTooltip');
+  const connector=document.getElementById('mumbaiOfficeConnector');
+  const note=document.querySelector('.network-reference-page .network-map-note');
+  const marker=document.querySelector('#indiaNetworkSvg .marker-mumbai');
+  const region=document.getElementById('market-maharashtra');
+  const maharashtraLabel=document.querySelector('#indiaNetworkSvg .label-maharashtra');
+  if(!layout || !mapWrap || !tooltip) return;
+
+  const isMobile=()=>window.matchMedia('(max-width:680px)').matches;
+  function syncHost(){
+    if(isMobile()){
+      if(tooltip.parentElement!==layout) layout.appendChild(tooltip);
+      if(connector && connector.parentElement!==layout) layout.appendChild(connector);
+    }else{
+      if(tooltip.parentElement!==mapWrap) mapWrap.appendChild(tooltip);
+      if(connector && connector.parentElement!==mapWrap) mapWrap.appendChild(connector);
+      layout.classList.remove('mobile-office-open');
+    }
+  }
+  function positionArrow(){
+    if(!isMobile() || !tooltip || !marker) return;
+    const mr=marker.getBoundingClientRect();
+    const tr=tooltip.getBoundingClientRect();
+    if(!tr.width) return;
+    const x=Math.max(16,Math.min(tr.width-16,mr.left + mr.width/2 - tr.left));
+    tooltip.style.setProperty('--office-arrow-left',x+'px');
+  }
+  function openMobileOffice(){
+    if(!isMobile()) return;
+    syncHost();
+    tooltip.classList.add('is-visible');
+    tooltip.setAttribute('aria-hidden','false');
+    layout.classList.add('mobile-office-open');
+    requestAnimationFrame(positionArrow);
+  }
+  function closeMobileOffice(){
+    if(!isMobile()) return;
+    tooltip.classList.remove('is-visible');
+    tooltip.setAttribute('aria-hidden','true');
+    layout.classList.remove('mobile-office-open');
+  }
+
+  syncHost();
+
+  [marker,region,maharashtraLabel].filter(Boolean).forEach(el=>{
+    el.style.cursor='pointer';
+    el.addEventListener('pointerup',e=>{
+      if(!isMobile()) return;
+      e.preventDefault();
+      if(tooltip.classList.contains('is-visible')) closeMobileOffice();
+      else openMobileOffice();
+    },{passive:false});
+  });
+  tooltip.addEventListener('pointerup',e=>e.stopPropagation());
+
+  const observer=new MutationObserver(()=>{
+    if(!isMobile()) return;
+    if(tooltip.classList.contains('is-visible')){
+      layout.classList.add('mobile-office-open');
+      requestAnimationFrame(positionArrow);
+    }else{
+      layout.classList.remove('mobile-office-open');
+    }
+  });
+  observer.observe(tooltip,{attributes:true,attributeFilter:['class','aria-hidden']});
+
+  document.addEventListener('pointerup',e=>{
+    if(!isMobile() || !tooltip.classList.contains('is-visible')) return;
+    if(!tooltip.contains(e.target) && !marker?.contains(e.target) && !region?.contains(e.target) && !maharashtraLabel?.contains(e.target)) closeMobileOffice();
+  },{passive:true});
+  window.addEventListener('resize',()=>{syncHost(); if(tooltip.classList.contains('is-visible')){layout.classList.add('mobile-office-open'); requestAnimationFrame(positionArrow);}}, {passive:true});
+})();
+</script>
+@endsection

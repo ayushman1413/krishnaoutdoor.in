@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+  <!-- White background -->
+  <rect width="500" height="500" fill="#ffffff"/>
+
+  <!-- Airtel red swirl/wave shape -->
+  <!-- The Airtel logo is a stylised wave/swoosh in red -->
+  <g transform="translate(250,190)">
+    <!-- Main swirl body -->
+    <path d="
+      M 0,-95
+      C 45,-95 85,-65 95,-20
+      C 100,5 90,35 68,52
+      C 50,65 28,68 10,58
+      C -5,50 -15,35 -10,18
+      C -6,5 5,-2 16,2
+      C 24,6 28,16 22,24
+      C 17,30 8,30 2,26
+      C -4,22 -5,14 -2,8
+      C 2,2 10,0 16,4
+      "
+      fill="none" stroke="#e40000" stroke-width="0" />
+    <!-- Airtel swoosh - filled path -->
+    <path d="
+      M -5,-92
+      C 40,-90 82,-62 94,-18
+      C 102,12 94,48 72,68
+      C 52,85 24,90 0,82
+      C -22,74 -38,56 -38,35
+      C -38,16 -26,0 -10,0
+      C 4,0 14,10 14,24
+      C 14,36 6,44 -4,44
+      C -12,44 -18,38 -18,30
+      C -18,24 -14,18 -8,16
+      "
+      fill="none" stroke="#CC0000" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Inner curve -->
+    <path d="
+      M -30,58
+      C -18,72 2,80 24,78
+      C 50,75 72,58 80,34
+      C 88,10 80,-16 62,-34
+      C 44,-52 20,-60 -4,-56
+      "
+      fill="none" stroke="#CC0000" stroke-width="20" stroke-linecap="round"/>
+  </g>
+
+  <!-- "airtel" text in red lowercase -->
+  <text
+    x="250" y="355"
+    text-anchor="middle"
+    font-family="'Helvetica Neue', Arial, sans-serif"
+    font-size="72"
+    font-weight="500"
+    fill="#CC0000"
+    letter-spacing="-1">airtel</text>
+</svg>

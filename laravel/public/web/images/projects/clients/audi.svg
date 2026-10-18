@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+  <!-- White background -->
+  <rect width="500" height="500" fill="#ffffff"/>
+
+  <!-- Audi 4 overlapping rings -->
+  <g transform="translate(90, 215)">
+    <!-- Define gradient for chrome/silver effect -->
+    <defs>
+      <radialGradient id="ringGrad" cx="50%" cy="35%" r="60%">
+        <stop offset="0%" stop-color="#e8e8e8"/>
+        <stop offset="40%" stop-color="#b0b0b0"/>
+        <stop offset="100%" stop-color="#808080"/>
+      </radialGradient>
+    </defs>
+
+    <!-- Ring 1 -->
+    <circle cx="40" cy="40" r="40" fill="none" stroke="url(#ringGrad)" stroke-width="10"/>
+    <!-- Ring 2 -->
+    <circle cx="106" cy="40" r="40" fill="none" stroke="url(#ringGrad)" stroke-width="10"/>
+    <!-- Ring 3 -->
+    <circle cx="172" cy="40" r="40" fill="none" stroke="url(#ringGrad)" stroke-width="10"/>
+    <!-- Ring 4 -->
+    <circle cx="238" cy="40" r="40" fill="none" stroke="url(#ringGrad)" stroke-width="10"/>
+
+    <!-- Cover overlaps with white to create interlinking effect -->
+    <!-- Between ring 1 & 2 -->
+    <rect x="66" y="18" width="20" height="44" fill="#ffffff"/>
+    <!-- Between ring 2 & 3 -->
+    <rect x="132" y="18" width="20" height="44" fill="#ffffff"/>
+    <!-- Between ring 3 & 4 -->
+    <rect x="198" y="18" width="20" height="44" fill="#ffffff"/>
+
+    <!-- Re-draw front arcs of rings 1,2,3 to restore overlap appearance -->
+    <!-- Front arc ring 2 over gap 1-2 -->
+    <path d="M 66,18 A 40,40 0 0 1 86,18" fill="none" stroke="url(#ringGrad)" stroke-width="10"/>
+    <path d="M 66,62 A 40,40 0 0 0 86,62" fill="none" stroke="url(#ringGrad)" stroke-width="10"/>
+    <!-- Front arc ring 3 over gap 2-3 -->
+    <path d="M 132,18 A 40,40 0 0 1 152,18" fill="none" stroke="url(#ringGrad)" stroke-width="10"/>
+    <path d="M 132,62 A 40,40 0 0 0 152,62" fill="none" stroke="url(#ringGrad)" stroke-width="10"/>
+    <!-- Front arc ring 4 over gap 3-4 -->
+    <path d="M 198,18 A 40,40 0 0 1 218,18" fill="none" stroke="url(#ringGrad)" stroke-width="10"/>
+    <path d="M 198,62 A 40,40 0 0 0 218,62" fill="none" stroke="url(#ringGrad)" stroke-width="10"/>
+  </g>
+
+  <!-- "Audi" text in red, serif font -->
+  <text
+    x="250" y="370"
+    text-anchor="middle"
+    font-family="'Georgia', 'Times New Roman', serif"
+    font-size="80"
+    font-weight="400"
+    fill="#BB0A1E"
+    letter-spacing="2">Audi</text>
+</svg>

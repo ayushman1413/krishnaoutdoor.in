@@ -1,0 +1,5 @@
+# This folder holds only the admin panel's static css/js/images — but the
+# Laravel route "/admin" (bare, no trailing slash) must still reach index.php,
+# not be redirected here by Apache's own directory handling. DirectorySlash Off
+# stops that redirect so the parent .htaccess's RewriteRule can route it instead.
+DirectorySlash Off

@@ -1,0 +1,67 @@
+<?php
+
+namespace App\Models;
+
+use App\Traits\ProfileImage;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
+
+class Admin extends Authenticatable
+{
+    use HasApiTokens, HasFactory, Notifiable, SoftDeletes, ProfileImage, HasUuids, HasRoles;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'name',
+        'email',
+        'phone',
+        'password',
+    ];
+
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+    ];
+
+    /**
+     * Keep access open to all authenticated admin users for all features
+     */
+    public function can($abilities, $arguments = []): bool
+    {
+        return true;
+    }
+
+    public function hasPermissionTo($permission, $guardName = null): bool
+    {
+        return true;
+    }
+
+    public function hasAnyPermission(...$permissions): bool
+    {
+        return true;
+    }
+}

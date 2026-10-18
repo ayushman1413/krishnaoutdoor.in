@@ -1,0 +1,455 @@
+/* =========================================================
+   KRISHNA OUTDOOR - THANK YOU PAGE
+   ========================================================= */
+
+.ty-hero {
+    position: relative;
+    min-height: calc(100vh - 90px);
+    padding: 90px 0 70px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.ty-glow {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.ty-glow-one {
+    width: 420px;
+    height: 420px;
+    right: -180px;
+    top: 80px;
+    background: radial-gradient(
+        circle,
+        rgba(229, 27, 35, 0.08) 0%,
+        rgba(229, 27, 35, 0) 70%
+    );
+}
+
+.ty-glow-two {
+    width: 360px;
+    height: 360px;
+    left: -180px;
+    bottom: -120px;
+    background: radial-gradient(
+        circle,
+        rgba(229, 27, 35, 0.05) 0%,
+        rgba(229, 27, 35, 0) 70%
+    );
+}
+
+.ty-main {
+    position: relative;
+    z-index: 2;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+    align-items: center;
+    gap: 60px;
+
+    min-height: 420px;
+}
+
+.ty-copy {
+    max-width: 760px;
+}
+
+.ty-check {
+    width: 62px;
+    height: 62px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 24px;
+
+    border: 2px solid #e51b23;
+    border-radius: 50%;
+
+    background: #fff;
+
+    box-shadow: 0 10px 30px rgba(229, 27, 35, 0.14);
+}
+
+.ty-check span {
+    color: #e51b23;
+    font-size: 34px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.kr-kicker {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+
+    margin-bottom: 10px;
+
+    color: #e51b23;
+
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.kr-kicker::after {
+    content: "";
+    display: block;
+
+    width: 52px;
+    height: 2px;
+
+    background: #e51b23;
+}
+
+.ty-copy h1 {
+    margin: 0 0 22px;
+
+    color: #101114;
+
+    font-size: clamp(52px, 7vw, 92px);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -4px;
+}
+
+.ty-copy h1 em {
+    font-style: italic;
+    font-weight: 500;
+}
+
+.ty-copy h2 {
+    margin: 0 0 18px;
+
+    color: #15171b;
+
+    font-size: clamp(24px, 3vw, 38px);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -1px;
+}
+
+.ty-copy > p {
+    max-width: 850px;
+
+    margin: 0 0 30px;
+
+    color: #60656d;
+
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.ty-home-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 14px 22px;
+
+    color: #fff !important;
+    background: #e51b23;
+
+    border-radius: 6px;
+
+    font-size: 14px;
+    font-weight: 800;
+    text-decoration: none !important;
+
+    box-shadow: 0 10px 24px rgba(229, 27, 35, 0.25);
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.ty-home-btn:hover {
+    color: #fff !important;
+    background: #b80f16;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 14px 28px rgba(184, 15, 22, 0.28);
+}
+
+.ty-home-btn span {
+    font-size: 17px;
+}
+
+.ty-home-btn b {
+    font-size: 18px;
+}
+
+/* =========================================================
+   VISUAL
+   ========================================================= */
+
+.ty-visual {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 330px;
+}
+
+.ty-visual::before {
+    content: "";
+
+    position: absolute;
+
+    width: 310px;
+    height: 310px;
+
+    border-radius: 50%;
+
+    background: #fff5f5;
+
+    z-index: -1;
+}
+
+.ty-visual img {
+    display: block;
+
+    width: min(100%, 430px);
+    max-width: 430px;
+    height: auto;
+
+    object-fit: contain;
+
+    filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.10));
+}
+
+/* =========================================================
+   INFO CARD
+   ========================================================= */
+
+.ty-info-card {
+    position: relative;
+    z-index: 3;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    margin-top: 35px;
+    padding: 28px 30px;
+
+    background: #fff;
+
+    border: 1px solid #e7e7e7;
+    border-radius: 12px;
+
+    box-shadow: 0 16px 45px rgba(0, 0, 0, 0.07);
+}
+
+.ty-info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+
+    min-width: 0;
+}
+
+.ty-icon {
+    flex: 0 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+
+    color: #e51b23;
+
+    background: #fff3f3;
+
+    border-radius: 50%;
+
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.ty-info-item b {
+    display: block;
+
+    margin: 0 0 8px;
+
+    color: #17191d;
+
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.ty-info-item p {
+    margin: 0;
+
+    color: #666b73;
+
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.ty-divider {
+    width: 1px;
+    height: 70px;
+
+    margin: auto;
+
+    background: #e5e5e5;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .ty-hero {
+        padding-top: 70px;
+    }
+
+    .ty-main {
+        grid-template-columns: 1fr 0.75fr;
+        gap: 35px;
+    }
+
+    .ty-copy h1 {
+        font-size: clamp(48px, 7vw, 72px);
+    }
+
+    .ty-info-card {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px;
+    }
+
+    .ty-divider {
+        display: none;
+    }
+}
+
+@media (max-width: 760px) {
+
+    .ty-hero {
+        min-height: auto;
+        padding: 55px 0 45px;
+    }
+
+    .ty-main {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        min-height: auto;
+    }
+
+    .ty-copy {
+        text-align: left;
+    }
+
+    .ty-check {
+        width: 54px;
+        height: 54px;
+    }
+
+    .ty-check span {
+        font-size: 28px;
+    }
+
+    .kr-kicker {
+        font-size: 10px;
+        letter-spacing: 1.6px;
+    }
+
+    .kr-kicker::after {
+        width: 38px;
+    }
+
+    .ty-copy h1 {
+        margin-bottom: 18px;
+
+        font-size: clamp(45px, 14vw, 68px);
+        letter-spacing: -2.5px;
+    }
+
+    .ty-copy h2 {
+        font-size: 25px;
+        line-height: 1.2;
+    }
+
+    .ty-copy > p {
+        font-size: 15px;
+        line-height: 1.65;
+    }
+
+    .ty-home-btn {
+        width: auto;
+        min-height: 46px;
+    }
+
+    .ty-visual {
+        min-height: 260px;
+    }
+
+    .ty-visual::before {
+        width: 240px;
+        height: 240px;
+    }
+
+    .ty-visual img {
+        width: min(85%, 330px);
+    }
+
+    .ty-info-card {
+        grid-template-columns: 1fr;
+
+        margin-top: 25px;
+        padding: 22px 18px;
+
+        gap: 22px;
+    }
+
+    .ty-info-item {
+        gap: 12px;
+    }
+
+    .ty-info-item p {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .ty-hero {
+        padding: 40px 0 35px;
+    }
+
+    .ty-copy h1 {
+        font-size: 48px;
+    }
+
+    .ty-copy h2 {
+        font-size: 22px;
+    }
+
+    .ty-copy > p {
+        font-size: 14px;
+    }
+
+    .ty-info-card {
+        border-radius: 9px;
+    }
+
+    .ty-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+    }
+}

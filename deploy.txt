@@ -1,0 +1,4 @@
+cd /Users/ayushman/Downloads/krishna-outdoor
+./deploy.sh app      # laravel/ folder bhejne ke liye
+./deploy.sh public    # public_html/ bhejne ke liye
+./deploy.sh all        # dono ek saath

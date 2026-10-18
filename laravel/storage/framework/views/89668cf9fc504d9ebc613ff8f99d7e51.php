@@ -1,0 +1,323 @@
+<?php $__env->startSection('body-class', 'inner-page'); ?>
+<?php $__env->startSection('nav', 'about'); ?>
+
+<?php $__env->startSection('web-head'); ?>
+<style>
+/* ABOUT PAGE — fresh rebuild. Uses only original assets from this project. */
+.about-refresh{background:#fff;color:#0d1117;overflow:hidden}
+.about-hero{min-height:650px;position:relative;background:#0b0d10;color:#fff;display:grid;align-items:stretch}
+.about-hero-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.about-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,7,10,.94) 0%,rgba(4,7,10,.78) 39%,rgba(4,7,10,.16) 68%,rgba(4,7,10,.08) 100%),linear-gradient(0deg,rgba(4,7,10,.35),transparent 40%)}
+.about-hero-grid{position:absolute;inset:0;z-index:1;background-image:linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px);background-size:110px 110px;mask-image:linear-gradient(90deg,#000,transparent 78%);opacity:.4}
+.about-hero-inner{position:relative;z-index:2;display:flex;align-items:center;min-height:650px;padding-top:70px}
+.about-hero-copy{width:min(620px,70%);animation:aboutIn .9s cubic-bezier(.2,.8,.2,1) both}
+.about-kicker,.about-tag{font:700 12px/1.2 Inter,sans-serif;letter-spacing:.14em;color:#ed1c24;text-transform:uppercase;display:flex;align-items:center;gap:12px}
+.about-kicker:after,.about-tag:after{content:"";width:48px;height:2px;background:#ed1c24}
+.about-hero h1{font:700 clamp(48px,6vw,86px)/.96 Oswald,sans-serif;letter-spacing:-.025em;margin:16px 0 24px;text-transform:uppercase}
+.about-hero h1 em,.about-red{color:#ed1c24;font-style:normal}
+.about-hero-copy p{max-width:540px;font-size:15px;line-height:1.7;color:#e5e7eb;margin:0 0 25px}
+.about-hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.about-btn{display:inline-flex;align-items:center;gap:14px;text-decoration:none;border:1px solid rgba(255,255,255,.25);padding:16px 20px;color:#fff;font:900 11px Inter,sans-serif;text-transform:uppercase;letter-spacing:.5px;transition:.35s}
+.about-btn.primary{background:#ed1c24;border-color:#ed1c24}.about-btn:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(237,28,36,.25)}
+.about-side-nav{position:absolute;right:24px;top:50%;transform:translateY(-50%);z-index:3;display:grid;gap:11px;text-align:right}
+.about-side-nav span{font:600 9px Inter,sans-serif;color:rgba(255,255,255,.55);letter-spacing:.08em}
+.about-side-nav span.active{color:#fff}.about-side-nav i{display:inline-block;width:18px;height:1px;background:#ed1c24;vertical-align:middle;margin-left:7px}
+.about-statbar{display:grid;grid-template-columns:repeat(5,1fr);border-bottom:1px solid #e5e7eb;background:#fff}
+.about-stat{min-height:94px;display:flex;align-items:center;justify-content:center;gap:13px;padding:16px 12px;border-right:1px solid #e5e7eb;transition:.3s}
+.about-stat:last-child{border-right:0}.about-stat:hover{background:#fafafa;transform:translateY(-2px)}
+.about-stat-icon{width:35px;height:35px;border:1px solid #ed1c24;color:#ed1c24;display:grid;place-items:center;border-radius:50%;font-size:17px}
+.about-stat strong{font:800 25px Oswald,sans-serif;display:block}.about-stat small{font:700 8px/1.35 Inter,sans-serif;text-transform:uppercase;letter-spacing:.04em;color:#555;display:block}
+.about-block{display:grid;grid-template-columns:1fr 1fr;min-height:480px}
+.about-copybox{padding:70px clamp(24px,5vw,80px);display:flex;flex-direction:column;justify-content:center}
+.about-copybox.dark{background:#0c1015;color:#fff}.about-copybox.redline{border-top:3px solid #ed1c24}
+.about-copybox h2{font:700 clamp(34px,4vw,55px)/.98 Oswald,sans-serif;text-transform:uppercase;margin:13px 0 18px;letter-spacing:-.02em}
+.about-copybox h3{font:700 30px/1.02 Oswald,sans-serif;text-transform:uppercase;margin:10px 0 15px}
+.about-copybox p{font:14px/1.7 Inter,sans-serif;color:#4b5563;max-width:590px;margin:0 0 12px}
+.about-copybox.dark p{color:#d1d5db}
+.about-image{position:relative;min-height:430px;overflow:hidden;background:#111}
+.about-image img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.about-image:hover img{transform:scale(1.045)}
+.about-image .image-label{position:absolute;left:30px;bottom:26px;color:#fff;font:700 clamp(30px,4vw,54px)/.95 Oswald,sans-serif;text-transform:uppercase;text-shadow:0 5px 20px #000;max-width:70%}
+.about-image:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.65))}
+.about-image .image-label{z-index:1}
+
+.about-foundation-card{position:relative;min-height:420px;background:linear-gradient(145deg,#f2f3f4 0%,#e4e7e9 100%);display:flex;flex-direction:column;justify-content:flex-start;padding:24px clamp(28px,4vw,54px);overflow:hidden;border-left:1px solid #e5e7eb}.about-foundation-card:before{content:"";position:absolute;right:-80px;top:-90px;width:260px;height:260px;border:1px solid rgba(237,28,36,.16);border-radius:50%}.about-foundation-card:after{content:"";position:absolute;right:-30px;bottom:-100px;width:260px;height:260px;background:radial-gradient(circle,rgba(237,28,36,.13),transparent 67%)}.foundation-newspaper{position:relative;z-index:1;width:min(100%,460px);height:245px;margin:0 auto 10px;border:0;background:transparent;box-shadow:none;overflow:hidden;display:flex;align-items:center;justify-content:center}.foundation-newspaper img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;filter:none;background:transparent}.foundation-visual:after{display:none}.foundation-accent{width:58px;height:3px;background:#ed1c24;margin-bottom:18px}.foundation-kicker{position:relative;z-index:1;color:#ed1c24;font:700 11px/1 Inter,sans-serif;letter-spacing:2.2px;text-transform:uppercase;margin-bottom:10px}.about-foundation-card h4{position:relative;z-index:1;margin:0;text-transform:uppercase;font:700 clamp(36px,3.8vw,52px)/.94 Oswald,sans-serif;letter-spacing:-.02em;color:#111827}.about-foundation-card p{position:relative;z-index:1;max-width:390px;margin:12px 0 0;color:#59616d;font:14px/1.48 Inter,sans-serif}.foundation-line{position:relative;z-index:1;width:82px;height:1px;background:#aeb4b9;margin-top:18px}.about-foundation-card:hover{transform:translateY(-3px);box-shadow:0 18px 45px rgba(0,0,0,.06);transition:.35s ease}
+
+.about-story{grid-template-columns:42% 58%}
+.about-collage{padding:26px;display:grid;grid-template-columns:1.25fr .75fr;grid-template-rows:1fr 1fr;gap:12px;background:#f3f4f6}
+.about-collage .tile{overflow:hidden;position:relative;min-height:180px}
+.about-collage .tile:first-child{grid-row:1/3}.about-collage img{width:100%;height:100%;object-fit:cover;transition:.7s}.about-collage .tile:hover img{transform:scale(1.06)}
+.about-collage .tile:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 60%,rgba(0,0,0,.55))}
+.about-collage b{position:absolute;z-index:1;left:15px;bottom:13px;color:#fff;font:700 17px Oswald,sans-serif;text-transform:uppercase}
+.about-full-image{min-height:300px;position:relative;overflow:hidden}
+.about-full-image img{width:100%;height:100%;position:absolute;inset:0;object-fit:cover}
+.about-full-image:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,10,14,.82),rgba(7,10,14,.2) 70%)}
+.about-full-copy{position:relative;z-index:1;min-height:300px;display:flex;align-items:center;color:#fff;padding:50px 0}
+.about-full-copy h2{font:700 clamp(38px,5vw,62px)/.95 Oswald;margin:10px 0;text-transform:uppercase;max-width:620px}
+.about-full-copy p{max-width:520px;color:#e5e7eb;line-height:1.6}
+.about-strength{display:grid;grid-template-columns:1fr 1fr;background:#0b0f14;color:#fff}
+.about-strength-visual{min-height:330px;position:relative;overflow:hidden}.about-strength-visual img{width:100%;height:100%;object-fit:cover}.about-strength-visual:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,#0b0f14)}
+.about-strength-copy{padding:60px clamp(25px,5vw,80px);display:flex;justify-content:center;flex-direction:column}
+.about-strength-copy h2{font:700 clamp(35px,4vw,54px)/1 Oswald;text-transform:uppercase;margin:12px 0 16px}.about-strength-copy p{color:#cbd5e1;line-height:1.7;max-width:560px}
+.about-pillrow{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #27303a;margin-top:25px}.about-pill{padding:22px 10px;border-right:1px solid #27303a;text-align:center}.about-pill:last-child{border:0}.about-pill b{display:block;font-size:25px;color:#fff}.about-pill span{font:600 9px Inter;text-transform:uppercase;color:#9ca3af}
+.about-lead{padding:75px 0}.about-lead-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:30px}.about-lead-head h2{font:700 clamp(35px,4vw,56px)/1 Oswald;text-transform:uppercase;margin:8px 0}.about-lead-head p{max-width:430px;color:#6b7280;line-height:1.6}
+.about-lead-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.leader-card{display:grid;grid-template-columns:180px 1fr;border:1px solid #e5e7eb;background:#fff;min-height:260px;overflow:hidden;transition:.35s}.leader-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.08)}.leader-card img{width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.8);background:#f3f3f3}.leader-copy{padding:25px}.leader-copy h3{font:700 25px Oswald;margin:3px 0}.leader-copy small{color:#ed1c24;font:700 10px Inter;text-transform:uppercase}.leader-copy p{font-size:12px;line-height:1.65;color:#59616d}
+.about-cta{position:relative;min-height:280px;overflow:hidden;color:#fff}.about-cta img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.about-cta:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,10,14,.92),rgba(7,10,14,.35))}.about-cta .container{position:relative;z-index:1;min-height:280px;display:flex;align-items:center;justify-content:space-between;gap:30px}.about-cta h2{font:700 clamp(36px,5vw,65px)/.94 Oswald;text-transform:uppercase;margin:10px 0}.about-cta p{color:#e5e7eb;max-width:520px}.about-cta .about-btn{background:#ed1c24;border-color:#ed1c24}
+.about-reveal{
+    opacity:1 !important;
+    transform:none !important;
+    visibility:visible !important;
+    transition:opacity .7s ease, transform .7s cubic-bezier(.2,.75,.2,1);
+}
+
+.about-reveal.in{
+    opacity:1 !important;
+    transform:none !important;
+    visibility:visible !important;
+}
+.about-delay-1{transition-delay:.08s}.about-delay-2{transition-delay:.16s}.about-delay-3{transition-delay:.24s}
+@keyframes aboutIn{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@media(max-width:900px){.about-statbar{grid-template-columns:repeat(2,1fr)}.about-stat:nth-child(2n){border-right:0}.about-block,.about-strength{grid-template-columns:1fr}.about-story{grid-template-columns:1fr}.about-image{min-height:350px}.about-side-nav{display:none}.about-hero-copy{width:90%}.about-lead-grid{grid-template-columns:1fr}.about-cta .container{padding-top:50px;padding-bottom:50px;flex-direction:column;align-items:flex-start}.about-pillrow{grid-template-columns:repeat(2,1fr)}.about-pill:nth-child(2){border-right:0}}
+@media(max-width:600px){.about-hero,.about-hero-inner{min-height:570px}.about-hero h1{font-size:48px}.about-hero-copy p{font-size:13px}.about-stat{min-height:80px}.about-stat strong{font-size:21px}.about-stat-icon{width:30px;height:30px}.about-copybox{padding:50px 22px}.about-collage{padding:12px}.about-image{min-height:300px}.about-full-copy{padding:40px 22px}.about-strength-visual{min-height:260px}.leader-card{grid-template-columns:110px 1fr}.leader-copy{padding:18px}.about-lead{padding:55px 0}.about-lead-head{display:block}.about-cta .container{min-height:310px}}
+
+@media(max-width:900px){.about-foundation-card{min-height:390px;padding:22px 24px}.foundation-newspaper{width:100%;height:175px;margin-bottom:12px}.about-foundation-card h4{font-size:46px}}
+@media(max-width:600px){.about-foundation-card{min-height:370px;padding:20px 20px}.foundation-newspaper{width:100%;height:155px;margin-bottom:10px}.foundation-newspaper{height:145px;margin-bottom:10px}.about-foundation-card h4{font-size:39px}.about-foundation-card p{font-size:13px;margin-top:10px}}
+
+@media(prefers-reduced-motion:reduce){.about-reveal,.about-hero-copy,.about-image img,.leader-card{transition:none!important;animation:none!important}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://krishnaoutdoor.in/"},{"@type":"ListItem","position":2,"name":"About Us","item":"https://krishnaoutdoor.in/about"}]}</script>
+<style id="final-button-banner-cleanup">
+.btn,.small-btn,.outline-btn,.kr-btn,.ow-btn,.media-btn,.network-btn,.network-card-link,.kr-office-btn,.about-btn,.footer-campaign,.service-next,.tab,.nav-cta,.experience-link{border-radius:6px!important;clip-path:none!important}
+.btn::before,.btn::after,.small-btn::before,.small-btn::after,.outline-btn::before,.outline-btn::after,.kr-btn::before,.kr-btn::after,.ow-btn::before,.ow-btn::after,.media-btn::before,.media-btn::after,.network-btn::before,.network-btn::after,.network-card-link::before,.network-card-link::after,.kr-office-btn::before,.kr-office-btn::after,.about-btn::before,.about-btn::after,.footer-campaign::before,.footer-campaign::after,.nav-cta::before,.nav-cta::after{border-radius:inherit!important;clip-path:none!important}
+.btn:hover,.small-btn:hover,.outline-btn:hover,.kr-btn:hover,.ow-btn:hover,.media-btn:hover,.network-btn:hover,.network-card-link:hover,.kr-office-btn:hover,.about-btn:hover,.footer-campaign:hover,.service-next:hover,.tab:hover,.nav-cta:hover,.experience-link:hover{border-radius:6px!important;clip-path:none!important}
+.work-scroll-arrow,.client-arrow,.story-dialog>button{border-radius:50%!important;clip-path:none!important}
+.about-cta>img,.ow-cta-bg{display:none!important;visibility:hidden!important}
+.about-cta,.ow-cta{background:#0c1015!important;background-image:none!important}
+</style>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('web-section'); ?>
+
+<main class="about-refresh">
+<section class="about-hero">
+<img alt="Krishna Outdoor billboard campaign" class="about-hero-media" decoding="async" loading="lazy" src="<?php echo e(asset('assets/images/work/brand-billboard-campaign-04.webp')); ?>"/>
+<div class="about-hero-grid"></div>
+<div class="about-hero-inner container">
+<div class="about-hero-copy about-reveal in">
+<div class="about-kicker about-reveal in">ABOUT US</div>
+<h1 class="about-hero-title seo-h1 about-reveal in"><?php echo e($seo->h1Override() ?: 'About Krishna Outdoor – Outdoor Advertising Since 1985'); ?></h1>
+<p class="seo-h1-slogan about-hero-slogan about-reveal in">A LEGACY BUILT AROUND HOW <em>BRANDS ARE SEEN.</em></p>
+<p class="about-hero-desc about-reveal in">Since 1985, our journey has been shaped by advertising, media and a deep understanding of how brands connect with people.<br/><br/>Markets have evolved. Cities have expanded. Technology has transformed communication.<br/><br/>But the purpose remains the same — helping brands reach the right audience with the right message.</p>
+<div class="about-hero-actions about-reveal in"><a class="about-btn primary" href="#story">Our Story <span>→</span></a><a class="about-btn" href="#leadership">Meet Our Leader <span>↓</span></a></div>
+</div>
+</div>
+<!--<div class="about-side-nav"><span class="active">01 <i></i> OUR STORY</span><span>02 <i></i> OUR VISION</span><span>03 <i></i> OUR MISSION</span><span>04 <i></i> OUR STRENGTH</span><span>05 <i></i> MEDIA LEGACY</span><span>06 <i></i> LEADERSHIP</span></div>-->
+</section>
+<section class="about-statbar about-stagger">
+<div class="about-stat"><span class="about-stat-icon">♜</span><div><strong>40+</strong><small>Years of<br/>Experience</small></div></div>
+<div class="about-stat"><span class="about-stat-icon">⌖</span><div><strong>2000+</strong><small>Media Sites<br/>Across Gujarat</small></div></div>
+<div class="about-stat"><span class="about-stat-icon">▥</span><div><strong>30+</strong><small>Key<br/>Markets</small></div></div>
+<div class="about-stat"><span class="about-stat-icon">♧</span><div><strong>5000+</strong><small>Happy<br/>Clients</small></div></div>
+<div class="about-stat"><span class="about-stat-icon">✓</span><div><strong>01</strong><small>Trusted Advertising<br/>Partner</small></div></div>
+</section>
+<section class="about-block about-story" id="story">
+<div class="about-copybox redline about-reveal">
+<div class="about-tag">OUR STORY</div>
+<h2>From Advertising<br/>Experience to a Broader<br/>Media Network.</h2>
+<p>Krishna Outdoor has grown with the changing needs of brands and the evolving media landscape.</p>
+<p>With a strong foundation in advertising and media, our capabilities today span outdoor, transit, print, electronic, digital and social communication.</p>
+<p>Our outdoor and transit network remains at the heart of Krishna Outdoor. At the same time, our wider advertising expertise allows us to support communication requirements that extend beyond a single media format.</p>
+<p>We believe brands should not have to think about advertising in isolated channels. A campaign should begin with an objective, an audience and a market — and then explore the media opportunities that can bring that campaign to life.</p>
+<a class="about-btn primary" href="<?php echo e(route('view.services')); ?>" style="width:max-content;margin-top:8px">Explore Our Media <span>→</span></a>
+</div>
+<div class="about-collage about-reveal about-delay-1">
+<div class="tile"><img alt="Outdoor billboard campaign" decoding="async" loading="lazy" src="<?php echo e(asset('assets/images/ooh/ahmedabad-hoarding-location-05.webp')); ?>"/><b>Ideas Travel Further</b></div>
+<div class="tile"><img alt="Transit advertising" decoding="async" loading="lazy" src="<?php echo e(asset('assets/images/shared-mumbai-local-train-advertising.webp')); ?>"/><b>Media &amp; Evolves</b></div>
+<div class="tile"><img alt="Bus branding campaign" decoding="async" loading="lazy" src="<?php echo e(asset('assets/images/about-f3.webp')); ?>"/><b>Brands Move With People</b></div>
+</div>
+</section>
+<section class="about-block">
+<div class="about-image about-reveal"><img alt="Original Ahmedabad bus shelter outdoor advertising" decoding="async" loading="lazy" src="<?php echo e(asset('assets/images/about-04.webp')); ?>"/><span class="image-label">A BROADER<br/>TOMORROW</span></div>
+<div class="about-copybox about-reveal about-delay-1">
+<div class="about-tag">OUR VISION</div>
+<h3>To Be the Advertising Partner<br/>Brands Choose with Confidence.</h3>
+<p>Our vision is to be a trusted advertising and media partner for brands looking for strong, dependable and effective communication solutions.</p>
+<p>We aim to combine experience, market understanding and a wide range of media opportunities to help brands make better decisions about where and how they communicate.</p>
+</div>
+</section>
+<section class="about-block">
+<div class="about-copybox redline about-reveal">
+<div class="about-tag">OUR MISSION</div>
+<h3>Make Advertising Simpler.<br/>Make Visibility Stronger.</h3>
+<p>Our mission is to help brands explore the right advertising opportunities without unnecessary complexity.</p>
+<p>From outdoor and transit media to print, electronic and digital communication, we bring relevant media possibilities together through one experienced team.</p>
+<p>The objective is simple — clearer planning, easier coordination and stronger brand visibility.</p>
+</div>
+<div class="about-image about-reveal about-delay-1"><img alt="Outdoor advertising at sunset" decoding="async" loading="lazy" src="<?php echo e(asset('assets/images/home/work-1.webp')); ?>"/><span class="image-label">MORE POSSIBILITIES<br/>FOR YOUR BRAND</span></div>
+</section>
+<section class="about-strength">
+<div class="about-strength-visual about-reveal"><img alt="Ahmedabad outdoor advertising location" decoding="async" loading="lazy" src="<?php echo e(asset('assets/images/ooh/ahmedabad-hoarding-location-06.webp')); ?>"/></div>
+<div class="about-strength-copy about-reveal">
+<div class="about-tag">OUR STRENGTH</div>
+<h2>Experience.<br/>Relationships.<br/>Integrated Thinking.</h2>
+<p>More than four decades in advertising have taught us that strong media solutions are built on more than inventory. They are built on understanding markets, knowing locations, maintaining relationships and listening carefully to client requirements.</p>
+<p>Our strength lies in combining this experience with a broad view of today's media landscape.</p>
+<div class="about-pillrow about-stagger"><div class="about-pill"><b>01</b><span>Market Understanding</span></div><div class="about-pill"><b>02</b><span>Strong Relationships</span></div><div class="about-pill"><b>03</b><span>Experienced Team</span></div><div class="about-pill"><b>04</b><span>Integrated Thinking</span></div></div>
+</div>
+</section>
+<section class="about-block">
+<div class="about-copybox about-reveal">
+<div class="about-tag">OUR MEDIA LEGACY</div>
+<h3>A Wider Perspective<br/>on Advertising.</h3>
+<p>Our capabilities are strengthened by the long-standing advertising experience of Rakesh Advertising, particularly across newspaper advertising, electronic media, social media and branding solutions.</p>
+<p>This wider media foundation helps Krishna Outdoor offer clients more than outdoor visibility. It allows us to look at the complete communication requirement and explore the right mix of media around it.</p>
+</div>
+<div aria-label="A stronger foundation" class="about-foundation-card about-reveal about-delay-1"><div class="foundation-newspaper foundation-visual"><img alt="Press release and advertising media legacy" decoding="async" loading="lazy" src="<?php echo e(asset('assets/images/print/newspaper-original.webp')); ?>"/></div><div class="foundation-kicker">MEDIA LEGACY</div><h4>A STRONGER<br/>FOUNDATION</h4><p>Built on decades of wider advertising experience.</p><span class="foundation-line"></span></div>
+</section>
+<section class="about-lead" id="leadership">
+<div class="container">
+<div class="about-lead-head about-reveal">
+<div><div class="about-tag">LEADERSHIP</div><h2>Leadership Built on Experience<br/>and New Thinking.</h2></div>
+</div>
+<div class="about-lead-grid">
+<article class="leader-card about-reveal about-delay-1"><img alt="Rakesh Gandhi" decoding="async" loading="lazy" src="<?php echo e(asset('assets/images/about-rakesh-gandhi.webp')); ?>"/><div class="leader-copy"><small>Leadership</small><h3>Rakesh Gandhi</h3><div class="leader-role">Rakesh Gandhi — Chairman &amp; Managing Director</div><div class="leader-visible"><p>“In advertising, long-term success is built on trust, relationships and the commitment to deliver.” Cities and media have changed, but our focus remains on understanding markets, building lasting relationships and keeping brands present where people are.</p></div><div class="leader-more" hidden=""><p>Our journey has been built around this understanding. For more than four decades, we have worked to develop strong relationships, understand markets and create advertising opportunities that help brands communicate with their audiences.</p><p>What I value most about this journey is the trust placed in us by our clients, partners and team.</p><p>As we move forward, our focus remains on strengthening our capabilities while continuing to work with the same values that have guided us from the beginning — commitment, relationships and a genuine understanding of our clients' needs.</p></div><button aria-expanded="false" class="about-btn leader-readmore" type="button">Read More <span>→</span></button></div></article>
+<article class="leader-card about-reveal about-delay-2"><img alt="Kevin Gandhi" decoding="async" loading="lazy" src="<?php echo e(asset('assets/images/about-kevin-gandhi-director.webp')); ?>"/><div class="leader-copy"><small>Leadership</small><h3>Kevin Gandhi</h3><div class="leader-role">Kevin Gandhi — Director</div><div class="leader-visible"><p>“The future of media is not about choosing between traditional and digital. It is about understanding how they can work together.” Our focus is on bringing physical and digital opportunities together through smarter planning, new thinking and a deeper understanding of how audiences move through cities and media platforms.</p></div><div class="leader-more" hidden=""><p>Our strength is the experience and foundation built over decades. The opportunity ahead is to build on that foundation with new thinking, smarter planning and a deeper understanding of how audiences move through both cities and media platforms.</p><p>At Krishna Outdoor, our goal is to continue evolving with the industry while remaining grounded in the values that have earned us the trust of our clients.</p></div><button aria-expanded="false" class="about-btn leader-readmore" type="button">Read More <span>→</span></button></div></article>
+</div>
+</div>
+</section>
+<section class="about-cta about-reveal">
+<img alt="City outdoor campaign" decoding="async" loading="lazy" src="<?php echo e(asset('assets/images/work/digital-billboard-campaign-03.webp')); ?>"/>
+<div class="container">
+<div><div class="about-tag">LET'S CREATE</div><h2>LET'S PUT YOUR BRAND IN THE RIGHT PLACE.</h2><p>Whether you are launching a new product, entering a new market, building brand awareness or planning a large-scale campaign, our team is ready to help you explore the right opportunities.</p></div>
+<a class="about-btn primary" href="<?php echo e(route('view.contact')); ?>">TALK TO OUR TEAM →</a>
+</div>
+</section>
+</main>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('web-script'); ?>
+<script>
+(function(){
+ const els=document.querySelectorAll('.about-reveal');
+ const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+ els.forEach(e=>io.observe(e));
+})();
+</script>
+<script>
+(function(){
+  document.querySelectorAll('.leader-readmore').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var more=btn.previousElementSibling;
+      var card=btn.closest('.leader-card');
+      var open=btn.getAttribute('aria-expanded')==='true';
+      btn.setAttribute('aria-expanded',String(!open));
+      more.hidden=open;
+      if(card) card.classList.toggle('is-expanded', !open);
+      btn.firstChild.textContent=open?'Read More ':'Read Less ';
+    });
+  });
+})();
+</script>
+<style id="mobile-about-overlap-fix">
+/* Mobile About-page cleanup: keep the hero copy compact and give the stats a balanced stack. */
+@media (max-width:760px){
+  .inner-page .about-hero,
+  .inner-page .about-hero-inner,
+  .about-hero,
+  .about-hero-inner{
+    min-height:500px!important;
+    height:500px!important;
+  }
+  .about-hero-inner{
+    padding-top:34px!important;
+    align-items:flex-start!important;
+  }
+  .about-hero-copy{
+    width:92%!important;
+    max-width:315px!important;
+  }
+  .about-kicker{
+    font-size:8px!important;
+    line-height:1.1!important;
+    letter-spacing:.11em!important;
+    gap:7px!important;
+  }
+  .about-kicker:after{width:30px!important;height:1px!important}
+  .about-hero-title,
+  .about-hero h1{
+    font-size:clamp(29px,8.2vw,37px)!important;
+    line-height:.98!important;
+    letter-spacing:-.018em!important;
+    margin:9px 0 12px!important;
+  }
+  .about-hero-desc,
+  .about-hero-copy p{
+    max-width:100%!important;
+    font-size:11.5px!important;
+    line-height:1.36!important;
+    margin:0 0 11px!important;
+  }
+  .about-hero-desc br{display:none!important}
+  .about-hero-actions{
+    gap:8px!important;
+    margin-top:2px!important;
+  }
+  .about-hero-actions .about-btn{
+    padding:9px 12px!important;
+    font-size:8px!important;
+    line-height:1!important;
+    gap:7px!important;
+    letter-spacing:.3px!important;
+  }
+  .about-statbar{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    width:100%!important;
+  }
+  .about-stat{
+    min-height:72px!important;
+    padding:10px 8px!important;
+    gap:8px!important;
+  }
+  .about-stat:nth-child(2n){border-right:0!important}
+  .about-stat:last-child{
+    grid-column:1 / -1!important;
+    border-right:0!important;
+    justify-content:center!important;
+  }
+  .about-stat-icon{
+    width:27px!important;
+    height:27px!important;
+    font-size:13px!important;
+    flex:0 0 27px!important;
+  }
+  .about-stat strong{font-size:20px!important;line-height:1!important}
+  .about-stat small{font-size:7px!important;line-height:1.2!important}
+  .about-story{
+    grid-template-columns:1fr!important;
+    min-height:0!important;
+  }
+  .about-copybox{
+    padding:30px 18px 34px!important;
+  }
+  .about-copybox h2{
+    font-size:31px!important;
+    line-height:.96!important;
+    margin:9px 0 12px!important;
+  }
+  .about-copybox p{
+    font-size:11px!important;
+    line-height:1.42!important;
+    margin-bottom:8px!important;
+  }
+  .about-collage{
+    min-height:285px!important;
+    padding:9px!important;
+    gap:7px!important;
+  }
+  .about-collage .tile{min-height:128px!important}
+  .about-collage b{font-size:13px!important;left:9px!important;bottom:8px!important}
+}
+</style>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('web.layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Users/ayushman/Downloads/krishna-outdoor/laravel/resources/views/web/pages/about.blade.php ENDPATH**/ ?>
