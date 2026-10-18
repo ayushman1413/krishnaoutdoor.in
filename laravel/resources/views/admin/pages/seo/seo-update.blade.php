@@ -223,7 +223,7 @@
             <div class="panel-card-header">
                 <div>
                     <h1 class="panel-card-title">Sitemap</h1>
-                    <p class="panel-card-description">Control sitemap inclusion for this page/item</p>
+                    <p class="panel-card-description">Control sitemap inclusion for this page/item. Pages set to noindex are always left out. sitemap.xml regenerates automatically on save.</p>
                 </div>
             </div>
             <div class="panel-card-body">
