@@ -40,4 +40,9 @@ $exitCode = Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => tr
 echo Illuminate\Support\Facades\Artisan::output();
 
 echo "\nExit code: $exitCode\n";
+
+// Clear compiled views/config/route caches so freshly uploaded Blade
+// templates are used immediately.
+Illuminate\Support\Facades\Artisan::call('optimize:clear');
+echo "\n" . Illuminate\Support\Facades\Artisan::output();
 echo $exitCode === 0 ? "SUCCESS — now DELETE this file from the server.\n" : "FAILED — check the output above.\n";

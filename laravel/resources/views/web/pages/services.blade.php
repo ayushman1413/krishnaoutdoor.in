@@ -4,6 +4,7 @@
 @section('nav', 'services')
 
 @section('web-head')
+@include('web.common.keyword-page-style')
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","serviceType":"Outdoor, Transit & Social Media Marketing","provider":{"@type":"Organization","name":"Krishna Outdoor"},"areaServed":[{"@type":"City","name":"Ahmedabad"},{"@type":"City","name":"Mumbai"}],"name":"Outdoor, Transit & Social Media Marketing Services","description":"Hoarding, AMTS and GSRTC bus advertising, bus shelters, Mumbai local train and BEST bus branding, plus social media marketing in Ahmedabad and Mumbai."}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://krishnaoutdoor.in/"},{"@type":"ListItem","position":2,"name":"Media Solutions","item":"https://krishnaoutdoor.in/media-solutions"}]}</script>
 @endsection
@@ -96,6 +97,25 @@
 <a class="btn red media-btn" href="{{ route('view.contact') }}">Build a Stronger Brand <b>→</b></a></div>
 </div>
 </section>
+<section class="kw-section kw-section-alt" aria-labelledby="services-by-city"><div class="kw-inner">
+<h2 class="kw-h2" id="services-by-city">Advertising services in <em>Ahmedabad, Gujarat &amp; Mumbai</em></h2>
+<h3 class="kw-h3">Ahmedabad &amp; Gujarat</h3>
+<div class="kw-links">
+<a href="{{ route('view.keyword.hoarding.ahmedabad') }}">Hoarding Advertising in Ahmedabad</a>
+<a href="{{ route('view.keyword.amts.ahmedabad') }}">AMTS Bus Advertising in Ahmedabad</a>
+<a href="{{ route('view.keyword.bus.shelter.ahmedabad') }}">Bus Shelter Advertising in Ahmedabad</a>
+<a href="{{ route('view.keyword.gsrtc') }}">GSRTC Bus Advertising</a>
+<a href="{{ route('view.keyword.social.ahmedabad') }}">Social Media Marketing in Ahmedabad</a>
+</div>
+<h3 class="kw-h3">Mumbai &amp; Thane</h3>
+<div class="kw-links">
+<a href="{{ route('view.keyword.agency.mumbai') }}">Outdoor Advertising Agency in Mumbai</a>
+<a href="{{ route('view.keyword.local.train.mumbai') }}">Mumbai Local Train Advertising</a>
+<a href="{{ route('view.keyword.best.mumbai') }}">BEST Bus Advertising in Mumbai</a>
+<a href="{{ route('view.keyword.tmt.thane') }}">TMT Bus Advertising in Thane</a>
+<a href="{{ route('view.keyword.social.mumbai') }}">Social Media Marketing in Mumbai</a>
+</div>
+</div></section>
 <section class="media-final-cta"><div class="container media-final-inner reveal"><div><div class="tag light">ONE CAMPAIGN.</div><h2>ONE CAMPAIGN. MANY POSSIBILITIES.</h2><p>Every campaign is different. The right solution may be one powerful media format or a combination of several. Our job is to help you understand the possibilities and build a media approach around your objective, audience and market.<br/><br/>From physical visibility to digital engagement, Krishna Outdoor brings multiple advertising capabilities together under one experienced team.</p></div><a class="btn white media-btn" href="{{ route('view.contact') }}">Talk to Our Media Team <b>→</b></a></div></section>
 </main>
 
