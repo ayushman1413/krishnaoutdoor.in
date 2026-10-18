@@ -34,6 +34,41 @@
             </div>
         </figure>
 
+        {{-- SEO checklist --}}
+        @php
+            $titleLen = mb_strlen((string) $meta->meta_title);
+            $descLen = mb_strlen((string) $meta->meta_description);
+            $schemaOk = !$meta->schema_json || json_decode($meta->schema_json) !== null;
+            $hasOgImage = $meta->og_image || \App\Models\SeoSetting::query()->value('default_og_image');
+            $checks = [
+                ['Meta title is 30–60 characters', $titleLen >= 30 && $titleLen <= 60, $titleLen . ' characters'],
+                ['Meta description is 70–160 characters', $descLen >= 70 && $descLen <= 160, $descLen . ' characters'],
+                ['Focus keyword appears in the title', $meta->focus_keyword ? str_contains(mb_strtolower((string) $meta->meta_title), mb_strtolower($meta->focus_keyword)) : null, $meta->focus_keyword ?: 'no focus keyword set'],
+                ['Page is indexable', (bool) $meta->robots_index, $meta->robots_index ? 'index' : 'noindex'],
+                ['Included in sitemap.xml', !$meta->exclude_from_sitemap && $meta->robots_index, $meta->exclude_from_sitemap ? 'excluded' : ($meta->robots_index ? 'included' : 'excluded (noindex)')],
+                ['Share image available (page or site default)', (bool) $hasOgImage, $meta->og_image ? 'page image' : ($hasOgImage ? 'site default' : 'none')],
+                ['Custom schema JSON is valid', $schemaOk, $meta->schema_json ? ($schemaOk ? 'valid' : 'invalid JSON') : 'none (automatic schema only)'],
+            ];
+        @endphp
+        <figure class="panel-card">
+            <div class="panel-card-header">
+                <div>
+                    <h1 class="panel-card-title">SEO Checklist</h1>
+                    <p class="panel-card-description">Quick checks for the saved values of this page</p>
+                </div>
+            </div>
+            <div class="panel-card-body">
+                <ul style="list-style:none;margin:0;padding:0;display:grid;gap:8px;">
+                    @foreach ($checks as [$label, $ok, $detail])
+                        <li style="display:flex;gap:10px;align-items:baseline;">
+                            <span aria-hidden="true" style="font-weight:700;color:{{ $ok === null ? '#64748b' : ($ok ? '#15803d' : '#b91c1c') }}">{{ $ok === null ? '–' : ($ok ? '✓' : '✗') }}</span>
+                            <span>{{ $label }} <span class="text-xs text-slate-500">({{ $detail }})</span></span>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        </figure>
+
         {{-- Basic SEO --}}
         <figure class="panel-card">
             <div class="panel-card-header">
@@ -88,6 +123,14 @@
                         <input type="text" name="h1_override" value="{{ old('h1_override', $meta->h1_override) }}"
                             class="input-box-md @error('h1_override') input-invalid @enderror" maxlength="150">
                         @error('h1_override') <span class="input-error">{{ $message }}</span> @enderror
+                    </div>
+
+                    <div class="input-group">
+                        <label class="input-label">Use Title As Written <span>(On: the meta title is used exactly as entered. Off: it is placed into the title template from SEO Settings, e.g. "Title | Krishna Outdoor".)</span></label>
+                        <label class="toggler-switch">
+                            <input type="checkbox" name="skip_title_template" value="1" @checked(old('skip_title_template', $meta->skip_title_template))>
+                            <div class="slider"></div>
+                        </label>
                     </div>
 
                     <div class="input-group">
