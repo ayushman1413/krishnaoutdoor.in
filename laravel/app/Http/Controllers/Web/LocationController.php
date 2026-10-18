@@ -36,7 +36,7 @@ class LocationController extends Controller
 
             $seo = SeoResolver::forRoute(
                 SeoResolver::routeNameForCity($cityName),
-                $cityName . ' Locations | Krishna Outdoor',
+                $cityName . ' Locations',
                 "Explore our available outdoor advertising media - billboards, bus branding, train media and more - across {$cityName}."
             );
 

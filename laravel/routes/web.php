@@ -283,7 +283,10 @@ Route::get('/category/{slug}', function ($slug) {
         $category->id
     )->get();
 
-    $seo = \App\Services\SeoResolver::forModel($category, $category->name . ' | Krishna Outdoor', $category->summary ?? '');
+    // Fallback title goes through the "{page_title} | {site_name}" template,
+    // so it must not already carry the site name.
+    $featuredImage = pathinfo((string) $category->cover_image, PATHINFO_EXTENSION) === 'mp4' ? $category->thumbnail_image : $category->cover_image;
+    $seo = \App\Services\SeoResolver::forModel($category, $category->name, strip_tags((string) $category->summary), $featuredImage);
 
     return view('web.pages.child-category', [
         'category' => $category,
@@ -317,7 +320,10 @@ Route::get('/{slug}', function ($slug) {
         $category->id
     )->get();
 
-    $seo = \App\Services\SeoResolver::forModel($category, $category->name . ' | Krishna Outdoor', $category->summary ?? '');
+    // Fallback title goes through the "{page_title} | {site_name}" template,
+    // so it must not already carry the site name.
+    $featuredImage = pathinfo((string) $category->cover_image, PATHINFO_EXTENSION) === 'mp4' ? $category->thumbnail_image : $category->cover_image;
+    $seo = \App\Services\SeoResolver::forModel($category, $category->name, strip_tags((string) $category->summary), $featuredImage);
 
     return view('web.pages.parent-category', [
         'category' => $category,

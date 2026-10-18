@@ -45,6 +45,7 @@ function trackConversion(action, label) {
 @if ($seoSettings?->head_custom_code)
 {!! $seoSettings->head_custom_code !!}
 @endif
+</head>
 <body @if(trim($__env->yieldContent('body-class'))) class="@yield('body-class')" @endif>
 @include('web.common.header')
 @yield('web-section')

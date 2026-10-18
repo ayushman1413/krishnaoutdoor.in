@@ -17,33 +17,64 @@ class SeoResolver
 {
     public ?SeoMeta $meta;
     public ?SeoSetting $settings;
+    public ?string $routeName = null;
     public string $pageTitle = '';
     public string $description = '';
     public string $canonicalUrl = '';
+    private ?string $featuredImage = null;
 
-    private function __construct(?SeoMeta $meta, string $fallbackTitle = '', string $fallbackDescription = '')
+    private function __construct(?SeoMeta $meta, string $fallbackTitle = '', string $fallbackDescription = '', ?string $routeName = null, ?string $featuredImage = null)
     {
         $this->meta = $meta;
         $this->settings = SeoSetting::query()->first();
+        $this->routeName = $routeName;
+        $this->featuredImage = $featuredImage;
 
-        $rawTitle = $meta?->meta_title ?: $fallbackTitle;
-        $this->pageTitle = ($meta?->skip_title_template ?? false)
+        $rawTitle = trim((string) ($meta?->meta_title ?: $fallbackTitle));
+        $this->pageTitle = ($meta?->skip_title_template ?? false) && $rawTitle !== ''
             ? $rawTitle
             : $this->applyTitleTemplate($rawTitle);
-        $this->description = $meta?->meta_description ?: $fallbackDescription;
-        $this->canonicalUrl = $meta?->canonical_url ?: url()->current();
+        $this->description = trim((string) ($meta?->meta_description ?: $fallbackDescription));
+        $this->canonicalUrl = $meta?->canonical_url ?: self::canonicalFor(request()->path());
     }
 
     public static function forRoute(string $routeName, string $fallbackTitle = '', string $fallbackDescription = ''): self
     {
         $meta = SeoMeta::query()->where('route_name', $routeName)->first();
-        return new self($meta, $fallbackTitle, $fallbackDescription);
+        return new self($meta, $fallbackTitle, $fallbackDescription, $routeName);
     }
 
-    public static function forModel(Model $model, string $fallbackTitle = '', string $fallbackDescription = ''): self
+    public static function forModel(Model $model, string $fallbackTitle = '', string $fallbackDescription = '', ?string $featuredImage = null): self
     {
         $meta = method_exists($model, 'seo') ? $model->seo : null;
-        return new self($meta, $fallbackTitle, $fallbackDescription);
+        return new self($meta, $fallbackTitle, $fallbackDescription, null, $featuredImage);
+    }
+
+    /**
+     * Canonical https://krishnaoutdoor.in/... URL for a request path, built
+     * from APP_URL rather than the incoming request so http://, www. or
+     * query-string variants never leak into canonicals or the sitemap.
+     */
+    public static function canonicalFor(string $path): string
+    {
+        $base = rtrim((string) config('app.url'), '/');
+        $path = trim($path, '/');
+
+        return $path === '' ? $base . '/' : $base . '/' . $path;
+    }
+
+    /**
+     * This page's entry in config/seo_pages.php (breadcrumb, region,
+     * service), or [] for DB-backed pages.
+     */
+    public function page(): array
+    {
+        return $this->routeName ? (config('seo_pages.' . $this->routeName) ?? []) : [];
+    }
+
+    public function region(): ?string
+    {
+        return $this->page()['region'] ?? null;
     }
 
     /**
@@ -92,9 +123,34 @@ class SeoResolver
         return $this->meta?->og_description ?: $this->description;
     }
 
+    /**
+     * OG image as an absolute URL: page OG image, then the page's featured
+     * image, then the site default OG image from SEO settings.
+     */
     public function ogImage(): ?string
     {
-        return $this->meta?->og_image ?: $this->settings?->default_og_image;
+        return self::imageUrl($this->meta?->og_image)
+            ?? self::imageUrl($this->featuredImage)
+            ?? self::imageUrl($this->settings?->default_og_image);
+    }
+
+    /**
+     * Uploads (og_image, default_og_image, category images) are stored as
+     * paths on the public disk, i.e. served from /storage/...; full URLs
+     * and /assets/... paths are passed through.
+     */
+    public static function imageUrl(?string $path): ?string
+    {
+        if (!$path) {
+            return null;
+        }
+        if (preg_match('#^https?://#', $path)) {
+            return $path;
+        }
+        if (str_starts_with($path, '/')) {
+            return url($path);
+        }
+        return asset('storage/' . $path);
     }
 
     public function ogType(): string
@@ -119,7 +175,7 @@ class SeoResolver
 
     public function twitterImage(): ?string
     {
-        return $this->meta?->twitter_image ?: $this->ogImage();
+        return self::imageUrl($this->meta?->twitter_image) ?? $this->ogImage();
     }
 
     public function h1Override(): ?string
