@@ -228,6 +228,13 @@ Route::get('/locations/{city}', [LocationController::class, 'viewByCity'])
 |
 */
 
+Route::get('/free-site-list', [FormController::class, 'viewFreeSiteList'])
+    ->name('view.free.site.list');
+
+Route::post('/free-site-list', [FormController::class, 'handleFreeSiteListSubmit'])
+    ->middleware('throttle:10,1')
+    ->name('handle.free.site.list');
+
 Route::get('/thank-you', function () {
     return view('web.layouts.Thank you');
 })->name('view.thankyou');

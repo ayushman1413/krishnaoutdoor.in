@@ -33,11 +33,11 @@
     </div>
 
     <div class="container ty-info-card">
-      <div class="ty-info-item"><span class="ty-icon">☎</span><div><b>Need Immediate Help?</b><p>Call us: +91 98796 16411</p></div></div>
+      <div class="ty-info-item"><span class="ty-icon">☎</span><div><b>Need Immediate Help?</b><p>Call us: <a href="tel:{{ config('business.offices.ahmedabad.phone') }}">{{ config('business.offices.ahmedabad.phone_display') }}</a></p></div></div>
       <div class="ty-divider"></div>
-      <div class="ty-info-item"><span class="ty-icon">✉</span><div><b>Email Us</b><p>info@krishnaoutdoor.in</p></div></div>
+      <div class="ty-info-item"><span class="ty-icon">✉</span><div><b>Email Us</b><p><a href="mailto:{{ config('business.email') }}">{{ config('business.email') }}</a></p></div></div>
       <div class="ty-divider"></div>
-      <div class="ty-info-item"><span class="ty-icon">⌖</span><div><b>Our Office</b><p>301, 3rd Floor, Shilp Aaron, Opp. Arvind, Sindhu Bhavan Road, Bodakdev, Ahmedabad – 380054.</p></div></div>
+      <div class="ty-info-item"><span class="ty-icon">⌖</span><div><b>Our Office</b><p>{{ config('business.offices.ahmedabad.address') }}</p></div></div>
       <div class="ty-divider"></div>
       <div class="ty-info-item"><span class="ty-icon">◷</span><div><b>Business Hours</b><p>Mon – Sat<br>10:00 AM – 6:00 PM</p></div></div>
     </div>

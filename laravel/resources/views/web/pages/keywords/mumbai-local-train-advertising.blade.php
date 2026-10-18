@@ -87,7 +87,7 @@
             <h2>GET YOUR FREE TRAIN AVAILABILITY LIST</h2>
             <p>Tell us your target line and timeframe and we'll share available rakes with rates.</p>
         </div>
-        <a class="btn white" href="{{ route('view.contact') }}">Get Availability List <b>→</b></a>
+        <a class="btn white" href="{{ route('view.free.site.list', ['media' => 'mumbai-local-train']) }}">Get Free Site List <b>→</b></a>
     </div>
 </section>
 

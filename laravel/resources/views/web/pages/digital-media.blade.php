@@ -65,8 +65,8 @@
                     Today's audience moves between the physical and digital worlds throughout the day.
                 </p>
 
-                <a class="small-btn" href="{{ route('view.contact') }}">
-                    Get A Free Site List
+                <a class="small-btn" href="{{ route('view.free.site.list', ['media' => 'dooh']) }}">
+                    Get Free Site List
                     <span>→</span>
                 </a>
 

@@ -26,6 +26,8 @@ class SeoMetaSeeder extends Seeder
                     'meta_title' => $page['title'],
                     'meta_description' => $page['description'],
                     'skip_title_template' => true,
+                    'robots_index' => $page['index'] ?? true,
+                    'exclude_from_sitemap' => !($page['index'] ?? true),
                 ]
             );
         }

@@ -99,7 +99,7 @@
             <h2>GET YOUR FREE AMTS BUS ROUTE LIST</h2>
             <p>Tell us your target areas in Ahmedabad and we'll share available AMTS buses with routes, formats and rates.</p>
         </div>
-        <a class="btn white" href="{{ route('view.contact') }}">Get Route List <b>→</b></a>
+        <a class="btn white" href="{{ route('view.free.site.list', ['media' => 'amts']) }}">Get Free Site List <b>→</b></a>
     </div>
 </section>
 

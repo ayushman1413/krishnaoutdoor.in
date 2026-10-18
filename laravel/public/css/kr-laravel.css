@@ -248,18 +248,18 @@
 }
 
 /* Footer: both offices (NAP) */
-.footer-offices{position:relative;z-index:1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 44px;padding:0 0 36px;border-top:1px solid rgba(255,255,255,.08);padding-top:28px}
-.footer-office{font-style:normal;display:flex;flex-direction:column;gap:6px;font:400 13px/1.6 Inter,sans-serif;color:#c3c8ce}
-.footer-office b{font:700 11px/1.4 Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#fff}
-.footer-office a{color:#fff;text-decoration:none;font-weight:600;width:fit-content}
-.footer-office a:hover,.footer-office a:focus-visible{color:#ff5a60;text-decoration:underline}
+.footer-offices{position:relative;z-index:1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 44px;padding:28px 0 36px;border-top:1px solid #e3e6e9}
+.footer-office{font-style:normal;display:flex;flex-direction:column;gap:6px;font:400 13px/1.6 Inter,sans-serif;color:#454c54}
+.footer-office b{font:700 11px/1.4 Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#17191c}
+.footer-office a{color:#b3131a;text-decoration:none;font-weight:700;width:fit-content}
+.footer-office a:hover,.footer-office a:focus-visible{color:#8f0f15;text-decoration:underline}
 @media (max-width:760px){.footer-offices{grid-template-columns:1fr;padding-bottom:28px}}
 
 .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 
 /* Header: click-to-call and WhatsApp */
-.header .nav-contact{order:3!important;display:flex;align-items:center;gap:8px;margin:0 14px 0 18px}
-.header .nav-contact-link{display:inline-flex;align-items:center;gap:6px;color:inherit;text-decoration:none;font:700 12px/1 Inter,sans-serif;letter-spacing:.02em;white-space:nowrap;padding:8px 4px;border-radius:4px}
+.header .nav-contact{order:3!important;display:flex;align-items:center;gap:2px;margin:0 12px 0 16px;padding:2px 6px;background:rgba(255,255,255,.92);border:1px solid rgba(16,18,22,.08);border-radius:999px;box-shadow:0 6px 18px rgba(16,18,22,.08)}
+.header .nav-contact-link{display:inline-flex;align-items:center;gap:6px;color:#121416;text-decoration:none;font:700 12px/1 Inter,sans-serif;letter-spacing:.02em;white-space:nowrap;padding:8px 6px;border-radius:999px}
 .header .nav-contact-link svg{width:18px;height:18px;flex:none}
 .header .nav-contact-call svg{color:var(--red,#e51b23)}
 .header .nav-contact-whatsapp svg{color:#1fa855;width:20px;height:20px}
@@ -272,3 +272,21 @@
 }
 /* Tablet widths: the pill nav already fills the bar; phone stays in the footer. */
 @media (min-width:761px) and (max-width:1100px){.header .nav-contact{display:none!important}}
+
+/* /free-site-list */
+.fsl-grid{align-items:start}
+.fsl-direct{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.fsl-whatsapp{background:#1d8a49;color:#fff}
+.fsl-whatsapp:hover,.fsl-whatsapp:focus-visible{background:#166e3a;color:#fff}
+.fsl-form{background:#fff;border:1px solid #d9dde2;border-radius:10px;padding:26px;box-shadow:0 18px 40px rgba(16,18,22,.08);display:grid;gap:16px}
+.fsl-form-title{font:700 22px/1.2 Oswald,Inter,sans-serif;letter-spacing:.02em;text-transform:uppercase;color:#101216;margin:0}
+.fsl-field{display:grid;gap:6px}
+.fsl-field label{font:600 13px/1.3 Inter,sans-serif;color:#101216}
+.fsl-field label span{color:#c4161d}
+.fsl-field input,.fsl-field select{font:400 15px/1.4 Inter,sans-serif;color:#101216;background:#fff;border:1px solid #8a9198;border-radius:6px;padding:11px 12px;width:100%;box-sizing:border-box}
+.fsl-field input:focus-visible,.fsl-field select:focus-visible{outline:3px solid rgba(229,27,35,.35);outline-offset:1px;border-color:#c4161d}
+.fsl-field [aria-invalid="true"]{border-color:#c4161d}
+.fsl-hint{margin:0;font:400 12px/1.4 Inter,sans-serif;color:#555c63}
+.fsl-error{margin:0;font:600 12px/1.4 Inter,sans-serif;color:#b3131a}
+.fsl-submit{justify-self:start;border:0;cursor:pointer}
+@media (max-width:760px){.fsl-form{padding:20px}.fsl-submit{justify-self:stretch;text-align:center}}

@@ -91,7 +91,7 @@
             <h2>GET YOUR FREE TMT BUS FLEET LIST</h2>
             <p>Tell us your target areas in Thane and we'll share available TMT buses with routes and rates.</p>
         </div>
-        <a class="btn white" href="{{ route('view.contact') }}">Get Fleet List <b>→</b></a>
+        <a class="btn white" href="{{ route('view.free.site.list', ['media' => 'tmt']) }}">Get Free Site List <b>→</b></a>
     </div>
 </section>
 

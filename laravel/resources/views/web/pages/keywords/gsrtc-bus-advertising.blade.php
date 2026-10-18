@@ -94,7 +94,7 @@
             <h2>GET YOUR FREE GSRTC FLEET AVAILABILITY LIST</h2>
             <p>Tell us your target districts in Gujarat and we'll share available GSRTC buses with routes, formats and rates.</p>
         </div>
-        <a class="btn white" href="{{ route('view.contact') }}">Get Fleet List <b>→</b></a>
+        <a class="btn white" href="{{ route('view.free.site.list', ['media' => 'gsrtc']) }}">Get Free Site List <b>→</b></a>
     </div>
 </section>
 

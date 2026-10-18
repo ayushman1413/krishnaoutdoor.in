@@ -212,4 +212,15 @@ return [
         'service' => ['name' => 'Social Media Marketing in Mumbai', 'type' => 'Social Media Marketing', 'area' => ['Mumbai']],
     ],
 
+    // Conversion landing page: kept out of search results and the sitemap.
+    'view.free.site.list' => [
+        'path' => '/free-site-list',
+        'label' => 'Free Site List',
+        'parent' => 'view.home',
+        'region' => null,
+        'index' => false,
+        'title' => 'Get a Free Site List | Krishna Outdoor',
+        'description' => 'Tell us your city and media type and our team will send you a free list of available hoardings, bus shelters, bus and train advertising options.',
+    ],
+
 ];

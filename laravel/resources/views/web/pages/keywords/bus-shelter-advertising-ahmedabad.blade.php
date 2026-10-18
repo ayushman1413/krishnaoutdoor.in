@@ -86,7 +86,7 @@
             <h2>GET YOUR FREE BUS SHELTER LOCATION LIST</h2>
             <p>Tell us your target area in Ahmedabad and we'll share available bus shelters with photos, sizes and rates.</p>
         </div>
-        <a class="btn white" href="{{ route('view.contact') }}">Get Location List <b>→</b></a>
+        <a class="btn white" href="{{ route('view.free.site.list', ['media' => 'bus-shelters']) }}">Get Free Site List <b>→</b></a>
     </div>
 </section>
 

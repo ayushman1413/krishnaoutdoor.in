@@ -126,8 +126,8 @@
                 <li><a href="/gsrtc-bus-advertising">GSRTC Bus Advertising</a></li>
             </ul>
 
-            <a class="small-btn" href="{{ route('view.contact') }}">
-                Check Site Availability <span>→</span>
+            <a class="small-btn" href="{{ route('view.free.site.list', ['media' => 'ooh']) }}">
+                Get Free Site List <span>→</span>
             </a>
 
         </div>
@@ -207,8 +207,8 @@
 
         </div>
 
-        <a class="btn white" href="{{ route('view.contact') }}">
-            Get Site List <b>→</b>
+        <a class="btn white" href="{{ route('view.free.site.list', ['media' => 'ooh']) }}">
+            Get Free Site List <b>→</b>
         </a>
 
     </div>

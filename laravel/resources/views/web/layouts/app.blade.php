@@ -8,23 +8,24 @@
 @if ($seoSettings?->gsc_verification_code)
 <meta name="google-site-verification" content="{{ $seoSettings->gsc_verification_code }}">
 @endif
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-H76CYYJE3S"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-H76CYYJE3S');
-@if ($seoSettings?->ga4_id)
-gtag('config', @json($seoSettings->ga4_id));
-@endif
-function trackConversion(action, label) {
-    if (window.gtag) {
-        gtag('event', action, { event_category: 'engagement', event_label: label });
-    }
-}
+// GA4 events go to gtag when a GA4 ID is set and to the GTM dataLayer when a
+// GTM ID is set (both IDs come from SEO settings).
+window.koTrack = function (name, params) {
+  params = Object.assign({ page_path: window.location.pathname }, params || {});
+  if (window.KO_GA4) { gtag('event', name, params); }
+  if (window.KO_GTM) { window.dataLayer.push(Object.assign({ event: name }, params)); }
+};
+function trackConversion(action, label) { window.koTrack(action, { event_label: label }); }
 </script>
+@if ($seoSettings?->ga4_id)
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ urlencode($seoSettings->ga4_id) }}"></script>
+<script>window.KO_GA4 = true; gtag('js', new Date()); gtag('config', @json($seoSettings->ga4_id));</script>
+@endif
 @if ($seoSettings?->gtm_id)
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer',@json($seoSettings->gtm_id));</script>
+<script>window.KO_GTM = true;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer',@json($seoSettings->gtm_id));</script>
 @endif
 @if ($seoSettings?->fb_pixel_code)
 {!! $seoSettings->fb_pixel_code !!}
@@ -47,6 +48,9 @@ function trackConversion(action, label) {
 @endif
 </head>
 <body @if(trim($__env->yieldContent('body-class'))) class="@yield('body-class')" @endif>
+@if ($seoSettings?->gtm_id)
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ urlencode($seoSettings->gtm_id) }}" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>
+@endif
 @include('web.common.header')
 @yield('web-section')
 @include('web.common.footer')
@@ -62,6 +66,7 @@ window.KR_ROUTES = {
 </script>
 <script defer="defer" src="{{ asset('js/main.js') }}?v={{ @filemtime(public_path('js/main.js')) }}"></script>
 <script defer="defer" src="{{ asset('js/kr-laravel.js') }}?v={{ @filemtime(public_path('js/kr-laravel.js')) }}"></script>
+<script defer="defer" src="{{ asset('js/tracking.js') }}?v={{ @filemtime(public_path('js/tracking.js')) }}"></script>
 @yield('web-script')
 @if (session('message'))
 <script>
@@ -71,9 +76,14 @@ window.addEventListener('DOMContentLoaded', function () {
 </script>
 @endif
 @if (session('track_event'))
+@php $trackEvent = session('track_event'); @endphp
 <script>
 window.addEventListener('DOMContentLoaded', function () {
-  trackConversion(@json(session('track_event')), window.location.pathname);
+@if (is_array($trackEvent))
+  window.koTrack(@json($trackEvent['name']), { form_name: @json($trackEvent['form_name'] ?? null) });
+@else
+  trackConversion(@json($trackEvent), window.location.pathname);
+@endif
 });
 </script>
 @endif

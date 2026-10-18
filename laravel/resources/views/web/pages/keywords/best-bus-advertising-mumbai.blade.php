@@ -87,7 +87,7 @@
             <h2>GET YOUR FREE BEST BUS FLEET LIST</h2>
             <p>Tell us your target areas in Mumbai and we'll share available BEST EV buses with routes and rates.</p>
         </div>
-        <a class="btn white" href="{{ route('view.contact') }}">Get Fleet List <b>→</b></a>
+        <a class="btn white" href="{{ route('view.free.site.list', ['media' => 'best']) }}">Get Free Site List <b>→</b></a>
     </div>
 </section>
 

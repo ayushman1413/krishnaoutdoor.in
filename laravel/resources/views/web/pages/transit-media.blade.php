@@ -197,8 +197,8 @@
             </p>
         </div>
 
-        <a class="btn white" href="{{ route('view.contact') }}">
-            Enquire Now <b>→</b>
+        <a class="btn white" href="{{ route('view.free.site.list', ['media' => 'transit']) }}">
+            Get Free Site List <b>→</b>
         </a>
 
     </div>
