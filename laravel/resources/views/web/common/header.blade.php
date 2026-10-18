@@ -30,7 +30,7 @@
         </a>
 
         <!-- Navigation -->
-        <nav class="nav" id="nav">
+        <nav class="nav" id="nav" aria-label="Main">
 
             <!-- Home -->
             <a

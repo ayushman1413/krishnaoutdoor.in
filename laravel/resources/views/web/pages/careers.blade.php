@@ -84,9 +84,9 @@
 
 .kr-badge span{display:block;font:700 8px/1.3 Inter,sans-serif;letter-spacing:.1em;margin-top:5px}
 
-.kr-copy h3{font:700 clamp(38px,4vw,60px)/.98 Oswald,sans-serif;text-transform:uppercase;margin:0 0 22px}
+.kr-copy h3,.kr-copy .kr-copy-title{font:700 clamp(38px,4vw,60px)/.98 Oswald,sans-serif;text-transform:uppercase;margin:0 0 22px}
 
-.kr-copy h3 em{color:#ef2027;font-style:normal}
+.kr-copy h3 em,.kr-copy .kr-copy-title em{color:#ef2027;font-style:normal}
 
 .kr-copy p{line-height:1.8;color:#646b74;margin:0 0 25px}
 
@@ -1411,30 +1411,30 @@ body.kr-image-lightbox-open{overflow:hidden!important;}
 
 <main class="kr-page"><section class="kr-hero"><img alt="Krishna Outdoor workplace and advertising environment" class="hero-media careers-hero-image" decoding="async" loading="eager" src="{{ asset('assets/images/ooh/ahmedabad-hoarding-location-06.webp') }}"/><div class="hero-grid"></div><div class="container kr-hero-inner kr-reveal"><div class="kr-kicker">CAREERS / LIFE AT KRISHNA</div><h1 class="seo-h1">Careers at Krishna Outdoor</h1><p class="seo-h1-slogan">BUILD THE <em>NEXT CHAPTER.</em></p><p>Great outdoor campaigns are built by people who understand places, people and possibilities. Join a team that turns ideas into real-world visibility.</p><div class="kr-actions"><a class="kr-btn" href="#apply">Explore Opportunities <span>→</span></a><a class="kr-btn alt" href="#culture">Life at Krishna <span>↓</span></a></div></div></section>
 <section class="kr-ticker"><div class="item kr-reveal"><b>40+</b><span>Years of experience</span></div><div class="item kr-reveal delay-1"><b>360°</b><span>Media thinking</span></div><div class="item kr-reveal delay-2"><b>Ahmedabad</b><span>Core operations</span></div><div class="item kr-reveal delay-3"><b>Mumbai</b><span>Growing network</span></div></section>
-<section class="kr-section" id="culture"><div class="container kr-career-grid"><div class="kr-image-stack kr-reveal"><div class="pic p1"><img alt="Krishna Outdoor team and workplace" decoding="async" loading="lazy" src="{{ asset('assets/images/careers-about-image-01.webp') }}"/></div><div class="pic p2"><img alt="Krishna Outdoor office and city" decoding="async" loading="lazy" src="{{ asset('assets/images/career-f3.webp') }}"/></div><div class="pic p3"><img alt="Krishna Outdoor outdoor advertising and transit media" decoding="async" loading="lazy" src="{{ asset('assets/images/shared-mumbai-local-train-advertising.webp') }}"/></div><div class="kr-badge">40+<span>YEARS<br/>OF PEOPLE<br/>&amp; PROGRESS</span></div></div><div class="kr-copy kr-reveal delay-1"><div class="kr-kicker">WHY KRISHNA OUTDOOR</div><h3>PEOPLE MAKE<br/><em>THE DIFFERENCE.</em></h3><p>We work across outdoor, transit, print, electronic and digital media. That means every role connects to something visible, practical and real.</p><div class="kr-points"><div class="kr-point"><b>Think in the real world</b><span>Understand locations, audiences and movement.</span></div><div class="kr-point"><b>Work across media</b><span>Learn how one campaign travels across formats.</span></div><div class="kr-point"><b>Own your growth</b><span>Take responsibility and build practical expertise.</span></div><div class="kr-point"><b>Grow together</b><span>Collaborate with teams and clients every day.</span></div></div></div></div></section>
+<section class="kr-section" id="culture"><div class="container kr-career-grid"><div class="kr-image-stack kr-reveal"><div class="pic p1"><img alt="Krishna Outdoor team and workplace" decoding="async" loading="lazy" src="{{ asset('assets/images/careers-about-image-01.webp') }}"/></div><div class="pic p2"><img alt="Krishna Outdoor office and city" decoding="async" loading="lazy" src="{{ asset('assets/images/career-f3.webp') }}"/></div><div class="pic p3"><img alt="Krishna Outdoor outdoor advertising and transit media" decoding="async" loading="lazy" src="{{ asset('assets/images/shared-mumbai-local-train-advertising.webp') }}"/></div><div class="kr-badge">40+<span>YEARS<br/>OF PEOPLE<br/>&amp; PROGRESS</span></div></div><div class="kr-copy kr-reveal delay-1"><div class="kr-kicker">WHY KRISHNA OUTDOOR</div><h2 class="kr-copy-title">PEOPLE MAKE<br/><em>THE DIFFERENCE.</em></h2><p>We work across outdoor, transit, print, electronic and digital media. That means every role connects to something visible, practical and real.</p><div class="kr-points"><div class="kr-point"><b>Think in the real world</b><span>Understand locations, audiences and movement.</span></div><div class="kr-point"><b>Work across media</b><span>Learn how one campaign travels across formats.</span></div><div class="kr-point"><b>Own your growth</b><span>Take responsibility and build practical expertise.</span></div><div class="kr-point"><b>Grow together</b><span>Collaborate with teams and clients every day.</span></div></div></div></div></section>
 <section class="kr-section dark"><div class="container"><div class="kr-head kr-reveal"><div><div class="kr-kicker">OPPORTUNITIES</div><h2>FIND YOUR <em>SPACE.</em></h2></div><p>From field operations to creative thinking, there is room to build a career around what you do best.</p></div><div class="kr-roles"><article class="kr-role kr-reveal"><small>01 / GROW</small><h3>Sales &amp; Business</h3><p>Build relationships, understand brands and create opportunities across markets.</p></article><article class="kr-role kr-reveal delay-1"><small>02 / MOVE</small><h3>Operations</h3><p>Make campaigns happen on the ground with precision and ownership.</p></article><article class="kr-role kr-reveal delay-2"><small>03 / CREATE</small><h3>Design &amp; Creative</h3><p>Turn campaign thinking into visual ideas that work in public spaces.</p></article><article class="kr-role kr-reveal"><small>04 / CONNECT</small><h3>Client Servicing</h3><p>Keep brands, teams and execution aligned from brief to delivery.</p></article><article class="kr-role kr-reveal delay-1"><small>05 / SCALE</small><h3>Digital Marketing</h3><p>Extend outdoor visibility into digital conversations and measurable action.</p></article><article class="kr-role kr-reveal delay-2"><small>06 / SUPPORT</small><h3>Admin &amp; Coordination</h3><p>Keep people, processes and day-to-day business moving smoothly.</p></article></div></div></section>
 <section class="kr-section"><div class="container"><div class="kr-head kr-reveal"><div><div class="kr-kicker">HOW WE WORK</div><h2>FROM IDEA TO <em>IMPACT.</em></h2></div><p>A simple rhythm: understand the objective, collaborate with the right people, execute well and learn from the result.</p></div><div class="kr-steps"><div class="kr-step kr-reveal"><div class="num">01</div><h3>Understand</h3><p>Start with the brand, audience and real-world requirement.</p></div><div class="kr-step kr-reveal delay-1"><div class="num">02</div><h3>Collaborate</h3><p>Bring creative, media, operations and client thinking together.</p></div><div class="kr-step kr-reveal delay-2"><div class="num">03</div><h3>Execute</h3><p>Turn plans into visible campaigns with attention to detail.</p></div><div class="kr-step kr-reveal delay-3"><div class="num">04</div><h3>Grow</h3><p>Build stronger skills, relationships and possibilities.</p></div></div></div></section>
 <section class="kr-section" id="apply"><div class="container"><div class="kr-head kr-reveal"><div><div class="kr-kicker">JOIN THE TEAM</div><h2>YOUR NEXT <em>MOVE.</em></h2></div><p>Send us your details and tell us where you would like to contribute.</p></div><div class="kr-application kr-reveal"><div class="kr-app-intro"><div class="kr-kicker">APPLICATION</div><h2>LET'S BUILD<br/><em>WHAT'S NEXT.</em></h2><p>We review profiles across Ahmedabad and Mumbai. If your skills match an upcoming requirement, our team will connect with you.</p><div class="mini">Accepted profiles: Sales • Operations • Design • Client Servicing • Digital • Administration</div></div><form action="{{ route('handle.career.enquiry') }}" class="kr-form" enctype="multipart/form-data" id="careerApplicationForm" method="POST">
     @csrf
     <div class="kr-form-grid">
 <div class="kr-field">
-<label>Full Name *</label>
-<input name="name" placeholder="Your full name" required="" value="{{ old('name') }}"/>
+<label for="career_name">Full Name *</label>
+<input id="career_name" name="name" placeholder="Your full name" required="" value="{{ old('name') }}"/>
             @error('name') <small class="file-note" style="color:red">{{ $message }}</small> @enderror
         </div>
 <div class="kr-field">
-<label>Email *</label>
-<input name="email" placeholder="you@example.com" required="" type="email" value="{{ old('email') }}"/>
+<label for="career_email">Email *</label>
+<input id="career_email" name="email" placeholder="you@example.com" required="" type="email" value="{{ old('email') }}"/>
             @error('email') <small class="file-note" style="color:red">{{ $message }}</small> @enderror
         </div>
 <div class="kr-field">
-<label>Phone *</label>
+<label for="careerPhone">Phone *</label>
 <input id="careerPhone" inputmode="numeric" maxlength="10" name="phone" pattern="[0-9]{10}" placeholder="10-digit mobile number" required="" value="{{ old('phone') }}"/>
             @error('phone') <small class="file-note" style="color:red">{{ $message }}</small> @enderror
         </div>
 <div class="kr-field">
-<label>Area of Interest *</label>
-<select name="role" required="">
+<label for="career_role">Area of Interest *</label>
+<select id="career_role" name="role" required="">
 <option value="">Select role</option>
 <option>Sales &amp; Business</option>
 <option>Operations</option>
@@ -1446,8 +1446,8 @@ body.kr-image-lightbox-open{overflow:hidden!important;}
             @error('role') <small class="file-note" style="color:red">{{ $message }}</small> @enderror
         </div>
 <div class="kr-field full">
-<label>Resume Attachment *</label>
-<input accept=".pdf,.doc,.docx" name="resume" required="" type="file"/>
+<label for="career_resume">Resume Attachment *</label>
+<input accept=".pdf,.doc,.docx"  id="career_resume" name="resume" required="" type="file"/>
 <small class="file-note">PDF, DOC or DOCX • max 10 MB</small>
             @error('resume') <small class="file-note" style="color:red">{{ $message }}</small> @enderror
         </div>

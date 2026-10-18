@@ -145,11 +145,12 @@
 
                     <div class="kr-field">
 
-                        <label>
+                        <label for="enquiry_name">
                             Full Name *
                         </label>
 
                         <input
+                            id="enquiry_name"
                             name="name"
                             placeholder="Enter your full name"
                             required
@@ -161,11 +162,12 @@
 
                     <div class="kr-field">
 
-                        <label>
+                        <label for="enquiry_company">
                             Company Name *
                         </label>
 
                         <input
+                            id="enquiry_company"
                             name="company"
                             placeholder="Enter your company name"
                             required
@@ -177,7 +179,7 @@
 
                     <div class="kr-field">
 
-                        <label>
+                        <label for="enquiryPhone">
                             Mobile Number *
                         </label>
 
@@ -197,11 +199,12 @@
 
                     <div class="kr-field">
 
-                        <label>
+                        <label for="enquiry_email">
                             Email Address *
                         </label>
 
                         <input
+                            id="enquiry_email"
                             name="email"
                             placeholder="Enter your email address"
                             required
@@ -214,11 +217,13 @@
 
                     <div class="kr-field">
 
-                        <label>
+                        <label for="enquiry_city">
                             Target City / Market *
                         </label>
 
-                        <select name="city" required>
+                        <select
+                            id="enquiry_city"
+                            name="city" required>
 
                             <option value="">
                                 Select city / market
@@ -255,11 +260,13 @@
 
                     <div class="kr-field">
 
-                        <label>
+                        <label for="enquiry_media">
                             Media or Service Required *
                         </label>
 
-                        <select name="media" required>
+                        <select
+                            id="enquiry_media"
+                            name="media" required>
 
                             <option value="">
                                 Select media / service
@@ -296,11 +303,13 @@
 
                     <div class="kr-field">
 
-                        <label>
+                        <label for="enquiry_duration">
                             Campaign Duration
                         </label>
 
-                        <select name="duration">
+                        <select
+                            id="enquiry_duration"
+                            name="duration">
 
                             <option value="">
                                 Select duration
@@ -329,11 +338,12 @@
 
                     <div class="kr-field full">
 
-                        <label>
+                        <label for="enquiry_user_message">
                             Message
                         </label>
 
                         <textarea
+                            id="enquiry_user_message"
                             name="user_message"
                             placeholder="Tell us about your campaign, audience and any specific requirement..."
                         >{{ old('user_message') }}</textarea>
@@ -381,7 +391,7 @@
             </form>
 
 
-            <aside class="kr-guidance kr-reveal delay-2">
+            <div class="kr-guidance kr-reveal delay-2" role="note">
 
 
                 <div class="kr-guide-item">
@@ -473,7 +483,7 @@
 
                 </div>
 
-            </aside>
+            </div>
 
         </div>
 

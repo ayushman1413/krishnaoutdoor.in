@@ -321,7 +321,7 @@
             <!-- MAIN VIDEO -->
             <article class="work-video-card">
 
-                <video loop muted playsinline preload="none" class="js-defer-inview-video"
+                <video aria-hidden="true" tabindex="-1" loop muted playsinline preload="none" class="js-defer-inview-video"
                     poster="{{ asset('assets/images/hero/work-showcase-poster.webp') }}"
                     data-src="{{ asset('assets/videos/work-showcase.mp4') }}">
                 </video>
@@ -352,7 +352,7 @@
                 </button>
 
 
-                <div class="work-bottom-viewport" id="workViewport">
+                <div class="work-bottom-viewport" id="workViewport" tabindex="0" role="region" aria-label="Campaign gallery (scrollable)">
 
                     <div class="work-bottom-track" id="workTrack">
 

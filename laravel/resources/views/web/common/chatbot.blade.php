@@ -3,7 +3,7 @@
     $chatOffice = \App\Services\SeoResolver::officeFor($seo ?? null);
 @endphp
 
-<button aria-label="Open Krishna AI assistant" class="chatbot" id="chatbot" type="button">
+<button aria-label="Open Krishna AI assistant" aria-controls="chatPanel" aria-expanded="false" class="chatbot" id="chatbot" type="button">
 <span aria-hidden="true" class="cute-robot">
 <span class="robot-antenna"></span>
 <span class="robot-head">
@@ -16,7 +16,7 @@
 </span>
 <span class="chatbot-ping"></span>
 </button>
-<div aria-hidden="true" class="chat-panel" id="chatPanel">
+<div aria-hidden="true" inert class="chat-panel" id="chatPanel" role="dialog" aria-label="Krishna AI chat">
 <div class="chat-head">
 <div class="chat-brand">
 <span aria-hidden="true" class="chat-brand-icon">

@@ -290,3 +290,30 @@
 .fsl-error{margin:0;font:600 12px/1.4 Inter,sans-serif;color:#b3131a}
 .fsl-submit{justify-self:start;border:0;cursor:pointer}
 @media (max-width:760px){.fsl-form{padding:20px}.fsl-submit{justify-self:stretch;text-align:center}}
+
+/* ------------------------------------------------------------------
+   WCAG AA colour contrast (4.5:1 for small text). The brand red is
+   nudged darker on light backgrounds and lighter on dark ones only
+   where it is used for small text; large display text is unchanged.
+   ------------------------------------------------------------------ */
+@media (min-width:761px){
+  /* Pill nav sits over hero photos on inner pages: keep it opaque enough
+     that the dark link text stays readable on any image. */
+  .header .nav{background:rgba(246,246,244,.92)!important}
+  .header .nav>a.active,.header .nav>a[aria-current="page"],.header .nav .nav-dropdown>a.active{color:#c8151d!important}
+}
+#orbitServiceNo{color:#ff3b42!important}
+.doc-home-panel>.light.tag{color:#ff4047!important}
+.about-tag,.leader-copy small{color:#d3121a!important}
+.about-strength-copy>.about-tag{color:#ff4047!important}
+#enquiryStatus{color:#5f666e!important}
+.kr-career-cta-copy>.kr-kicker,.kr-final-cta .kr-kicker{color:#ff4047!important}
+.seo-h1-slogan em{color:#ff3a41!important}
+.media-quote{color:#ff4a50!important}
+.ow-kicker{color:#ff4047!important}
+.ow-section-head .ow-tag{color:#cf1820!important}
+.ow-filter button.active,button[data-filter].active{background:#d3121a!important}
+.kr-badge>span{background:#d3121a!important}
+/* Breadcrumb links: darker red and underlined so they are distinguishable
+   from the surrounding text without relying on colour alone. */
+.kw-crumbs a{color:#c4161d!important;text-decoration:underline!important;text-underline-offset:2px}
