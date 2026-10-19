@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Campaign;
 use App\Models\Category;
 use App\Models\Location;
 use App\Models\SeoMeta;
@@ -77,10 +78,19 @@ class SitemapService
             $add($path, max($category->updated_at, $meta?->updated_at));
         });
 
-        $locationCities = Location::query()->where('status', true)->pluck('city')->filter()->unique();
-        foreach ($locationCities as $city) {
-            $meta = $staticMeta->get(SeoResolver::routeNameForCity($city));
+        $campaignMeta = SeoMeta::query()->where('seoable_type', Campaign::class)->get()->keyBy('seoable_id');
+        Campaign::query()->where('status', true)->whereNotNull('slug')->get()->each(function (Campaign $campaign) use ($add, $campaignMeta) {
+            $meta = $campaignMeta->get($campaign->id);
             if (self::excluded($meta)) {
+                return;
+            }
+            $add('/projects/' . $campaign->slug, max($campaign->updated_at, $meta?->updated_at));
+        });
+
+        $locationsByCity = Location::query()->where('status', true)->get()->groupBy('city');
+        foreach ($locationsByCity as $city => $locations) {
+            $meta = $staticMeta->get(SeoResolver::routeNameForCity($city));
+            if (!$city || self::excluded($meta) || !LocationPageGate::passes($locations, $meta)) {
                 continue;
             }
             $add('/locations/' . Str::slug($city), $meta?->updated_at);

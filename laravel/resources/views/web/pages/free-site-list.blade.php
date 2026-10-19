@@ -12,7 +12,12 @@
 @section('web-section')
 @php
     $office = \App\Services\SeoResolver::officeFor($seo);
-    $whatsapp = \App\Services\SeoResolver::whatsappUrl($seo->settings);
+    $waMessage = fn (?string $media, ?string $city) => 'Hi, I want a free site list for ' . ($media ?: 'outdoor and transit media') . ($city ? ' in ' . $city : '');
+    $waNumbers = [
+        'ahmedabad' => preg_replace('/\D+/', '', \App\Services\SeoResolver::whatsappUrl($seo, $seo->settings, null, 'ahmedabad')),
+        'mumbai' => preg_replace('/\D+/', '', config('business.offices.mumbai.phone')),
+    ];
+    $whatsapp = \App\Services\SeoResolver::whatsappUrl($seo, $seo->settings, $waMessage($selectedMedia ? $mediaTypes[$selectedMedia] : null, $selectedCity), $whatsappOffice);
 @endphp
 <main>
 
@@ -39,14 +44,11 @@
             </ul>
             <div class="fsl-direct">
                 <a class="btn red" href="tel:{{ $office['phone'] }}">Call {{ $office['phone_display'] }} <b>→</b></a>
-                @if ($whatsapp)
-                    <a class="btn fsl-whatsapp" href="{{ $whatsapp }}?text={{ rawurlencode('Hi, please send me your free site list.') }}" target="_blank" rel="noopener">Chat on WhatsApp <b>→</b></a>
-                @endif
             </div>
         </div>
 
         <form class="fsl-form" method="POST" action="{{ route('handle.free.site.list') }}" novalidate>
-            @csrf
+            <input type="hidden" name="_token" value="" data-lazy-csrf>
             <h2 class="fsl-form-title">Get Free Site List</h2>
 
             <div class="fsl-field">
@@ -69,7 +71,7 @@
 
             <div class="fsl-field">
                 <label for="fsl_city">City <span aria-hidden="true">*</span></label>
-                <input id="fsl_city" name="city" type="text" list="fsl_city_options" autocomplete="address-level2" required maxlength="100" value="{{ old('city') }}" @error('city') aria-invalid="true" aria-describedby="fsl_city_error" @enderror>
+                <input id="fsl_city" name="city" type="text" list="fsl_city_options" autocomplete="address-level2" required maxlength="100" value="{{ old('city', $selectedCity) }}" @error('city') aria-invalid="true" aria-describedby="fsl_city_error" @enderror>
                 <datalist id="fsl_city_options">
                     <option value="Ahmedabad"><option value="Surat"><option value="Vadodara"><option value="Rajkot"><option value="Mumbai"><option value="Thane"><option value="Jaipur">
                 </datalist>
@@ -87,10 +89,38 @@
                 @error('media')<p class="fsl-error" id="fsl_media_error">{{ $message }}</p>@enderror
             </div>
 
-            <button type="submit" class="btn red fsl-submit">Get Free Site List <b>→</b></button>
+            <div class="fsl-actions">
+                <button type="submit" class="btn red fsl-submit">Get Free Site List <b>→</b></button>
+                <a class="btn fsl-whatsapp" id="fslWhatsapp" href="{{ $whatsapp }}" target="_blank" rel="noopener">Or chat on WhatsApp <b>→</b></a>
+            </div>
         </form>
     </div>
 </div></section>
 
 </main>
+@endsection
+
+@section('web-script')
+<script>
+// Keep the WhatsApp button in step with the form: pre-filled message with the
+// chosen city and media type, and the Mumbai number for Mumbai/Thane requests.
+(function () {
+  var link = document.getElementById('fslWhatsapp');
+  var city = document.getElementById('fsl_city');
+  var media = document.getElementById('fsl_media');
+  if (!link || !city || !media) { return; }
+  var numbers = @json($waNumbers);
+  var mumbaiMedia = @json($mumbaiMedia);
+  function update() {
+    var label = media.value ? media.options[media.selectedIndex].text : 'outdoor and transit media';
+    var where = city.value.trim();
+    var mumbai = mumbaiMedia.indexOf(media.value) !== -1 || /^(mumbai|thane)$/i.test(where);
+    var text = 'Hi, I want a free site list for ' + label + (where ? ' in ' + where : '');
+    link.href = 'https://wa.me/' + (mumbai ? numbers.mumbai : numbers.ahmedabad) + '?text=' + encodeURIComponent(text);
+  }
+  city.addEventListener('input', update);
+  media.addEventListener('change', update);
+  update();
+})();
+</script>
 @endsection

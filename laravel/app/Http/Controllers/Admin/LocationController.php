@@ -167,6 +167,7 @@ class LocationController extends Controller implements LocationInterface
                 'media_type'   => ['required', 'string', Rule::enum(MediaType::class)],
                 'city'         => ['required', 'string', Rule::in(array_column(City::cases(), 'value'))],
                 'area'         => ['nullable', 'string', 'min:1', 'max:250'],
+                'size'         => ['nullable', 'string', 'max:100'],
                 'image'        => ['nullable', 'file', 'mimes:jpg,jpeg,png,webp'],
                 'image_alt'    => ['nullable', 'string', 'max:255'],
                 'is_available' => ['nullable', 'boolean'],
@@ -181,6 +182,7 @@ class LocationController extends Controller implements LocationInterface
             $location->media_type = $request->input('media_type');
             $location->city = $request->input('city');
             $location->area = $request->input('area');
+            $location->size = $request->input('size');
             $location->is_available = $request->boolean('is_available', true);
             $location->image_alt = $request->input('image_alt');
             if ($request->hasFile('image')) {
@@ -228,6 +230,7 @@ class LocationController extends Controller implements LocationInterface
                 'media_type'   => ['required', 'string', Rule::enum(MediaType::class)],
                 'city'         => ['required', 'string', Rule::in(array_column(City::cases(), 'value'))],
                 'area'         => ['nullable', 'string', 'min:1', 'max:250'],
+                'size'         => ['nullable', 'string', 'max:100'],
                 'image'        => ['nullable', 'file', 'mimes:jpg,jpeg,png,webp'],
                 'image_alt'    => ['nullable', 'string', 'max:255'],
                 'is_available' => ['nullable', 'boolean'],
@@ -241,6 +244,7 @@ class LocationController extends Controller implements LocationInterface
             $location->media_type = $request->input('media_type');
             $location->city = $request->input('city');
             $location->area = $request->input('area');
+            $location->size = $request->input('size');
             $location->is_available = $request->boolean('is_available', true);
             $location->image_alt = $request->input('image_alt');
             if ($request->hasFile('image')) {

@@ -14,7 +14,7 @@
 
 <section class="hero media-detail-hero media-detail-hero-ooh" id="home">
     <div class="media-detail-hero-bg">
-        <img fetchpriority="high" srcset="{{ asset('assets/images/ooh-media-category-image-800w.webp') }} 800w, {{ asset('assets/images/ooh-media-category-image.webp') }} 1200w" sizes="100vw" alt="Social media marketing in Ahmedabad" decoding="async" loading="eager" src="{{ asset('assets/images/ooh-media-category-image.webp') }}"/>
+        <img fetchpriority="high" srcset="{{ asset('assets/images/ooh-media-category-image-800w.webp') }} 800w, {{ asset('assets/images/ooh-media-category-image.webp') }} 1200w" sizes="100vw" alt="" decoding="async" loading="eager" src="{{ asset('assets/images/ooh-media-category-image.webp') }}"/>
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-grid"></div>
@@ -31,7 +31,8 @@
 </section>
 
 <section class="kw-section"><div class="kw-inner">
-    <div class="kw-crumbs"><a href="{{ route('view.home') }}">Home</a><span>/</span><a href="{{ route('view.services') }}">Services</a><span>/</span><b>Social Media Marketing Ahmedabad</b></div>
+    @include('web.common.breadcrumbs', ['seo' => $seo, 'class' => 'kw-crumbs'])
+    <p class="kw-lead">Krishna Outdoor runs social media marketing for Ahmedabad brands across Instagram, Facebook, LinkedIn and YouTube, covering strategy, content, paid ads and reporting. It can be booked on its own or paired with a hoarding or bus campaign. Tell us your goals and we will recommend a package.</p>
 
     <div class="kw-grid-2">
         <div>
@@ -60,7 +61,7 @@
             <h3 class="kw-h3">What does social media marketing cost in Ahmedabad?</h3>
             <p class="kw-p">Cost depends on scope: how many platforms you run, how much original content is produced each month, and your paid advertising budget. A single-platform package with light content and no paid spend costs less than a full multi-platform plan with weekly content and ongoing ad campaigns. Share your goals and current social presence and we'll recommend a package that fits your budget, rather than a one-size offer.</p>
 
-            <p class="kw-p">Interested in pairing social media marketing with an outdoor campaign, or starting with social alone? <a href="{{ route('view.contact') }}">Get in touch</a> and we'll scope an approach around your goals.</p>
+            <p class="kw-p">Interested in pairing social media marketing with an outdoor campaign, or starting with social alone? <a href="{{ route('view.free.site.list', ['media' => 'other', 'city' => 'Ahmedabad']) }}">Get in touch</a> and we'll scope an approach around your goals.</p>
         </div>
 
         <div class="kw-img">
@@ -70,11 +71,14 @@
 
     <h3 class="kw-h3">More ways to work with Krishna Outdoor</h3>
     <div class="kw-links">
+        <a href="{{ route('view.home') }}">Outdoor Advertising in Ahmedabad</a>
         <a href="/social-media-marketing-mumbai">Social Media Marketing Mumbai</a>
         <a href="{{ route('view.services') }}">All Services</a>
-        <a href="{{ route('view.contact') }}">Talk To Our Team</a>
+        <a href="{{ route('view.free.site.list', ['media' => 'other', 'city' => 'Ahmedabad']) }}">Get Free Site List</a>
     </div>
 </div></section>
+
+@include('web.common.social-case-studies', ['city' => 'Ahmedabad'])
 
 <section class="kw-section kw-section-alt"><div class="kw-inner">
     <h2 class="kw-h2">Frequently asked <em>questions</em></h2>
@@ -94,7 +98,7 @@
             <h2>START YOUR SOCIAL MEDIA MARKETING PLAN</h2>
             <p>Tell us about your brand and goals in Ahmedabad and we'll put together a social media approach that fits.</p>
         </div>
-        <a class="btn white" href="{{ route('view.contact') }}">Talk To Our Team <b>→</b></a>
+        <a class="btn white" href="{{ route('view.free.site.list', ['media' => 'other', 'city' => 'Ahmedabad']) }}">Get Free Site List <b>→</b></a>
     </div>
 </section>
 

@@ -123,6 +123,32 @@
 
 
     <!-- =========================
+         DIRECT ANSWER + FORMATS + CITIES
+    ========================== -->
+    <section class="kw-section"><div class="kw-inner">
+        @include('web.common.breadcrumbs', ['seo' => $seo, 'class' => 'kw-crumbs'])
+        <p class="kw-lead">Krishna Outdoor offers digital out-of-home (DOOH) advertising in Ahmedabad on digital billboards and screens placed in prime, high-traffic locations. DOOH allows dynamic creative, scheduled campaigns and faster changes than a printed hoarding. Ask for the free site list to see available screens with rates and specifications.</p>
+
+        <h2 class="kw-h2">DOOH formats we <em>offer</em></h2>
+        {{-- TODO: client to supply the number, locations and screen sizes of the DOOH screens; no numbers are shown until then. --}}
+        <ul class="kw-list">
+            <li><b>Digital billboards and screens</b> — dynamic creative, dayparting (different ads at different times) and quick campaign turnaround.</li>
+            <li><b>Outdoor + digital</b> — pair DOOH with <a href="{{ route('view.keyword.hoarding.ahmedabad') }}">hoardings</a> and <a href="{{ route('view.keyword.bus.shelter.ahmedabad') }}">backlit bus shelters</a> in Ahmedabad, and continue the conversation with <a href="{{ route('view.keyword.social.ahmedabad') }}">social media marketing</a>.</li>
+        </ul>
+
+        <h3 class="kw-h3">City covered</h3>
+        <p class="kw-p">Ahmedabad.</p>
+
+        <h3 class="kw-h3">Explore more media</h3>
+        <div class="kw-links">
+            <a href="{{ route('view.ooh.media') }}">OOH Media in Gujarat</a>
+            <a href="{{ route('view.keyword.hoarding.ahmedabad') }}">Hoarding Advertising in Ahmedabad</a>
+            <a href="{{ route('view.keyword.bus.shelter.ahmedabad') }}">Bus Shelter Advertising in Ahmedabad</a>
+            <a href="{{ route('view.keyword.social.ahmedabad') }}">Social Media Marketing in Ahmedabad</a>
+        </div>
+    </div></section>
+
+    <!-- =========================
          OUR SOLUTIONS
     ========================== -->
     <section class="solution-showcase section" id="showcase">
@@ -322,9 +348,9 @@
 
             <a
                 class="btn white"
-                href="{{ route('view.contact') }}"
+                href="{{ route('view.free.site.list', ['media' => 'dooh']) }}"
             >
-                Enquire Now
+                Get Free Site List
                 <b>→</b>
             </a>
 

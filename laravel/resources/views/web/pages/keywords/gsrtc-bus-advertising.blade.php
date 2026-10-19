@@ -31,7 +31,8 @@
 </section>
 
 <section class="kw-section"><div class="kw-inner">
-    <div class="kw-crumbs"><a href="{{ route('view.home') }}">Home</a><span>/</span><a href="{{ route('view.transit.media') }}">Transit Media</a><span>/</span><b>GSRTC Bus Advertising</b></div>
+    @include('web.common.breadcrumbs', ['seo' => $seo, 'class' => 'kw-crumbs'])
+    <p class="kw-lead">Krishna Outdoor holds advertising rights on 7000+ GSRTC buses, which connect every district of Gujarat. Brands can book full wraps or panel formats for state-wide reach from a single booking. Ask for the free site list to see available buses, routes and rates.</p>
 
     <div class="kw-grid-2">
         <div>
@@ -75,6 +76,7 @@
     <div class="kw-links">
         <a href="/amts-bus-advertising-ahmedabad">AMTS Bus Advertising Ahmedabad</a>
         <a href="/hoarding-advertising-ahmedabad">Hoarding Advertising Ahmedabad</a>
+        <a href="/bus-shelter-advertising-ahmedabad">Bus Shelter Advertising Ahmedabad</a>
         <a href="{{ route('view.transit.media') }}">All Transit Media</a>
     </div>
 </div></section>
@@ -86,6 +88,9 @@
         ['q' => 'How is GSRTC bus advertising priced?', 'a' => 'Pricing is based on the number of buses booked, the format (full wrap or panel) and campaign duration. Because GSRTC routes span the whole state, campaigns are typically planned around the districts or corridors most relevant to the brand\'s distribution or audience rather than a single city.'],
         ['q' => 'Is there a minimum campaign size for GSRTC bus advertising?', 'a' => 'Campaigns can start with a small number of buses on specific routes, but most brands booking GSRTC advertising aim for a meaningful fleet size so the campaign reads as state-wide rather than isolated. Share your target districts and budget and we\'ll recommend a realistic fleet size.'],
         ['q' => 'How many GSRTC buses does Krishna Outdoor have advertising rights on?', 'a' => 'Krishna Outdoor holds advertising rights on 7000+ GSRTC buses across Gujarat, making it one of the largest state transport advertising networks available to brands in the region.'],
+        ['q' => 'Which brands use GSRTC bus advertising?', 'a' => 'GSRTC advertising suits brands that need to be seen across the whole state, such as FMCG companies launching a product statewide, education institutions recruiting from several districts, and government or PSU campaigns that must reach citizens beyond the major cities.'],
+        ['q' => 'Can GSRTC bus advertising be combined with a city campaign?', 'a' => 'Yes. GSRTC buses extend a brand into Gujarat\'s smaller towns while Ahmedabad hoardings or AMTS buses cover the capital city in depth.'],
+        ['q' => 'What formats can I book on GSRTC buses?', 'a' => 'Krishna Outdoor offers full wraps for maximum visibility on highway and intercity routes, and panel formats (side or back panels) for a presence across more buses at a lower per-bus cost.'],
     ]])
 </div></section>
 

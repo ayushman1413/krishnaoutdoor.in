@@ -70,6 +70,8 @@ return [
         'label' => 'Transit Media',
         'parent' => 'view.home',
         'region' => 'both',
+        // Header/chat call and WhatsApp numbers: the page leads with Mumbai.
+        'office' => 'mumbai',
         'title' => 'Transit Advertising Agency in Mumbai | Bus & Train Ads',
         'description' => 'Transit advertising agency for Mumbai local trains, BEST and TMT buses, plus GSRTC and AMTS buses in Gujarat. Rights on 7000+ buses. Enquire today.',
         'service' => ['name' => 'Transit Advertising', 'type' => 'Transit Advertising', 'area' => ['Mumbai', 'Thane', 'Ahmedabad', 'Gujarat']],

@@ -22,6 +22,7 @@ class SeoResolver
     public string $description = '';
     public string $canonicalUrl = '';
     private ?string $featuredImage = null;
+    private bool $forceNoindex = false;
 
     private function __construct(?SeoMeta $meta, string $fallbackTitle = '', string $fallbackDescription = '', ?string $routeName = null, ?string $featuredImage = null)
     {
@@ -35,6 +36,13 @@ class SeoResolver
             ? $rawTitle
             : $this->applyTitleTemplate($rawTitle);
         $this->description = trim((string) ($meta?->meta_description ?: $fallbackDescription));
+        if ($this->description === '' && $rawTitle !== '' && $this->settings?->description_template) {
+            $this->description = trim(str_replace(
+                ['{page_title}', '{site_name}'],
+                [$rawTitle, $this->settings->site_name ?? 'Krishna Outdoor'],
+                $this->settings->description_template
+            ));
+        }
         $this->canonicalUrl = $meta?->canonical_url ?: self::canonicalFor(request()->path());
     }
 
@@ -85,18 +93,37 @@ class SeoResolver
      */
     public static function officeFor(?self $seo): array
     {
-        $key = $seo?->region() === 'mumbai' ? 'mumbai' : 'ahmedabad';
-        return config('business.offices.' . $key);
+        return config('business.offices.' . self::officeKeyFor($seo));
     }
 
     /**
-     * wa.me link from the WhatsApp number in SEO settings, or null while
-     * it has not been set.
+     * 'mumbai' for Mumbai/Thane pages, otherwise 'ahmedabad'. A page can name
+     * its office explicitly with 'office' in config/seo_pages.php (e.g.
+     * /media/transit, whose schema covers both offices but whose enquiries
+     * go to Mumbai).
      */
-    public static function whatsappUrl(?SeoSetting $settings): ?string
+    public static function officeKeyFor(?self $seo): string
     {
-        $digits = preg_replace('/\D+/', '', (string) $settings?->whatsapp_number);
-        return $digits !== '' ? 'https://wa.me/' . $digits : null;
+        $page = $seo?->page() ?? [];
+        return ($page['office'] ?? $seo?->region()) === 'mumbai' ? 'mumbai' : 'ahmedabad';
+    }
+
+    /**
+     * wa.me link for this page's office: the Mumbai number on Mumbai/Thane
+     * pages, otherwise the Ahmedabad number. The office phone numbers double
+     * as WhatsApp numbers; a WhatsApp number saved in SEO settings overrides
+     * the Ahmedabad one only. $text pre-fills the message.
+     */
+    public static function whatsappUrl(?self $seo, ?SeoSetting $settings = null, ?string $text = null, ?string $officeKey = null): string
+    {
+        $officeKey ??= self::officeKeyFor($seo);
+        $digits = preg_replace('/\D+/', '', (string) config('business.offices.' . $officeKey . '.phone'));
+        if ($officeKey === 'ahmedabad') {
+            $override = preg_replace('/\D+/', '', (string) $settings?->whatsapp_number);
+            $digits = $override !== '' ? $override : $digits;
+        }
+
+        return 'https://wa.me/' . $digits . ($text ? '?text=' . rawurlencode($text) : '');
     }
 
     /**
@@ -128,9 +155,17 @@ class SeoResolver
         );
     }
 
+    /** Page-level override: noindex whatever the SEO panel says. */
+    public function forceNoindex(): static
+    {
+        $this->forceNoindex = true;
+
+        return $this;
+    }
+
     public function robotsContent(): string
     {
-        $index = ($this->meta?->robots_index ?? true) ? 'index' : 'noindex';
+        $index = ($this->meta?->robots_index ?? true) && !$this->forceNoindex ? 'index' : 'noindex';
         $follow = ($this->meta?->robots_follow ?? true) ? 'follow' : 'nofollow';
         return "{$index},{$follow},max-image-preview:large,max-snippet:-1,max-video-preview:-1";
     }

@@ -123,6 +123,17 @@
 <div class="about-stat"><span class="about-stat-icon">♧</span><div><strong>5000+</strong><small>Happy<br/>Clients</small></div></div>
 <div class="about-stat"><span class="about-stat-icon">✓</span><div><strong>01</strong><small>Trusted Advertising<br/>Partner</small></div></div>
 </section>
+<section class="about-facts" id="fact-sheet" aria-labelledby="fact-sheet-title">
+<div class="container">
+<h2 id="fact-sheet-title">Krishna Outdoor at a glance</h2>
+<dl class="about-facts-grid">
+<div><dt>Founded</dt><dd>1985</dd></div>
+<div><dt>Leadership</dt><dd>Rakesh Gandhi, Chairman &amp; Managing Director<br/>Kevin Gandhi, Director</dd></div>
+<div><dt>Offices</dt><dd>@foreach (config('business.offices') as $office)<b>{{ $office['label'] }}:</b> {{ $office['address'] }}<br/>@endforeach</dd></div>
+<div><dt>Rights held</dt><dd>2000+ hoarding sites across Gujarat, including 300+ own hoardings in Ahmedabad<br/>7000+ GSRTC buses<br/>900+ AMTS buses<br/>400+ BEST buses (Mumbai)<br/>350+ TMT buses (Thane)<br/>Mumbai local trains: Western &amp; Central Railway</dd></div>
+</dl>
+</div>
+</section>
 <section class="about-block about-story" id="story">
 <div class="about-copybox redline about-reveal">
 <div class="about-tag">OUR STORY</div>
@@ -192,7 +203,7 @@
 <img srcset="{{ asset('assets/images/work/digital-billboard-campaign-03-800w.webp') }} 800w, {{ asset('assets/images/work/digital-billboard-campaign-03.webp') }} 1600w" sizes="(max-width: 760px) 100vw, 50vw" alt="Car brand hoarding above city traffic in Gujarat – Krishna Outdoor" decoding="async" loading="lazy" src="{{ asset('assets/images/work/digital-billboard-campaign-03.webp') }}"/>
 <div class="container">
 <div><div class="about-tag">LET'S CREATE</div><h2>LET'S PUT YOUR BRAND IN THE RIGHT PLACE.</h2><p>Whether you are launching a new product, entering a new market, building brand awareness or planning a large-scale campaign, our team is ready to help you explore the right opportunities.</p></div>
-<a class="about-btn primary" href="{{ route('view.contact') }}">TALK TO OUR TEAM →</a>
+<a class="about-btn primary" href="{{ route('view.free.site.list', ['media' => 'other']) }}">Get Free Site List →</a>
 </div>
 </section>
 </main>

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Campaign;
 use App\Models\Category;
 use App\Models\Location;
 use App\Models\SeoMeta;
@@ -36,7 +37,7 @@ class AppServiceProvider extends ServiceProvider
         }
 
         // Regenerate sitemap.xml whenever a page, category or location changes.
-        foreach ([SeoMeta::class, Category::class, Location::class] as $model) {
+        foreach ([SeoMeta::class, Category::class, Location::class, Campaign::class] as $model) {
             $model::saved(fn () => SitemapService::flush());
             $model::deleted(fn () => SitemapService::flush());
         }

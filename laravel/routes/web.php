@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Web\CampaignController;
 use App\Http\Controllers\Web\FormController;
 use App\Http\Controllers\Web\LocationController;
 use App\Http\Controllers\Web\SeoController;
@@ -23,6 +24,13 @@ use Illuminate\Support\Facades\Artisan;
 | Utility Routes
 |--------------------------------------------------------------------------
 */
+
+// Forms load their CSRF token from here when first used (see kr-laravel.js),
+// so no per-request token has to be baked into cacheable page HTML.
+Route::get('/csrf-token', function () {
+    return response()->json(['token' => csrf_token()])
+        ->header('Cache-Control', 'no-store, private');
+})->name('csrf.token');
 
 Route::get('/optimize', function () {
     Artisan::call('optimize:clear');
@@ -77,6 +85,10 @@ Route::get('/projects', function () {
     $seo = \App\Services\SeoResolver::forRoute('view.projects');
     return view('web.pages.projects', compact('seo'));
 })->name('view.projects');
+
+
+Route::get('/projects/{slug}', [CampaignController::class, 'show'])
+    ->name('view.project.show');
 
 
 Route::get('/our-network', function () {
@@ -236,7 +248,14 @@ Route::post('/free-site-list', [FormController::class, 'handleFreeSiteListSubmit
     ->name('handle.free.site.list');
 
 Route::get('/thank-you', function () {
-    return view('web.layouts.Thank you');
+    // Conversion page: own title, description and social tags, never indexed.
+    $seo = \App\Services\SeoResolver::forRoute(
+        'view.thankyou',
+        'Thank You',
+        'Thank you for contacting Krishna Outdoor. Our team has received your enquiry and will get back to you shortly.'
+    )->forceNoindex();
+
+    return view('web.layouts.Thank you', compact('seo'));
 })->name('view.thankyou');
 
 

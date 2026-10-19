@@ -134,6 +134,8 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::post('/import', 'handleSeoImport')->name('admin.handle.seo.import');
     });
 
+    Route::get('seo-todos', [\App\Http\Controllers\Admin\SeoTodoController::class, 'index'])->name('admin.view.seo.todos');
+
     Route::prefix('seo-settings')->controller(SeoSettingController::class)->group(function () {
         Route::get('/', 'viewSeoSettings')->name('admin.view.seo.settings');
         Route::post('/', 'handleSeoSettingsUpdate')->name('admin.handle.seo.settings');

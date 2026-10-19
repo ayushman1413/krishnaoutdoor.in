@@ -126,6 +126,12 @@
                     </div>
 
                     <div class="input-group">
+                        <label class="input-label">Page Copy <span>(Optional. Unique body text shown on /locations/&lt;city&gt; pages; such a page is only indexable once it has {{ \App\Services\LocationPageGate::MIN_WORDS }}+ words here and every site has a photo, area and size.)</span></label>
+                        <textarea name="page_copy" rows="8" class="input-box-md @error('page_copy') input-invalid @enderror">{{ old('page_copy', $meta->page_copy) }}</textarea>
+                        @error('page_copy') <span class="input-error">{{ $message }}</span> @enderror
+                    </div>
+
+                    <div class="input-group">
                         <label class="input-label">Use Title As Written <span>(On: the meta title is used exactly as entered. Off: it is placed into the title template from SEO Settings, e.g. "Title | Krishna Outdoor".)</span></label>
                         <label class="toggler-switch">
                             <input type="checkbox" name="skip_title_template" value="1" @checked(old('skip_title_template', $meta->skip_title_template))>

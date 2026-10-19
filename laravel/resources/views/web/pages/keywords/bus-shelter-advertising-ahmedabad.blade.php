@@ -31,7 +31,8 @@
 </section>
 
 <section class="kw-section"><div class="kw-inner">
-    <div class="kw-crumbs"><a href="{{ route('view.home') }}">Home</a><span>/</span><a href="{{ route('view.ooh.media') }}">OOH Media</a><span>/</span><b>Bus Shelter Advertising Ahmedabad</b></div>
+    @include('web.common.breadcrumbs', ['seo' => $seo, 'class' => 'kw-crumbs'])
+    <p class="kw-lead">Krishna Outdoor holds advertising rights on 400+ backlit bus shelters across Ahmedabad. The panels sit at eye level where commuters wait, so the message is read at a standstill, day and night. Ask for the free site list to see available shelters with locations and rates.</p>
 
     <div class="kw-grid-2">
         <div>
@@ -67,6 +68,7 @@
     <div class="kw-links">
         <a href="/amts-bus-advertising-ahmedabad">AMTS Bus Advertising Ahmedabad</a>
         <a href="/hoarding-advertising-ahmedabad">Hoarding Advertising Ahmedabad</a>
+        <a href="/gsrtc-bus-advertising">GSRTC Bus Advertising</a>
         <a href="{{ route('view.ooh.media') }}">All OOH Media in Gujarat</a>
     </div>
 </div></section>
@@ -78,6 +80,9 @@
         ['q' => 'Which bus shelter locations are available in Ahmedabad?', 'a' => 'Krishna Outdoor has backlit bus shelter advertising rights at 400+ locations across Ahmedabad, spanning commercial corridors, residential neighbourhoods and areas near markets, colleges and offices. Tell us your target audience and we\'ll recommend shelters that match.'],
         ['q' => 'Can I combine bus shelter advertising with AMTS bus advertising?', 'a' => 'Yes. Many brands pair bus shelters with AMTS bus advertising to layer a campaign — the moving buses build broad city-wide recall while the shelters reinforce the message at the exact points where commuters stop and have time to read it.'],
         ['q' => 'Why is bus shelter advertising effective for dwell-time exposure?', 'a' => 'Unlike a bus or car passing in a few seconds, people standing at a bus shelter are a captive audience for several minutes while they wait, giving backlit shelter panels far longer effective viewing time than most other outdoor formats.'],
+        ['q' => 'Are bus shelter advertisements visible at night in Ahmedabad?', 'a' => 'Yes. The bus shelter panels are backlit, so the creative stays sharp and legible after dark, when many shelters see heavy footfall from office-goers and students.'],
+        ['q' => 'What can a bus shelter ad carry that a hoarding cannot?', 'a' => 'More detail. People wait at a shelter for minutes rather than seconds, so a shelter ad can carry a product detail, an offer or a QR code and still be read in full.'],
+        ['q' => 'How do I get the bus shelter location list for Ahmedabad?', 'a' => 'Use the Get Free Site List form with your target area in Ahmedabad. We will share available bus shelters with photos, sizes and rates.'],
     ]])
 </div></section>
 
@@ -88,7 +93,7 @@
             <h2>GET YOUR FREE BUS SHELTER LOCATION LIST</h2>
             <p>Tell us your target area in Ahmedabad and we'll share available bus shelters with photos, sizes and rates.</p>
         </div>
-        <a class="btn white" href="{{ route('view.free.site.list', ['media' => 'bus-shelters']) }}">Get Free Site List <b>→</b></a>
+        <a class="btn white" href="{{ route('view.free.site.list', ['media' => 'bus-shelters', 'city' => 'Ahmedabad']) }}">Get Free Site List <b>→</b></a>
     </div>
 </section>
 

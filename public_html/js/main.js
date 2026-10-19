@@ -586,6 +586,16 @@ if(window.matchMedia('(pointer:fine)').matches){window.addEventListener('mousemo
 (function(){
   const videos=document.querySelectorAll('.js-defer-inview-video');
   if(!videos.length) return;
+  // The poster is only requested once the video is within ~600px of the viewport.
+  const posterIo=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(!entry.isIntersecting) return;
+      const video=entry.target;
+      if(video.dataset.poster && !video.poster) video.poster=video.dataset.poster;
+      posterIo.unobserve(video);
+    });
+  },{rootMargin:'600px'});
+  videos.forEach(video=>posterIo.observe(video));
   const io=new IntersectionObserver(entries=>{
     entries.forEach(entry=>{
       if(!entry.isIntersecting) return;

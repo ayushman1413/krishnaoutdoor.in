@@ -31,7 +31,8 @@
 </section>
 
 <section class="kw-section"><div class="kw-inner">
-    <div class="kw-crumbs"><a href="{{ route('view.home') }}">Home</a><span>/</span><a href="{{ route('view.transit.media') }}">Transit Media</a><span>/</span><b>Mumbai Local Train Advertising</b></div>
+    @include('web.common.breadcrumbs', ['seo' => $seo, 'class' => 'kw-crumbs'])
+    <p class="kw-lead">Krishna Outdoor holds display rights on Mumbai local trains across the Western and Central Railway lines. The format is exterior train branding, seen by daily commuters, by people on platforms and by traffic along the line. Ask for the free site list to see available rakes and formats.</p>
 
     <div class="kw-grid-2">
         <div>
@@ -79,6 +80,9 @@
         ['q' => 'Why is Mumbai local train advertising effective?', 'a' => 'Mumbai\'s local trains carry one of the highest daily commuter volumes of any transit system in India. A train running its line multiple times a day puts a brand in front of a large, repeat audience of office-goers, students and shoppers at a scale few other formats can match.'],
         ['q' => 'What drives the cost of Mumbai local train advertising?', 'a' => 'Cost depends on the rail line, number of trains or rakes booked, and campaign duration. Western Railway corridors with higher commuter density typically command different rates than quieter Central Railway stretches, so we scope pricing once we know your target line and timeframe.'],
         ['q' => 'How far in advance should I book a Mumbai local train advertising campaign?', 'a' => 'Because train branding involves coordinating with railway authorities alongside printing and mounting, we recommend starting the booking conversation at least three to four weeks before your intended launch date.'],
+        ['q' => 'What format does Mumbai local train advertising use?', 'a' => 'Exterior train branding: large-format creative applied to the outside of train rakes, visible to platforms, level crossings and anyone travelling alongside the line.'],
+        ['q' => 'Who sees Mumbai local train advertising?', 'a' => 'Daily commuters on the Western and Central Railway lines see it, along with everyone on the platforms and roads the train passes, so a single branded rake is seen well beyond its own passengers.'],
+        ['q' => 'How do I check availability for Mumbai local train advertising?', 'a' => 'Use the Get Free Site List form and tell us your target line and timeframe. We will share available rakes with rates.'],
     ]])
 </div></section>
 
@@ -89,7 +93,7 @@
             <h2>GET YOUR FREE TRAIN AVAILABILITY LIST</h2>
             <p>Tell us your target line and timeframe and we'll share available rakes with rates.</p>
         </div>
-        <a class="btn white" href="{{ route('view.free.site.list', ['media' => 'mumbai-local-train']) }}">Get Free Site List <b>→</b></a>
+        <a class="btn white" href="{{ route('view.free.site.list', ['media' => 'mumbai-local-train', 'city' => 'Mumbai']) }}">Get Free Site List <b>→</b></a>
     </div>
 </section>
 

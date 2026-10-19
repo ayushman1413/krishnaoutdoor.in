@@ -37,7 +37,7 @@ const bundles = {
   network: [views + 'pages/network.blade.php'],
   projects: [views + 'pages/projects.blade.php'],
   media: [views + 'pages/ooh-media.blade.php', views + 'pages/transit-media.blade.php', views + 'pages/digital-media.blade.php'],
-  keyword: [views + 'pages/keywords/*.blade.php', views + 'pages/free-site-list.blade.php'],
+  keyword: [views + 'pages/keywords/*.blade.php', views + 'pages/free-site-list.blade.php', views + 'pages/project-case.blade.php'],
   site: [views + '**/*.blade.php'],
 };
 

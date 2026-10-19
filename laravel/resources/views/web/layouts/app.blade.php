@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta content="#0c0e11" name="theme-color"/>
-<meta name="csrf-token" content="{{ csrf_token() }}">
+{{-- No per-request CSRF token in the page HTML: forms fetch one from /csrf-token when first used, so pages stay cacheable. --}}
 @include('web.common.seo-head', ['seo' => $seo ?? null])
 @php $seoSettings = $seo?->settings ?? \App\Models\SeoSetting::query()->first(); @endphp
 @if ($seoSettings?->gsc_verification_code)
@@ -20,12 +20,40 @@ window.koTrack = function (name, params) {
 };
 function trackConversion(action, label) { window.koTrack(action, { event_label: label }); }
 </script>
+{{-- GA4 and GTM: the dataLayer/gtag stubs above queue events straight away;
+     the tag scripts themselves load on the first interaction, or when the
+     browser is idle, so they never compete with first paint. --}}
 @if ($seoSettings?->ga4_id)
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ urlencode($seoSettings->ga4_id) }}"></script>
 <script>window.KO_GA4 = true; gtag('js', new Date()); gtag('config', @json($seoSettings->ga4_id));</script>
 @endif
 @if ($seoSettings?->gtm_id)
-<script>window.KO_GTM = true;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer',@json($seoSettings->gtm_id));</script>
+<script>window.KO_GTM = true; window.dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});</script>
+@endif
+@if ($seoSettings?->ga4_id || $seoSettings?->gtm_id)
+<script>
+(function () {
+  var tags = [];
+  @if ($seoSettings?->ga4_id)
+  tags.push('https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(@json($seoSettings->ga4_id)));
+  @endif
+  @if ($seoSettings?->gtm_id)
+  tags.push('https://www.googletagmanager.com/gtm.js?id=' + encodeURIComponent(@json($seoSettings->gtm_id)));
+  @endif
+  var loaded = false;
+  function load() {
+    if (loaded) { return; }
+    loaded = true;
+    ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function (e) { window.removeEventListener(e, load, true); });
+    tags.forEach(function (src) {
+      var s = document.createElement('script'); s.async = true; s.src = src; document.head.appendChild(s);
+    });
+  }
+  ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function (e) { window.addEventListener(e, load, { capture: true, once: true, passive: true }); });
+  window.addEventListener('load', function () {
+    if ('requestIdleCallback' in window) { requestIdleCallback(load, { timeout: 4000 }); } else { setTimeout(load, 3000); }
+  });
+})();
+</script>
 @endif
 @if ($seoSettings?->fb_pixel_code)
 {!! $seoSettings->fb_pixel_code !!}

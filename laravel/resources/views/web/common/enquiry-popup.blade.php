@@ -57,7 +57,7 @@
            action="{{ route('handle.popup.enquiry') }}"
         >
 
-            @csrf
+            <input type="hidden" name="_token" value="" data-lazy-csrf>
 
             <!-- Name -->
             <div class="enquiry-field">

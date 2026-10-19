@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Enums\MediaType;
 use App\Http\Controllers\Controller;
 use App\Models\Location;
+use App\Services\LocationPageGate;
 use App\Services\SchemaBuilder;
 use App\Services\SeoResolver;
 use Exception;
@@ -35,11 +36,19 @@ class LocationController extends Controller
             $media_type = MediaType::class;
             $cityName = $locations->first()->city;
 
+            // Describe only the media actually listed for this city.
+            $types = $locations->pluck('media_type')->unique()
+                ->map(fn ($type) => strtolower($media_type::tryFrom($type)?->label() ?? $type))->values()->all();
             $seo = SeoResolver::forRoute(
                 SeoResolver::routeNameForCity($cityName),
                 $cityName . ' Locations',
-                "Explore our available outdoor advertising media - billboards, bus branding, train media and more - across {$cityName}."
+                "Krishna Outdoor advertising sites in {$cityName}: " . implode(', ', $types) . '.'
             );
+
+            // Thin listings stay out of the index until they carry real inventory.
+            if (!LocationPageGate::passes($locations, $seo->meta)) {
+                $seo->forceNoindex();
+            }
 
             SchemaBuilder::setBreadcrumbs([
                 ['name' => 'Our Network', 'url' => route('view.network')],

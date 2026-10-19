@@ -46,3 +46,13 @@
 
 
 @endsection
+
+@section('web-script')
+<script>
+// The thank-you page is the conversion page: the lead event (generate_lead) is
+// sent with the form redirect; this marks the page view itself for GA4.
+window.addEventListener('DOMContentLoaded', function () {
+  window.koTrack('thank_you_view', { page_type: 'conversion' });
+});
+</script>
+@endsection

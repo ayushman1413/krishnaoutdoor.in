@@ -106,6 +106,32 @@
 </section>
 
 
+<!-- DIRECT ANSWER + FORMATS + CITIES -->
+<section class="kw-section"><div class="kw-inner">
+    @include('web.common.breadcrumbs', ['seo' => $seo, 'class' => 'kw-crumbs'])
+    <p class="kw-lead">Krishna Outdoor offers outdoor (OOH) media across Gujarat: 2000+ hoarding sites, including 300+ hoardings it owns in Ahmedabad, plus 400+ backlit bus shelters, unipoles and gantries. Brands can book a single site or a network across Ahmedabad and other cities in Gujarat. Ask for the free site list to see what is available.</p>
+
+    <h2 class="kw-h2">OOH formats we <em>offer</em></h2>
+    <ul class="kw-list">
+        <li><b>Hoardings</b> — frontlit and backlit hoardings on high-traffic roads and junctions. See <a href="{{ route('view.keyword.hoarding.ahmedabad') }}">hoarding advertising in Ahmedabad</a>.</li>
+        <li><b>Unipoles &amp; gantries</b> — single-pole and overhead structures on highways and major junctions for maximum visibility.</li>
+        <li><b>Backlit bus shelters</b> — eye-level panels at commuter stops in Ahmedabad. See <a href="{{ route('view.keyword.bus.shelter.ahmedabad') }}">bus shelter advertising in Ahmedabad</a>.</li>
+    </ul>
+
+    <h3 class="kw-h3">Cities covered</h3>
+    {{-- TODO: client to confirm the list of Gujarat cities where hoardings, unipoles and gantries are available. Only Ahmedabad and "Gujarat" are named on the site today. --}}
+    <p class="kw-p">Ahmedabad, with 300+ own hoardings and 400+ backlit bus shelters, and key cities across Gujarat, with 2000+ hoarding sites, unipoles and gantries in total.</p>
+
+    <h3 class="kw-h3">Explore by format</h3>
+    <div class="kw-links">
+        <a href="{{ route('view.keyword.hoarding.ahmedabad') }}">Hoarding Advertising in Ahmedabad</a>
+        <a href="{{ route('view.keyword.bus.shelter.ahmedabad') }}">Bus Shelter Advertising in Ahmedabad</a>
+        <a href="{{ route('view.keyword.amts.ahmedabad') }}">AMTS Bus Advertising in Ahmedabad</a>
+        <a href="{{ route('view.keyword.gsrtc') }}">GSRTC Bus Advertising</a>
+        <a href="{{ route('view.digital.media') }}">Digital (DOOH) Advertising</a>
+    </div>
+</div></section>
+
 <!-- OOH CONTENT -->
 <section class="section about" id="ooh-media">
 

@@ -14,7 +14,7 @@
             </div>
 
             <form method="POST" action="{{ route('handle.plan.campaign.enquiry') }}" class="space-y-4">
-                @csrf
+                <input type="hidden" name="_token" value="" data-lazy-csrf>
 
                 <div class="input-group">
                     <label for="plan_campaign_name" class="input-label">Name</label>

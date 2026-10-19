@@ -119,8 +119,8 @@
                 <li><a href="/amts-bus-advertising-ahmedabad">AMTS Bus Advertising Ahmedabad</a></li>
             </ul>
 
-            <a class="small-btn" href="{{ route('view.contact') }}">
-                Explore Transit Rights <span>→</span>
+            <a class="small-btn" href="{{ route('view.free.site.list', ['media' => 'transit', 'city' => 'Mumbai']) }}">
+                Get Free Site List <span>→</span>
             </a>
         </div>
 
@@ -199,7 +199,7 @@
             </p>
         </div>
 
-        <a class="btn white" href="{{ route('view.free.site.list', ['media' => 'transit']) }}">
+        <a class="btn white" href="{{ route('view.free.site.list', ['media' => 'transit', 'city' => 'Mumbai']) }}">
             Get Free Site List <b>→</b>
         </a>
 

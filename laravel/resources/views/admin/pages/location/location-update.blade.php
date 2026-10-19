@@ -85,7 +85,17 @@
                         @enderror
                     </div>
 
-                    {{-- Availability --}}
+{{-- Size --}}
+                    <div class="input-group">
+                        <label for="size" class="input-label">Size <span>(e.g. 40 x 20 ft; needed before a city page can be indexed)</span></label>
+                        <input type="text" name="size" id="size" value="{{ old('size', $location->size) }}"
+                            class="input-box-md @error('size') input-invalid @enderror" placeholder="Enter Size" maxlength="100">
+                        @error('size')
+                            <span class="input-error">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                                        {{-- Availability --}}
                     <div class="input-group">
                         <label for="is_available" class="input-label">Media Availability</label>
                         <label class="toggler-switch mt-1">

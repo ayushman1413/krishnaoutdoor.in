@@ -14,7 +14,7 @@
 
 <section class="hero media-detail-hero media-detail-hero-ooh" id="home">
     <div class="media-detail-hero-bg">
-        <img fetchpriority="high" srcset="{{ asset('assets/images/media/home-360-mumbai-train-800w.webp') }} 800w, {{ asset('assets/images/media/home-360-mumbai-train.webp') }} 1280w" sizes="100vw" alt="Social media marketing in Mumbai" decoding="async" loading="eager" src="{{ asset('assets/images/media/home-360-mumbai-train.webp') }}"/>
+        <img fetchpriority="high" srcset="{{ asset('assets/images/media/home-360-mumbai-train-800w.webp') }} 800w, {{ asset('assets/images/media/home-360-mumbai-train.webp') }} 1280w" sizes="100vw" alt="" decoding="async" loading="eager" src="{{ asset('assets/images/media/home-360-mumbai-train.webp') }}"/>
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-grid"></div>
@@ -31,7 +31,8 @@
 </section>
 
 <section class="kw-section"><div class="kw-inner">
-    <div class="kw-crumbs"><a href="{{ route('view.home') }}">Home</a><span>/</span><a href="{{ route('view.services') }}">Services</a><span>/</span><b>Social Media Marketing Mumbai</b></div>
+    @include('web.common.breadcrumbs', ['seo' => $seo, 'class' => 'kw-crumbs'])
+    <p class="kw-lead">Krishna Outdoor runs social media marketing for Mumbai brands across Instagram, Facebook, LinkedIn and YouTube, covering strategy, content, paid ads and reporting. It can be booked on its own or paired with a local train or BEST bus campaign. Tell us your goals and we will recommend a package.</p>
 
     <div class="kw-grid-2">
         <div>
@@ -60,7 +61,7 @@
             <h3 class="kw-h3">What does social media marketing cost in Mumbai?</h3>
             <p class="kw-p">Cost is driven by how many platforms you run, the volume of content produced each month, and your paid advertising budget. A lean, single-platform plan costs less than a full multi-platform package with weekly content and ongoing paid campaigns. Share your goals and current social presence and we'll recommend a package sized to your budget.</p>
 
-            <p class="kw-p"><a href="{{ route('view.contact') }}">Get in touch</a> to scope a social media plan for your Mumbai brand, alone or alongside a transit campaign.</p>
+            <p class="kw-p"><a href="{{ route('view.free.site.list', ['media' => 'other', 'city' => 'Mumbai']) }}">Get in touch</a> to scope a social media plan for your Mumbai brand, alone or alongside a transit campaign.</p>
         </div>
 
         <div class="kw-img">
@@ -72,9 +73,11 @@
     <div class="kw-links">
         <a href="/social-media-marketing-ahmedabad">Social Media Marketing Ahmedabad</a>
         <a href="/outdoor-advertising-agency-mumbai">Outdoor Advertising Agency Mumbai</a>
-        <a href="{{ route('view.contact') }}">Talk To Our Team</a>
+        <a href="{{ route('view.free.site.list', ['media' => 'other', 'city' => 'Mumbai']) }}">Get Free Site List</a>
     </div>
 </div></section>
+
+@include('web.common.social-case-studies', ['city' => 'Mumbai'])
 
 <section class="kw-section kw-section-alt"><div class="kw-inner">
     <h2 class="kw-h2">Frequently asked <em>questions</em></h2>
@@ -94,7 +97,7 @@
             <h2>START YOUR MUMBAI SOCIAL MEDIA PLAN</h2>
             <p>Tell us about your brand and goals in Mumbai and we'll put together a social media approach that fits.</p>
         </div>
-        <a class="btn white" href="{{ route('view.contact') }}">Talk To Our Team <b>→</b></a>
+        <a class="btn white" href="{{ route('view.free.site.list', ['media' => 'other', 'city' => 'Mumbai']) }}">Get Free Site List <b>→</b></a>
     </div>
 </section>
 
