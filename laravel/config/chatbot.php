@@ -25,14 +25,6 @@
 
 return [
 
-    'llm' => [
-        // Optional: set ANTHROPIC_API_KEY to let Claude phrase answers from the
-        // facts below (grounded; falls back to the built-in engine on any error).
-        'key' => env('ANTHROPIC_API_KEY'),
-        'model' => env('CHATBOT_LLM_MODEL', 'claude-sonnet-5-5'),
-        'timeout' => 12,
-    ],
-
     'media' => [
         'hoarding' => ['label' => 'hoardings', 'page' => '/hoarding-advertising-ahmedabad', 'title' => 'Hoarding advertising in Ahmedabad', 'list' => 'hoardings', 'syn' => ['hoarding', 'hoardings', 'billboard', 'billboards', 'unipole', 'unipoles', 'gantry', 'gantries', 'frontlit', 'backlit hoarding', 'ooh', 'outdoor']],
         'amts' => ['label' => 'AMTS buses', 'page' => '/amts-bus-advertising-ahmedabad', 'title' => 'AMTS bus advertising in Ahmedabad', 'list' => 'amts', 'syn' => ['amts', 'ahmedabad bus', 'city bus ahmedabad', 'ahmedabad city bus']],

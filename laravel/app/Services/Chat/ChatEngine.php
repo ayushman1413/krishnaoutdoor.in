@@ -12,8 +12,7 @@ use Illuminate\Support\Str;
  * Krishna AI: understands what a visitor asks (intent, city, media, goal),
  * remembers it across the conversation and across visits, answers from the
  * knowledge base in config/chatbot.php, brainstorms campaign plans and can
- * save a lead for the team. Optionally rephrases answers with a language model
- * (see ChatLlm); everything works without one.
+ * save a lead for the team. Runs entirely on this site's own data and the Laravel stack; no external AI service is used.
  */
 class ChatEngine
 {
@@ -561,13 +560,6 @@ class ChatEngine
         }
 
         $result = $this->fromEntry($entry, $profile, $state, 'answer');
-
-        if (ChatLlm::enabled()) {
-            $facts = array_map(fn ($r) => strip_tags($r['entry']['a']), array_slice($ranked, 0, 5));
-            if ($llm = ChatLlm::reply($raw, $history, $facts, $profile, $path)) {
-                $result['reply'] = $llm;
-            }
-        }
 
         return $result;
     }
