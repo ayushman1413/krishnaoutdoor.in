@@ -25,7 +25,7 @@
     <div class="hero-grid"></div>
     <div class="container hero-inner reveal">
         <h1>{{ $seo->h1Override() ?: $campaign->name . ' – ' . $campaign->mediaLabel() . ' Campaign in ' . $campaign->city }}</h1>
-        @if ($campaign->tagline)<p class="seo-h1-slogan">{{ $campaign->tagline }}</p>@endif
+        <!--cms:skip-->@if ($campaign->tagline)<p class="seo-h1-slogan">{{ $campaign->tagline }}</p>@endif<!--/cms:skip-->
     </div>
 </section>
 
@@ -36,7 +36,7 @@
         <div>
             <h2 class="kw-h2">The <em>brief</em></h2>
             @if (filled($campaign->description))
-                <p class="kw-p">{{ $campaign->description }}</p>
+                <!--cms:skip--><p class="kw-p">{{ $campaign->description }}</p><!--/cms:skip-->
             @endif
 
             <h3 class="kw-h3">Campaign at a glance</h3>
@@ -59,18 +59,22 @@
     @if ($gallery->isNotEmpty())
         <h3 class="kw-h3">Gallery</h3>
         <div class="kw-gallery">
+<!--cms:skip-->
             @foreach ($gallery as $i => $item)
                 <figure><img src="{{ asset('storage/' . $item['path']) }}" alt="{{ $item['alt'] ?? ($campaign->name . ' ' . $campaign->mediaLabel() . ' campaign in ' . $campaign->city . ' – photo ' . ($i + 1)) }}" decoding="async" loading="lazy"/></figure>
             @endforeach
+<!--/cms:skip-->
         </div>
     @endif
 
     @if ($related->isNotEmpty())
         <h3 class="kw-h3">More campaigns</h3>
         <div class="kw-links">
+<!--cms:skip-->
             @foreach ($related as $item)
                 <a href="{{ $item->url() }}">{{ $item->name }} – {{ $item->city }}</a>
             @endforeach
+<!--/cms:skip-->
             <a href="{{ route('view.projects') }}">All campaigns</a>
         </div>
     @endif

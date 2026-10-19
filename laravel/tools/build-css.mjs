@@ -56,7 +56,7 @@ for (const [name, pages] of Object.entries(bundles)) {
     // nav, mobile drawer, enquiry popup and chat widget, which appear on
     // every page and build some class names in JS.
     safelist: {
-      standard: [/^is-/, /^has-/, 'open', 'active', 'in', 'show', 'visible', 'scrolled', 'loaded', 'playing', 'center', 'user', 'bot'],
+      standard: ['h5', 'h6', /^is-/, /^has-/, 'open', 'active', 'in', 'show', 'visible', 'scrolled', 'loaded', 'playing', 'center', 'user', 'bot'],
       deep: [/^marker-/, /^chat/, /^msg/, /typing/, /-time$/, /^nav/, /^mobile-/, /^enquiry-/, /^header/],
       greedy: [/reveal/, /chat/, /nav-/, /menu/],
     },

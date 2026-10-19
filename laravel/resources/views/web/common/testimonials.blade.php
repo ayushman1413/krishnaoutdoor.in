@@ -6,6 +6,7 @@
             <h2 style="font-size: 2.5rem; font-weight: 700; margin-top: 0.5rem;">What Our <em>Clients Say</em></h2>
         </div>
         <div class="testimonials-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+<!--cms:skip-->
             @foreach($testimonials as $testimonial)
             <div class="testimonial-card" style="background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); position: relative;">
                 <p style="color: #4b5563; font-size: 1rem; line-height: 1.6; margin-bottom: 1.5rem; font-style: italic;">"{!! nl2br(e($testimonial->feedback)) !!}"</p>
@@ -26,6 +27,7 @@
                 </div>
             </div>
             @endforeach
+<!--/cms:skip-->
         </div>
     </div>
 </section>

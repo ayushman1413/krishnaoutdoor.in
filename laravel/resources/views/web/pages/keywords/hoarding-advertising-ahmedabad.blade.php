@@ -92,9 +92,11 @@
 <section class="kw-section kw-section-alt"><div class="kw-inner">
     <h2 class="kw-h2">Our hoarding locations <em>by area</em></h2>
     <div class="kw-areas">
+<!--cms:skip-->
         @foreach ($areaSites as $area => $sites)
             <div class="kw-area"><b>{{ $area }}</b><ul>@foreach ($sites as $site)<li>{{ $site->name }}@if ($site->size) <small>({{ $site->size }})</small>@endif</li>@endforeach</ul></div>
         @endforeach
+<!--/cms:skip-->
     </div>
 </div></section>
 @endif

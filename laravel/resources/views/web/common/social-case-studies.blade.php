@@ -6,12 +6,14 @@
 <section class="kw-section"><div class="kw-inner">
     <h2 class="kw-h2">Social media <em>case studies</em></h2>
     <div class="kw-campaigns">
+<!--cms:skip-->
         @foreach ($socialCases as $item)
             <a class="kw-campaign" href="{{ $item->url() }}">
                 @if ($item->image)<img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->imageAlt() }}" decoding="async" loading="lazy"/>@endif
                 <div><strong>{{ $item->name }}</strong><span>{{ $item->mediaLabel() }} · {{ $item->city }}</span><em>View case study →</em></div>
             </a>
         @endforeach
+<!--/cms:skip-->
     </div>
 </div></section>
 @endif

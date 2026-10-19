@@ -18,10 +18,11 @@
 </section>
 <section class="dyn-section"><div class="container">
 @include('web.common.breadcrumbs', ['seo' => $seo, 'class' => 'dyn-crumbs'])
-@if ($category->summary)<p class="dyn-intro">{{ $category->summary }}</p>@endif
+<!--cms:skip-->@if ($category->summary)<p class="dyn-intro">{{ $category->summary }}</p>@endif<!--/cms:skip-->
 
 @if (count($category->child_categories) != 0)
 <div class="dyn-grid">
+<!--cms:skip-->
 @foreach ($category->child_categories as $child_category)
 <article class="dyn-card">
 @php $thumb = $child_category->thumbnail_image ?: null; @endphp
@@ -33,9 +34,11 @@
 </div>
 </article>
 @endforeach
+<!--/cms:skip-->
 </div>
 @else
 <div class="dyn-gallery">
+<!--cms:skip-->
 @foreach ($media_items as $media)
 <figure>
 @switch($media->type)
@@ -54,6 +57,7 @@
 @if ($media->name)<figcaption>{{ ucwords($media->name) }}</figcaption>@endif
 </figure>
 @endforeach
+<!--/cms:skip-->
 </div>
 @endif
 </div></section>

@@ -56,12 +56,6 @@
 
             <h3 class="kw-h3">Routes and coverage</h3>
             <p class="kw-p">AMTS buses operate across Ahmedabad city, connecting residential, commercial and institutional areas on scheduled routes. Rather than guessing which route suits your audience, share your target neighbourhoods or customer profile with our team and we'll recommend buses whose routes genuinely overlap with where your audience lives, works or shops.</p>
-            {{-- Routes and areas come from the client via Admin > SEO > this page > Page Copy; nothing is listed until supplied. --}}
-            @if (filled($seo->meta?->page_copy))
-                @foreach (preg_split('/\R{2,}/', trim($seo->meta->page_copy)) as $paragraph)
-                    <p class="kw-p">{{ $paragraph }}</p>
-                @endforeach
-            @endif
 
             <h3 class="kw-h3">What does AMTS bus advertising cost?</h3>
             <p class="kw-p">Cost is driven by three things: the format you choose (full wrap, side panel or back panel), how many buses you book, and your campaign duration. A full wrap on a single bus costs more than a side panel, but booking multiple buses with panels can deliver similar overall reach at a lower entry cost. Longer bookings also reduce the effective cost per month since printing and mounting are a one-time cost spread across the campaign.</p>

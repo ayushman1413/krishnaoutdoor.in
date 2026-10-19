@@ -19,14 +19,6 @@ use League\Csv\Writer;
 
 class SeoMetaController extends Controller
 {
-    private const REVISIONED_FIELDS = [
-        'meta_title', 'meta_description', 'meta_keywords', 'focus_keyword',
-        'skip_title_template', 'canonical_url', 'robots_index', 'robots_follow', 'h1_override',
-        'og_title', 'og_description', 'og_type',
-        'twitter_title', 'twitter_description',
-        'schema_json', 'page_copy',
-    ];
-
     public function __construct()
     {
         $this->middleware('auth:admin');
@@ -72,7 +64,6 @@ class SeoMetaController extends Controller
             'focus_keyword' => ['nullable', 'string', 'max:100'],
             'canonical_url' => ['nullable', 'string', 'max:500'],
             'h1_override' => ['nullable', 'string', 'max:150'],
-            'page_copy' => ['nullable', 'string', 'max:20000'],
             'og_title' => ['nullable', 'string'],
             'og_description' => ['nullable', 'string'],
             'og_image' => ['nullable', 'file', 'mimes:jpg,jpeg,png,webp'],
@@ -103,10 +94,7 @@ class SeoMetaController extends Controller
         $meta->canonical_url = $request->input('canonical_url');
         $meta->robots_index = $request->boolean('robots_index');
         $meta->robots_follow = $request->boolean('robots_follow');
-        // Headings carry no stray emphasis markers or trailing full stop.
-        $h1 = rtrim(trim(str_replace('*', '', (string) $request->input('h1_override'))), ". \t");
-        $meta->h1_override = $h1 !== '' ? $h1 : null;
-        $meta->page_copy = $request->input('page_copy') ?: null;
+        $meta->h1_override = SeoMeta::normalizeH1($request->input('h1_override'));
         $meta->og_title = $request->input('og_title');
         $meta->og_description = $request->input('og_description');
         $meta->og_type = $request->input('og_type') ?: 'website';
@@ -136,24 +124,10 @@ class SeoMetaController extends Controller
 
             $group = $request->query('group', 'pages');
 
-            if ($group === 'categories') {
-                $metas = SeoMeta::where('seoable_type', Category::class)->with('seoable')->get();
-            } elseif ($group === 'campaigns') {
-                $metas = SeoMeta::where('seoable_type', \App\Models\Campaign::class)->with('seoable')->get();
-            } elseif ($group === 'locations') {
-                // Locations have no individual detail page — only /locations/{city} —
-                // so SEO is keyed per city (SeoResolver::routeNameForCity), not per
-                // Location model.
-                $metas = SeoMeta::where('route_name', 'like', 'view.locations.city.%')
-                    ->orderBy('route_name')
-                    ->get();
-            } else {
+            if (!in_array($group, ['categories', 'campaigns', 'locations'], true)) {
                 $group = 'pages';
-                $metas = SeoMeta::whereNotNull('route_name')
-                    ->where('route_name', 'not like', 'view.locations.city.%')
-                    ->orderBy('route_name')
-                    ->get();
             }
+            $metas = SeoMeta::forGroup($group);
 
             return view('admin.pages.seo.seo-list', [
                 'metas' => $metas,
@@ -189,24 +163,7 @@ class SeoMetaController extends Controller
      */
     private function resolveUrl(SeoMeta $meta): string
     {
-        if ($meta->route_name && str_starts_with($meta->route_name, 'view.locations.city.')) {
-            $citySlug = substr($meta->route_name, strlen('view.locations.city.'));
-            return url('/locations/' . $citySlug);
-        }
-
-        if ($meta->route_name && \Illuminate\Support\Facades\Route::has($meta->route_name)) {
-            return route($meta->route_name, [], true) ?: url('/');
-        }
-
-        if ($meta->seoable_type === Category::class && $meta->seoable) {
-            return url('/' . $meta->seoable->slug);
-        }
-
-        if ($meta->seoable_type === \App\Models\Campaign::class && $meta->seoable) {
-            return url('/projects/' . $meta->seoable->slug);
-        }
-
-        return url('/');
+        return url($meta->publicPath() ?? '/');
     }
 
     public function handleSeoExport()
@@ -273,7 +230,7 @@ class SeoMetaController extends Controller
                 $h1 = trim($record['H1'] ?? '');
                 $canonical = trim($record['Canonical'] ?? '');
 
-                $before = $meta->only(self::REVISIONED_FIELDS);
+                $before = $meta->only(SeoMeta::REVISIONED_FIELDS);
 
                 if ($newTitle !== '') $meta->meta_title = $newTitle;
                 if ($newDescription !== '') $meta->meta_description = $newDescription;
@@ -281,7 +238,7 @@ class SeoMetaController extends Controller
                 if ($canonical !== '') $meta->canonical_url = $canonical;
                 $meta->update();
 
-                if ($before !== $meta->only(self::REVISIONED_FIELDS)) {
+                if ($before !== $meta->only(SeoMeta::REVISIONED_FIELDS)) {
                     SeoMetaRevision::create([
                         'seo_meta_id' => $meta->id,
                         'admin_id' => auth()->user()->id,
@@ -319,7 +276,7 @@ class SeoMetaController extends Controller
                 ]);
             }
 
-            $before = $meta->only(self::REVISIONED_FIELDS);
+            $before = $meta->only(SeoMeta::REVISIONED_FIELDS);
 
             $meta->fill($revision->snapshot_json);
             $meta->update();
@@ -353,12 +310,12 @@ class SeoMetaController extends Controller
                 return redirect()->back()->withErrors($validation)->withInput();
             }
 
-            $before = $meta->only(self::REVISIONED_FIELDS);
+            $before = $meta->only(SeoMeta::REVISIONED_FIELDS);
 
             $this->fill($meta, $request);
             $meta->update();
 
-            $after = $meta->only(self::REVISIONED_FIELDS);
+            $after = $meta->only(SeoMeta::REVISIONED_FIELDS);
             if ($before !== $after) {
                 SeoMetaRevision::create([
                     'seo_meta_id' => $meta->id,

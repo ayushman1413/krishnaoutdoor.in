@@ -83,7 +83,9 @@ function trackConversion(action, label) { window.koTrack(action, { event_label: 
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ urlencode($seoSettings->gtm_id) }}" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>
 @endif
 @include('web.common.header')
-@yield('web-section')
+{{-- Page body with the editor's heading/paragraph changes applied (Admin > Page Content), then its text block and related links. --}}
+{!! \App\Services\Cms\Cms::render($__env->yieldContent('web-section'), $seo?->meta) !!}
+@include('web.common.page-copy', ['seo' => $seo ?? null])
 @include('web.common.footer')
 @include('web.common.chatbot')
 <script>

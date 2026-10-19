@@ -6,7 +6,7 @@
 
         <div class="page-title">
             <h1>{{$category->name}}</h1>
-            <p>{{$category->summary}}</p>
+            <!--cms:skip--><p>{{$category->summary}}</p><!--/cms:skip-->
             <hr>
             <ul class="breadcrumb">
                 <li><a href="{{route('view.home')}}">Home</a></li>
@@ -21,6 +21,7 @@
     <div class="container py-20 space-y-24">
 
         <div class="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-5 popup-gallery">
+<!--cms:skip-->
         @foreach ($category_media as $media)
             <figure class="p-3 border-b-4 border-b-web-ascent border shadow-lg" data-aos="zoom-in">
                 <div class="h-[300px] overflow-clip flex items-center justify-center">
@@ -48,6 +49,7 @@
                 </div>
             </figure>
         @endforeach
+<!--/cms:skip-->
         </div>
         
     </div>

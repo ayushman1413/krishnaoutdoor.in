@@ -83,6 +83,13 @@
                     </a>
                 </li>
 
+                <li class="sidebar-tab" id="content-tab">
+                    <a href="{{route('admin.view.content.list')}}">
+                        <i data-feather="edit-3"></i>
+                        <span>Page Content</span>
+                    </a>
+                </li>
+
                 <li class="sidebar-tab" id="seo-tab">
                     <a href="{{route('admin.view.seo.list')}}">
                         <i data-feather="search"></i>

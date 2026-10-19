@@ -17,11 +17,12 @@
 </section>
 <section class="dyn-section"><div class="container">
 @include('web.common.breadcrumbs', ['seo' => $seo, 'class' => 'dyn-crumbs'])
-<p class="dyn-intro">{{ $seo->description }}</p>
+<!--cms:skip--><p class="dyn-intro">{{ $seo->description }}</p><!--/cms:skip-->
 <div class="dyn-table-wrap" tabindex="0" role="region" aria-label="{{ $city }} sites (scrollable)">
 <table class="dyn-table">
 <thead><tr><th>Image</th><th>Location</th><th>Area</th><th>Size</th><th>Media Type</th><th>Availability</th></tr></thead>
 <tbody>
+<!--cms:skip-->
 @foreach ($locations as $location)
 <tr>
 <td>@if ($location->image)<img src="{{ asset('storage/'.$location->image) }}" alt="{{ $location->image_alt ?: $location->name }}" loading="lazy">@else<span class="dyn-noimg">No image</span>@endif</td>
@@ -32,16 +33,10 @@
 <td>@if ($location->is_available)<span class="dyn-badge ok">Available</span>@else<span class="dyn-badge no">Booked</span>@endif</td>
 </tr>
 @endforeach
+<!--/cms:skip-->
 </tbody>
 </table>
 </div>
-@if (filled($seo->meta?->page_copy))
-<div class="dyn-copy">
-@foreach (preg_split('/\R{2,}/', trim($seo->meta->page_copy)) as $paragraph)
-<p>{{ $paragraph }}</p>
-@endforeach
-</div>
-@endif
 <div class="dyn-cta"><p>Interested in one of these locations?</p><a class="dyn-btn" href="{{ route('view.free.site.list', ['media' => 'other']) }}">Get Free Site List <span>→</span></a></div>
 </div></section>
 </main>

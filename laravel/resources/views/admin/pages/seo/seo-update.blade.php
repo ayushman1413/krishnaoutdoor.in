@@ -126,9 +126,8 @@
                     </div>
 
                     <div class="input-group">
-                        <label class="input-label">Page Copy <span>(Optional. Unique body text shown on /locations/&lt;city&gt; pages; such a page is only indexable once it has {{ \App\Services\LocationPageGate::MIN_WORDS }}+ words here and every site has a photo, area and size.)</span></label>
-                        <textarea name="page_copy" rows="8" class="input-box-md @error('page_copy') input-invalid @enderror">{{ old('page_copy', $meta->page_copy) }}</textarea>
-                        @error('page_copy') <span class="input-error">{{ $message }}</span> @enderror
+                        <label class="input-label">Headings, Page Text &amp; Internal Links</label>
+                        <a href="{{ route('admin.view.content.edit', ['id' => $meta->id]) }}" class="btn-secondary-md flex w-fit">Edit page content (H1–H6, paragraphs, links)</a>
                     </div>
 
                     <div class="input-group">

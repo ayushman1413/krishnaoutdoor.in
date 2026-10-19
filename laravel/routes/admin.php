@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\SeoMetaController;
 use App\Http\Controllers\Admin\SeoSettingController;
 use App\Http\Controllers\Admin\SeoRedirectController;
 use App\Http\Controllers\Admin\Seo404LogController;
+use App\Http\Controllers\Admin\PageContentController;
 
 
 Route::get('/', function () {
@@ -135,6 +136,13 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::post('/update/{id}/revision/{revisionId}/restore', 'handleSeoRevisionRestore')->name('admin.handle.seo.revision.restore');
         Route::get('/export', 'handleSeoExport')->name('admin.handle.seo.export');
         Route::post('/import', 'handleSeoImport')->name('admin.handle.seo.import');
+    });
+
+    Route::prefix('content')->controller(PageContentController::class)->group(function () {
+        Route::get('/', 'viewContentList')->name('admin.view.content.list');
+        Route::get('/edit/{id}', 'viewContentEdit')->name('admin.view.content.edit');
+        Route::post('/edit/{id}', 'handleContentUpdate')->name('admin.handle.content.update');
+        Route::post('/reset/{id}', 'handleContentReset')->name('admin.handle.content.reset');
     });
 
     Route::get('seo-todos', [\App\Http\Controllers\Admin\SeoTodoController::class, 'index'])->name('admin.view.seo.todos');

@@ -17,9 +17,10 @@
 </section>
 <section class="dyn-section"><div class="container">
 @include('web.common.breadcrumbs', ['seo' => $seo, 'class' => 'dyn-crumbs'])
-@if ($category->summary)<p class="dyn-intro">{{ $category->summary }}</p>@endif
+<!--cms:skip-->@if ($category->summary)<p class="dyn-intro">{{ $category->summary }}</p>@endif<!--/cms:skip-->
 <div class="dyn-grid two">
 <h2 class="sr-only">{{ $category->name }} options</h2>
+<!--cms:skip-->
 @foreach ($category->child_categories as $child_category)
 <article class="dyn-card">
 <div class="dyn-card-media">
@@ -38,6 +39,7 @@
 </div>
 </article>
 @endforeach
+<!--/cms:skip-->
 </div>
 </div></section>
 </main>
