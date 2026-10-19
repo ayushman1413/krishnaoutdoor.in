@@ -69,6 +69,13 @@
                     </a>
                 </li>
 
+                <li class="sidebar-tab" id="chat-tab">
+                    <a href="{{route('admin.view.chat.list')}}">
+                        <i data-feather="message-circle"></i>
+                        <span>Chats</span>
+                    </a>
+                </li>
+
                 <li class="sidebar-tab" id="career-tab">
                     <a href="{{route('admin.view.career.list')}}">
                         <i data-feather="briefcase"></i>

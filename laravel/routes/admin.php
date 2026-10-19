@@ -125,6 +125,9 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::get('/delete/{id}', 'handleCareerDelete')->name('admin.handle.career.delete');
     });
 
+    Route::get('chats', [\App\Http\Controllers\Admin\ChatLogController::class, 'index'])->name('admin.view.chat.list');
+    Route::get('chats/{id}', [\App\Http\Controllers\Admin\ChatLogController::class, 'show'])->name('admin.view.chat.show');
+
     Route::prefix('seo')->controller(SeoMetaController::class)->group(function () {
         Route::get('/', 'viewSeoList')->name('admin.view.seo.list');
         Route::get('/update/{id}', 'viewSeoUpdate')->name('admin.view.seo.update');

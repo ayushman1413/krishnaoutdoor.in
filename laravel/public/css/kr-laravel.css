@@ -423,3 +423,9 @@
 .kr-point>span{color:#5f666e}
 .dyn-crumbs b{color:#565c62}
 .dyn-noimg{color:#5f656b}
+
+/* Krishna AI: quick-reply chips and privacy note */
+.chat-chips{display:flex;flex-wrap:wrap;gap:7px;margin:8px 0 4px 38px}
+.chat-chip{border:1px solid rgba(229,27,35,.55);background:rgba(255,255,255,.92);color:#8f0f15;border-radius:999px;padding:7px 12px;font:600 12px/1.2 Inter,sans-serif;cursor:pointer;transition:background .2s,color .2s}
+.chat-chip:hover,.chat-chip:focus-visible{background:#e51b23;color:#fff}
+.chat-privacy{margin:6px 12px 8px;font:400 10.5px/1.4 Inter,sans-serif;color:rgba(255,255,255,.72);text-align:center}

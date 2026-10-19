@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Web\CampaignController;
+use App\Http\Controllers\Web\ChatController;
 use App\Http\Controllers\Web\FormController;
 use App\Http\Controllers\Web\LocationController;
 use App\Http\Controllers\Web\SeoController;
@@ -31,6 +32,11 @@ Route::get('/csrf-token', function () {
     return response()->json(['token' => csrf_token()])
         ->header('Cache-Control', 'no-store, private');
 })->name('csrf.token');
+
+// Krishna AI chatbot (see app/Services/Chat).
+Route::get('/chat/history', [ChatController::class, 'history'])->middleware('throttle:60,1')->name('chat.history');
+Route::post('/chat/message', [ChatController::class, 'message'])->middleware('throttle:40,1')->name('chat.message');
+Route::post('/chat/forget', [ChatController::class, 'forget'])->middleware('throttle:10,1')->name('chat.forget');
 
 Route::get('/optimize', function () {
     Artisan::call('optimize:clear');

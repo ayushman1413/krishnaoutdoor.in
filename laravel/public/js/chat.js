@@ -27,60 +27,63 @@ if(chatbot && chatPanel){
    row.innerHTML=`${avatar()}<div class="msg-stack"><div class="msg-bubble thinking-bubble"><span class="thinking-label">Thinking</span><span class="thinking-dots"><i></i><i></i><i></i></span></div></div>`;
    chatMessages?.appendChild(row);scrollBottom();return row;
  };
- const L=Object.assign({
-   home:'index.html',about:'about.html',services:'services.html',ooh:'ooh-media.html',transit:'transit-media.html',digital:'digital-media.html',network:'network.html',location:'network.html#presence',campaign:'projects.html#campaigns',work:'projects.html',careers:'careers.html',enquire:'contact.html'
- },window.KR_ROUTES||{});
- const link=(href,label)=>`<a href="${href}">${label}</a>`;
- const pageLinks=()=>`<div class="chat-link-list">${link(L.home,'Home')} ${link(L.about,'About Us')} ${link(L.services,'Media Solutions')} ${link(L.ooh,'OOH Media')} ${link(L.transit,'Transit Media')} ${link(L.digital,'Digital Media')} ${link(L.location,'Location')} ${link(L.network,'Our Network')} ${link(L.campaign,'Campaign')} ${link(L.work,'Our Work')} ${link(L.careers,'Careers')} ${link(L.enquire,'Enquire Now')}</div>`;
- const contactInfo=()=>`<strong>Contact Krishna Outdoor</strong><br>
-Ahmedabad: ${link('tel:+919879616411','+91 98796 16411')} · ${link('mailto:info@krishnaoutdoor.in','info@krishnaoutdoor.in')}<br>
-Aakanksha Complex, 403-404, Netaji Rd, nr. Railway Crossing, opposite Andani Hyper Market, Muslim Society, Navrangpura, Ahmedabad, Gujarat – 380009, India.
-<br><br>
-Mumbai: ${link('tel:+919920011574','+91 99200 11574')} · ${link('mailto:info.team@krishnaoutdoor.in','info.team@krishnaoutdoor.in')}<br>
-701, 702 Morya Blue Moon, Next to Moniginis Cake Factory, Off New Link Road, Opp. Citi Mall, Andheri West, Mumbai, Maharashtra – 400053, India.
-<br><br>
-${link(L.enquire,'Open Enquire Now')}`;
- const pageName=(document.title||'').toLowerCase();
- const getReply=(input)=>{
-   const q=input.toLowerCase().replace(/[^a-z0-9@.+#& -]/g,' ').replace(/\s+/g,' ').trim();
-   const has=(...terms)=>terms.some(t=>q.includes(t));
-   if(has('all page','all pages','page link','page links','website link','links')) return `Here are all the website pages:<br>${pageLinks()}`;
-   if(has('contact','phone','mobile','number','call','email','mail','enquire','enquiry','quote','quotation','address','office','details')) return contactInfo();
-   if(has('hi','hello','hey','hii','namaste','good morning','good afternoon','good evening')) return `Hello! I’m Krishna AI. I can guide you through every page of Krishna Outdoor.<br>${pageLinks()}`;
-   if(has('name','who are you','your name')) return `I’m Krishna AI, the virtual assistant for Krishna Outdoor. I can guide you through every section and page of this website.<br>${link(L.enquire,'Enquire Now')}`;
-   if(has('home','homepage')) return `The Home page covers Krishna Outdoor’s outdoor advertising story, solutions, campaigns, network and enquiry path.<br>${link(L.home,'Open Home')}`;
-   if(has('about','company','history','legacy','years','experience')) return `The About page explains Krishna Outdoor’s journey, leadership, 43+ years of experience and media legacy.<br>${link(L.about,'Open About Us')}`;
-   if(has('service','services','media solution','media solutions')) return `Media Solutions includes OOH Media, Transit Media and Digital Media. The wider offering also covers print & electronic media, branding and digital marketing.<br>${link(L.services,'Open Media Solutions')} · ${link(L.ooh,'OOH')} · ${link(L.transit,'Transit')} · ${link(L.digital,'Digital')}`;
-   if(has('ooh','hoarding','hoardings','billboard','billboards','outdoor')) return `OOH Media covers outdoor formats such as hoardings and billboards.<br>${link(L.ooh,'Open OOH Media')} · ${link(L.enquire,'Enquire Now')}`;
-   if(has('transit','bus','train','railway','metro','shelter')) return `Transit Media covers buses, bus shelters, trains and railway environments.<br>${link(L.transit,'Open Transit Media')} · ${link(L.enquire,'Enquire Now')}`;
-   if(has('digital','dooh','screen','digital billboard')) return `Digital Media and DOOH cover dynamic digital billboard and screen-led advertising.<br>${link(L.digital,'Open Digital Media')} · ${link(L.enquire,'Enquire Now')}`;
-   if(has('print','newspaper','press','radio','electronic media')) return `Print & Electronic Media can include newspaper, press and radio formats as part of an integrated media approach.<br>${link(L.services,'Open Media Solutions')} · ${link(L.enquire,'Enquire Now')}`;
-   if(has('location','where','city','ahmedabad','mumbai','thane','rajasthan','market')) return `Our Location / Network pages cover Ahmedabad, Mumbai, Thane and Rajasthan market presence and media opportunities.<br>${link(L.location,'Open Location')} · ${link(L.network,'Open Our Network')}`;
-   if(has('network','presence','sites','cities')) return `Our Network page explains Krishna Outdoor’s media presence, market coverage, hoardings, buses, shelters and train opportunities across key markets.<br>${link(L.network,'Open Our Network')}`;
-   if(has('project','projects','work','campaign','portfolio','case study')) return `Our Work shows campaign examples and project work. The Campaign section is also available directly.<br>${link(L.campaign,'Open Campaign')} · ${link(L.work,'Open Our Work')}`;
-   if(has('career','careers','job','jobs','join','opening')) return `The Careers page contains the opportunity/application section for roles across sales, operations, design, client servicing, digital and administration.<br>${link(L.careers,'Open Careers')}`;
-   if(has('price','pricing','cost','rate','budget')) return `Pricing depends on media format, market, location, duration and campaign size. Share your city, format and duration through Enquire Now.<br>${link(L.enquire,'Start an Enquiry')}`;
-   if(has('logo','brand','client','clients')) return `The website includes Krishna Outdoor brand information and an Our Esteemed Clients section.<br>${link(L.home,'Home')} · ${link(L.work,'Our Work')}`;
-   if(has('thank','thanks','okay','ok','great')) return `You’re welcome! Ask me about any Krishna Outdoor page, media solution, campaign or contact detail.`;
-   if(pageName.includes('transit')) return `You’re on the Transit Media page. I can answer questions about buses, trains, shelters, formats and campaign planning.<br>${link(L.transit,'Open Transit Media')}`;
-   if(pageName.includes('digital')) return `You’re on the Digital Media page. I can answer questions about DOOH, digital billboards, screens and campaign planning.<br>${link(L.digital,'Open Digital Media')}`;
-   if(pageName.includes('ooh')) return `You’re on the OOH Media page. I can answer questions about hoardings, billboards, locations and outdoor formats.<br>${link(L.ooh,'Open OOH Media')}`;
-   if(pageName.includes('about')) return `You’re on the About page. Ask me about Krishna Outdoor’s journey, experience, leadership or media legacy.<br>${link(L.about,'Open About Us')}`;
-   if(pageName.includes('project') || pageName.includes('work')) return `You’re on the Our Work page. Ask me about campaigns, projects, media formats or the work showcased here.<br>${link(L.work,'Open Our Work')} · ${link(L.campaign,'Open Campaign')}`;
-   if(pageName.includes('network') || pageName.includes('location')) return `You’re on the Location / Our Network section. Ask me about market presence, cities, sites or media opportunities.<br>${link(L.location,'Open Location')} · ${link(L.network,'Open Our Network')}`;
-   if(pageName.includes('career')) return `You’re on the Careers page. Ask me about career information or openings.<br>${link(L.careers,'Open Careers')}`;
-   if(pageName.includes('contact') || pageName.includes('enquir')) return `You’re on the Enquire page. Here are the direct contact details:<br>${contactInfo()}`;
-   return `I can help with the full Krishna Outdoor website. Ask me about Home, About, Media Solutions, OOH, Transit, Digital, Location, Our Network, Campaign, Our Work, Careers or Enquire Now.<br>${pageLinks()}`;
+ // ---- Krishna AI: server-side brain with memory (see app/Services/Chat) ----
+ const esc=t=>String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+ const fmt=t=>esc(t).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>');
+ const safeHref=h=>/^(\/|https?:\/\/|tel:|mailto:)/.test(h)?h:'/';
+ const linkList=links=>links&&links.length?`<div class="chat-link-list">${links.map(l=>`<a href="${esc(safeHref(l[1]))}">${esc(l[0])}</a>`).join(' ')}</div>`:'';
+ let visitorId=null;
+ try{visitorId=localStorage.getItem('ko_chat_vid')}catch(e){}
+ const saveVisitor=id=>{if(!id||id===visitorId)return;visitorId=id;try{localStorage.setItem('ko_chat_vid',id)}catch(e){}};
+ let csrf=null;
+ const getToken=()=>csrf?Promise.resolve(csrf):fetch('/csrf-token',{credentials:'same-origin',headers:{Accept:'application/json'}}).then(r=>r.json()).then(j=>(csrf=j.token));
+ const api=(url,payload)=>getToken().then(t=>fetch(url,{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json',Accept:'application/json','X-CSRF-TOKEN':t},body:JSON.stringify(Object.assign({visitor:visitorId,path:location.pathname,title:document.title},payload||{}))}).then(r=>{if(r.status===419){csrf=null;throw new Error('csrf')}if(!r.ok)throw new Error('http '+r.status);return r.json()}));
+ const clearChips=()=>$$('.chat-chips',chatMessages).forEach(c=>c.remove());
+ const showChips=chips=>{
+   clearChips();if(!chips||!chips.length||!chatMessages)return;
+   const wrap=document.createElement('div');wrap.className='chat-chips';
+   chips.forEach(c=>{const b=document.createElement('button');b.type='button';b.className='chat-chip';b.textContent=c;b.addEventListener('click',()=>send(c));wrap.appendChild(b)});
+   chatMessages.appendChild(wrap);scrollBottom();
  };
- const reply=(input)=>{const thinking=showThinking();setTimeout(()=>{thinking.remove();addMessage(getReply(input),'bot',true)},900)};
+ const botSay=(data)=>{addMessage(fmt(data.reply||data.text)+linkList(data.links),'bot',true);showChips(data.chips)};
+ const send=(text)=>{
+   const value=(text||'').trim();if(!value)return;
+   clearChips();addMessage(esc(value),'user');
+   const thinking=showThinking();const started=Date.now();
+   api('/chat/message',{message:value}).then(data=>{
+     saveVisitor(data.visitor);
+     const wait=Math.max(0,Math.min(1100,350+data.reply.length*3)-(Date.now()-started));
+     setTimeout(()=>{thinking.remove();botSay(data);if(data.lead&&typeof window.koTrack==='function'){window.koTrack('generate_lead',{form_name:'chatbot'})}},wait);
+   }).catch(()=>{
+     thinking.remove();
+     addMessage('I am having trouble connecting right now. You can call the team on <a href="tel:+919879616411">+91 98796 16411</a> (Ahmedabad) or <a href="tel:+919920011574">+91 99200 11574</a> (Mumbai), or use the <a href="/free-site-list">free site list form</a>.','bot',true);
+   });
+ };
+ let historyLoaded=false;
+ const loadHistory=()=>{
+   if(historyLoaded)return;historyLoaded=true;
+   const q='?visitor='+encodeURIComponent(visitorId||'')+'&path='+encodeURIComponent(location.pathname);
+   fetch('/chat/history'+q,{credentials:'same-origin',headers:{Accept:'application/json'}}).then(r=>r.json()).then(data=>{
+     saveVisitor(data.visitor);
+     if(data.messages&&data.messages.length){
+       $$('.msg-row',chatMessages).forEach(r=>r.remove());
+       data.messages.forEach(m=>addMessage(fmt(m.text),m.role==='user'?'user':'bot',false));
+       addMessage('Welcome back. Where were we? You can pick up from here or ask something new.','bot',true);
+     }else if(data.welcome){
+       $$('.msg-row',chatMessages).forEach(r=>r.remove());
+       botSay(data.welcome);
+     }
+   }).catch(()=>{});
+ };
  const closeChat=()=>{chatPanel.classList.remove('open');chatPanel.setAttribute('aria-hidden','true');chatPanel.inert=true;chatbot.setAttribute('aria-expanded','false')};
- const openChat=()=>{const wasOpen=chatPanel.classList.contains('open');chatPanel.classList.toggle('open');chatPanel.setAttribute('aria-hidden',wasOpen?'true':'false');chatPanel.inert=wasOpen;chatbot.setAttribute('aria-expanded',wasOpen?'false':'true');if(!wasOpen){if(!chatStartedAt) chatStartedAt=timeNow();setTimeout(()=>chatInput?.focus(),220)}scrollBottom()};
+ const openChat=()=>{const wasOpen=chatPanel.classList.contains('open');chatPanel.classList.toggle('open');chatPanel.setAttribute('aria-hidden',wasOpen?'true':'false');chatPanel.inert=wasOpen;chatbot.setAttribute('aria-expanded',wasOpen?'false':'true');if(!wasOpen){loadHistory();if(!chatStartedAt) chatStartedAt=timeNow();setTimeout(()=>chatInput?.focus(),220)}scrollBottom()};
  chatbot.addEventListener('click',openChat);
  chatClose?.addEventListener('click',e=>{e.stopPropagation();closeChat()});
  document.addEventListener('keydown',e=>{if(e.key==='Escape') closeChat()});
  document.addEventListener('click',e=>{if(chatPanel.classList.contains('open')&&!e.target.closest('#chatPanel')&&!e.target.closest('#chatbot')) closeChat()});
- $$('[data-chat]').forEach(b=>b.addEventListener('click',()=>{const value=b.textContent.replace('↗','').trim();addMessage(value,'user');reply(value)}));
- chatComposer?.addEventListener('submit',e=>{e.preventDefault();const value=chatInput?.value.trim();if(!value)return;addMessage(value,'user');chatInput.value='';reply(value)});
+ $$('[data-chat]').forEach(b=>b.addEventListener('click',()=>{send(b.textContent.replace('↗','').trim())}));
+ chatComposer?.addEventListener('submit',e=>{e.preventDefault();const value=chatInput?.value.trim();if(!value)return;chatInput.value='';send(value)});
+ if(chatComposer&&!$('.chat-privacy',chatPanel)){const n=document.createElement('p');n.className='chat-privacy';n.textContent='Chats are saved so our team can follow up. Type "forget me" to delete yours.';chatComposer.insertAdjacentElement('afterend',n)}
  if(chatMessages && !chatMessages.querySelector('.chat-day')){const day=document.createElement('div');day.className='chat-day';day.textContent=`Today • ${timeNow()}`;chatMessages.prepend(day);$$('.msg-row.bot',chatMessages).forEach(row=>{if(!row.querySelector('.msg-avatar')) row.insertAdjacentHTML('afterbegin',avatar());let stack=row.querySelector('.msg-stack');if(!stack){const bubble=row.querySelector('.msg-bubble');stack=document.createElement('div');stack.className='msg-stack';if(bubble){bubble.parentNode.removeChild(bubble);stack.appendChild(bubble)}row.appendChild(stack)}})}
 }
 window.KO_CHAT_READY = true;
