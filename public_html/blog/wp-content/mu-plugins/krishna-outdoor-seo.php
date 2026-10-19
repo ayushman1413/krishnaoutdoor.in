@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Krishna Outdoor blog SEO
- * Description: Removes the default "Hello world!" post, keeps the blog noindex,follow until real posts are published, and sets the blog home title, description and canonical.
+ * Description: Deletes the default "Hello world!" post, keeps the blog noindex,follow until real posts are published, and sets the blog home title, description and canonical.
  */
 
 if (!defined('ABSPATH')) {
@@ -12,20 +12,26 @@ const KO_BLOG_TITLE = 'OOH Advertising Guides & Insights | Krishna Outdoor';
 const KO_BLOG_DESCRIPTION = 'Guides on hoarding, bus and train advertising in Ahmedabad and Mumbai: costs, planning tips and campaign ideas from the Krishna Outdoor team.';
 
 /**
- * One-time: move WordPress's default "Hello world!" post to the trash
- * (recoverable from Posts > Trash). Only touches the untouched default post.
+ * One-time: delete WordPress's default "Hello world!" post (it is also
+ * reachable at /blog/hello-world/ until it is gone). Only touches the
+ * untouched default post: same slug, same title, still the stock text.
  */
 add_action('init', function () {
-    if (get_option('ko_default_post_removed')) {
+    if (get_option('ko_default_post_deleted')) {
         return;
     }
 
+    // An earlier version of this plugin only trashed the post, so look in the trash too.
     $post = get_page_by_path('hello-world', OBJECT, 'post');
-    if ($post && $post->post_title === 'Hello world!' && $post->post_status !== 'trash') {
-        wp_trash_post($post->ID);
+    if (!$post) {
+        $trashed = get_posts(['name' => 'hello-world__trashed', 'post_type' => 'post', 'post_status' => 'trash', 'numberposts' => 1]);
+        $post = $trashed ? $trashed[0] : null;
+    }
+    if ($post && $post->post_title === 'Hello world!' && strpos($post->post_content, 'Welcome to WordPress') !== false) {
+        wp_delete_post($post->ID, true);
     }
 
-    update_option('ko_default_post_removed', 1, false);
+    update_option('ko_default_post_deleted', 1, false);
 });
 
 function ko_blog_has_real_posts(): bool

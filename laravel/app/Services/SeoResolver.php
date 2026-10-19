@@ -22,6 +22,7 @@ class SeoResolver
     public string $description = '';
     public string $canonicalUrl = '';
     private ?string $featuredImage = null;
+    private bool $forceNoindex = false;
 
     private function __construct(?SeoMeta $meta, string $fallbackTitle = '', string $fallbackDescription = '', ?string $routeName = null, ?string $featuredImage = null)
     {
@@ -147,9 +148,17 @@ class SeoResolver
         );
     }
 
+    /** Page-level override: noindex whatever the SEO panel says. */
+    public function forceNoindex(): static
+    {
+        $this->forceNoindex = true;
+
+        return $this;
+    }
+
     public function robotsContent(): string
     {
-        $index = ($this->meta?->robots_index ?? true) ? 'index' : 'noindex';
+        $index = ($this->meta?->robots_index ?? true) && !$this->forceNoindex ? 'index' : 'noindex';
         $follow = ($this->meta?->robots_follow ?? true) ? 'follow' : 'nofollow';
         return "{$index},{$follow},max-image-preview:large,max-snippet:-1,max-video-preview:-1";
     }

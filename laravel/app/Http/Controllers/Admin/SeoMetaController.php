@@ -24,7 +24,7 @@ class SeoMetaController extends Controller
         'skip_title_template', 'canonical_url', 'robots_index', 'robots_follow', 'h1_override',
         'og_title', 'og_description', 'og_type',
         'twitter_title', 'twitter_description',
-        'schema_json',
+        'schema_json', 'page_copy',
     ];
 
     public function __construct()
@@ -72,6 +72,7 @@ class SeoMetaController extends Controller
             'focus_keyword' => ['nullable', 'string', 'max:100'],
             'canonical_url' => ['nullable', 'string', 'max:500'],
             'h1_override' => ['nullable', 'string', 'max:150'],
+            'page_copy' => ['nullable', 'string', 'max:20000'],
             'og_title' => ['nullable', 'string'],
             'og_description' => ['nullable', 'string'],
             'og_image' => ['nullable', 'file', 'mimes:jpg,jpeg,png,webp'],
@@ -102,7 +103,10 @@ class SeoMetaController extends Controller
         $meta->canonical_url = $request->input('canonical_url');
         $meta->robots_index = $request->boolean('robots_index');
         $meta->robots_follow = $request->boolean('robots_follow');
-        $meta->h1_override = $request->input('h1_override');
+        // Headings carry no stray emphasis markers or trailing full stop.
+        $h1 = rtrim(trim(str_replace('*', '', (string) $request->input('h1_override'))), ". \t");
+        $meta->h1_override = $h1 !== '' ? $h1 : null;
+        $meta->page_copy = $request->input('page_copy') ?: null;
         $meta->og_title = $request->input('og_title');
         $meta->og_description = $request->input('og_description');
         $meta->og_type = $request->input('og_type') ?: 'website';
@@ -267,7 +271,7 @@ class SeoMetaController extends Controller
 
                 if ($newTitle !== '') $meta->meta_title = $newTitle;
                 if ($newDescription !== '') $meta->meta_description = $newDescription;
-                if ($h1 !== '') $meta->h1_override = $h1;
+                if ($h1 !== '') $meta->h1_override = rtrim(str_replace('*', '', $h1), '. ');
                 if ($canonical !== '') $meta->canonical_url = $canonical;
                 $meta->update();
 

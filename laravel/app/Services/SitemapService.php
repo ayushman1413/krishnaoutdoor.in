@@ -77,10 +77,10 @@ class SitemapService
             $add($path, max($category->updated_at, $meta?->updated_at));
         });
 
-        $locationCities = Location::query()->where('status', true)->pluck('city')->filter()->unique();
-        foreach ($locationCities as $city) {
+        $locationsByCity = Location::query()->where('status', true)->get()->groupBy('city');
+        foreach ($locationsByCity as $city => $locations) {
             $meta = $staticMeta->get(SeoResolver::routeNameForCity($city));
-            if (self::excluded($meta)) {
+            if (!$city || self::excluded($meta) || !LocationPageGate::passes($locations, $meta)) {
                 continue;
             }
             $add('/locations/' . Str::slug($city), $meta?->updated_at);

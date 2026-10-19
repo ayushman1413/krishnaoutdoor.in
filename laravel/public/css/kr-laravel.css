@@ -383,3 +383,6 @@
 .home-media-card strong{font:700 20px/1.15 Oswald,Inter,sans-serif;text-transform:uppercase;letter-spacing:-.01em}
 .home-media-card span{font:400 14px/1.6 Inter,sans-serif;color:#4b525b;flex:1}
 .home-media-card em{font:700 12px/1 Inter,sans-serif;font-style:normal;color:#b3131a;letter-spacing:.04em;text-transform:uppercase}
+
+.dyn-copy{max-width:760px;margin:34px 0 0}
+.dyn-copy p{font-size:16px;line-height:1.8;color:var(--muted);margin:0 0 16px}
