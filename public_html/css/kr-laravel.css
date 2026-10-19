@@ -429,3 +429,12 @@
 .chat-chip{border:1px solid rgba(229,27,35,.55);background:rgba(255,255,255,.92);color:#8f0f15;border-radius:999px;padding:7px 12px;font:600 12px/1.2 Inter,sans-serif;cursor:pointer;transition:background .2s,color .2s}
 .chat-chip:hover,.chat-chip:focus-visible{background:#e51b23;color:#fff}
 .chat-privacy{margin:6px 12px 8px;font:400 10.5px/1.4 Inter,sans-serif;color:rgba(255,255,255,.72);text-align:center}
+
+/* Tablet header (761-960px): nav links and "Enquire Now" must fit without horizontal scroll */
+@media (min-width:761px) and (max-width:960px){
+  .header .nav-wrap{gap:8px!important;padding-left:12px!important;padding-right:12px!important}
+  .header .site-logo img{width:118px!important}
+  .header .nav{gap:2px!important;padding-left:6px!important;padding-right:6px!important}
+  .header .nav>a:not(.nav-cta),.header .nav-dropdown>a{font-size:11.5px!important;padding-left:5px!important;padding-right:5px!important}
+  .header .nav-cta{font-size:11.5px!important;padding:10px 11px!important;white-space:nowrap;margin-left:0!important}
+}

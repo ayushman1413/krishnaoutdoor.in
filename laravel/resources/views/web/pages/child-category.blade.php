@@ -24,7 +24,8 @@
 <div class="dyn-grid">
 @foreach ($category->child_categories as $child_category)
 <article class="dyn-card">
-<div class="dyn-card-media"><img src="{{ asset('storage/'.$child_category->thumbnail_image) }}" alt="{{ $child_category->thumbnail_image_alt ?: $child_category->name . ' advertising – Krishna Outdoor' }}" loading="lazy"></div>
+@php $thumb = $child_category->thumbnail_image ?: null; @endphp
+<div class="dyn-card-media">@if ($thumb)<img src="{{ asset('storage/'.$thumb) }}" alt="{{ $child_category->thumbnail_image_alt ?: $child_category->name . ' advertising – Krishna Outdoor' }}" loading="lazy">@else<img src="{{ asset('assets/images/shared-night-city-background-800w.webp') }}" alt="" loading="lazy">@endif</div>
 <div class="dyn-card-body">
 <h3><a href="{{ route('view.child.category', ['slug' => $child_category->slug]) }}">{{ $child_category->name }}</a></h3>
 <p>{{ $child_category->summary }}</p>

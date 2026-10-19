@@ -22,7 +22,7 @@ class ChatLogController extends Controller
             return redirect()->back()->with('message', ['status' => 'warning', 'title' => 'Unauthorized Access', 'description' => 'You do not have access to this url']);
         }
 
-        $visitors = ChatVisitor::withCount('messages')->having('messages_count', '>', 0)->orderByDesc('last_seen_at')->limit(100)->get();
+        $visitors = ChatVisitor::has('messages')->withCount('messages')->orderByDesc('last_seen_at')->limit(100)->get();
 
         return view('admin.pages.chat.chat-list', ['visitors' => $visitors]);
     }

@@ -38,14 +38,19 @@ Route::get('/chat/history', [ChatController::class, 'history'])->middleware('thr
 Route::post('/chat/message', [ChatController::class, 'message'])->middleware('throttle:40,1')->name('chat.message');
 Route::post('/chat/forget', [ChatController::class, 'forget'])->middleware('throttle:10,1')->name('chat.forget');
 
+// Maintenance helpers: signed-in admins only (they used to be open to anyone).
+Route::middleware('auth:admin')->group(function () {
+
 Route::get('/optimize', function () {
     Artisan::call('optimize:clear');
-    dd('Application optimized');
+    return 'Application optimized';
 });
 
 Route::get('/storage/link', function () {
     Artisan::call('storage:link');
-    dd('Storage Linked');
+    return 'Storage Linked';
+});
+
 });
 
 

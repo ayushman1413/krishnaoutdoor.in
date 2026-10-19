@@ -19,10 +19,13 @@
 @include('web.common.breadcrumbs', ['seo' => $seo, 'class' => 'dyn-crumbs'])
 @if ($category->summary)<p class="dyn-intro">{{ $category->summary }}</p>@endif
 <div class="dyn-grid two">
+<h2 class="sr-only">{{ $category->name }} options</h2>
 @foreach ($category->child_categories as $child_category)
 <article class="dyn-card">
 <div class="dyn-card-media">
-@if (pathinfo((string) $child_category->cover_image, PATHINFO_EXTENSION) == 'mp4')
+@if (!$child_category->cover_image)
+<img src="{{ asset('assets/images/shared-night-city-background-800w.webp') }}" alt="" loading="lazy">
+@elseif (pathinfo((string) $child_category->cover_image, PATHINFO_EXTENSION) == 'mp4')
 <video src="{{ asset('storage/'.$child_category->cover_image) }}" autoplay muted loop playsinline></video>
 @else
 <img src="{{ asset('storage/'.$child_category->cover_image) }}" alt="{{ $child_category->cover_image_alt ?: $child_category->name . ' advertising – Krishna Outdoor' }}" loading="lazy">
