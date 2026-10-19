@@ -1,4 +1,20 @@
 <footer class="footer"><div class="container footer-top"><a class="site-logo" href="{{ route('view.home') }}"><img loading="lazy" decoding="async" alt="Krishna Outdoor" src="{{ asset('assets/images/footer-logo.webp') }}"/></a><nav aria-label="Footer"><a href="{{ route('view.home') }}">Home</a><a href="{{ route('view.about') }}">About Us</a><a href="{{ route('view.services') }}">Media Solutions</a><a href="{{ route('view.network') }}">Our Network</a><a href="{{ route('view.projects') }}">Our Work</a><a href="{{ route('view.careers') }}">Careers</a><a href="https://krishnaoutdoor.in/blog/" target="_blank" rel="noopener">Blog</a><a href="{{ route('view.contact') }}">Contact Us</a></nav><div class="legacy"><small>Integrated media expertise supported by the legacy of</small><img loading="lazy" decoding="async" alt="Rakesh Advertising" src="{{ asset('assets/images/shared-rakesh-advertising-legacy.webp') }}"/></div></div>
+<div class="container footer-services">
+<div class="footer-services-col"><b>Services in Ahmedabad &amp; Gujarat</b><nav aria-label="Ahmedabad and Gujarat services">
+<a href="{{ route('view.keyword.hoarding.ahmedabad') }}">Hoarding Advertising in Ahmedabad</a>
+<a href="{{ route('view.keyword.amts.ahmedabad') }}">AMTS Bus Advertising in Ahmedabad</a>
+<a href="{{ route('view.keyword.bus.shelter.ahmedabad') }}">Bus Shelter Advertising in Ahmedabad</a>
+<a href="{{ route('view.keyword.gsrtc') }}">GSRTC Bus Advertising</a>
+<a href="{{ route('view.keyword.social.ahmedabad') }}">Social Media Marketing in Ahmedabad</a>
+</nav></div>
+<div class="footer-services-col"><b>Services in Mumbai &amp; Thane</b><nav aria-label="Mumbai and Thane services">
+<a href="{{ route('view.keyword.agency.mumbai') }}">Outdoor Advertising Agency in Mumbai</a>
+<a href="{{ route('view.keyword.local.train.mumbai') }}">Mumbai Local Train Advertising</a>
+<a href="{{ route('view.keyword.best.mumbai') }}">BEST Bus Advertising in Mumbai</a>
+<a href="{{ route('view.keyword.tmt.thane') }}">TMT Bus Advertising in Thane</a>
+<a href="{{ route('view.keyword.social.mumbai') }}">Social Media Marketing in Mumbai</a>
+</nav></div>
+</div>
 <div class="container footer-offices">
 @foreach (config('business.offices') as $office)
 <address class="footer-office">

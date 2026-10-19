@@ -133,7 +133,7 @@
                         outdoor location to a fully integrated campaign, we help brands explore the opportunities that make
                         the most sense for their objective.</p>
                     <div class="experience-actions"><a class="experience-link" href="{{ route('view.about') }}">Discover Our
-                            Story <span>→</span></a><a class="experience-link" href="{{ route('view.contact') }}">Plan Your
+                            Story <span>→</span></a><a class="experience-link" href="{{ route('view.free.site.list', ['media' => 'other']) }}">Plan Your
                             Campaign <span>→</span></a></div>
                 </div>
             </div>
@@ -198,6 +198,22 @@
                         
                         <!--<button class="service-next"id="serviceNext">NEXT FORMAT <span>→</span></button>-->
                     </div>
+                </div>
+            </div>
+        </section>
+        <section class="home-media" id="our-media" aria-labelledby="our-media-title">
+            <div class="container">
+                <div class="section-head reveal">
+                    <div class="tag">OUR MEDIA</div>
+                    <h2 id="our-media-title">Our Media in Ahmedabad, Gujarat <em>&amp; Mumbai</em></h2>
+                    <p>Explore the outdoor and transit media we hold rights on, with the sites, formats and how to book.</p>
+                </div>
+                <div class="home-media-grid">
+                    <a class="home-media-card" href="{{ route('view.keyword.hoarding.ahmedabad') }}"><strong>Hoarding advertising in Ahmedabad</strong><span>300+ own hoardings in Ahmedabad and 2000+ sites across Gujarat.</span><em>See hoarding sites →</em></a>
+                    <a class="home-media-card" href="{{ route('view.keyword.amts.ahmedabad') }}"><strong>AMTS bus advertising in Ahmedabad</strong><span>Advertising rights on 900+ AMTS city buses.</span><em>See AMTS bus options →</em></a>
+                    <a class="home-media-card" href="{{ route('view.keyword.bus.shelter.ahmedabad') }}"><strong>Bus shelter advertising in Ahmedabad</strong><span>400+ backlit bus shelters where commuters wait.</span><em>See bus shelters →</em></a>
+                    <a class="home-media-card" href="{{ route('view.keyword.gsrtc') }}"><strong>GSRTC bus advertising in Gujarat</strong><span>Advertising rights on 7000+ GSRTC state buses.</span><em>See GSRTC buses →</em></a>
+                    <a class="home-media-card" href="{{ route('view.keyword.agency.mumbai') }}"><strong>Outdoor advertising agency in Mumbai</strong><span>Mumbai local trains, BEST buses and TMT buses from our Mumbai office.</span><em>Explore Mumbai media →</em></a>
                 </div>
             </div>
         </section>
@@ -477,7 +493,7 @@
                     <h2>LET'S PUT YOUR BRAND IN THE RIGHT PLACE.</h2>
                     <p>Whether you are launching a new product, entering a new market, building brand awareness or planning
                         a large-scale campaign, our team is ready to help you explore the right opportunities.</p>
-                </div><a class="btn white" href="{{ route('view.contact') }}">TALK TO OUR TEAM <b>→</b></a>
+                </div><a class="btn white" href="{{ route('view.free.site.list') }}">Get Free Site List <b>→</b></a>
             </div>
         </section>
     </main>

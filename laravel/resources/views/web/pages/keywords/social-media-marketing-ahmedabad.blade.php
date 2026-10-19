@@ -60,7 +60,7 @@
             <h3 class="kw-h3">What does social media marketing cost in Ahmedabad?</h3>
             <p class="kw-p">Cost depends on scope: how many platforms you run, how much original content is produced each month, and your paid advertising budget. A single-platform package with light content and no paid spend costs less than a full multi-platform plan with weekly content and ongoing ad campaigns. Share your goals and current social presence and we'll recommend a package that fits your budget, rather than a one-size offer.</p>
 
-            <p class="kw-p">Interested in pairing social media marketing with an outdoor campaign, or starting with social alone? <a href="{{ route('view.contact') }}">Get in touch</a> and we'll scope an approach around your goals.</p>
+            <p class="kw-p">Interested in pairing social media marketing with an outdoor campaign, or starting with social alone? <a href="{{ route('view.free.site.list', ['media' => 'other', 'city' => 'Ahmedabad']) }}">Get in touch</a> and we'll scope an approach around your goals.</p>
         </div>
 
         <div class="kw-img">
@@ -70,9 +70,10 @@
 
     <h3 class="kw-h3">More ways to work with Krishna Outdoor</h3>
     <div class="kw-links">
+        <a href="{{ route('view.home') }}">Outdoor Advertising in Ahmedabad</a>
         <a href="/social-media-marketing-mumbai">Social Media Marketing Mumbai</a>
         <a href="{{ route('view.services') }}">All Services</a>
-        <a href="{{ route('view.contact') }}">Talk To Our Team</a>
+        <a href="{{ route('view.free.site.list', ['media' => 'other', 'city' => 'Ahmedabad']) }}">Get Free Site List</a>
     </div>
 </div></section>
 
@@ -94,7 +95,7 @@
             <h2>START YOUR SOCIAL MEDIA MARKETING PLAN</h2>
             <p>Tell us about your brand and goals in Ahmedabad and we'll put together a social media approach that fits.</p>
         </div>
-        <a class="btn white" href="{{ route('view.contact') }}">Talk To Our Team <b>→</b></a>
+        <a class="btn white" href="{{ route('view.free.site.list', ['media' => 'other', 'city' => 'Ahmedabad']) }}">Get Free Site List <b>→</b></a>
     </div>
 </section>
 

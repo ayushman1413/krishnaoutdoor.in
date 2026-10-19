@@ -34,7 +34,7 @@
 </tbody>
 </table>
 </div>
-<div class="dyn-cta"><p>Interested in one of these locations?</p><a class="dyn-btn" href="{{ route('view.contact') }}">Enquire Now <span>→</span></a></div>
+<div class="dyn-cta"><p>Interested in one of these locations?</p><a class="dyn-btn" href="{{ route('view.free.site.list', ['media' => 'other']) }}">Get Free Site List <span>→</span></a></div>
 </div></section>
 </main>
 @endsection

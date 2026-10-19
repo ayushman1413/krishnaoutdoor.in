@@ -75,6 +75,7 @@
     <div class="kw-links">
         <a href="/amts-bus-advertising-ahmedabad">AMTS Bus Advertising Ahmedabad</a>
         <a href="/hoarding-advertising-ahmedabad">Hoarding Advertising Ahmedabad</a>
+        <a href="/bus-shelter-advertising-ahmedabad">Bus Shelter Advertising Ahmedabad</a>
         <a href="{{ route('view.transit.media') }}">All Transit Media</a>
     </div>
 </div></section>

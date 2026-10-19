@@ -574,15 +574,27 @@ class FormController extends Controller
         'other' => 'Not sure / multiple',
     ];
 
+    /** Media types whose sites are handled by the Mumbai office. */
+    private const MUMBAI_MEDIA = ['best', 'tmt', 'mumbai-local-train'];
+
     public function viewFreeSiteList(Request $request)
     {
         $seo = \App\Services\SeoResolver::forRoute('view.free.site.list');
         $selectedMedia = array_key_exists($request->query('media'), self::SITE_LIST_MEDIA) ? $request->query('media') : null;
+        $selectedCity = Str::limit(trim(strip_tags((string) $request->query('city'))), 100, '');
+
+        // WhatsApp goes to the Mumbai number for Mumbai/Thane requests and the
+        // Ahmedabad number otherwise; the page script re-picks it as the form changes.
+        $mumbai = in_array($selectedMedia, self::MUMBAI_MEDIA, true)
+            || in_array(Str::lower($selectedCity), ['mumbai', 'thane'], true);
 
         return view('web.pages.free-site-list', [
             'seo' => $seo,
             'mediaTypes' => self::SITE_LIST_MEDIA,
             'selectedMedia' => $selectedMedia,
+            'selectedCity' => $selectedCity !== '' ? $selectedCity : null,
+            'mumbaiMedia' => self::MUMBAI_MEDIA,
+            'whatsappOffice' => $mumbai ? 'mumbai' : 'ahmedabad',
         ]);
     }
 

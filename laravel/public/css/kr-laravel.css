@@ -288,8 +288,9 @@
 .fsl-field [aria-invalid="true"]{border-color:#c4161d}
 .fsl-hint{margin:0;font:400 12px/1.4 Inter,sans-serif;color:#555c63}
 .fsl-error{margin:0;font:600 12px/1.4 Inter,sans-serif;color:#b3131a}
+.fsl-actions{display:flex;flex-wrap:wrap;gap:12px}
 .fsl-submit{justify-self:start;border:0;cursor:pointer}
-@media (max-width:760px){.fsl-form{padding:20px}.fsl-submit{justify-self:stretch;text-align:center}}
+@media (max-width:760px){.fsl-form{padding:20px}.fsl-actions{flex-direction:column}.fsl-submit,.fsl-whatsapp{justify-self:stretch;text-align:center}}
 
 /* ------------------------------------------------------------------
    WCAG AA colour contrast (4.5:1 for small text). The brand red is
@@ -365,3 +366,20 @@
 @keyframes krAiOrb{0%,100%{opacity:1}}
 @keyframes krPanelGlow{0%,100%{opacity:1}}
 @media (prefers-reduced-motion:reduce){.client-pulse::after,.map-pulse::after{animation:none;opacity:0}}
+
+/* Footer: service links (keyword pages) */
+.footer-services{position:relative;z-index:1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 44px;padding:28px 0 8px;border-top:1px solid #e3e6e9}
+.footer-services-col>b{display:block;font:700 11px/1.4 Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#17191c;margin-bottom:10px}
+.footer-services-col nav{display:flex;flex-direction:column;gap:7px}
+.footer-services-col nav a{font:500 13px/1.5 Inter,sans-serif;color:#454c54;text-decoration:none;width:fit-content}
+.footer-services-col nav a:hover,.footer-services-col nav a:focus-visible{color:#b3131a;text-decoration:underline}
+@media (max-width:760px){.footer-services{grid-template-columns:1fr;padding-top:24px}}
+
+/* Home: "Our media" links to the keyword pages */
+.home-media{padding:70px 0;background:#f6f7f8}
+.home-media-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin-top:28px}
+.home-media-card{display:flex;flex-direction:column;gap:8px;background:#fff;border:1px solid #e5e8eb;border-radius:10px;padding:22px 20px;text-decoration:none;color:#101216;box-shadow:0 4px 14px rgba(16,18,22,.04);transition:border-color .25s,transform .25s}
+.home-media-card:hover,.home-media-card:focus-visible{border-color:#c4161d;transform:translateY(-3px)}
+.home-media-card strong{font:700 20px/1.15 Oswald,Inter,sans-serif;text-transform:uppercase;letter-spacing:-.01em}
+.home-media-card span{font:400 14px/1.6 Inter,sans-serif;color:#4b525b;flex:1}
+.home-media-card em{font:700 12px/1 Inter,sans-serif;font-style:normal;color:#b3131a;letter-spacing:.04em;text-transform:uppercase}

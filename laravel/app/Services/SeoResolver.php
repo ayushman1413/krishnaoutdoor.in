@@ -85,18 +85,37 @@ class SeoResolver
      */
     public static function officeFor(?self $seo): array
     {
-        $key = $seo?->region() === 'mumbai' ? 'mumbai' : 'ahmedabad';
-        return config('business.offices.' . $key);
+        return config('business.offices.' . self::officeKeyFor($seo));
     }
 
     /**
-     * wa.me link from the WhatsApp number in SEO settings, or null while
-     * it has not been set.
+     * 'mumbai' for Mumbai/Thane pages, otherwise 'ahmedabad'. A page can name
+     * its office explicitly with 'office' in config/seo_pages.php (e.g.
+     * /media/transit, whose schema covers both offices but whose enquiries
+     * go to Mumbai).
      */
-    public static function whatsappUrl(?SeoSetting $settings): ?string
+    public static function officeKeyFor(?self $seo): string
     {
-        $digits = preg_replace('/\D+/', '', (string) $settings?->whatsapp_number);
-        return $digits !== '' ? 'https://wa.me/' . $digits : null;
+        $page = $seo?->page() ?? [];
+        return ($page['office'] ?? $seo?->region()) === 'mumbai' ? 'mumbai' : 'ahmedabad';
+    }
+
+    /**
+     * wa.me link for this page's office: the Mumbai number on Mumbai/Thane
+     * pages, otherwise the Ahmedabad number. The office phone numbers double
+     * as WhatsApp numbers; a WhatsApp number saved in SEO settings overrides
+     * the Ahmedabad one only. $text pre-fills the message.
+     */
+    public static function whatsappUrl(?self $seo, ?SeoSetting $settings = null, ?string $text = null, ?string $officeKey = null): string
+    {
+        $officeKey ??= self::officeKeyFor($seo);
+        $digits = preg_replace('/\D+/', '', (string) config('business.offices.' . $officeKey . '.phone'));
+        if ($officeKey === 'ahmedabad') {
+            $override = preg_replace('/\D+/', '', (string) $settings?->whatsapp_number);
+            $digits = $override !== '' ? $override : $digits;
+        }
+
+        return 'https://wa.me/' . $digits . ($text ? '?text=' . rawurlencode($text) : '');
     }
 
     /**

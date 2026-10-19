@@ -67,6 +67,7 @@
     <div class="kw-links">
         <a href="/amts-bus-advertising-ahmedabad">AMTS Bus Advertising Ahmedabad</a>
         <a href="/hoarding-advertising-ahmedabad">Hoarding Advertising Ahmedabad</a>
+        <a href="/gsrtc-bus-advertising">GSRTC Bus Advertising</a>
         <a href="{{ route('view.ooh.media') }}">All OOH Media in Gujarat</a>
     </div>
 </div></section>
@@ -88,7 +89,7 @@
             <h2>GET YOUR FREE BUS SHELTER LOCATION LIST</h2>
             <p>Tell us your target area in Ahmedabad and we'll share available bus shelters with photos, sizes and rates.</p>
         </div>
-        <a class="btn white" href="{{ route('view.free.site.list', ['media' => 'bus-shelters']) }}">Get Free Site List <b>→</b></a>
+        <a class="btn white" href="{{ route('view.free.site.list', ['media' => 'bus-shelters', 'city' => 'Ahmedabad']) }}">Get Free Site List <b>→</b></a>
     </div>
 </section>
 

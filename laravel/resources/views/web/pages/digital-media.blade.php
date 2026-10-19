@@ -322,9 +322,9 @@
 
             <a
                 class="btn white"
-                href="{{ route('view.contact') }}"
+                href="{{ route('view.free.site.list', ['media' => 'dooh']) }}"
             >
-                Enquire Now
+                Get Free Site List
                 <b>→</b>
             </a>
 

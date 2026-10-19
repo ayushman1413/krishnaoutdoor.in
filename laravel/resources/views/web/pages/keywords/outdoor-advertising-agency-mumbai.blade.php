@@ -69,7 +69,9 @@
         <a href="/mumbai-local-train-advertising">Mumbai Local Train Advertising</a>
         <a href="/best-bus-advertising-mumbai">BEST Bus Advertising Mumbai</a>
         <a href="/tmt-bus-advertising-thane">TMT Bus Advertising Thane</a>
-        <a href="{{ route('view.contact') }}">Talk To Our Mumbai Team</a>
+        <a href="{{ route('view.transit.media') }}">All Transit Media</a>
+        <a href="{{ route('view.keyword.social.mumbai') }}">Social Media Marketing Mumbai</a>
+        <a href="{{ route('view.free.site.list', ['media' => 'transit', 'city' => 'Mumbai']) }}">Get Free Site List</a>
     </div>
 </div></section>
 
@@ -90,7 +92,7 @@
             <h2>PLAN YOUR MUMBAI OUTDOOR CAMPAIGN</h2>
             <p>Tell us your target audience in Mumbai and we'll recommend the right mix of trains, buses and routes.</p>
         </div>
-        <a class="btn white" href="{{ route('view.free.site.list', ['media' => 'transit']) }}">Get Free Site List <b>→</b></a>
+        <a class="btn white" href="{{ route('view.free.site.list', ['media' => 'transit', 'city' => 'Mumbai']) }}">Get Free Site List <b>→</b></a>
     </div>
 </section>
 

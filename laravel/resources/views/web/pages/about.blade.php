@@ -192,7 +192,7 @@
 <img srcset="{{ asset('assets/images/work/digital-billboard-campaign-03-800w.webp') }} 800w, {{ asset('assets/images/work/digital-billboard-campaign-03.webp') }} 1600w" sizes="(max-width: 760px) 100vw, 50vw" alt="Car brand hoarding above city traffic in Gujarat – Krishna Outdoor" decoding="async" loading="lazy" src="{{ asset('assets/images/work/digital-billboard-campaign-03.webp') }}"/>
 <div class="container">
 <div><div class="about-tag">LET'S CREATE</div><h2>LET'S PUT YOUR BRAND IN THE RIGHT PLACE.</h2><p>Whether you are launching a new product, entering a new market, building brand awareness or planning a large-scale campaign, our team is ready to help you explore the right opportunities.</p></div>
-<a class="about-btn primary" href="{{ route('view.contact') }}">TALK TO OUR TEAM →</a>
+<a class="about-btn primary" href="{{ route('view.free.site.list', ['media' => 'other']) }}">Get Free Site List →</a>
 </div>
 </section>
 </main>

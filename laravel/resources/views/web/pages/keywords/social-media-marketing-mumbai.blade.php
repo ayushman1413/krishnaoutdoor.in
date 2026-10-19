@@ -60,7 +60,7 @@
             <h3 class="kw-h3">What does social media marketing cost in Mumbai?</h3>
             <p class="kw-p">Cost is driven by how many platforms you run, the volume of content produced each month, and your paid advertising budget. A lean, single-platform plan costs less than a full multi-platform package with weekly content and ongoing paid campaigns. Share your goals and current social presence and we'll recommend a package sized to your budget.</p>
 
-            <p class="kw-p"><a href="{{ route('view.contact') }}">Get in touch</a> to scope a social media plan for your Mumbai brand, alone or alongside a transit campaign.</p>
+            <p class="kw-p"><a href="{{ route('view.free.site.list', ['media' => 'other', 'city' => 'Mumbai']) }}">Get in touch</a> to scope a social media plan for your Mumbai brand, alone or alongside a transit campaign.</p>
         </div>
 
         <div class="kw-img">
@@ -72,7 +72,7 @@
     <div class="kw-links">
         <a href="/social-media-marketing-ahmedabad">Social Media Marketing Ahmedabad</a>
         <a href="/outdoor-advertising-agency-mumbai">Outdoor Advertising Agency Mumbai</a>
-        <a href="{{ route('view.contact') }}">Talk To Our Team</a>
+        <a href="{{ route('view.free.site.list', ['media' => 'other', 'city' => 'Mumbai']) }}">Get Free Site List</a>
     </div>
 </div></section>
 
@@ -94,7 +94,7 @@
             <h2>START YOUR MUMBAI SOCIAL MEDIA PLAN</h2>
             <p>Tell us about your brand and goals in Mumbai and we'll put together a social media approach that fits.</p>
         </div>
-        <a class="btn white" href="{{ route('view.contact') }}">Talk To Our Team <b>→</b></a>
+        <a class="btn white" href="{{ route('view.free.site.list', ['media' => 'other', 'city' => 'Mumbai']) }}">Get Free Site List <b>→</b></a>
     </div>
 </section>
 
