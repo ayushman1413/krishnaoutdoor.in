@@ -47,7 +47,7 @@
                         <th>Action</th>
                     </thead>
                     <tbody>
-                        @forelse ($metas as $key => $meta)
+                        @foreach ($metas as $key => $meta)
                             <tr>
                                 <td>{{ $key + 1 }}</td>
                                 <td>
@@ -72,11 +72,7 @@
                                     @endcan
                                 </td>
                             </tr>
-                        @empty
-                            <tr>
-                                <td colspan="5" class="text-center">No records found</td>
-                            </tr>
-                        @endforelse
+                        @endforeach
                     </tbody>
                 </table>
             </div>

@@ -31,7 +31,7 @@
                         <th>Action</th>
                     </thead>
                     <tbody>
-                        @forelse ($logs as $key => $log)
+                        @foreach ($logs as $key => $log)
                             <tr>
                                 <td>{{ $key + 1 }}</td>
                                 <td style="white-space: normal; max-width: 280px;">{{ $log->url }}</td>
@@ -54,11 +54,7 @@
                                     </div>
                                 </td>
                             </tr>
-                        @empty
-                            <tr>
-                                <td colspan="6" class="text-center">No 404 logs found</td>
-                            </tr>
-                        @endforelse
+                        @endforeach
                     </tbody>
                 </table>
             </div>

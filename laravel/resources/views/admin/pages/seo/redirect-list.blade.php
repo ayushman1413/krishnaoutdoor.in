@@ -48,7 +48,7 @@
                         <th>Action</th>
                     </thead>
                     <tbody>
-                        @forelse ($redirects as $key => $redirect)
+                        @foreach ($redirects as $key => $redirect)
                             <tr>
                                 <td>{{ $key + 1 }}</td>
                                 <td style="white-space: normal; max-width: 250px;">{{ $redirect->old_url }}</td>
@@ -80,11 +80,7 @@
                                     </div>
                                 </td>
                             </tr>
-                        @empty
-                            <tr>
-                                <td colspan="7" class="text-center">No redirects found</td>
-                            </tr>
-                        @endforelse
+                        @endforeach
                     </tbody>
                 </table>
             </div>
