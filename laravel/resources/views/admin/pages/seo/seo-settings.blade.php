@@ -40,6 +40,13 @@
                         @error('title_template') <span class="input-error">{{ $message }}</span> @enderror
                     </div>
 
+                    <div class="input-group">
+                        <label class="input-label">Description Template <span>(Optional. Used only for pages with no meta description. Placeholders: {page_title}, {site_name})</span></label>
+                        <input type="text" name="description_template" value="{{ old('description_template', $setting->description_template) }}"
+                            class="input-box-md @error('description_template') input-invalid @enderror" maxlength="300" placeholder="{page_title} from {site_name}.">
+                        @error('description_template') <span class="input-error">{{ $message }}</span> @enderror
+                    </div>
+
                     <div class="lg:col-span-2 md:col-span-2 sm:col-span-1">
                         <label class="input-label">Default OG Image <span>(Optional, Format: png, jpg, jpeg, webp)</span></label>
                         <div class="flex space-x-3 my-2">

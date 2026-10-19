@@ -46,6 +46,7 @@ class SeoSettingController extends Controller
     {
         return [
             'site_name' => ['required', 'string', 'max:150'],
+            'description_template' => ['nullable', 'string', 'max:300'],
             'title_template' => ['required', 'string', 'max:200', function ($attribute, $value, $fail) {
                 if (!str_contains((string) $value, '{page_title}')) {
                     $fail('Title template must contain {page_title}');
@@ -95,6 +96,7 @@ class SeoSettingController extends Controller
     {
         $setting->site_name = $request->input('site_name');
         $setting->title_template = $request->input('title_template');
+        $setting->description_template = $request->input('description_template');
         $setting->gsc_verification_code = $request->input('gsc_verification_code');
         $setting->ga4_id = $request->input('ga4_id');
         $setting->gtm_id = $request->input('gtm_id');

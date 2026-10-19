@@ -10,6 +10,11 @@
     RewriteCond %{HTTP_HOST} ^www\.krishnaoutdoor\.in$ [NC]
     RewriteRule ^ https://krishnaoutdoor.in%{REQUEST_URI} [L,R=301]
 
+    # http -> https when the host's proxy reports the original request as plain http.
+    RewriteCond %{HTTP:X-Forwarded-Proto} =http [NC]
+    RewriteCond %{HTTP_HOST} ^krishnaoutdoor\.in$ [NC]
+    RewriteRule ^ https://krishnaoutdoor.in%{REQUEST_URI} [L,R=301]
+
     # Flag versioned CSS/JS (?v=...) for the long cache header further down.
     RewriteCond %{QUERY_STRING} (^|&)v=
     RewriteRule \.(css|js)$ - [E=KO_VERSIONED_ASSET:1]

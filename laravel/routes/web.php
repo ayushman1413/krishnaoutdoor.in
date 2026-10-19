@@ -248,7 +248,14 @@ Route::post('/free-site-list', [FormController::class, 'handleFreeSiteListSubmit
     ->name('handle.free.site.list');
 
 Route::get('/thank-you', function () {
-    return view('web.layouts.Thank you');
+    // Conversion page: own title, description and social tags, never indexed.
+    $seo = \App\Services\SeoResolver::forRoute(
+        'view.thankyou',
+        'Thank You',
+        'Thank you for contacting Krishna Outdoor. Our team has received your enquiry and will get back to you shortly.'
+    )->forceNoindex();
+
+    return view('web.layouts.Thank you', compact('seo'));
 })->name('view.thankyou');
 
 

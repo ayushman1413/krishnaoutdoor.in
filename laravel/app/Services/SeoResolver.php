@@ -36,6 +36,13 @@ class SeoResolver
             ? $rawTitle
             : $this->applyTitleTemplate($rawTitle);
         $this->description = trim((string) ($meta?->meta_description ?: $fallbackDescription));
+        if ($this->description === '' && $rawTitle !== '' && $this->settings?->description_template) {
+            $this->description = trim(str_replace(
+                ['{page_title}', '{site_name}'],
+                [$rawTitle, $this->settings->site_name ?? 'Krishna Outdoor'],
+                $this->settings->description_template
+            ));
+        }
         $this->canonicalUrl = $meta?->canonical_url ?: self::canonicalFor(request()->path());
     }
 
