@@ -47,6 +47,7 @@
                         <th>{{ $group === 'pages' ? 'Page' : 'Item Name' }}</th>
                         <th>Meta Title</th>
                         <th>Meta Description</th>
+                        <th>Check</th>
                         <th>Action</th>
                     </thead>
                     <tbody>
@@ -65,6 +66,12 @@
                                 <td>{{ $meta->meta_title ?? '-' }}</td>
                                 <td style="white-space: normal; max-width: 280px;">
                                     {{ $meta->meta_description ? \Illuminate\Support\Str::limit($meta->meta_description, 80) : '-' }}
+                                </td>
+                                <td style="white-space: normal; max-width: 220px;">
+                                    @php $health = \App\Services\SeoHealth::check($meta); @endphp
+                                    @foreach ($health['errors'] as $msg)<span class="input-error">{{ $msg }}</span><br>@endforeach
+                                    @foreach ($health['warnings'] as $msg)<span class="text-xs text-slate-400">{{ $msg }}</span><br>@endforeach
+                                    @if (!$health['errors'] && !$health['warnings'])OK @endif
                                 </td>
                                 <td>
                                     @can(\App\Enums\Permission::EDIT_SEO->value)

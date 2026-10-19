@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Location;
 use App\Models\SeoMeta;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 /**
@@ -57,6 +58,12 @@ class SitemapService
         foreach (config('seo_pages') as $routeName => $page) {
             $meta = $staticMeta->get($routeName);
             if (self::excluded($meta)) {
+                continue;
+            }
+            // An indexable page with no title or description stays out of the sitemap.
+            $health = SeoHealth::check($meta);
+            if ($health['errors']) {
+                Log::warning('Sitemap: ' . $page['path'] . ' skipped: ' . implode('; ', $health['errors']));
                 continue;
             }
             $add($page['path'], $meta?->updated_at);

@@ -159,3 +159,8 @@ Two sensitive files are committed to this git repository: `laravel/.env` (mail p
 - **Forms:** /free-site-list and the enquiry popup submitted end to end with the lazy token, redirect to /thank-you confirmed.
 - **Admin:** logged in as the seeded admin; campaign create with gallery upload (file names come from the title), SEO list, Content TODOs, settings and location forms all load.
 - Local setup used SQLite built from migrations only (as production), PHP's built-in server and headless Chromium.
+
+## 8. Addendum (title and description safeguard)
+
+- New `SeoHealth` check: the SEO panel list now has a "Check" column that flags an empty title or description (error) and a title outside 30-60 or description outside 140-160 characters (warning). The sitemap skips and logs any indexable page whose title or description is empty, so a blank record cannot reach search engines silently (tested by blanking /about: it left the sitemap, then returned).
+- Lengths of all seeded values: every title is 38-58 characters. Every description is 143-151 characters except **/careers, which is 122** (the exact text supplied in the brief). I kept the supplied wording rather than invent more copy; a 140+ character version needs your approval.
