@@ -48,7 +48,7 @@
         </div>
 
         <form class="fsl-form" method="POST" action="{{ route('handle.free.site.list') }}" novalidate>
-            @csrf
+            <input type="hidden" name="_token" value="" data-lazy-csrf>
             <h2 class="fsl-form-title">Get Free Site List</h2>
 
             <div class="fsl-field">

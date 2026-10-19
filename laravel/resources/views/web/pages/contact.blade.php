@@ -130,7 +130,7 @@
                 action="{{ route('handle.plan.campaign.enquiry') }}"
             >
 
-                @csrf
+                <input type="hidden" name="_token" value="" data-lazy-csrf>
 
                 <input
                     type="hidden"

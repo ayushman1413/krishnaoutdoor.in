@@ -414,3 +414,12 @@
 .about-facts-grid>div{background:#fff;border:1px solid #e5e8eb;border-radius:10px;padding:18px 20px}
 .about-facts-grid dt{font:700 11px/1.4 Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#b3131a;margin-bottom:8px}
 .about-facts-grid dd{margin:0;font:400 14px/1.7 Inter,sans-serif;color:#30343a}
+
+/* Contrast (WCAG AA 4.5:1) on light backgrounds */
+.media-doc-detail-grid article p{color:#5f6368}
+.media-section:not(.media-print) .media-copy>.tag:not(.light),.transit-layout .media-copy>.tag{color:#c4161d}
+.ow-brand-info small{color:#5c636b}
+.kr-copy>.kr-kicker{color:#c4161d}
+.kr-point>span{color:#5f666e}
+.dyn-crumbs b{color:#565c62}
+.dyn-noimg{color:#5f656b}

@@ -19,13 +19,15 @@
         @endphp
         <section class="hero" id="home">
             <video aria-hidden="true" muted="" class="hero-media hero-media-desktop js-defer-hero-video" loop=""
-                playsinline="" preload="none" poster="{{ \App\Services\Asset::url('assets/images/hero/hero-desktop-poster.webp') }}"
+                playsinline="" preload="none" data-poster="{{ \App\Services\Asset::url('assets/images/hero/hero-desktop-poster.webp') }}"
                 data-src="{{ \App\Services\Asset::url('assets/videos/hero-desktop.mp4') }}">
             </video>
             <video aria-hidden="true" muted="" class="hero-media hero-media-mobile js-defer-hero-video" loop=""
-                playsinline="" preload="none" poster="{{ \App\Services\Asset::url('assets/images/hero/hero-mobile-poster.webp') }}"
+                playsinline="" preload="none" data-poster="{{ \App\Services\Asset::url('assets/images/hero/hero-mobile-poster.webp') }}"
                 data-src="{{ \App\Services\Asset::url('assets/videos/hero-mobile.mp4') }}">
             </video>
+            {{-- Only the poster for this viewport is requested (both <video> tags would otherwise fetch theirs). --}}
+            <script>(function(){var v=document.querySelector(matchMedia('(max-width:760px)').matches?'.hero-media-mobile':'.hero-media-desktop');if(v&&v.dataset.poster){v.poster=v.dataset.poster;}})();</script>
             <div class="hero-overlay"></div>
             <div class="hero-grid"></div>
             <div class="hero-noise"></div>
@@ -342,7 +344,7 @@
             <article class="work-video-card">
 
                 <video aria-hidden="true" tabindex="-1" loop muted playsinline preload="none" class="js-defer-inview-video"
-                    poster="{{ asset('assets/images/hero/work-showcase-poster.webp') }}"
+                    data-poster="{{ asset('assets/images/hero/work-showcase-poster.webp') }}"
                     data-src="{{ asset('assets/videos/work-showcase.mp4') }}">
                 </video>
 

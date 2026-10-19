@@ -25,6 +25,13 @@ use Illuminate\Support\Facades\Artisan;
 |--------------------------------------------------------------------------
 */
 
+// Forms load their CSRF token from here when first used (see kr-laravel.js),
+// so no per-request token has to be baked into cacheable page HTML.
+Route::get('/csrf-token', function () {
+    return response()->json(['token' => csrf_token()])
+        ->header('Cache-Control', 'no-store, private');
+})->name('csrf.token');
+
 Route::get('/optimize', function () {
     Artisan::call('optimize:clear');
     dd('Application optimized');

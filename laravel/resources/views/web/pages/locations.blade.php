@@ -18,7 +18,7 @@
 <section class="dyn-section"><div class="container">
 @include('web.common.breadcrumbs', ['seo' => $seo, 'class' => 'dyn-crumbs'])
 <p class="dyn-intro">{{ $seo->description }}</p>
-<div class="dyn-table-wrap">
+<div class="dyn-table-wrap" tabindex="0" role="region" aria-label="{{ $city }} sites (scrollable)">
 <table class="dyn-table">
 <thead><tr><th>Image</th><th>Location</th><th>Area</th><th>Size</th><th>Media Type</th><th>Availability</th></tr></thead>
 <tbody>
