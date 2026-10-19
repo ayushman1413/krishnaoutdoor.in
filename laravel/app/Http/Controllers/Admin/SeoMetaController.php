@@ -138,6 +138,8 @@ class SeoMetaController extends Controller
 
             if ($group === 'categories') {
                 $metas = SeoMeta::where('seoable_type', Category::class)->with('seoable')->get();
+            } elseif ($group === 'campaigns') {
+                $metas = SeoMeta::where('seoable_type', \App\Models\Campaign::class)->with('seoable')->get();
             } elseif ($group === 'locations') {
                 // Locations have no individual detail page — only /locations/{city} —
                 // so SEO is keyed per city (SeoResolver::routeNameForCity), not per
@@ -198,6 +200,10 @@ class SeoMetaController extends Controller
 
         if ($meta->seoable_type === Category::class && $meta->seoable) {
             return url('/' . $meta->seoable->slug);
+        }
+
+        if ($meta->seoable_type === \App\Models\Campaign::class && $meta->seoable) {
+            return url('/projects/' . $meta->seoable->slug);
         }
 
         return url('/');

@@ -57,12 +57,33 @@ class CampaignController extends Controller
         return [
             'name' => ['required', 'string', 'max:250'],
             'tagline' => ['nullable', 'string', 'max:250'],
-            'media_type' => ['required', 'in:outdoor,transit,integrated'],
+            'media_type' => ['required', 'in:outdoor,transit,integrated,social'],
             'city' => ['required', 'string', 'max:100'],
             'description' => ['nullable', 'string', 'max:1000'],
             'image' => [$isCreate ? 'required' : 'nullable', 'file', 'mimes:jpg,jpeg,png,webp'],
             'image_alt' => ['nullable', 'string', 'max:255'],
+            'gallery' => ['nullable', 'array', 'max:8'],
+            'gallery.*' => ['file', 'mimes:jpg,jpeg,png,webp'],
+            'gallery_alt' => ['nullable', 'array'],
+            'gallery_alt.*' => ['nullable', 'string', 'max:255'],
+            'remove_gallery' => ['nullable', 'array'],
         ];
+    }
+
+    /**
+     * File name for an uploaded campaign image: the slugified campaign title
+     * (plus a suffix for gallery photos), never a random string. A name that
+     * another file already uses gets a numeric suffix so nothing is overwritten.
+     */
+    private function imageName(Campaign $campaign, string $suffix = ''): string
+    {
+        $base = (Str::slug($campaign->name) ?: 'campaign') . $suffix;
+        $name = $base;
+        for ($i = 2; Storage::exists('campaigns/' . $name . '.webp'); $i++) {
+            $name = $base . '-' . $i;
+        }
+
+        return $name;
     }
 
     private function fill(Campaign $campaign, Request $request): void
@@ -76,10 +97,23 @@ class CampaignController extends Controller
         if ($request->hasFile('image')) {
             if ($campaign->image)
                 Storage::delete($campaign->image);
-            $imageOriginal = pathinfo($request->file('image')->getClientOriginalName(), PATHINFO_FILENAME);
-            $imageSlug = Str::slug($imageOriginal) ?: Str::random(20);
-            $campaign->image = ImageOptimizer::store($request->file('image'), 'campaigns', $imageSlug);
+            $campaign->image = ImageOptimizer::store($request->file('image'), 'campaigns', $this->imageName($campaign));
         }
+
+        // Gallery for the case-study page: drop ticked photos, then add uploads.
+        $gallery = $campaign->gallery ?? [];
+        foreach ((array) $request->input('remove_gallery', []) as $index) {
+            if (isset($gallery[$index])) {
+                Storage::delete($gallery[$index]['path']);
+                unset($gallery[$index]);
+            }
+        }
+        $gallery = array_values($gallery);
+        foreach ($request->file('gallery', []) as $key => $file) {
+            $path = ImageOptimizer::store($file, 'campaigns', $this->imageName($campaign, '-photo-' . (count($gallery) + 1)));
+            $gallery[] = ['path' => $path, 'alt' => trim((string) $request->input("gallery_alt.$key")) ?: null];
+        }
+        $campaign->gallery = $gallery ?: null;
     }
 
     public function viewCampaignList(): mixed

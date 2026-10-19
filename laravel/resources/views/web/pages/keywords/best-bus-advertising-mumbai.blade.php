@@ -32,6 +32,7 @@
 
 <section class="kw-section"><div class="kw-inner">
     <div class="kw-crumbs"><a href="{{ route('view.home') }}">Home</a><span>/</span><a href="{{ route('view.transit.media') }}">Transit Media</a><span>/</span><b>BEST Bus Advertising Mumbai</b></div>
+    <p class="kw-lead">Krishna Outdoor holds advertising rights on 400+ BEST EV full-wrap buses in Mumbai. Each bus is a moving full-colour canvas that runs city routes all day. Ask for the free site list to see available buses, routes and rates.</p>
 
     <div class="kw-grid-2">
         <div>
@@ -72,6 +73,8 @@
     </div>
 </div></section>
 
+@include('web.common.campaigns-block', ['route' => 'view.keyword.best.mumbai'])
+
 <section class="kw-section kw-section-alt"><div class="kw-inner">
     <h2 class="kw-h2">Frequently asked <em>questions</em></h2>
     @include('web.common.faq', ['faqs' => [
@@ -79,6 +82,9 @@
         ['q' => 'How many BEST buses does Krishna Outdoor have advertising rights on?', 'a' => 'Krishna Outdoor holds advertising rights on 400+ BEST EV full-wrap buses operating across Mumbai, giving brands a large fleet to choose routes from.'],
         ['q' => 'What are the design and approval requirements for BEST bus wraps?', 'a' => 'Creative needs to account for the bus\'s windows, doors and panel lines so the design reads clearly from a distance and up close. Our team reviews every creative for print feasibility and coordinates the necessary approvals before printing and mounting begins.'],
         ['q' => 'How much does BEST bus advertising cost in Mumbai?', 'a' => 'Cost depends on the number of buses wrapped, the routes they run and campaign duration. Share your budget and target areas of Mumbai and we\'ll recommend a fleet size and route mix with indicative rates.'],
+        ['q' => 'Which areas of Mumbai do BEST bus advertisements cover?', 'a' => 'BEST buses run routes across Mumbai\'s suburbs and island city, connecting residential neighbourhoods to commercial and institutional hubs. Tell us the areas or audience you want to reach and we will match buses whose routes overlap.'],
+        ['q' => 'Can I combine BEST bus advertising with Mumbai local train advertising?', 'a' => 'Yes. Many brands combine local train branding with BEST or TMT bus advertising to build layered reach across rail and road commuters in the same campaign window.'],
+        ['q' => 'How do I get the BEST bus fleet list?', 'a' => 'Use the Get Free Site List form with your target areas in Mumbai, or call +91 99200 11574. We will share available BEST EV buses with routes and rates.'],
     ]])
 </div></section>
 

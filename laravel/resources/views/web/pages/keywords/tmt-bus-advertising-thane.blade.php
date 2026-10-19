@@ -33,6 +33,7 @@
 
 <section class="kw-section"><div class="kw-inner">
     <div class="kw-crumbs"><a href="{{ route('view.home') }}">Home</a><span>/</span><a href="{{ route('view.transit.media') }}">Transit Media</a><span>/</span><b>TMT Bus Advertising Thane</b></div>
+    <p class="kw-lead">Krishna Outdoor holds advertising rights on 350+ TMT (Thane Municipal Transport) buses serving Thane and neighbouring areas. Brands can choose full branding or partial branding such as side and back panels. Ask for the free site list to see available buses, routes and rates.</p>
 
     <div class="kw-grid-2">
         <div>
@@ -76,6 +77,8 @@
     </div>
 </div></section>
 
+@include('web.common.campaigns-block', ['route' => 'view.keyword.tmt.thane'])
+
 <section class="kw-section kw-section-alt"><div class="kw-inner">
     <h2 class="kw-h2">Frequently asked <em>questions</em></h2>
     @include('web.common.faq', ['faqs' => [
@@ -83,6 +86,9 @@
         ['q' => 'Why advertise on TMT buses instead of Mumbai city buses?', 'a' => 'Thane is a fast-growing residential and commercial market that is less saturated with outdoor advertising than central Mumbai, so a TMT bus campaign often achieves stronger share of attention for a lower cost than competing for space in a more crowded market.'],
         ['q' => 'What formats are available for TMT bus advertising?', 'a' => 'Krishna Outdoor offers both full branding, which wraps the entire bus exterior, and partial branding such as side or back panels, letting brands choose based on budget and desired visibility.'],
         ['q' => 'How many TMT buses does Krishna Outdoor have advertising rights on?', 'a' => 'Krishna Outdoor holds advertising rights on 350+ TMT buses serving Thane and surrounding areas.'],
+        ['q' => 'Which areas do TMT buses cover?', 'a' => 'TMT buses serve Thane\'s residential pockets and commercial centres and connect out toward neighbouring parts of the greater Mumbai region. Share your target localities and we will point you to routes that pass through them.'],
+        ['q' => 'Is TMT bus advertising cheaper than Mumbai city buses?', 'a' => 'Often more accessible. Thane inventory is less contested than central Mumbai, so brands can often book a larger fleet for the same budget. Exact rates depend on the branding type, number of buses and duration.'],
+        ['q' => 'How do I get the TMT bus fleet list?', 'a' => 'Use the Get Free Site List form with your target areas in Thane, or call +91 99200 11574. We will share available TMT buses with routes and rates.'],
     ]])
 </div></section>
 

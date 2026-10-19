@@ -123,6 +123,17 @@
 <div class="about-stat"><span class="about-stat-icon">♧</span><div><strong>5000+</strong><small>Happy<br/>Clients</small></div></div>
 <div class="about-stat"><span class="about-stat-icon">✓</span><div><strong>01</strong><small>Trusted Advertising<br/>Partner</small></div></div>
 </section>
+<section class="about-facts" id="fact-sheet" aria-labelledby="fact-sheet-title">
+<div class="container">
+<h2 id="fact-sheet-title">Krishna Outdoor at a glance</h2>
+<dl class="about-facts-grid">
+<div><dt>Founded</dt><dd>1985</dd></div>
+<div><dt>Leadership</dt><dd>Rakesh Gandhi, Chairman &amp; Managing Director<br/>Kevin Gandhi, Director</dd></div>
+<div><dt>Offices</dt><dd>@foreach (config('business.offices') as $office)<b>{{ $office['label'] }}:</b> {{ $office['address'] }}<br/>@endforeach</dd></div>
+<div><dt>Rights held</dt><dd>2000+ hoarding sites across Gujarat, including 300+ own hoardings in Ahmedabad<br/>7000+ GSRTC buses<br/>900+ AMTS buses<br/>400+ BEST buses (Mumbai)<br/>350+ TMT buses (Thane)<br/>Mumbai local trains: Western &amp; Central Railway</dd></div>
+</dl>
+</div>
+</section>
 <section class="about-block about-story" id="story">
 <div class="about-copybox redline about-reveal">
 <div class="about-tag">OUR STORY</div>

@@ -32,6 +32,7 @@
 
 <section class="kw-section"><div class="kw-inner">
     <div class="kw-crumbs"><a href="{{ route('view.home') }}">Home</a><span>/</span><a href="{{ route('view.network') }}">Our Network</a><span>/</span><b>Outdoor Advertising Agency Mumbai</b></div>
+    <p class="kw-lead">Krishna Outdoor is an outdoor advertising agency in Mumbai with rights on Mumbai local trains (Western and Central Railway), 400+ BEST EV full-wrap buses and 350+ TMT buses serving Thane. Brands work with one agency and one Mumbai office instead of booking each format separately. Ask for the free site list to see what is available.</p>
 
     <div class="kw-grid-2">
         <div>
@@ -75,6 +76,8 @@
     </div>
 </div></section>
 
+@include('web.common.campaigns-block', ['route' => 'view.keyword.agency.mumbai'])
+
 <section class="kw-section kw-section-alt"><div class="kw-inner">
     <h2 class="kw-h2">Frequently asked <em>questions</em></h2>
     @include('web.common.faq', ['faqs' => [
@@ -82,6 +85,9 @@
         ['q' => 'Where is Krishna Outdoor\'s Mumbai office located?', 'a' => 'Our Mumbai office is at 701, 702 Morya Blue Moon, Next to Moniginis Cake Factory, Off New Link Road, Opp. Citi Mall, Andheri West, Mumbai, Maharashtra 400053. You can reach us there or call +91 99200 11574.'],
         ['q' => 'How does Krishna Outdoor plan a Mumbai outdoor advertising campaign?', 'a' => 'We start by understanding your target audience and budget, then recommend a mix across local trains, BEST buses and TMT buses based on where that audience actually travels. Once formats are confirmed, we handle creative coordination, printing, mounting and reporting.'],
         ['q' => 'Can Krishna Outdoor run a campaign across multiple Mumbai transit formats at once?', 'a' => 'Yes. Many brands combine local train branding with BEST or TMT bus advertising to build layered reach across rail and road commuters in the same campaign window.'],
+        ['q' => 'How many BEST and TMT buses does Krishna Outdoor have advertising rights on?', 'a' => 'Krishna Outdoor holds advertising rights on 400+ BEST EV full-wrap buses in Mumbai and 350+ TMT buses serving Thane, alongside rights on Mumbai local trains across Western and Central Railway.'],
+        ['q' => 'Does Krishna Outdoor cover Thane as well as Mumbai?', 'a' => 'Yes. The Mumbai portfolio includes 350+ TMT buses serving Thane and neighbouring areas, a less crowded transit market than central Mumbai.'],
+        ['q' => 'How do I get a free site list for Mumbai?', 'a' => 'Use the Get Free Site List form with your target audience in Mumbai, or call our Mumbai office on +91 99200 11574, and we will recommend the right mix of trains, buses and routes.'],
     ]])
 </div></section>
 

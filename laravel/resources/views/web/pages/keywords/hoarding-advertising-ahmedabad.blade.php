@@ -32,6 +32,7 @@
 
 <section class="kw-section"><div class="kw-inner">
     <div class="kw-crumbs"><a href="{{ route('view.home') }}">Home</a><span>/</span><a href="{{ route('view.ooh.media') }}">OOH Media</a><span>/</span><b>Hoarding Advertising Ahmedabad</b></div>
+    <p class="kw-lead">Krishna Outdoor offers hoarding advertising in Ahmedabad on 300+ hoardings it owns directly, with access to 2000+ hoarding sites across Gujarat. Formats include frontlit, backlit, unipole and gantry hoardings. Ask for the free site list to see available locations with photos, sizes and rates.</p>
 
     <div class="kw-grid-2">
         <div>
@@ -78,6 +79,28 @@
     </div>
 </div></section>
 
+@php
+    // Client-supplied inventory only (Admin > Locations): active Ahmedabad hoardings that have an area.
+    $areaSites = \App\Models\Location::where('status', true)
+        ->where('media_type', \App\Enums\MediaType::BILLBOARD->value)
+        ->whereRaw('LOWER(city) = ?', ['ahmedabad'])
+        ->orderBy('area')->orderBy('name')->get()
+        ->filter(fn ($site) => mb_strlen(trim((string) $site->area)) >= 3)
+        ->groupBy(fn ($site) => trim($site->area));
+@endphp
+@if ($areaSites->isNotEmpty())
+<section class="kw-section kw-section-alt"><div class="kw-inner">
+    <h2 class="kw-h2">Our hoarding locations <em>by area</em></h2>
+    <div class="kw-areas">
+        @foreach ($areaSites as $area => $sites)
+            <div class="kw-area"><b>{{ $area }}</b><ul>@foreach ($sites as $site)<li>{{ $site->name }}@if ($site->size) <small>({{ $site->size }})</small>@endif</li>@endforeach</ul></div>
+        @endforeach
+    </div>
+</div></section>
+@endif
+
+@include('web.common.campaigns-block', ['route' => 'view.keyword.hoarding.ahmedabad'])
+
 <section class="kw-section kw-section-alt"><div class="kw-inner">
     <h2 class="kw-h2">Frequently asked <em>questions</em></h2>
     @include('web.common.faq', ['faqs' => [
@@ -85,6 +108,9 @@
         ['q' => 'How many hoarding sites does Krishna Outdoor have in Ahmedabad?', 'a' => 'Krishna Outdoor owns 300+ hoardings directly in Ahmedabad and has access to 2000+ hoarding sites across Gujarat, covering frontlit, backlit, unipole and gantry formats.'],
         ['q' => 'What is the difference between frontlit, backlit and unipole hoardings?', 'a' => 'Frontlit hoardings are lit from external floodlights, backlit hoardings are illuminated from behind the print for a brighter night-time look, and unipoles/gantries are single-pole or overhead structures typically used on highways and major junctions for maximum visibility.'],
         ['q' => 'How long does it take to book a hoarding in Ahmedabad?', 'a' => 'Once a site is confirmed as available and creative is ready, printing and mounting typically takes a few days. Popular locations can get booked out in advance, so early enquiry is recommended.'],
+        ['q' => 'Where are Krishna Outdoor\'s hoardings in Ahmedabad?', 'a' => 'Krishna Outdoor owns 300+ hoardings across Ahmedabad, on high-traffic arterial roads and in neighbourhood markets. Share your target area and we will send matching sites with photos, sizes and rates.'],
+        ['q' => 'Does Krishna Outdoor offer hoardings outside Ahmedabad?', 'a' => 'Yes. Krishna Outdoor has access to 2000+ hoarding sites across Gujarat, in frontlit, backlit, unipole and gantry formats, in addition to the 300+ hoardings it owns in Ahmedabad.'],
+        ['q' => 'How do I get a hoarding site list for Ahmedabad?', 'a' => 'Submit the free site list form with your city and media type, and our team will send available sites with photos, sizes and rates, usually within one business day. You can also call +91 98796 16411.'],
     ]])
 </div></section>
 

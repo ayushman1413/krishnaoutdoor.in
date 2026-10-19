@@ -59,7 +59,7 @@
     $cityKey = strtolower(trim($campaign->city));
     $market = in_array($cityKey, ['ahmedabad', 'mumbai']) ? $cityKey : 'other';
     $mediaLabel = $mediaLabels[$campaign->media_type] ?? ucfirst($campaign->media_type);
-    $campaignAlt = $campaign->image_alt ?: "{$mediaLabel} campaign in {$campaign->city}";
+    $campaignAlt = $campaign->imageAlt();
 @endphp
 <article class="ow-card ow-reveal" data-market="{{ $market }}" data-type="{{ $campaign->media_type }}" data-search="{{ strtolower($campaign->name.' '.$campaign->tagline.' '.$campaign->media_type.' '.$campaign->city) }}"><div class="ow-card-media">@if ($campaign->image)<img alt="{{ $campaignAlt }}" decoding="async" loading="lazy" src="{{ asset('storage/'.$campaign->image) }}" onerror="this.src='{{ asset('assets/images/work/ooh-hoarding-campaign-01.webp') }}'"/>@else<img srcset="{{ asset('assets/images/work/ooh-hoarding-campaign-01-800w.webp') }} 800w, {{ asset('assets/images/work/ooh-hoarding-campaign-01.webp') }} 1600w" sizes="(max-width: 760px) 100vw, 50vw" alt="{{ $campaignAlt }}" decoding="async" loading="lazy" src="{{ asset('assets/images/work/ooh-hoarding-campaign-01.webp') }}"/>@endif<span class="ow-loc">{{ strtoupper($campaign->city) }}</span></div><div class="ow-card-body"><div class="ow-brand">
     <div class="ow-brand-info">
@@ -68,7 +68,7 @@
             <small>{{ $campaign->tagline }}</small>
         </div>
     </div>
-</div><div class="ow-meta"><span class="media">{{ $mediaLabel }}</span><span class="place">{{ $campaign->city }}</span></div><p class="ow-desc">{{ $campaign->description }}</p></div></article>
+</div><div class="ow-meta"><span class="media">{{ $mediaLabel }}</span><span class="place">{{ $campaign->city }}</span></div><p class="ow-desc">{{ $campaign->description }}</p>@if ($campaign->slug)<a class="ow-more" href="{{ $campaign->url() }}" aria-label="View the {{ $campaign->name }} case study">View case study →</a>@endif</div></article>
 @empty
 <p class="ow-desc" style="grid-column:1/-1;text-align:center;padding:40px 0">Campaigns coming soon.</p>
 @endforelse

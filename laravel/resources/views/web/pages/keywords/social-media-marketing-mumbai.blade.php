@@ -32,6 +32,7 @@
 
 <section class="kw-section"><div class="kw-inner">
     <div class="kw-crumbs"><a href="{{ route('view.home') }}">Home</a><span>/</span><a href="{{ route('view.services') }}">Services</a><span>/</span><b>Social Media Marketing Mumbai</b></div>
+    <p class="kw-lead">Krishna Outdoor runs social media marketing for Mumbai brands across Instagram, Facebook, LinkedIn and YouTube, covering strategy, content, paid ads and reporting. It can be booked on its own or paired with a local train or BEST bus campaign. Tell us your goals and we will recommend a package.</p>
 
     <div class="kw-grid-2">
         <div>
@@ -75,6 +76,8 @@
         <a href="{{ route('view.free.site.list', ['media' => 'other', 'city' => 'Mumbai']) }}">Get Free Site List</a>
     </div>
 </div></section>
+
+@include('web.common.social-case-studies', ['city' => 'Mumbai'])
 
 <section class="kw-section kw-section-alt"><div class="kw-inner">
     <h2 class="kw-h2">Frequently asked <em>questions</em></h2>

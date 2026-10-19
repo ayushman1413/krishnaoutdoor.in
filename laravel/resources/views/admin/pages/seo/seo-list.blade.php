@@ -23,8 +23,11 @@
                     class="{{ $group === 'pages' ? 'btn-primary-sm' : 'btn-secondary-md' }}">Pages</a>
                 <a href="{{ route('admin.view.seo.list', ['group' => 'categories']) }}"
                     class="{{ $group === 'categories' ? 'btn-primary-sm' : 'btn-secondary-md' }}">Categories</a>
+                <a href="{{ route('admin.view.seo.list', ['group' => 'campaigns']) }}"
+                    class="{{ $group === 'campaigns' ? 'btn-primary-sm' : 'btn-secondary-md' }}">Case Studies</a>
                 <a href="{{ route('admin.view.seo.list', ['group' => 'locations']) }}"
                     class="{{ $group === 'locations' ? 'btn-primary-sm' : 'btn-secondary-md' }}">Locations</a>
+                <a href="{{ route('admin.view.seo.todos') }}" class="btn-secondary-md">Content TODOs</a>
                 <a href="{{ route('admin.handle.seo.export') }}" class="btn-secondary-md">Export CSV</a>
                 @can(\App\Enums\Permission::EDIT_SEO->value)
                     <form action="{{ route('admin.handle.seo.import') }}" method="POST" enctype="multipart/form-data" class="flex items-center space-x-2">

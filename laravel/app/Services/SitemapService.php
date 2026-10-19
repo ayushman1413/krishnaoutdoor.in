@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Campaign;
 use App\Models\Category;
 use App\Models\Location;
 use App\Models\SeoMeta;
@@ -75,6 +76,15 @@ class SitemapService
             // child categories at /category/{slug}.
             $path = $category->category_id ? '/category/' . $category->slug : '/' . $category->slug;
             $add($path, max($category->updated_at, $meta?->updated_at));
+        });
+
+        $campaignMeta = SeoMeta::query()->where('seoable_type', Campaign::class)->get()->keyBy('seoable_id');
+        Campaign::query()->where('status', true)->whereNotNull('slug')->get()->each(function (Campaign $campaign) use ($add, $campaignMeta) {
+            $meta = $campaignMeta->get($campaign->id);
+            if (self::excluded($meta)) {
+                return;
+            }
+            $add('/projects/' . $campaign->slug, max($campaign->updated_at, $meta?->updated_at));
         });
 
         $locationsByCity = Location::query()->where('status', true)->get()->groupBy('city');

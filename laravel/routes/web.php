@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Web\CampaignController;
 use App\Http\Controllers\Web\FormController;
 use App\Http\Controllers\Web\LocationController;
 use App\Http\Controllers\Web\SeoController;
@@ -77,6 +78,10 @@ Route::get('/projects', function () {
     $seo = \App\Services\SeoResolver::forRoute('view.projects');
     return view('web.pages.projects', compact('seo'));
 })->name('view.projects');
+
+
+Route::get('/projects/{slug}', [CampaignController::class, 'show'])
+    ->name('view.project.show');
 
 
 Route::get('/our-network', function () {

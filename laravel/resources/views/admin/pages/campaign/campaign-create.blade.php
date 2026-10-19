@@ -47,6 +47,7 @@
                             <option value="outdoor" @selected(old('media_type') == 'outdoor')>Outdoor Media</option>
                             <option value="transit" @selected(old('media_type') == 'transit')>Transit Media</option>
                             <option value="integrated" @selected(old('media_type') == 'integrated')>Integrated Media</option>
+                            <option value="social" @selected(old('media_type') == 'social')>Social Media</option>
                         </select>
                         @error('media_type') <span class="input-error">{{ $message }}</span> @enderror
                     </div>
@@ -83,6 +84,14 @@
                         @error('image_alt') <span class="input-error">{{ $message }}</span> @enderror
                     </div>
 
+                    <div class="lg:col-span-2 md:col-span-2 sm:col-span-1">
+                        <label class="input-label">Gallery photos <span>(Optional, up to 8; shown on the case-study page. File names are taken from the campaign name.)</span></label>
+                        <input type="file" name="gallery[]" multiple accept="image/jpeg, image/jpg, image/png, image/webp" class="input-box-md mt-2">
+                        @error('gallery') <span class="input-error">{{ $message }}</span> @enderror
+                        @error('gallery.*') <span class="input-error">{{ $message }}</span> @enderror
+                        <input type="text" name="gallery_alt[]" class="input-box-md mt-2" maxlength="255" placeholder="Alt text for gallery photo 1 (format + place + brand)">
+                        <input type="text" name="gallery_alt[]" class="input-box-md mt-2" maxlength="255" placeholder="Alt text for gallery photo 2">
+                    </div>
                 </div>
             </div>
             <div class="panel-card-footer">
