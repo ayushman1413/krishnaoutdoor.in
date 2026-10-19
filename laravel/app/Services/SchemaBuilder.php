@@ -216,7 +216,14 @@ class SchemaBuilder
         );
     }
 
-    private static function breadcrumbList(SeoResolver $seo): array
+    /**
+     * The breadcrumb trail for this page as [name, url] pairs, Home first.
+     * Used for the BreadcrumbList schema and for the visible breadcrumb
+     * (web.common.breadcrumbs), so the two always match.
+     *
+     * @return array<int, array{name: string, url: string}>
+     */
+    public static function trail(SeoResolver $seo): array
     {
         $trail = [];
         $pages = config('seo_pages');
@@ -239,6 +246,13 @@ class SchemaBuilder
                 $trail[] = ['name' => $seo->meta?->meta_title ?: $seo->pageTitle, 'url' => $seo->canonicalUrl];
             }
         }
+
+        return $trail;
+    }
+
+    private static function breadcrumbList(SeoResolver $seo): array
+    {
+        $trail = self::trail($seo);
 
         return [
             '@type' => 'BreadcrumbList',

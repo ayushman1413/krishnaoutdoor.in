@@ -66,7 +66,7 @@
             <div class="kr-enquiry-visual">
 
                 <img srcset="{{ asset('assets/images/media/home-360-outdoor-hoarding-poster-800w.webp') }} 800w, {{ asset('assets/images/media/home-360-outdoor-hoarding-poster.webp') }} 1800w" sizes="(max-width: 760px) 100vw, 50vw"
-                    alt="Krishna Outdoor backlit hoarding at night"
+                    alt="Backlit Godrej hoarding with a Krishna Outdoor contact panel at night – Krishna Outdoor"
                     decoding="async"
                     loading="lazy"
                     src="{{ asset('assets/images/media/home-360-outdoor-hoarding-poster.webp') }}"
@@ -580,7 +580,7 @@
                     </p>
 
 
-                    <a href="tel:+919879616411" onclick="trackConversion('phone_click', this.href)">
+                    <a href="tel:+919879616411">
                         +91 98796 16411
                     </a>
 
@@ -661,7 +661,7 @@
                     </p>
 
 
-                    <a href="tel:+919920011574" onclick="trackConversion('phone_click', this.href)">
+                    <a href="tel:+919920011574">
                         +91 99200 11574
                     </a>
 

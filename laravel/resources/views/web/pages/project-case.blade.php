@@ -30,7 +30,7 @@
 </section>
 
 <section class="kw-section"><div class="kw-inner">
-    <div class="kw-crumbs"><a href="{{ route('view.home') }}">Home</a><span>/</span><a href="{{ route('view.projects') }}">Our Work</a><span>/</span><b>{{ $campaign->name }}</b></div>
+    @include('web.common.breadcrumbs', ['seo' => $seo, 'class' => 'kw-crumbs'])
 
     <div class="kw-grid-2">
         <div>

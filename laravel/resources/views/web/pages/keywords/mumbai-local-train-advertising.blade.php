@@ -31,7 +31,7 @@
 </section>
 
 <section class="kw-section"><div class="kw-inner">
-    <div class="kw-crumbs"><a href="{{ route('view.home') }}">Home</a><span>/</span><a href="{{ route('view.transit.media') }}">Transit Media</a><span>/</span><b>Mumbai Local Train Advertising</b></div>
+    @include('web.common.breadcrumbs', ['seo' => $seo, 'class' => 'kw-crumbs'])
     <p class="kw-lead">Krishna Outdoor holds display rights on Mumbai local trains across the Western and Central Railway lines. The format is exterior train branding, seen by daily commuters, by people on platforms and by traffic along the line. Ask for the free site list to see available rakes and formats.</p>
 
     <div class="kw-grid-2">

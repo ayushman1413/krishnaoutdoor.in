@@ -108,6 +108,7 @@
 
 <!-- DIRECT ANSWER + FORMATS + CITIES -->
 <section class="kw-section"><div class="kw-inner">
+    @include('web.common.breadcrumbs', ['seo' => $seo, 'class' => 'kw-crumbs'])
     <p class="kw-lead">Krishna Outdoor offers outdoor (OOH) media across Gujarat: 2000+ hoarding sites, including 300+ hoardings it owns in Ahmedabad, plus 400+ backlit bus shelters, unipoles and gantries. Brands can book a single site or a network across Ahmedabad and other cities in Gujarat. Ask for the free site list to see what is available.</p>
 
     <h2 class="kw-h2">OOH formats we <em>offer</em></h2>

@@ -11,12 +11,12 @@
 @section('web-section')
 <main>
 <section class="hero media-detail-hero dyn-hero" id="home">
-<div class="media-detail-hero-bg"><img alt="{{ $category->name }}" decoding="async" loading="eager" src="{{ $category->cover_image ? asset('storage/'.$category->cover_image) : asset('assets/images/shared-night-city-background.png') }}"/></div>
+<div class="media-detail-hero-bg"><img alt="{{ $category->cover_image_alt ?: $category->name . ' advertising – Krishna Outdoor' }}" decoding="async" loading="eager" src="{{ $category->cover_image ? asset('storage/'.$category->cover_image) : asset('assets/images/shared-night-city-background.png') }}"/></div>
 <div class="hero-overlay"></div><div class="hero-grid"></div><div class="hero-noise"></div>
 <div class="container hero-inner reveal"><h1>{{ $seo->h1Override() ?: $category->name }}</h1></div>
 </section>
 <section class="dyn-section"><div class="container">
-<div class="dyn-crumbs"><a href="{{ route('view.home') }}">Home</a><span>/</span><b>{{ $category->name }}</b></div>
+@include('web.common.breadcrumbs', ['seo' => $seo, 'class' => 'dyn-crumbs'])
 @if ($category->summary)<p class="dyn-intro">{{ $category->summary }}</p>@endif
 <div class="dyn-grid two">
 @foreach ($category->child_categories as $child_category)
@@ -25,7 +25,7 @@
 @if (pathinfo((string) $child_category->cover_image, PATHINFO_EXTENSION) == 'mp4')
 <video src="{{ asset('storage/'.$child_category->cover_image) }}" autoplay muted loop playsinline></video>
 @else
-<img src="{{ asset('storage/'.$child_category->cover_image) }}" alt="{{ $child_category->name }} Cover Image" loading="lazy">
+<img src="{{ asset('storage/'.$child_category->cover_image) }}" alt="{{ $child_category->cover_image_alt ?: $child_category->name . ' advertising – Krishna Outdoor' }}" loading="lazy">
 @endif
 </div>
 <div class="dyn-card-body">

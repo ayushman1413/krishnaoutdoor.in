@@ -36,3 +36,23 @@
     lb.classList.add('open'); show(links.indexOf(a));
   });
 })();
+
+
+/* "Enquire Now" is rendered once: in the header bar on desktop, moved into the
+   menu drawer on phones (<= 760px), so only one copy exists per viewport. */
+(function () {
+  var btn = document.querySelector('.header .nav-cta.enquiry-popup-trigger, .header .nav-cta-drawer.enquiry-popup-trigger');
+  var box = document.querySelector('.header .nav-cta-drawer-box');
+  if (!btn || !box || !window.matchMedia) { return; }
+  var home = btn.parentNode, anchor = btn.nextSibling;
+  var mq = window.matchMedia('(max-width: 760px)');
+  function place() {
+    if (mq.matches) {
+      btn.classList.remove('nav-cta'); btn.classList.add('nav-cta-drawer'); box.appendChild(btn);
+    } else {
+      btn.classList.remove('nav-cta-drawer'); btn.classList.add('nav-cta'); home.insertBefore(btn, anchor && anchor.parentNode === home ? anchor : null);
+    }
+  }
+  place();
+  if (mq.addEventListener) { mq.addEventListener('change', place); } else { mq.addListener(place); }
+})();

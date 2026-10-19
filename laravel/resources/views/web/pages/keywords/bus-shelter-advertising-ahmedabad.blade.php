@@ -31,7 +31,7 @@
 </section>
 
 <section class="kw-section"><div class="kw-inner">
-    <div class="kw-crumbs"><a href="{{ route('view.home') }}">Home</a><span>/</span><a href="{{ route('view.ooh.media') }}">OOH Media</a><span>/</span><b>Bus Shelter Advertising Ahmedabad</b></div>
+    @include('web.common.breadcrumbs', ['seo' => $seo, 'class' => 'kw-crumbs'])
     <p class="kw-lead">Krishna Outdoor holds advertising rights on 400+ backlit bus shelters across Ahmedabad. The panels sit at eye level where commuters wait, so the message is read at a standstill, day and night. Ask for the free site list to see available shelters with locations and rates.</p>
 
     <div class="kw-grid-2">

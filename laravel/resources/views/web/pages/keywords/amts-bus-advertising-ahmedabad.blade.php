@@ -31,7 +31,7 @@
 </section>
 
 <section class="kw-section"><div class="kw-inner">
-    <div class="kw-crumbs"><a href="{{ route('view.home') }}">Home</a><span>/</span><a href="{{ route('view.ooh.media') }}">OOH Media</a><span>/</span><b>AMTS Bus Advertising Ahmedabad</b></div>
+    @include('web.common.breadcrumbs', ['seo' => $seo, 'class' => 'kw-crumbs'])
     <p class="kw-lead">Krishna Outdoor holds advertising rights on 900+ AMTS city buses in Ahmedabad. Brands can book full wraps, side panels or back panels on buses that run city routes every day. Ask for the free site list to see available buses with route details and rates.</p>
 
     <div class="kw-grid-2">

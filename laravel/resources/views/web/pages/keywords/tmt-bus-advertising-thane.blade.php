@@ -32,7 +32,7 @@
 </section>
 
 <section class="kw-section"><div class="kw-inner">
-    <div class="kw-crumbs"><a href="{{ route('view.home') }}">Home</a><span>/</span><a href="{{ route('view.transit.media') }}">Transit Media</a><span>/</span><b>TMT Bus Advertising Thane</b></div>
+    @include('web.common.breadcrumbs', ['seo' => $seo, 'class' => 'kw-crumbs'])
     <p class="kw-lead">Krishna Outdoor holds advertising rights on 350+ TMT (Thane Municipal Transport) buses serving Thane and neighbouring areas. Brands can choose full branding or partial branding such as side and back panels. Ask for the free site list to see available buses, routes and rates.</p>
 
     <div class="kw-grid-2">

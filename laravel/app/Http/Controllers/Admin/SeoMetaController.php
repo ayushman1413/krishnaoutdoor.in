@@ -119,13 +119,13 @@ class SeoMetaController extends Controller
         if ($request->hasFile('og_image')) {
             if ($meta->og_image)
                 Storage::delete($meta->og_image);
-            $meta->og_image = ImageOptimizer::store($request->file('og_image'), 'seo', 'og-' . Str::random(12));
+            $meta->og_image = ImageOptimizer::store($request->file('og_image'), 'seo', 'og-' . (Str::slug((string) $meta->meta_title) ?: Str::random(12)));
         }
 
         if ($request->hasFile('twitter_image')) {
             if ($meta->twitter_image)
                 Storage::delete($meta->twitter_image);
-            $meta->twitter_image = ImageOptimizer::store($request->file('twitter_image'), 'seo', 'twitter-' . Str::random(12));
+            $meta->twitter_image = ImageOptimizer::store($request->file('twitter_image'), 'seo', 'twitter-' . (Str::slug((string) $meta->meta_title) ?: Str::random(12)));
         }
     }
 

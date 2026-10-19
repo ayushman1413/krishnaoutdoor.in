@@ -126,6 +126,7 @@
          DIRECT ANSWER + FORMATS + CITIES
     ========================== -->
     <section class="kw-section"><div class="kw-inner">
+        @include('web.common.breadcrumbs', ['seo' => $seo, 'class' => 'kw-crumbs'])
         <p class="kw-lead">Krishna Outdoor offers digital out-of-home (DOOH) advertising in Ahmedabad on digital billboards and screens placed in prime, high-traffic locations. DOOH allows dynamic creative, scheduled campaigns and faster changes than a printed hoarding. Ask for the free site list to see available screens with rates and specifications.</p>
 
         <h2 class="kw-h2">DOOH formats we <em>offer</em></h2>

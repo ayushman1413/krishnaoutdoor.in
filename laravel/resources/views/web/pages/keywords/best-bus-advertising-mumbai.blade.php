@@ -31,7 +31,7 @@
 </section>
 
 <section class="kw-section"><div class="kw-inner">
-    <div class="kw-crumbs"><a href="{{ route('view.home') }}">Home</a><span>/</span><a href="{{ route('view.transit.media') }}">Transit Media</a><span>/</span><b>BEST Bus Advertising Mumbai</b></div>
+    @include('web.common.breadcrumbs', ['seo' => $seo, 'class' => 'kw-crumbs'])
     <p class="kw-lead">Krishna Outdoor holds advertising rights on 400+ BEST EV full-wrap buses in Mumbai. Each bus is a moving full-colour canvas that runs city routes all day. Ask for the free site list to see available buses, routes and rates.</p>
 
     <div class="kw-grid-2">

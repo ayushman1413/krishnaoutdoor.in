@@ -14,7 +14,7 @@
 
 <section class="hero media-detail-hero media-detail-hero-ooh" id="home">
     <div class="media-detail-hero-bg">
-        <img fetchpriority="high" srcset="{{ asset('assets/images/media/home-360-mumbai-train-800w.webp') }} 800w, {{ asset('assets/images/media/home-360-mumbai-train.webp') }} 1280w" sizes="100vw" alt="Social media marketing in Mumbai" decoding="async" loading="eager" src="{{ asset('assets/images/media/home-360-mumbai-train.webp') }}"/>
+        <img fetchpriority="high" srcset="{{ asset('assets/images/media/home-360-mumbai-train-800w.webp') }} 800w, {{ asset('assets/images/media/home-360-mumbai-train.webp') }} 1280w" sizes="100vw" alt="" decoding="async" loading="eager" src="{{ asset('assets/images/media/home-360-mumbai-train.webp') }}"/>
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-grid"></div>
@@ -31,7 +31,7 @@
 </section>
 
 <section class="kw-section"><div class="kw-inner">
-    <div class="kw-crumbs"><a href="{{ route('view.home') }}">Home</a><span>/</span><a href="{{ route('view.services') }}">Services</a><span>/</span><b>Social Media Marketing Mumbai</b></div>
+    @include('web.common.breadcrumbs', ['seo' => $seo, 'class' => 'kw-crumbs'])
     <p class="kw-lead">Krishna Outdoor runs social media marketing for Mumbai brands across Instagram, Facebook, LinkedIn and YouTube, covering strategy, content, paid ads and reporting. It can be booked on its own or paired with a local train or BEST bus campaign. Tell us your goals and we will recommend a package.</p>
 
     <div class="kw-grid-2">

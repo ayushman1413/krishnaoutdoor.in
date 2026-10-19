@@ -30,7 +30,7 @@
                         @case('image/webp')
                         @case('image/jpg')
                         <a href="{{asset('storage/'.$media->path)}}" class="preview-gallery-image">
-                        <img src="{{ asset('storage/' . $media->path) }}" alt="{{ $media->alt_text ?: $category->name . ' Gallery Image' }}"
+                        <img src="{{ asset('storage/' . $media->path) }}" alt="{{ $media->alt_text ?: $category->name . ' advertising site – Krishna Outdoor' }}"
                             title="{{ $media->title_text ?: $category->name }}" loading="lazy" class="w-full h-auto">
                         </a>
                         @break

@@ -31,7 +31,7 @@
 </section>
 
 <section class="kw-section"><div class="kw-inner">
-    <div class="kw-crumbs"><a href="{{ route('view.home') }}">Home</a><span>/</span><a href="{{ route('view.network') }}">Our Network</a><span>/</span><b>Outdoor Advertising Agency Mumbai</b></div>
+    @include('web.common.breadcrumbs', ['seo' => $seo, 'class' => 'kw-crumbs'])
     <p class="kw-lead">Krishna Outdoor is an outdoor advertising agency in Mumbai with rights on Mumbai local trains (Western and Central Railway), 400+ BEST EV full-wrap buses and 350+ TMT buses serving Thane. Brands work with one agency and one Mumbai office instead of booking each format separately. Ask for the free site list to see what is available.</p>
 
     <div class="kw-grid-2">
@@ -55,7 +55,7 @@
             <p class="kw-p">Every Mumbai campaign starts with your audience, not our inventory. We look at where your customers actually travel — a specific rail corridor, a set of BEST bus routes, or the Thane belt — and recommend a format mix that puts your brand in front of them repeatedly rather than once. For many brands that means combining formats: a local train wrap for mass daily visibility plus BEST or TMT buses to extend reach into neighbourhoods the rail network doesn't directly serve.</p>
 
             <h3 class="kw-h3">Visit our Mumbai office</h3>
-            <p class="kw-p">Our Mumbai team operates out of 701, 702 Morya Blue Moon, Next to Moniginis Cake Factory, Off New Link Road, Opp. Citi Mall, Andheri West, Mumbai, Maharashtra – 400053. You're welcome to visit in person to see site photos and discuss your campaign, or call us directly on <a href="tel:+919920011574" onclick="trackConversion('phone_click', this.href)">+91 99200 11574</a>.</p>
+            <p class="kw-p">Our Mumbai team operates out of 701, 702 Morya Blue Moon, Next to Moniginis Cake Factory, Off New Link Road, Opp. Citi Mall, Andheri West, Mumbai, Maharashtra – 400053. You're welcome to visit in person to see site photos and discuss your campaign, or call us directly on <a href="tel:+919920011574">+91 99200 11574</a>.</p>
 
             <p class="kw-p">See how brands like these have used our Mumbai network: explore our <a href="{{ route('view.projects') }}">campaign case studies</a>.</p>
         </div>

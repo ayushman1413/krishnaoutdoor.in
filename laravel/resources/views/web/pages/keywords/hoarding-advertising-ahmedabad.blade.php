@@ -31,7 +31,7 @@
 </section>
 
 <section class="kw-section"><div class="kw-inner">
-    <div class="kw-crumbs"><a href="{{ route('view.home') }}">Home</a><span>/</span><a href="{{ route('view.ooh.media') }}">OOH Media</a><span>/</span><b>Hoarding Advertising Ahmedabad</b></div>
+    @include('web.common.breadcrumbs', ['seo' => $seo, 'class' => 'kw-crumbs'])
     <p class="kw-lead">Krishna Outdoor offers hoarding advertising in Ahmedabad on 300+ hoardings it owns directly, with access to 2000+ hoarding sites across Gujarat. Formats include frontlit, backlit, unipole and gantry hoardings. Ask for the free site list to see available locations with photos, sizes and rates.</p>
 
     <div class="kw-grid-2">
