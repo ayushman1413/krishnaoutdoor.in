@@ -73,3 +73,39 @@ input, select, textarea, .input-box-md, .input-box-sm {
 .overflow-hidden.rounded-lg.shadow-lg {
   border: 1px solid rgba(0,0,0,.07);
 }
+
+/* Responsive guards for every admin screen. */
+#panel-section{min-width:0}
+.panel-card-header{flex-wrap:wrap}
+.panel-card-header>*{min-width:0}
+.panel-card-header .flex,.panel-card-header form{flex-wrap:wrap;gap:.5rem}
+.panel-card-header .flex>:not([hidden])~:not([hidden]){margin-left:0}
+.panel-card-header form{max-width:100%}
+.panel-card-header input[type=file]{max-width:100%;min-width:0}
+.panel-card-description{overflow-wrap:anywhere}
+.panel-card-body{min-width:0}
+.panel-body>form{display:flex;flex-direction:column;gap:1.25rem}
+@media (min-width:800px){.panel-body>form{gap:2.5rem}}
+.panel-body textarea,.panel-body select,.panel-body input:not([type=checkbox]):not([type=radio]){max-width:100%}
+
+/* Tables on tablets and phones: one card per row, label before each value, so nothing is cut off or needs sideways scrolling. */
+@media (max-width:1100px){
+.dataTables_wrapper{width:auto!important;max-width:100%}
+.dataTables_wrapper .dataTables_filter,.dataTables_wrapper .dataTables_length,.dataTables_wrapper .dataTables_info,.dataTables_wrapper .dataTables_paginate{float:none;text-align:left;margin-bottom:.75rem}
+.dataTables_wrapper .dataTables_filter input{max-width:100%;width:100%;margin-left:0}
+.dataTables_wrapper .dataTables_paginate{white-space:normal}
+.panel-card-table{overflow:visible}
+.panel-card-table table.data-table{border:0;display:block;width:100%!important}
+.panel-card-table table.data-table thead{display:none}
+.panel-card-table table.data-table tbody{display:block}
+.panel-card-table table.data-table tbody tr{border:1px solid #e5e7eb!important;border-radius:.5rem;display:block;margin-bottom:.75rem;padding:.25rem 0;width:100%}
+.panel-card-table table.data-table tbody td{align-items:flex-start;display:flex;gap:1rem;justify-content:space-between;max-width:none!important;min-width:0!important;overflow-wrap:anywhere;padding:.5rem 1rem;text-align:right;white-space:normal!important;width:auto!important}
+.panel-card-table table.data-table tbody td::before{color:#64748b;content:attr(data-label);flex:0 0 35%;font-weight:600;text-align:left}
+.panel-card-table table.data-table tbody td:empty{display:none}
+.panel-card-table table.data-table tbody td.dataTables_empty{display:block;text-align:center}
+.panel-card-table table.data-table tbody td.dataTables_empty::before{content:none}
+}
+
+/* Tighter table cells (the base rules use 25px side padding and left wide gaps between columns). */
+table.dataTable thead td,table.dataTable thead th{padding:10px 14px!important}
+table.dataTable tbody td{padding:8px 14px!important}

@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="64x64" href="{{ asset('favicon.png') }}">
 
     {{-- Stylesheets --}}
-    <link rel="stylesheet" href="{{asset('admin/css/app.css?v=8')}}">
+    <link rel="stylesheet" href="{{asset('admin/css/app.css?v=11')}}">
 
     {{-- Title --}}
     <title>Admin Panel </title>
@@ -57,6 +57,15 @@
 
         {{-- Script --}}
         <script src="{{asset('admin/js/app.js?v=9')}}"></script>
+        <script>
+            // Label every table cell with its column heading; the stacked card layout on small screens shows it (see admin app.css).
+            document.querySelectorAll('.panel-card-table table').forEach(function (table) {
+                var heads = Array.prototype.map.call(table.querySelectorAll('thead th'), function (th) { return th.textContent.trim(); });
+                table.querySelectorAll('tbody tr').forEach(function (row) {
+                    Array.prototype.forEach.call(row.children, function (cell, i) { if (heads[i]) cell.setAttribute('data-label', heads[i]); });
+                });
+            });
+        </script>
 
         @yield('panel-script')
         

@@ -63,11 +63,11 @@
                                         {{ $meta->seoable->name ?? '-' }}
                                     @endif
                                 </td>
-                                <td>{{ $meta->meta_title ?? '-' }}</td>
-                                <td style="white-space: normal; max-width: 280px;">
+                                <td style="white-space: normal; min-width: 200px; max-width: 300px;">{{ $meta->meta_title ?? '-' }}</td>
+                                <td style="white-space: normal; min-width: 200px; max-width: 300px;">
                                     {{ $meta->meta_description ? \Illuminate\Support\Str::limit($meta->meta_description, 80) : '-' }}
                                 </td>
-                                <td style="white-space: normal; max-width: 220px;">
+                                <td style="white-space: normal; min-width: 160px; max-width: 240px;">
                                     @php $health = \App\Services\SeoHealth::check($meta); @endphp
                                     @foreach ($health['errors'] as $msg)<span class="input-error">{{ $msg }}</span><br>@endforeach
                                     @foreach ($health['warnings'] as $msg)<span class="text-xs text-slate-400">{{ $msg }}</span><br>@endforeach

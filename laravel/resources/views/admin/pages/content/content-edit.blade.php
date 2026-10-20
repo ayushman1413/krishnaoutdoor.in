@@ -13,8 +13,11 @@
     </div>
 @endsection
 
+@section('panel-head')
+    @include('admin.pages.content._styles')
+@endsection
+
 @section('panel-body')
-    <style>#panel-section { min-width: 0; } .content-edit .panel-card-header { flex-wrap: wrap; gap: 12px; }</style>
     <form class="content-edit" action="{{ route('admin.handle.content.update', ['id' => $meta->id]) }}" method="POST" id="content-form">
         @csrf
 
@@ -172,7 +175,7 @@
             </div>
         </figure>
 
-        <div class="flex items-center space-x-3" style="margin-bottom:24px;">
+        <div class="content-edit-actions">
             <button type="submit" class="btn-primary-md">Save changes</button>
             <a href="{{ route('admin.view.content.list') }}" class="btn-secondary-md">Back</a>
         </div>

@@ -11,18 +11,11 @@
     </div>
 @endsection
 
+@section('panel-head')
+    @include('admin.pages.content._styles')
+@endsection
+
 @section('panel-body')
-    <style>
-        /* Keep the Edit button on screen: header wraps, and on phones only Page and Action stay. */
-        #panel-section { min-width: 0; } /* let wide content scroll inside its card instead of widening the page */
-        .content-page .panel-card-header { flex-wrap: wrap; gap: 12px; }
-        .content-page .data-table { width: 100%; }
-        @media (max-width: 640px) {
-            .content-page .data-table th:nth-child(1), .content-page .data-table td:nth-child(1),
-            .content-page .data-table th:nth-child(3), .content-page .data-table td:nth-child(3),
-            .content-page .data-table th:nth-child(4), .content-page .data-table td:nth-child(4) { display: none; }
-        }
-    </style>
     <figure class="panel-card content-page">
         <div class="panel-card-header">
             <div>
