@@ -14,7 +14,7 @@
 
 <section class="hero media-detail-hero media-detail-hero-ooh" id="home">
     <div class="media-detail-hero-bg">
-        <img fetchpriority="high" srcset="{{ asset('assets/images/transit/ahmedabad-bus-advertising-01-800w.webp') }} 800w, {{ asset('assets/images/transit/ahmedabad-bus-advertising-01.webp') }} 1600w" sizes="100vw" alt="AMTS bus advertising in Ahmedabad" decoding="async" loading="eager" src="{{ asset('assets/images/transit/ahmedabad-bus-advertising-01.webp') }}"/>
+        <img fetchpriority="high" srcset="{{ asset('assets/images/transit/transit-banner-800w.webp') }} 800w, {{ asset('assets/images/transit/transit-banner.webp') }} 1600w" sizes="100vw" alt="AMTS bus advertising in Ahmedabad" decoding="async" loading="eager" src="{{ asset('assets/images/transit/transit-banner.webp') }}"/>
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-grid"></div>

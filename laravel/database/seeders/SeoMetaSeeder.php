@@ -44,7 +44,7 @@ class SeoMetaSeeder extends Seeder
             );
         }
 
-        $organizationSchemaJson = '{"@context":"https://schema.org","@type":"Organization","name":"Krishna Outdoor","url":"https://krishnaoutdoor.in","logo":"https://krishnaoutdoor.in/assets/images/header-logo.webp","email":"info@krishnaoutdoor.in","telephone":"+91 98796 16411","foundingDate":"1985","areaServed":["Ahmedabad","Mumbai","Thane","Gujarat"],"sameAs":["https://www.facebook.com/krishnaoutdoorofficial/","https://www.linkedin.com/company/krishnaoutdoor/","https://www.instagram.com/krishnaoutdoorofficial/"]}';
+        $organizationSchemaJson = '{"@context":"https://schema.org","@type":"Organization","name":"Krishna Outdoor","url":"https://krishnaoutdoor.in","logo":"https://krishnaoutdoor.in/assets/images/header-logo.webp","email":"info@krishnaoutdoor.in","telephone":"+91 98796 16411","foundingDate":"1985","areaServed":["Ahmedabad","Mumbai","Thane","Gujarat","Rajasthan"],"sameAs":["https://www.facebook.com/krishnaoutdoorofficial/","https://www.linkedin.com/company/krishnaoutdoor/","https://www.instagram.com/krishnaoutdoorofficial/"]}';
 
         $robotsTxtPath = public_path('robots.txt');
         $robotsTxt = File::exists($robotsTxtPath)

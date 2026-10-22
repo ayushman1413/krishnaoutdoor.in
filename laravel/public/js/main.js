@@ -367,14 +367,14 @@ if(clientStageEl){
 const panels={
  ooh:{title:'Outdoor Media', kicker:'OOH MEDIA', image:'/assets/images/ooh/ahmedabad-hoarding-location-03.webp', color:'#ff2832'},
  transit:{title:'Transit Media', kicker:'TRANSIT MEDIA', image:'/assets/images/home/home-360-bus-hd.webp', color:'#53bffb'},
- print:{title:'Print Media', kicker:'PRINT & ELECTRONIC MEDIA', image:'/assets/images/print/newspaper.png', color:'#a78bfa'}
+ print:{title:'Print Media', kicker:'PRINT & ELECTRONIC MEDIA', image:'/assets/images/print/newspaper.webp', color:'#a78bfa'}
 };
 const showSection=$('.solution-showcase'), showTitle=$('#showcaseTitle'), showIndex=$('#showcaseIndex'), showImage=$('#showcaseImage'), showVisualKicker=$('#showcaseVisualKicker'), showVisualTitle=$('#showcaseVisualTitle');
 function setPanel(name){
  if(!showSection) return;
  showSection.classList.remove('theme-digital','theme-print','theme-transit'); showSection.classList.add('theme-'+name);
  if(showTitle) showTitle.textContent=panels[name].title;
- if(showImage){showImage.classList.remove('is-changing'); requestAnimationFrame(()=>{showImage.src=panels[name].image; showImage.classList.add('is-changing');});}
+ if(showImage){showImage.classList.remove('is-changing'); requestAnimationFrame(()=>{showImage.removeAttribute('srcset'); showImage.src=panels[name].image; showImage.classList.add('is-changing');});}
  if(showVisualKicker) showVisualKicker.textContent=panels[name].kicker;
  if(showVisualTitle){showVisualTitle.textContent=panels[name].title.toUpperCase(); showVisualTitle.style.color=panels[name].color;}
  const names=Object.keys(panels), n=names.indexOf(name)+1;

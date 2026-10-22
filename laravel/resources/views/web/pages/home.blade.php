@@ -32,8 +32,6 @@
             <div class="hero-grid"></div>
             <div class="hero-noise"></div>
             <div class="container hero-inner reveal">
-                <h1 class="seo-h1">{{ $seo->h1Override() ?: 'Outdoor Advertising Agency in Ahmedabad' }}</h1>
-                <p class="seo-h1-slogan">BE WHERE YOUR AUDIENCE IS.</p>
             </div>
         </section>
         <!--<section aria-label="Krishna Outdoor network highlights" class="stats stats-strip">-->
@@ -302,7 +300,7 @@
                 <div class="showcase-visual-wrap reveal">
                     <div class="showcase-visual-v2" id="showcaseVisual">
                         <div class="visual-topline"><span class="visual-live"><i></i></span></div>
-                        <img srcset="{{ asset('assets/images/ooh/ahmedabad-hoarding-location-03-800w.webp') }} 800w, {{ asset('assets/images/ooh/ahmedabad-hoarding-location-03.webp') }} 1200w" sizes="(max-width: 760px) 100vw, 50vw" alt="Hoarding advertising at a busy Ahmedabad junction – Krishna Outdoor" decoding="async" id="showcaseImage"
+                        <img alt="Hoarding advertising at a busy Ahmedabad junction – Krishna Outdoor" decoding="async" id="showcaseImage"
                             loading="lazy" src="{{ asset('assets/images/ooh/ahmedabad-hoarding-location-03.webp') }}" />
                         <div class="showcase-visual-shade"></div>
                         <div class="visual-caption"><small id="showcaseVisualKicker">OOH MEDIA</small><strong

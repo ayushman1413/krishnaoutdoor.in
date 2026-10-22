@@ -92,7 +92,7 @@ return [
         'label' => 'Our Network',
         'parent' => 'view.home',
         'region' => null,
-        'title' => 'Outdoor Media Network: Gujarat, Mumbai & Thane',
+        'title' => 'Outdoor Media Network: Gujarat, Mumbai, Thane & Jaipur',
         'description' => 'See our network: 2000+ Gujarat hoardings, 7000+ GSRTC buses, AMTS, BEST and TMT buses and Mumbai local trains. Explore media availability today.',
     ],
 

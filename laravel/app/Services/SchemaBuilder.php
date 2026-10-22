@@ -268,7 +268,7 @@ class SchemaBuilder
 
     private static function places(array $names): array
     {
-        $states = ['Gujarat', 'Maharashtra'];
+        $states = ['Gujarat', 'Maharashtra', 'Rajasthan'];
 
         return array_map(fn (string $name) => [
             '@type' => in_array($name, $states, true) ? 'State' : 'City',

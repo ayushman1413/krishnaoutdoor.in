@@ -13,7 +13,9 @@
 <main>
 
 <section class="hero media-detail-hero media-detail-hero-ooh" id="home">
-    <div class="media-detail-hero-bg"></div>
+    <div class="media-detail-hero-bg">
+        <img fetchpriority="high" alt="GSRTC bus advertising across Gujarat" decoding="async" loading="eager" src="{{ asset('assets/images/transit/ahmedabad-city-bus-advertising-05.webp') }}"/>
+    </div>
     <div class="hero-overlay"></div>
     <div class="hero-grid"></div>
     <div class="hero-noise"></div>
@@ -65,6 +67,9 @@
             <p class="kw-p">See how brands like these have used our transit network: explore our <a href="{{ route('view.projects') }}">campaign case studies</a>.</p>
         </div>
 
+        <div class="kw-img">
+            <img srcset="{{ asset('assets/images/transit/surat-ev-bus-advertising-03-800w.webp') }} 800w, {{ asset('assets/images/transit/surat-ev-bus-advertising-03.webp') }} 1600w" sizes="(max-width: 760px) 100vw, 50vw" alt="Branded GSRTC bus on a Gujarat highway route" decoding="async" loading="lazy" src="{{ asset('assets/images/transit/surat-ev-bus-advertising-03.webp') }}"/>
+        </div>
     </div>
 
     <h3 class="kw-h3">More Ahmedabad &amp; Gujarat advertising formats</h3>

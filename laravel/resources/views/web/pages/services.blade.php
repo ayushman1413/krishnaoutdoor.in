@@ -63,7 +63,7 @@
 <article><b>Mumbai Local Train Advertising</b><p>Mumbai's local railway network is central to the rhythm of the city. Local train exterior advertising gives brands the opportunity to travel alongside one of the country's most active commuter audiences.</p></article>
 <article><b>BEST Buses — Mumbai</b><p>BEST buses are an iconic part of Mumbai's streetscape. Advertising on these moving formats allows brands to stay visible across roads, neighbourhoods and the everyday journeys that connect the city.</p></article>
 <article><b>TMT Buses — Thane</b><p>TMT bus advertising provides brands with moving visibility across Thane's urban and commuter routes and helps maintain a physical presence across important local markets.</p></article>
-
+<article><b>Jaipur City Buses</b><p>Selected transit opportunities in Jaipur help extend visibility into another important urban market through high-frequency city movement.</p></article>
 </div>
 </div>
 </section>

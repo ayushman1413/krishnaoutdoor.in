@@ -85,6 +85,15 @@
             </span>
         </div>
 
+        <div class="stats-item">
+            110+
+            <span>
+                Advertising Rights for<br/>
+                Jaipur City Buses<br/>
+                (JCSTL)
+            </span>
+        </div>
+
     </div>
 </section>
 
@@ -186,7 +195,8 @@
                 Mumbai Local Train Advertising
                 BEST Buses — Mumbai
                 TMT Buses — Thane
-</p>
+                Jaipur City Buses
+            </p>
         </div>
 
         <a class="btn white" href="{{ route('view.free.site.list', ['media' => 'transit', 'city' => 'Mumbai']) }}">
