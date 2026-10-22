@@ -123,8 +123,7 @@ class SeoTodoController extends Controller
 
         $groups['Photos'] = [
             ['todo' => 'A real TMT/Thane bus photo for the hero of /tmt-bus-advertising-thane (it still shows a BEST bus) and a higher-resolution version of the small TMT photo.', 'where' => 'resources/views/web/pages/keywords/tmt-bus-advertising-thane.blade.php'],
-            ['todo' => 'A Jaipur/Rajasthan bus photo for the Rajasthan card on /our-network (it shows a neutral city backdrop).', 'where' => 'resources/views/web/pages/network.blade.php'],
-            ['todo' => 'A photo of a real DOOH screen for /media/digital (it currently reuses a generic image).', 'where' => 'resources/views/web/pages/digital-media.blade.php'],
+['todo' => 'A photo of a real DOOH screen for /media/digital (it currently reuses a generic image).', 'where' => 'resources/views/web/pages/digital-media.blade.php'],
         ];
 
         return array_filter($groups);

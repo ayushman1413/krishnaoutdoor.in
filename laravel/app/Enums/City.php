@@ -10,8 +10,7 @@ enum City: string
     case JAMNAGAR              = 'Jamnagar';
     case AMRELI                = 'Amreli';
     case ANAND                 = 'Anand';
-    case JAIPUR_CITY_BUS       = 'Jaipur City Bus';
-    case SURAT_CITY_BUS        = 'Surat City Bus';
+case SURAT_CITY_BUS        = 'Surat City Bus';
     case BUS_SHELTER_AHMEDABAD = 'Bus Shelter Ahmedabad';
     case CITY_BUS_AHMEDABAD    = 'City Bus Ahmedabad';
     case MUMBAI_TRAIN          = 'Mumbai Train';

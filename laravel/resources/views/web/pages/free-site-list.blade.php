@@ -73,7 +73,7 @@
                 <label for="fsl_city">City <span aria-hidden="true">*</span></label>
                 <input id="fsl_city" name="city" type="text" list="fsl_city_options" autocomplete="address-level2" required maxlength="100" value="{{ old('city', $selectedCity) }}" @error('city') aria-invalid="true" aria-describedby="fsl_city_error" @enderror>
                 <datalist id="fsl_city_options">
-                    <option value="Ahmedabad"><option value="Surat"><option value="Vadodara"><option value="Rajkot"><option value="Mumbai"><option value="Thane"><option value="Jaipur">
+                    <option value="Ahmedabad"><option value="Surat"><option value="Vadodara"><option value="Rajkot"><option value="Mumbai"><option value="Thane">
                 </datalist>
                 @error('city')<p class="fsl-error" id="fsl_city_error">{{ $message }}</p>@enderror
             </div>

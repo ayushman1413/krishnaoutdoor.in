@@ -721,7 +721,7 @@ class ChatEngine
         $found = [];
         foreach (config('chatbot.cities') as $key => $names) {
             foreach ($names as $name) {
-                if (Nlp::has($norm, $name)) { $found[] = $key === 'rajasthan' ? 'gujarat' : $key; break; }
+                if (Nlp::has($norm, $name)) { $found[] = $key; break; }
             }
         }
         // "navi mumbai" etc. should not add Thane by accident; keep first-mentioned order roughly

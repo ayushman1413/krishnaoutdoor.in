@@ -248,10 +248,6 @@
                             </option>
 
                             <option>
-                                Rajasthan
-                            </option>
-
-                            <option>
                                 Other
                             </option>
 

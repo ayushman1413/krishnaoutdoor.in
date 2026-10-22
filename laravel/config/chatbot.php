@@ -14,7 +14,7 @@
 | Entry keys:
 |   id     unique id
 |   media  media key the entry is about (hoarding, amts, shelter, gsrtc, best,
-|          tmt, train, dooh, print, social, branding, surat, jaipur) or null
+|          tmt, train, dooh, print, social, branding, surat) or null
 |   city   ahmedabad | mumbai | gujarat | thane | null
 |   k      keywords / phrases that make the entry relevant (weighted by rarity)
 |   a      the answer (plain text; **bold** and line breaks are allowed)
@@ -38,7 +38,6 @@ return [
         'print' => ['label' => 'print and electronic media', 'page' => '/services', 'title' => 'Print and electronic media', 'list' => 'other', 'syn' => ['newspaper', 'print', 'radio', 'television', 'tv', 'ott', 'press', 'electronic media']],
         'branding' => ['label' => 'branding solutions', 'page' => '/services', 'title' => 'Branding solutions', 'list' => 'other', 'syn' => ['branding', 'brand identity', 'creative', 'design']],
         'surat' => ['label' => 'Surat EV buses', 'page' => '/media/ooh', 'title' => 'Surat EV buses', 'list' => 'transit', 'syn' => ['surat', 'surat bus']],
-        'jaipur' => ['label' => 'Jaipur city buses', 'page' => '/media/transit', 'title' => 'Jaipur city buses', 'list' => 'transit', 'syn' => ['jaipur', 'rajasthan']],
     ],
 
     'cities' => [
@@ -46,7 +45,6 @@ return [
         'mumbai' => ['mumbai', 'bombay', 'andheri', 'navi mumbai'],
         'thane' => ['thane'],
         'gujarat' => ['gujarat', 'surat', 'vadodara', 'baroda', 'rajkot', 'gandhinagar', 'statewide', 'state wide', 'state-wide'],
-        'rajasthan' => ['jaipur', 'rajasthan'],
     ],
 
     'knowledge' => [
@@ -187,9 +185,9 @@ return [
             'k' => ['branding', 'brand identity', 'logo design', 'creative', 'campaign creative', 'marketing support', 'design'],
             'a' => "Our branding solutions cover brand communication, campaign creative and marketing support, so your creative works in the environment where it will be seen (a bus wrap reads differently from a shelter panel).",
             'links' => [['Media solutions', '/services']], 'next' => ['Get in touch']],
-        ['id' => 'surat-jaipur', 'media' => 'surat', 'city' => null,
-            'k' => ['surat', 'ev bus surat', 'jaipur', 'rajasthan', 'other cities', 'outside gujarat'],
-            'a' => "Beyond Ahmedabad and Mumbai we also offer **200+ full-wrap rights on Surat city electric buses** and selected transit opportunities on **Jaipur city buses**.",
+        ['id' => 'surat', 'media' => 'surat', 'city' => null,
+            'k' => ['surat', 'ev bus surat', 'other cities', 'outside gujarat'],
+            'a' => "Beyond Ahmedabad and Mumbai we also offer **200+ full-wrap rights on Surat city electric buses**.",
             'links' => [['Our network', '/our-network']], 'next' => ['Get a free site list']],
 
         // ---- Process / pricing / comparisons -------------------------------
