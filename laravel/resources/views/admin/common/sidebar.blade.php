@@ -62,6 +62,13 @@
                     </a>
                 </li>
 
+                <li class="sidebar-tab" id="project-tab">
+                    <a href="{{route('admin.view.project.list')}}">
+                        <i data-feather="briefcase"></i>
+                        <span>Projects</span>
+                    </a>
+                </li>
+
                 <li class="sidebar-tab" id="category-tab">
                     <a href="{{route('admin.view.category.list')}}">
                         <i data-feather="layers"></i>
@@ -91,10 +98,20 @@
                 </li>
 
                 <li class="sidebar-tab" id="seo-tab">
-                    <a href="{{route('admin.view.seo.list')}}">
-                        <i data-feather="search"></i>
-                        <span>SEO</span>
+                    <a href="javascript:void(0)" onclick="toggleSeoMenu()" style="justify-content:space-between;">
+                        <span class="flex items-center gap-3">
+                            <i data-feather="search"></i>
+                            <span>SEO</span>
+                        </span>
+                        <i data-feather="chevron-down" id="seo-chevron" style="height:14px;width:14px;transition:transform .2s;"></i>
                     </a>
+                    <ul id="seo-submenu" class="hidden flex-col pl-4 pb-1 space-y-0.5">
+                        <li><a href="{{route('admin.view.seo.list')}}" class="flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm text-slate-400 hover:text-slate-100 hover:bg-white hover:bg-opacity-5 transition"><i data-feather="list" style="height:13px;width:13px;"></i> SEO Meta</a></li>
+                        <li><a href="{{route('admin.view.seo.settings')}}" class="flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm text-slate-400 hover:text-slate-100 hover:bg-white hover:bg-opacity-5 transition"><i data-feather="sliders" style="height:13px;width:13px;"></i> SEO Settings</a></li>
+                        <li><a href="{{route('admin.view.redirect.list')}}" class="flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm text-slate-400 hover:text-slate-100 hover:bg-white hover:bg-opacity-5 transition"><i data-feather="corner-right-down" style="height:13px;width:13px;"></i> Redirects</a></li>
+                        <li><a href="{{route('admin.view.404log.list')}}" class="flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm text-slate-400 hover:text-slate-100 hover:bg-white hover:bg-opacity-5 transition"><i data-feather="alert-triangle" style="height:13px;width:13px;"></i> 404 Logs</a></li>
+                        <li><a href="{{route('admin.view.seo.todos')}}" class="flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm text-slate-400 hover:text-slate-100 hover:bg-white hover:bg-opacity-5 transition"><i data-feather="check-square" style="height:13px;width:13px;"></i> SEO Todos</a></li>
+                    </ul>
                 </li>
 
                 <li class="sidebar-tab" id="setting-tab">

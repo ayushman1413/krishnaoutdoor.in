@@ -57,7 +57,7 @@
                                 <input type="file" accept="image/jpeg, image/jpg, image/png, image/webp"
                                     onchange="handleThumbnailPreview(event)" name="thumbnail_image">
                                 <i data-feather="upload-cloud"></i>
-                                <span>Darg and Drop Image Files</span>
+                                <span>Drag and Drop Image Files</span>
                             </div>
                             <img src="{{ is_null($project->thumbnail_image) ? asset('admin/images/default-thumbnail.png') : asset('storage/' . $project->thumbnail_image) }}" id="thumbnail_image"
                                 alt="thumbnail_image" class="input-thumbnail-preview">
@@ -69,6 +69,30 @@
                             class="input-box-md mt-2 @error('thumbnail_image_alt') input-invalid @enderror"
                             placeholder="Alt text (for SEO/accessibility)" maxlength="255">
                         @error('thumbnail_image_alt')
+                            <span class="input-error">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    {{-- Cover Image --}}
+                    <div class="md:col-span-4 sm:col-span-1">
+                        <label for="cover_image" class="input-label">Cover Image <span>(Format: png, jpg, jpeg, webp)</span> <span>(Optional)</span></label>
+                        <div class="flex lg:flex-row md:flex-row sm:flex-col gap-3 my-2">
+                            <div class="input-box-dragable">
+                                <input type="file" accept="image/jpeg, image/jpg, image/png, image/webp"
+                                    onchange="handleCoverPreview(event)" name="cover_image">
+                                <i data-feather="upload-cloud"></i>
+                                <span>Drag and Drop Image Files</span>
+                            </div>
+                            <img src="{{ is_null($project->cover_image) ? asset('admin/images/default-thumbnail.png') : asset('storage/' . $project->cover_image) }}" id="cover_image_preview"
+                                alt="cover_image" class="input-thumbnail-preview">
+                        </div>
+                        @error('cover_image')
+                            <span class="input-error">{{ $message }}</span>
+                        @enderror
+                        <input type="text" name="cover_image_alt" value="{{ old('cover_image_alt', $project->cover_image_alt) }}"
+                            class="input-box-md mt-2 @error('cover_image_alt') input-invalid @enderror"
+                            placeholder="Cover image alt text (for SEO/accessibility)" maxlength="255">
+                        @error('cover_image_alt')
                             <span class="input-error">{{ $message }}</span>
                         @enderror
                     </div>
@@ -88,9 +112,16 @@
 
         const handleThumbnailPreview = (event) => {
             if (event.target.files.length == 0) {
-                document.getElementById('thumbnail_image').src = "{{ is_null($category->thumbnail_image) ? asset('admin/images/default-thumbnail.png') : asset('storage/' . $category->thumbnail_image) }}";
+                document.getElementById('thumbnail_image').src = "{{ is_null($project->thumbnail_image) ? asset('admin/images/default-thumbnail.png') : asset('storage/' . $project->thumbnail_image) }}";
             } else {
                 document.getElementById('thumbnail_image').src = URL.createObjectURL(event.target.files[0])
+            }
+        }
+        const handleCoverPreview = (event) => {
+            if (event.target.files.length == 0) {
+                document.getElementById('cover_image_preview').src = "{{ is_null($project->cover_image) ? asset('admin/images/default-thumbnail.png') : asset('storage/' . $project->cover_image) }}";
+            } else {
+                document.getElementById('cover_image_preview').src = URL.createObjectURL(event.target.files[0])
             }
         }
     </script>

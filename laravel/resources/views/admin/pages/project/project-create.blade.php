@@ -51,12 +51,12 @@
                     {{-- Thumbnail --}}
                     <div class="md:col-span-4 sm:col-span-1">
                         <label for="thumbnail_image" class="input-label">Thumbnail <span>(Format: png, jpg, jpeg,
-                            webp,)</span> <span>(Size: 900px × 1600px)</span> <em>*</em></label>
+                            webp)</span> <span>(Size: 900px × 1600px)</span> <em>*</em></label>
                         <div class="flex space-x-3 my-2">
                             <div class="input-box-dragable">
                                 <input type="file" accept="image/jpeg, image/jpg, image/png, image/webp" onchange="handleThumbnailPreview(event)" name="thumbnail_image" required>
                                 <i data-feather="upload-cloud"></i>
-                                <span>Darg and Drop Image Files</span>
+                                <span>Drag and Drop Image Files</span>
                             </div>
                             <img src="{{ asset('admin/images/default-thumbnail.png') }}" id="thumbnail_image"
                                 alt="thumbnail_image" class="input-thumbnail-preview">
@@ -68,6 +68,29 @@
                             class="input-box-md mt-2 @error('thumbnail_image_alt') input-invalid @enderror"
                             placeholder="Alt text (for SEO/accessibility)" maxlength="255">
                         @error('thumbnail_image_alt')
+                            <span class="input-error">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    {{-- Cover Image --}}
+                    <div class="md:col-span-4 sm:col-span-1">
+                        <label for="cover_image" class="input-label">Cover Image <span>(Format: png, jpg, jpeg, webp)</span> <span>(Optional)</span></label>
+                        <div class="flex space-x-3 my-2">
+                            <div class="input-box-dragable">
+                                <input type="file" accept="image/jpeg, image/jpg, image/png, image/webp" onchange="handleCoverPreview(event)" name="cover_image">
+                                <i data-feather="upload-cloud"></i>
+                                <span>Drag and Drop Image Files</span>
+                            </div>
+                            <img src="{{ asset('admin/images/default-thumbnail.png') }}" id="cover_image_preview"
+                                alt="cover_image" class="input-thumbnail-preview">
+                        </div>
+                        @error('cover_image')
+                            <span class="input-error">{{ $message }}</span>
+                        @enderror
+                        <input type="text" name="cover_image_alt" value="{{ old('cover_image_alt') }}"
+                            class="input-box-md mt-2 @error('cover_image_alt') input-invalid @enderror"
+                            placeholder="Cover image alt text (for SEO/accessibility)" maxlength="255">
+                        @error('cover_image_alt')
                             <span class="input-error">{{ $message }}</span>
                         @enderror
                     </div>
@@ -90,6 +113,13 @@
                 document.getElementById('thumbnail_image').src = "{{ asset('admin/images/default-thumbnail.png') }}";
             } else {
                 document.getElementById('thumbnail_image').src = URL.createObjectURL(event.target.files[0])
+            }
+        }
+        const handleCoverPreview = (event) => {
+            if (event.target.files.length == 0) {
+                document.getElementById('cover_image_preview').src = "{{ asset('admin/images/default-thumbnail.png') }}";
+            } else {
+                document.getElementById('cover_image_preview').src = URL.createObjectURL(event.target.files[0])
             }
         }
     </script>

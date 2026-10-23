@@ -67,6 +67,33 @@
             });
         </script>
 
+        <script>
+            function toggleSeoMenu() {
+                var menu = document.getElementById('seo-submenu');
+                var chevron = document.getElementById('seo-chevron');
+                if (menu.classList.contains('hidden')) {
+                    menu.classList.remove('hidden');
+                    menu.classList.add('flex');
+                    chevron.style.transform = 'rotate(180deg)';
+                } else {
+                    menu.classList.add('hidden');
+                    menu.classList.remove('flex');
+                    chevron.style.transform = 'rotate(0deg)';
+                }
+            }
+            // Auto-open SEO menu if on an SEO page
+            (function() {
+                var seoRoutes = ['/seo', '/seo-settings', '/redirect', '/404-log', '/seo-todos'];
+                var path = window.location.pathname;
+                if (seoRoutes.some(function(r){ return path.indexOf(r) !== -1; })) {
+                    var menu = document.getElementById('seo-submenu');
+                    var chevron = document.getElementById('seo-chevron');
+                    if (menu) { menu.classList.remove('hidden'); menu.classList.add('flex'); }
+                    if (chevron) { chevron.style.transform = 'rotate(180deg)'; }
+                }
+            })();
+        </script>
+
         @yield('panel-script')
         
         @if (session('message'))

@@ -1,7 +1,7 @@
 @extends('web.layouts.app')
 
 @section('web-section')
-<section class="page-header dark" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('{{asset('storage/'.$category->cover_image)}}')">
+<section class="page-header dark" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('{{ $category->cover_image ? asset('storage/'.$category->cover_image) : asset('assets/images/shared-night-city-background.png') }}')">
     <div class="container">
 
         <div class="page-title">

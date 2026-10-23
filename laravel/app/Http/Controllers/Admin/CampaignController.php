@@ -235,6 +235,9 @@ class CampaignController extends Controller
 
             if ($campaign->image)
                 Storage::delete($campaign->image);
+            foreach ((array) ($campaign->gallery ?? []) as $item) {
+                if (!empty($item['path'])) Storage::delete($item['path']);
+            }
             $campaign->delete();
 
             return redirect()->route('admin.view.campaign.list')->with('message', [

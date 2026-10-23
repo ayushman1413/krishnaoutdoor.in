@@ -410,6 +410,12 @@ class CategoryController extends Controller implements CategoryInterface
                 ]);
             }
 
+            if ($category->thumbnail_image) Storage::delete($category->thumbnail_image);
+            if ($category->cover_image) Storage::delete($category->cover_image);
+            foreach ($category->media as $media) {
+                Storage::delete($media->path);
+                $media->delete();
+            }
             $category->delete();
 
             return redirect()->route('admin.view.category.list')->with('message', [
