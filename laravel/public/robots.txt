@@ -1,0 +1,28 @@
+# robots.txt for https://krishnaoutdoor.in/
+User-agent: *
+Allow: /
+
+# Laravel site
+Disallow: /admin/
+Disallow: /login
+Disallow: /api/
+
+# WordPress blog (/blog)
+Disallow: /blog/wp-admin/
+Allow: /blog/wp-admin/admin-ajax.php
+Disallow: /blog/wp-login.php
+Disallow: /blog/wp-includes/
+Disallow: /blog/wp-json/
+Disallow: /blog/xmlrpc.php
+Disallow: /blog/?s=
+Disallow: /blog/search/
+Disallow: /blog/*?replytocom=
+
+# Tracking parameters (avoid duplicate URLs)
+Disallow: /*?*utm_
+Disallow: /*?*fbclid=
+Disallow: /*?*gclid=
+
+# Sitemaps
+Sitemap: https://krishnaoutdoor.in/sitemap.xml
+Sitemap: https://krishnaoutdoor.in/blog/wp-sitemap.xml
