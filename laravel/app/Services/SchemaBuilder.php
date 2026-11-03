@@ -170,7 +170,7 @@ class SchemaBuilder
                 '@id' => $seo->canonicalUrl . '#service',
                 'name' => $page['service']['name'],
                 'serviceType' => $page['service']['type'],
-                'description' => $seo->description,
+                'description' => $page['service']['description'] ?? $seo->description,
                 'url' => $seo->canonicalUrl,
                 'provider' => ['@id' => self::orgId()],
                 'areaServed' => self::places($page['service']['area']),

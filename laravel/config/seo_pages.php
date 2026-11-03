@@ -4,16 +4,7 @@
 |--------------------------------------------------------------------------
 | Static page SEO registry
 |--------------------------------------------------------------------------
-|
-| One entry per static route. This is the single source of truth for:
-|  - the default SEO values seeded into seo_meta (title/description), which
-|    the SEO admin panel then owns — editing a page there wins over this file;
-|  - the sitemap's list of static URLs;
-|  - breadcrumbs (label + parent route) for BreadcrumbList schema;
-|  - which office (LocalBusiness schema, chat "Call us" number) a page uses;
-|  - the automatic Service schema on media and keyword pages.
-|
-| 'region' is 'ahmedabad', 'mumbai', 'both' or null.
+
 |
 */
 
@@ -140,8 +131,8 @@ return [
         'parent' => 'view.ooh.media',
         'region' => 'ahmedabad',
         'title' => 'Bus Shelter Advertising in Ahmedabad | 400+ Backlit Sites',
-        'description' => 'Bus shelter advertising in Ahmedabad on 400+ backlit shelters. Eye-level visibility where commuters wait. Check locations and availability today.',
-        'service' => ['name' => 'Bus Shelter Advertising in Ahmedabad', 'type' => 'Bus Shelter Advertising', 'area' => ['Ahmedabad']],
+        'description' => 'Bus shelter advertising in Ahmedabad on 400+ backlit shelters at eye level. Longer viewing time, day and night. Get the free location list with rates.',
+        'service' => ['name' => 'Bus Shelter Advertising in Ahmedabad', 'type' => 'Bus shelter / bus stop advertising', 'description' => 'Backlit bus shelter advertising on 400+ shelters across Ahmedabad, placed at eye level at commuter stops.', 'area' => ['Ahmedabad']],
     ],
 
     'view.keyword.gsrtc' => [
