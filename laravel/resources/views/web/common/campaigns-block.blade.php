@@ -1,11 +1,13 @@
 {{-- "Campaigns we have run": existing campaigns (Admin > Our Work) that this
      keyword page proves, each linking to its case-study page. Renders nothing
      when none of the configured campaigns exist in the database yet.
-     $route: this page's route name (see config/campaigns.php). --}}
+     $route: this page's route name (see config/campaigns.php).
+     $intro: optional line of HTML under the heading. --}}
 @php $pageCampaigns = \App\Models\Campaign::forKeywordPage($route); @endphp
 @if ($pageCampaigns->isNotEmpty())
 <section class="kw-section"><div class="kw-inner">
     <h2 class="kw-h2">Campaigns we have <em>run</em></h2>
+    @isset($intro)<p class="kw-p">{!! $intro !!}</p>@endisset
     <div class="kw-campaigns">
 <!--cms:skip-->
         @foreach ($pageCampaigns as $item)

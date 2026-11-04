@@ -14,7 +14,7 @@
 
 <section class="hero media-detail-hero media-detail-hero-ooh" id="home">
     <div class="media-detail-hero-bg">
-        <img fetchpriority="high" srcset="{{ asset('assets/images/ooh/ahmedabad-bus-shelter-original-01-800w.webp') }} 800w, {{ asset('assets/images/ooh/ahmedabad-bus-shelter-original-01.webp') }} 1600w" sizes="100vw" alt="Backlit bus shelter advertising panel at a bus stop in Ahmedabad" decoding="async" loading="eager" src="{{ asset('assets/images/ooh/ahmedabad-bus-shelter-original-01.webp') }}"/>
+        <img fetchpriority="high" srcset="{{ asset('assets/images/ooh/ahmedabad-bus-shelter-hero-800w.webp') }} 800w, {{ asset('assets/images/ooh/ahmedabad-bus-shelter-hero.webp') }} 1590w" sizes="100vw" alt="Backlit bus shelter advertising panel at a bus stop in Ahmedabad" decoding="async" loading="eager" src="{{ asset('assets/images/ooh/ahmedabad-bus-shelter-hero.webp') }}"/>
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-grid"></div>
@@ -35,7 +35,7 @@
     <p class="kw-lead">Bus shelter advertising in Ahmedabad places your brand on backlit panels at bus stops, at eye level, where commuters wait for several minutes. <a href="{{ route('view.home') }}">Krishna Outdoor</a> holds advertising rights on 400+ backlit bus shelters across Ahmedabad, so you can choose stops by area and audience and get longer viewing time than most outdoor formats.</p>
     <div class="kw-cta-row">
         <a class="btn red" href="{{ route('view.free.site.list', ['media' => 'bus-shelters', 'city' => 'Ahmedabad']) }}">Get the free bus shelter location list <b>→</b></a>
-        <span class="kw-cta-contact">Call <a href="tel:+919879616411">+91 98796 16411</a> or <a href="{{ \App\Services\SeoResolver::whatsappUrl($seo, $seoSettings ?? null, 'Hi, please share the bus shelter location list for Ahmedabad.') }}" target="_blank" rel="noopener">WhatsApp us</a></span>
+        <span class="kw-cta-contact">Call or <a href="{{ \App\Services\SeoResolver::whatsappUrl($seo, $seoSettings ?? null, 'Hi, please share the bus shelter location list for Ahmedabad.') }}" target="_blank" rel="noopener">WhatsApp</a> <a href="tel:+919879616411">+91 98796 16411</a></span>
     </div>
 
     <div class="kw-grid-2">
@@ -46,7 +46,7 @@
 
             <h2 class="kw-h2">How many bus shelters does Krishna Outdoor have <em>in Ahmedabad?</em></h2>
             <p class="kw-p">Krishna Outdoor holds advertising rights on 400+ backlit bus shelters across Ahmedabad, on commercial roads, residential areas and stops near markets, colleges and offices.</p>
-            <p class="kw-p"><b>Shelter network:</b> Shelters are AMTS and BRTS (Janmarg)</p>
+            <p class="kw-p"><b>Shelter network:</b> Shelters are AMTS and BRTS (Janmarg).</p>
 
             <div class="kw-stat-row">
                 <div class="kw-stat"><strong>400+</strong><span>Backlit Bus Shelter Sites</span></div>
@@ -78,13 +78,13 @@
     <h2 class="kw-h2">Why does bus shelter advertising <em>work?</em></h2>
     <p class="kw-p">Bus shelter ads work because the audience is captive. People waiting at a stop have nowhere else to look, often for several minutes, which gives a shelter panel far longer viewing time than drive-by formats.</p>
 
-    <div class="kw-table-wrap">
+    <div class="kw-table-wrap kw-stack">
         <table class="kw-table">
             <thead><tr><th>Format</th><th>Typical viewing time</th><th>Message it can carry</th></tr></thead>
             <tbody>
-                <tr><td>Hoarding (from a vehicle)</td><td>A few seconds</td><td>Brand name + one line</td></tr>
-                <tr><td>Bus panel (at a signal)</td><td>A second or two</td><td>Brand name + visual</td></tr>
-                <tr class="kw-hl"><td>Bus shelter panel</td><td>Several minutes while waiting</td><td>Offer, product detail, phone number, QR code</td></tr>
+                <tr><td>Hoarding (from a vehicle)</td><td data-label="Typical viewing time">A few seconds</td><td data-label="Message it can carry">Brand name + one line</td></tr>
+                <tr><td>Bus panel (at a signal)</td><td data-label="Typical viewing time">A second or two</td><td data-label="Message it can carry">Brand name + visual</td></tr>
+                <tr class="kw-hl"><td>Bus shelter panel</td><td data-label="Typical viewing time">Several minutes while waiting</td><td data-label="Message it can carry">Offer, product detail, phone number, QR code</td></tr>
             </tbody>
         </table>
     </div>
@@ -99,7 +99,7 @@
             <thead><tr><th>Cost factor</th><th>How it affects the price</th></tr></thead>
             <tbody>
                 <tr><td>Location</td><td>Shelters on busy commercial roads or near markets and colleges cost more than quiet residential stops</td></tr>
-                <tr><td>Number of shelters</td><td>Booking a cluster of shelters in one area usually lowers the per-shelter rate</td></tr>
+                <tr><td>Number of shelters</td><td>Booking a cluster of shelters in one area usually lowers the per-shelter rate.</td></tr>
                 <tr><td>Panel size / panels per shelter</td><td>More display area costs more</td></tr>
                 <tr><td>Duration</td><td>Longer bookings usually get a better monthly rate</td></tr>
                 <tr><td>Printing &amp; mounting</td><td>Depends on size</td></tr>
@@ -114,10 +114,22 @@
         <li><b>Confirm and send creative</b> – we print the backlit panel to fit the frame.</li>
         <li><b>Go live</b> – our team installs the panels and shares live photos as proof.</li>
     </ol>
+    <ul class="kw-list">
+        <li><b>Minimum booking period:</b> bus shelters are usually booked by the month.</li>
+        <li><b>Recommended lead time:</b> enquire a few weeks ahead so your preferred stops are available.</li>
+    </ul>
 
     <h2 class="kw-h2">Bus shelters plus AMTS buses: <em>one city campaign</em></h2>
     <p class="kw-p">Bus shelter advertising and <a href="/amts-bus-advertising-ahmedabad">AMTS bus advertising in Ahmedabad</a> solve different problems. Buses give broad, repeated exposure as they move across Ahmedabad; shelters repeat the same message at the exact points where people stop and read. Running both together means your brand is seen in motion and at rest.</p>
     <p class="kw-p">Add <a href="/hoarding-advertising-ahmedabad">hoardings on main roads</a> for a large fixed message, or <a href="/gsrtc-bus-advertising">GSRTC buses</a> to carry the campaign to the rest of Gujarat.</p>
+
+    <p class="kw-h3">More Ahmedabad &amp; Gujarat advertising formats</p>
+    <div class="kw-links">
+        <a href="/amts-bus-advertising-ahmedabad">AMTS bus advertising in Ahmedabad</a>
+        <a href="/hoarding-advertising-ahmedabad">Hoarding advertising in Ahmedabad</a>
+        <a href="/gsrtc-bus-advertising">GSRTC bus advertising</a>
+        <a href="{{ route('view.ooh.media') }}">All OOH media in Gujarat</a>
+    </div>
 
     <h2 class="kw-h2">Why choose Krishna Outdoor for bus shelter <em>advertising?</em></h2>
     <ul class="kw-list">
@@ -128,14 +140,6 @@
         <li><b>Ahmedabad head office</b> in Navrangpura for site visits and planning meetings.</li>
     </ul>
     <p class="kw-p">See how brands have used our outdoor network: explore our <a href="{{ route('view.projects') }}">campaign case studies</a>.</p>
-
-    <h3 class="kw-h3">More Ahmedabad &amp; Gujarat advertising formats</h3>
-    <div class="kw-links">
-        <a href="/amts-bus-advertising-ahmedabad">AMTS Bus Advertising Ahmedabad</a>
-        <a href="/hoarding-advertising-ahmedabad">Hoarding Advertising Ahmedabad</a>
-        <a href="/gsrtc-bus-advertising">GSRTC Bus Advertising</a>
-        <a href="{{ route('view.ooh.media') }}">All OOH Media in Gujarat</a>
-    </div>
 </div></section>
 
 <section class="kw-section kw-section-alt"><div class="kw-inner">
@@ -155,9 +159,9 @@
         <div>
             <div class="tag light">LET'S CREATE</div>
             <h2>GET YOUR FREE BUS SHELTER LOCATION LIST</h2>
-            <p>Tell us your target area in Ahmedabad and we'll share available bus shelters with photos, sizes and rates.</p>
+            <p>Tell us your target areas in Ahmedabad and we will send available shelters with photos, sizes and rates. Call / WhatsApp <a href="tel:+919879616411">+91 98796 16411</a>.</p>
         </div>
-        <a class="btn white" href="{{ route('view.free.site.list', ['media' => 'bus-shelters', 'city' => 'Ahmedabad']) }}">Get Free Site List <b>→</b></a>
+        <a class="btn white" href="{{ route('view.free.site.list', ['media' => 'bus-shelters', 'city' => 'Ahmedabad']) }}">Get Free Bus Shelter Location List <b>→</b></a>
     </div>
 </section>
 

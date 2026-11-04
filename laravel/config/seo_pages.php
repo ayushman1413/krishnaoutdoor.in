@@ -110,9 +110,9 @@ return [
         'label' => 'Hoarding Advertising Ahmedabad',
         'parent' => 'view.ooh.media',
         'region' => 'ahmedabad',
-        'title' => 'Hoarding Advertising in Ahmedabad | 300+ Own Sites',
-        'description' => 'Hoarding advertising in Ahmedabad with 300+ own sites and 2000+ across Gujarat. Frontlit, backlit and unipoles on prime roads. Get the free site list.',
-        'service' => ['name' => 'Hoarding Advertising in Ahmedabad', 'type' => 'Hoarding Advertising', 'area' => ['Ahmedabad', 'Gujarat']],
+        'title' => 'Hoarding Advertising Ahmedabad | Outdoor Ads Since 1985',
+        'description' => 'Hoarding advertising in Ahmedabad on 300+ own sites, 2000+ across Gujarat. Frontlit, backlit, unipole & gantry. Get the free site list with rates.',
+        'service' => ['name' => 'Hoarding Advertising in Ahmedabad', 'type' => 'Outdoor hoarding / billboard advertising', 'description' => 'Hoarding advertising on 300+ owned hoardings in Ahmedabad and 2000+ sites across Gujarat in frontlit, backlit, unipole and gantry formats.', 'area' => ['Ahmedabad', 'Gujarat']],
     ],
 
     'view.keyword.amts.ahmedabad' => [

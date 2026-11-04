@@ -7,7 +7,7 @@
 <div class="kw-faq">
 @foreach ($faqs as $faq)
     <details @if ($loop->first) open @endif>
-        <summary>{{ $faq['q'] }}</summary>
+        <summary><h3 class="kw-faq-q">{{ $faq['q'] }}</h3></summary>
         <p>{{ $faq['a'] }}</p>
     </details>
 @endforeach
