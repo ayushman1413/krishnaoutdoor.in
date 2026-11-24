@@ -108,6 +108,15 @@
                 Our Work
             </a>
 
+            <!-- Blog -->
+            <a
+                href="https://krishnaoutdoor.in/blog/"
+                target="_blank"
+                rel="noopener"
+            >
+                Blog
+            </a>
+
             <!-- Contact Us -->
             <a
                 @if ($nav === 'contact') aria-current="page" class="active" @endif
