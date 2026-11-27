@@ -111,8 +111,6 @@
             <!-- Blog -->
             <a
                 href="https://krishnaoutdoor.in/blog/"
-                target="_blank"
-                rel="noopener"
             >
                 Blog
             </a>
